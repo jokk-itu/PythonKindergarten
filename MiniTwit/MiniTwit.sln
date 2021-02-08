@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniTwit", "MiniTwit\MiniTwit.csproj", "{BE1D246C-B224-4C10-924F-B0CC83E9C39B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BE1D246C-B224-4C10-924F-B0CC83E9C39B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE1D246C-B224-4C10-924F-B0CC83E9C39B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE1D246C-B224-4C10-924F-B0CC83E9C39B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE1D246C-B224-4C10-924F-B0CC83E9C39B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

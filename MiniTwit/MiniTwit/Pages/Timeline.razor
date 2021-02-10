@@ -1,18 +1,11 @@
-<!--{% extends "layout.html" %}
-{% block title %}
-  {% if request.endpoint == 'public_timeline' %}
-    Public Timeline
-  {% elif request.endpoint == 'user_timeline' %}
-    {{ profile_user.username }}'s Timeline
-  {% else %}
-    My Timeline
-  {% endif %}
-{% endblock %}
-{% block body %}
-  <h2>{{ self.title() }}</h2>
-  {% if g.user %}
-    {% if request.endpoint == 'user_timeline' %}
-      <div class=followstatus>
+@page "/{userid}/{username}/{timeline}"
+
+
+<h2>Public/Private Timeline</h2> <!-- Should change between public and private depending on what is requested -->
+
+if(@RouteData.RouteValues.ContainsKey("userid")){
+     /*if(@RouteData.RouteValues["timeline"] == "user_timeline"){
+         <div class=followstatus>
       {% if g.user.user_id == profile_user.user_id %}
         This is you!
       {% elif followed %}
@@ -25,19 +18,22 @@
           }}">Follow user</a>.
       {% endif %}
       </div>
-    {% elif request.endpoint == 'timeline' %}
-      <div class=twitbox>
-        <h3>What's on your mind {{ g.user.username }}?</h3>
+     }*/
+
+     if(@RouteData.RouteValues["timeline"] == "timeline"){
+         <div class=twitbox>
+        <h3>What's on your mind {{ @RouteData.RouteValues["username"] }}?</h3>
         <form action="{{ url_for('add_message') }}" method=post>
-          <p><input type=text name=text size=60>
-          <input type=submit value="Share">
+            <input type=text name=text size=60>
+            <input type=submit value="Share">
         </form>
       </div>
-    {% endif %}
-  {% endif %}
+     }
+}
+
   <ul class=messages>
   {% for message in messages %}
-    <li><img src="{{ message.email|gravatar(size=48) }}"><p>
+    <li><img src="{{ message.email|gravatar(size=48) }}">
       <strong><a href="{{ url_for('user_timeline', username=message.username)
       }}">{{ message.username }}</a></strong>
       {{ message.text }}
@@ -46,4 +42,62 @@
     <li><em>There's no message so far.</em>
   {% endfor %}
   </ul>
-{% endblock %}-->
+
+<!--dotnet add package System.Data.SQLite.Core-->
+@using System.Data.SQLite;
+
+@code {
+    string username;
+    protected override async Task OnInitializedAsync()
+    {
+        <!--SQL QUERY-->
+        <!--OR make a class which retrieves the data and use it here-->
+        <!---https://zetcode.com/csharp/sqlite/-->
+        var connection_string = @"URI=../tmp/minitwit.db";
+        using (var connection = new SQLiteConnection(connection_string))
+        {
+            <!--RAW query for retrieval-->
+            var statement = "SQL QUERY";
+            connection.Open();
+            using (var reader =  await new SQLiteCommand(statement, connection_string).ExecuteReaderAsync())
+            {
+                while(reader.Read()) 
+                {
+                    <!--Use the data from reader object-->
+                }
+            };
+            <!---PREPARED query for retrieval-->
+            using (var command = new SQLiteCommand(connection_string))
+            {
+                command.CommandText = "Prepared SQL query"; <!--Prepared values are written like so: @nameofvalue-->
+                command.Parameters.AddWithValue("name of prepared value", "actual value");
+                <!---Repeat as many times as there are prepared values-->
+                command.Prepare();
+                using (var reader_p = await command.ExecuteReaderAsync())
+                {
+                    while (reader_p.Read())
+                    {
+                        <!--Use the data from reader_p object-->
+                    }
+                }
+            }
+            
+            <!---RAW insertion query-->
+            using (var command = new SQLiteCommand())
+            {
+                command.CommandText = "SQL query for insertion";
+                command.ExecuteNonQuery(); <!--async?-->
+            }
+
+            <!--PREAPRED insertion query-->
+            using (var command = new SQLiteCommand())
+            {
+                command.CommandText = "SQL query for insertion with prepared values";
+                command.Parameters.AddWithValue("name of prepared value", "actual value");
+                command.Prepare();
+                command.ExecuteNonQuery();
+            }
+            
+        };
+    }
+}

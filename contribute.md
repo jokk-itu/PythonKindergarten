@@ -18,7 +18,7 @@ We aim that contributions, focusing on commits, follow the clean code guidelines
 Heres a model for a Git commit message (retrieved from
 [here](https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)):
 
-*Capitalized, short (50 chars or less) summary
+* Capitalized, short (50 chars or less) summary
 
 More detailed explanatory text, if necessary.  Wrap it to about 72
 characters or so.  In some contexts, the first line is treated as the
@@ -38,7 +38,7 @@ Further paragraphs come after blank lines.
 - Typically a hyphen or asterisk is used for the bullet, followed by a
   single space, with blank lines in between, but conventions vary here
 
-- Use a hanging indent*
+- Use a hanging indent *
 
 ### How we collaborate
 As we are a bit larger private team, we would call ourselves a **Private Managed Team**. For the course period, we will not take in contributions from others. This could changed later.

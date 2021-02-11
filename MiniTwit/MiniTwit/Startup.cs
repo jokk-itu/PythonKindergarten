@@ -28,6 +28,8 @@ namespace MiniTwit
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
+            services.AddControllersWithViews();
+            services.AddHttpContextAccessor();
             services.AddSingleton<WeatherForecastService>();
         }
 
@@ -54,6 +56,7 @@ namespace MiniTwit
             {
                 endpoints.MapBlazorHub();
                 endpoints.MapFallbackToPage("/_Host");
+                endpoints.MapRazorPages();
             });
         }
     }

@@ -1,30 +1,36 @@
 {
   "format": 1,
   "restore": {
-    "/home/vic/Documents/School/PythonKindergarten/MiniTwit/MiniTwit/MiniTwit.csproj": {}
+    "C:\\Users\\bjorn\\Documents\\GitHub\\PythonKindergarten\\MiniTwit\\MiniTwit\\MiniTwit.csproj": {}
   },
   "projects": {
-    "/home/vic/Documents/School/PythonKindergarten/MiniTwit/MiniTwit/MiniTwit.csproj": {
+    "C:\\Users\\bjorn\\Documents\\GitHub\\PythonKindergarten\\MiniTwit\\MiniTwit\\MiniTwit.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/vic/Documents/School/PythonKindergarten/MiniTwit/MiniTwit/MiniTwit.csproj",
+        "projectUniqueName": "C:\\Users\\bjorn\\Documents\\GitHub\\PythonKindergarten\\MiniTwit\\MiniTwit\\MiniTwit.csproj",
         "projectName": "MiniTwit",
-        "projectPath": "/home/vic/Documents/School/PythonKindergarten/MiniTwit/MiniTwit/MiniTwit.csproj",
-        "packagesPath": "/home/vic/.nuget/packages/",
-        "outputPath": "/home/vic/Documents/School/PythonKindergarten/MiniTwit/MiniTwit/obj/",
+        "projectPath": "C:\\Users\\bjorn\\Documents\\GitHub\\PythonKindergarten\\MiniTwit\\MiniTwit\\MiniTwit.csproj",
+        "packagesPath": "C:\\Users\\bjorn\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\bjorn\\Documents\\GitHub\\PythonKindergarten\\MiniTwit\\MiniTwit\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
-          "/home/vic/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\bjorn\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net5.0"
+          "netcoreapp3.1"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net5.0": {
-            "targetAlias": "net5.0",
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -35,12 +41,16 @@
         }
       },
       "frameworks": {
-        "net5.0": {
-          "targetAlias": "net5.0",
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "System.Data.SQLite.Core": {
               "target": "Package",
               "version": "[1.0.113.7, )"
+            },
+            "sqlite": {
+              "target": "Package",
+              "version": "[3.13.0, )"
             }
           },
           "imports": [
@@ -61,7 +71,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.101/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

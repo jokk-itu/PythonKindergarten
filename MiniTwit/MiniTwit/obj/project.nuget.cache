@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "Ri1Jpi40lSc8uLnT4Zn0uvPn1k+a5dwLBBZeek5CxtRfjxyDU2BxQn9O3eNJxYja/KGANiQRvZwZ2hcJp9XWQw==",
+  "dgSpecHash": "HJEBqttMblVLnfHp1YPHHXf9huVZcU4OdBbY5loMrEa1Q4yWX2W9PqkS3YNZowvRt3uWdE2rEj0lnUKHok3igA==",
   "success": true,
-  "projectFilePath": "/home/vic/Documents/School/PythonKindergarten/MiniTwit/MiniTwit/MiniTwit.csproj",
+  "projectFilePath": "C:\\Users\\bjorn\\Documents\\GitHub\\PythonKindergarten\\MiniTwit\\MiniTwit\\MiniTwit.csproj",
   "expectedPackageFiles": [
-    "/home/vic/.nuget/packages/stub.system.data.sqlite.core.netstandard/1.0.113.2/stub.system.data.sqlite.core.netstandard.1.0.113.2.nupkg.sha512",
-    "/home/vic/.nuget/packages/system.data.sqlite.core/1.0.113.7/system.data.sqlite.core.1.0.113.7.nupkg.sha512"
+    "C:\\Users\\bjorn\\.nuget\\packages\\sqlite\\3.13.0\\sqlite.3.13.0.nupkg.sha512",
+    "C:\\Users\\bjorn\\.nuget\\packages\\stub.system.data.sqlite.core.netstandard\\1.0.113.2\\stub.system.data.sqlite.core.netstandard.1.0.113.2.nupkg.sha512",
+    "C:\\Users\\bjorn\\.nuget\\packages\\system.data.sqlite.core\\1.0.113.7\\system.data.sqlite.core.1.0.113.7.nupkg.sha512"
   ],
   "logs": []
 }

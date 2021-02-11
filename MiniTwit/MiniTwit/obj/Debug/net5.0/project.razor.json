@@ -45,39 +45,6 @@
         }
       },
       {
-        "HashCode": 166672267,
-        "Kind": "Components.Component",
-        "Name": "MiniTwit.Pages.Timeline",
-        "AssemblyName": "MiniTwit",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Timeline"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "MiniTwit.Pages.Timeline"
-        }
-      },
-      {
-        "HashCode": 1585713635,
-        "Kind": "Components.Component",
-        "Name": "MiniTwit.Pages.Timeline",
-        "AssemblyName": "MiniTwit",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "MiniTwit.Pages.Timeline"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "MiniTwit.Pages.Timeline",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
         "HashCode": 1998490681,
         "Kind": "Components.Component",
         "Name": "MiniTwit.Pages.Index",
@@ -107,6 +74,39 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "MiniTwit.Pages.Index",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 166672267,
+        "Kind": "Components.Component",
+        "Name": "MiniTwit.Pages.Timeline",
+        "AssemblyName": "MiniTwit",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Timeline"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "MiniTwit.Pages.Timeline"
+        }
+      },
+      {
+        "HashCode": 1585713635,
+        "Kind": "Components.Component",
+        "Name": "MiniTwit.Pages.Timeline",
+        "AssemblyName": "MiniTwit",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "MiniTwit.Pages.Timeline"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "MiniTwit.Pages.Timeline",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },

@@ -4,7 +4,8 @@
 <h2>Public/Private Timeline</h2> <!-- Should change between public and private depending on what is requested -->
 
 if(@RouteData.RouteValues.ContainsKey("userid")){
-     /*if(@RouteData.RouteValues["timeline"] == "user_timeline"){
+/*if(@RouteData.RouteValues["timeline"] == "user_timeline")
+    {
          <div class=followstatus>
       {% if g.user.user_id == profile_user.user_id %}
         This is you!
@@ -59,7 +60,7 @@ if(@RouteData.RouteValues.ContainsKey("userid")){
             <!--RAW query for retrieval-->
             var statement = "SQL QUERY";
             connection.Open();
-            using (var reader =  await new SQLiteCommand(statement, connection_string).ExecuteReaderAsync())
+            using (var reader =  await new SQLiteCommand(statement, new SQLiteConnection(connection_string)).ExecuteReaderAsync())
             {
                 while(reader.Read()) 
                 {

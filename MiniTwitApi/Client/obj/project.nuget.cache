@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "/CnUBisxY9okSAWgV3dRj2BeNx3JIj5jXsAP/Yh0J5b8RTFqzVXej+gFkznLI5r8JBJesPTTUbNZEy70qyBoSQ==",
+  "dgSpecHash": "Zy+gFIoOInFe7VOiMNr4hqseaPGPhrQDBvRG0iJzo/PqNL6tKYKjAlqqRmea5aj2q0SZnWUPkIMTtkojyDrt5Q==",
   "success": true,
   "projectFilePath": "/home/vic/Documents/School/PythonKindergarten/MiniTwitApi/Client/MiniTwitApi.Client.csproj",
   "expectedPackageFiles": [
@@ -28,6 +28,8 @@
     "/home/vic/.nuget/packages/microsoft.extensions.primitives/5.0.0/microsoft.extensions.primitives.5.0.0.nupkg.sha512",
     "/home/vic/.nuget/packages/microsoft.jsinterop/5.0.1/microsoft.jsinterop.5.0.1.nupkg.sha512",
     "/home/vic/.nuget/packages/microsoft.jsinterop.webassembly/5.0.1/microsoft.jsinterop.webassembly.5.0.1.nupkg.sha512",
+    "/home/vic/.nuget/packages/stub.system.data.sqlite.core.netstandard/1.0.113.2/stub.system.data.sqlite.core.netstandard.1.0.113.2.nupkg.sha512",
+    "/home/vic/.nuget/packages/system.data.sqlite.core/1.0.113.7/system.data.sqlite.core.1.0.113.7.nupkg.sha512",
     "/home/vic/.nuget/packages/system.io.pipelines/5.0.1/system.io.pipelines.5.0.1.nupkg.sha512",
     "/home/vic/.nuget/packages/system.net.http.json/5.0.0/system.net.http.json.5.0.0.nupkg.sha512",
     "/home/vic/.nuget/packages/microsoft.netcore.app.runtime.browser-wasm/5.0.1/microsoft.netcore.app.runtime.browser-wasm.5.0.1.nupkg.sha512"

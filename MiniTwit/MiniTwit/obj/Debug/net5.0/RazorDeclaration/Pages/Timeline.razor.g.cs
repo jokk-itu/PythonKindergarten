@@ -83,7 +83,7 @@ using MiniTwit.Shared;
 #line hidden
 #nullable disable
 #nullable restore
-#line 47 "/home/vic/Documents/School/PythonKindergarten/MiniTwit/MiniTwit/Pages/Timeline.razor"
+#line 9 "/home/vic/Documents/School/PythonKindergarten/MiniTwit/MiniTwit/Pages/Timeline.razor"
 using System.Data.SQLite;
 
 #line default
@@ -98,7 +98,7 @@ using System.Data.SQLite;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 49 "/home/vic/Documents/School/PythonKindergarten/MiniTwit/MiniTwit/Pages/Timeline.razor"
+#line 11 "/home/vic/Documents/School/PythonKindergarten/MiniTwit/MiniTwit/Pages/Timeline.razor"
        
     string username;
     protected override async Task OnInitializedAsync()
@@ -109,7 +109,7 @@ using System.Data.SQLite;
 #nullable disable
         __builder.AddMarkupContent(0, "        \n        \n        \n");
 #nullable restore
-#line 56 "/home/vic/Documents/School/PythonKindergarten/MiniTwit/MiniTwit/Pages/Timeline.razor"
+#line 18 "/home/vic/Documents/School/PythonKindergarten/MiniTwit/MiniTwit/Pages/Timeline.razor"
         var connection_string = @"URI=../tmp/minitwit.db";
         using (var connection = new SQLiteConnection(connection_string))
         {
@@ -119,10 +119,10 @@ using System.Data.SQLite;
 #nullable disable
         __builder.AddMarkupContent(1, "            \n");
 #nullable restore
-#line 60 "/home/vic/Documents/School/PythonKindergarten/MiniTwit/MiniTwit/Pages/Timeline.razor"
+#line 22 "/home/vic/Documents/School/PythonKindergarten/MiniTwit/MiniTwit/Pages/Timeline.razor"
             var statement = "SQL QUERY";
             connection.Open();
-            using (var reader =  await new SQLiteCommand(statement, connection_string).ExecuteReaderAsync())
+            using (var reader =  await new SQLiteCommand(statement, new SQLiteConnection(connection_string)).ExecuteReaderAsync())
             {
                 while(reader.Read()) 
                 {
@@ -132,7 +132,7 @@ using System.Data.SQLite;
 #nullable disable
         __builder.AddMarkupContent(2, "                    \n");
 #nullable restore
-#line 67 "/home/vic/Documents/School/PythonKindergarten/MiniTwit/MiniTwit/Pages/Timeline.razor"
+#line 29 "/home/vic/Documents/School/PythonKindergarten/MiniTwit/MiniTwit/Pages/Timeline.razor"
                 }
             };
 
@@ -141,7 +141,7 @@ using System.Data.SQLite;
 #nullable disable
         __builder.AddMarkupContent(3, "            \n");
 #nullable restore
-#line 70 "/home/vic/Documents/School/PythonKindergarten/MiniTwit/MiniTwit/Pages/Timeline.razor"
+#line 32 "/home/vic/Documents/School/PythonKindergarten/MiniTwit/MiniTwit/Pages/Timeline.razor"
             using (var command = new SQLiteCommand(connection_string))
             {
                 command.CommandText = "Prepared SQL query";
@@ -151,7 +151,7 @@ using System.Data.SQLite;
 #nullable disable
         __builder.AddMarkupContent(4, " \n");
 #nullable restore
-#line 73 "/home/vic/Documents/School/PythonKindergarten/MiniTwit/MiniTwit/Pages/Timeline.razor"
+#line 35 "/home/vic/Documents/School/PythonKindergarten/MiniTwit/MiniTwit/Pages/Timeline.razor"
                 command.Parameters.AddWithValue("name of prepared value", "actual value");
 
 #line default
@@ -159,7 +159,7 @@ using System.Data.SQLite;
 #nullable disable
         __builder.AddMarkupContent(5, "                \n");
 #nullable restore
-#line 75 "/home/vic/Documents/School/PythonKindergarten/MiniTwit/MiniTwit/Pages/Timeline.razor"
+#line 37 "/home/vic/Documents/School/PythonKindergarten/MiniTwit/MiniTwit/Pages/Timeline.razor"
                 command.Prepare();
                 using (var reader_p = await command.ExecuteReaderAsync())
                 {
@@ -171,7 +171,7 @@ using System.Data.SQLite;
 #nullable disable
         __builder.AddMarkupContent(6, "                        \n");
 #nullable restore
-#line 81 "/home/vic/Documents/School/PythonKindergarten/MiniTwit/MiniTwit/Pages/Timeline.razor"
+#line 43 "/home/vic/Documents/School/PythonKindergarten/MiniTwit/MiniTwit/Pages/Timeline.razor"
                     }
                 }
             }
@@ -182,7 +182,7 @@ using System.Data.SQLite;
 #nullable disable
         __builder.AddMarkupContent(7, "            \n");
 #nullable restore
-#line 86 "/home/vic/Documents/School/PythonKindergarten/MiniTwit/MiniTwit/Pages/Timeline.razor"
+#line 48 "/home/vic/Documents/School/PythonKindergarten/MiniTwit/MiniTwit/Pages/Timeline.razor"
             using (var command = new SQLiteCommand())
             {
                 command.CommandText = "SQL query for insertion";
@@ -193,7 +193,7 @@ using System.Data.SQLite;
 #nullable disable
         __builder.AddMarkupContent(8, " \n");
 #nullable restore
-#line 90 "/home/vic/Documents/School/PythonKindergarten/MiniTwit/MiniTwit/Pages/Timeline.razor"
+#line 52 "/home/vic/Documents/School/PythonKindergarten/MiniTwit/MiniTwit/Pages/Timeline.razor"
             }
 
 
@@ -202,7 +202,7 @@ using System.Data.SQLite;
 #nullable disable
         __builder.AddMarkupContent(9, "            \n");
 #nullable restore
-#line 93 "/home/vic/Documents/School/PythonKindergarten/MiniTwit/MiniTwit/Pages/Timeline.razor"
+#line 55 "/home/vic/Documents/School/PythonKindergarten/MiniTwit/MiniTwit/Pages/Timeline.razor"
             using (var command = new SQLiteCommand())
             {
                 command.CommandText = "SQL query for insertion with prepared values";

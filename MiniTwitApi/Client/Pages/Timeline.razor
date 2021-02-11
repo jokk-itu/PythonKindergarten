@@ -1,0 +1,44 @@
+@page "/RouteParameter/{UserId}/{Username}/{TL}"
+
+
+<h2>Public/Private Timeline</h2> <!-- Should change between public and private depending on what is requested -->
+
+if(UserId != null){
+     if(TL == "timeline"){
+      <div class=twitbox>
+        <h3>What's on your mind {{ Username }}?</h3>
+        <form action="{{ url_for('add_message') }}" method=post>
+            <input type=text name=text size=60>
+            <input type=submit value="Share">
+        </form>
+      </div>
+     }
+}
+
+  <ul class=messages>
+  {% for message in messages %}
+    <li><img src="{{ message.email|gravatar(size=48) }}">
+      <strong><a href="{{ url_for('user_timeline', username=message.username)
+      }}">{{ message.username }}</a></strong>
+      {{ message.text }}
+      <small>&mdash; {{ message.pub_date|datetimeformat }}</small></li>
+  {% else %}
+    <li><em>There's no message so far.</em></li>
+  {% endfor %}
+  </ul>
+
+@code {
+    [Parameter]
+    public string UserId { get; set; }
+
+    [Parameter]
+    public string Username { get; set; }
+
+    [Parameter]
+    public string TL { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        
+    }
+}

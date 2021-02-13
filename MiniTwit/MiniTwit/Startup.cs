@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.Net.Http;
 using MiniTwit.Data;
 
 namespace MiniTwit
@@ -30,7 +31,7 @@ namespace MiniTwit
             services.AddServerSideBlazor();
             services.AddControllersWithViews();
             services.AddHttpContextAccessor();
-            services.AddSingleton<WeatherForecastService>();
+            services.AddSingleton(_ => new HttpClient { BaseAddress = new Uri("http://localhost:5000") });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

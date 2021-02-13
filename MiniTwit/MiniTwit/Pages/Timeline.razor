@@ -1,16 +1,32 @@
-
-@page "/timeline/{timelineType:int}/{userId:int}"
+@page "/timeline/{timelinetype}" 
+@page "/timeline/{timelinetype}/{username}" 
 @using System.Data.SQLite;
 
-<h2>Public/Private Timeline</h2> @*-- Should change between public and private depending on what is requested and check that 
-userId above is not an int-*@
+@*
+Timelinetype 1 = public timeline
+Timelinetype 2 = user_timeline
+Timelinetype 3 = My timeline / timeline
+*@
 
-@if(@currentUserId == 2) @*should check if in database*@
+@if(@TimelineType == "public")
 {
-    @if(@currentTimelineType == 1) @* Timelinetype 1 = user_timeline*@
+    <h2>Public Timeline</h2>
+}
+else if(@TimelineType == "usertimeline")
+{
+    <h2>@Username's Timeline</h2>
+}
+else if(@TimelineType == "mytimeline")
+{
+    <h2>My timeline</h2>
+}
+
+@if(CheckIfUserIsLoggedIn()) @*should check if in database*@
+{
+    @if(@TimelineType == "userTimeline")
     {
         <div class=followstatus>
-            @if(@currentUserId == 2) @*Should check if user has the same id as the user which has posted the post*@
+            @if(@CurrentUserId == @ProfileUserId) @*Should check if user has the same id as the user which has posted the post*@
             {
                 <p>This is you!</p>
             }
@@ -25,10 +41,10 @@ userId above is not an int-*@
                 <a class=follow href="{{ url_for('follow_user', username=profile_user.username)}}">Follow user</a> @*Implement following user*@
             }
         </div>
-    }else if(@currentTimelineType == 2){ @* Timelinetype 2 = timeline*@
+    }else if(@TimelineType == "myTimeline"){
         <div class=twitbox>
-            <h3>What's on your mind @currentUsername?</h3>
-            <form action="{{ url_for('add_message') }}" method=post>
+            <h3>What's on your mind @*The name of the user which is logged in*@?</h3>
+            <form action="@*To API*@" method=post>
                 <input type=text name=text size=60>
                 <input type=submit value="Share">
             </form>
@@ -56,28 +72,35 @@ userId above is not an int-*@
 
 @code{
     [Parameter]    
-    public int TimelineType {get;set;}
+    public string TimelineType {get;set;}
     [Parameter]
-    public int UserId {get;set;}
+    public string Username { get; set; }
 
-    int currentTimelineType = 0;
-    int currentUserId = 0;
-    string currentUsername = "Not defined";
-
+    public int CurrentUserId = 0;
+    public int ProfileUserId = 0;
     protected override void OnInitialized()
     {
-        currentTimelineType = TimelineType;
-        currentUserId = UserId;
-        currentUsername = "Should be received based on ID from database";
+        CurrentUserId = 1; @* The user which is currently logged in*@
+        ProfileUserId = 2; @* If a user timeline is shown, this profile user id should get the userid of the username from the API *@
+    }
+    public bool CheckIfUserIsLoggedIn()
+    {
+        if(CurrentUserId == 1) @* CheckIfUserIsLoggedIn*@
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
 
-
-@*@code{
+@* @code{
     string username;
     protected override async Task OnInitializedAsync()
     {
-        @*SQL QUERY*
+        @*SQL QUERY* 
         @*OR make a class which retrieves the data and use it here*
         @*https://zetcode.com/csharp/sqlite/*
         var connection_string = "URI=../tmp/minitwit.db";
@@ -127,4 +150,4 @@ userId above is not an int-*@
             
         };
     }
-}*@
+} *@

@@ -637,3 +637,6 @@
 /home/vic/Documents/School/PythonKindergarten/MiniTwitApi/Client/bin/Debug/net5.0/wwwroot/_framework/System.Data.SQLite.dll.gz
 /home/vic/Documents/School/PythonKindergarten/MiniTwitApi/Client/bin/Debug/net5.0/wwwroot/_framework/System.Data.SQLite.dll
 /home/vic/Documents/School/PythonKindergarten/MiniTwitApi/Client/obj/Debug/net5.0/build-gz/EqAEVgKE.gz
+/home/jokk/git/PythonKindergarten/MiniTwitApi/Client/obj/Debug/net5.0/MiniTwitApi.Client.dll
+/home/jokk/git/PythonKindergarten/MiniTwitApi/Client/obj/Debug/net5.0/ref/MiniTwitApi.Client.dll
+/home/jokk/git/PythonKindergarten/MiniTwitApi/Client/obj/Debug/net5.0/MiniTwitApi.Client.pdb

@@ -1251,19 +1251,19 @@
     ]
   },
   "packageFolders": {
-    "/home/vic/.nuget/packages/": {}
+    "/home/jokk/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/vic/Documents/School/PythonKindergarten/MiniTwitApi/Client/MiniTwitApi.Client.csproj",
+      "projectUniqueName": "/home/jokk/git/PythonKindergarten/MiniTwitApi/Client/MiniTwitApi.Client.csproj",
       "projectName": "MiniTwitApi.Client",
-      "projectPath": "/home/vic/Documents/School/PythonKindergarten/MiniTwitApi/Client/MiniTwitApi.Client.csproj",
-      "packagesPath": "/home/vic/.nuget/packages/",
-      "outputPath": "/home/vic/Documents/School/PythonKindergarten/MiniTwitApi/Client/obj/",
+      "projectPath": "/home/jokk/git/PythonKindergarten/MiniTwitApi/Client/MiniTwitApi.Client.csproj",
+      "packagesPath": "/home/jokk/.nuget/packages/",
+      "outputPath": "/home/jokk/git/PythonKindergarten/MiniTwitApi/Client/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/vic/.nuget/NuGet/NuGet.Config"
+        "/home/jokk/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -1275,8 +1275,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "/home/vic/Documents/School/PythonKindergarten/MiniTwitApi/Shared/MiniTwitApi.Shared.csproj": {
-              "projectPath": "/home/vic/Documents/School/PythonKindergarten/MiniTwitApi/Shared/MiniTwitApi.Shared.csproj"
+            "/home/jokk/git/PythonKindergarten/MiniTwitApi/Shared/MiniTwitApi.Shared.csproj": {
+              "projectPath": "/home/jokk/git/PythonKindergarten/MiniTwitApi/Shared/MiniTwitApi.Shared.csproj"
             }
           }
         }
@@ -1322,7 +1322,7 @@
         "downloadDependencies": [
           {
             "name": "Microsoft.NETCore.App.Runtime.browser-wasm",
-            "version": "[5.0.1, 5.0.1]"
+            "version": "[5.0.3, 5.0.3]"
           }
         ],
         "frameworkReferences": {
@@ -1330,7 +1330,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.101/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.103/RuntimeIdentifierGraph.json"
       }
     },
     "runtimes": {

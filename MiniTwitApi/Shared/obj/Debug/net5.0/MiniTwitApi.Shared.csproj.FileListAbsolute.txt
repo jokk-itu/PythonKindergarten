@@ -10,3 +10,11 @@
 /home/vic/Documents/School/PythonKindergarten/MiniTwitApi/Shared/obj/Debug/net5.0/MiniTwitApi.Shared.dll
 /home/vic/Documents/School/PythonKindergarten/MiniTwitApi/Shared/obj/Debug/net5.0/ref/MiniTwitApi.Shared.dll
 /home/vic/Documents/School/PythonKindergarten/MiniTwitApi/Shared/obj/Debug/net5.0/MiniTwitApi.Shared.pdb
+/home/jokk/git/PythonKindergarten/MiniTwitApi/Shared/obj/Debug/net5.0/MiniTwitApi.Shared.dll
+/home/jokk/git/PythonKindergarten/MiniTwitApi/Shared/obj/Debug/net5.0/MiniTwitApi.Shared.pdb
+/home/jokk/git/PythonKindergarten/MiniTwitApi/Shared/obj/Debug/net5.0/MiniTwitApi.Shared.csprojAssemblyReference.cache
+/home/jokk/git/PythonKindergarten/MiniTwitApi/Shared/obj/Debug/net5.0/MiniTwitApi.Shared.GeneratedMSBuildEditorConfig.editorconfig
+/home/jokk/git/PythonKindergarten/MiniTwitApi/Shared/obj/Debug/net5.0/MiniTwitApi.Shared.AssemblyInfoInputs.cache
+/home/jokk/git/PythonKindergarten/MiniTwitApi/Shared/obj/Debug/net5.0/MiniTwitApi.Shared.AssemblyInfo.cs
+/home/jokk/git/PythonKindergarten/MiniTwitApi/Shared/obj/Debug/net5.0/MiniTwitApi.Shared.csproj.CoreCompileInputs.cache
+/home/jokk/git/PythonKindergarten/MiniTwitApi/Shared/obj/Debug/net5.0/ref/MiniTwitApi.Shared.dll

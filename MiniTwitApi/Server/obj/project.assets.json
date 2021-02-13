@@ -297,6 +297,15 @@
           "lib/net5.0/Microsoft.JSInterop.WebAssembly.dll": {}
         }
       },
+      "Newtonsoft.Json/12.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        }
+      },
       "Stub.System.Data.SQLite.Core.NetStandard/1.0.113.2": {
         "type": "package",
         "compile": {
@@ -841,6 +850,37 @@
         "microsoft.jsinterop.webassembly.nuspec"
       ]
     },
+    "Newtonsoft.Json/12.0.3": {
+      "sha512": "6mgjfnRB4jKMlzHSl+VD+oUc1IebOZabkbyWj2RiTgWwYPPuaK1H97G1sHqGwPlS5npiF5Q0OrxN1wni2n5QWg==",
+      "type": "package",
+      "path": "newtonsoft.json/12.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/netstandard1.0/Newtonsoft.Json.dll",
+        "lib/netstandard1.0/Newtonsoft.Json.xml",
+        "lib/netstandard1.3/Newtonsoft.Json.dll",
+        "lib/netstandard1.3/Newtonsoft.Json.xml",
+        "lib/netstandard2.0/Newtonsoft.Json.dll",
+        "lib/netstandard2.0/Newtonsoft.Json.xml",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.xml",
+        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml",
+        "newtonsoft.json.12.0.3.nupkg.sha512",
+        "newtonsoft.json.nuspec",
+        "packageIcon.png"
+      ]
+    },
     "Stub.System.Data.SQLite.Core.NetStandard/1.0.113.2": {
       "sha512": "yGIM9xFyPHl79HluNTSQarvAOIJ68pmzmlMayVN6Nivu/7TiaHt7WqptolvwmuKdAXei8OzENh9RNdh7d6evjQ==",
       "type": "package",
@@ -937,23 +977,24 @@
       "Microsoft.AspNetCore.Components.WebAssembly.Server >= 5.0.1",
       "MiniTwitApi.Client >= 1.0.0",
       "MiniTwitApi.Shared >= 1.0.0",
+      "Newtonsoft.Json >= 12.0.3",
       "System.Data.SQLite.Core >= 1.0.113.7"
     ]
   },
   "packageFolders": {
-    "/home/vic/.nuget/packages/": {}
+    "/home/jokk/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/vic/Documents/School/PythonKindergarten/MiniTwitApi/Server/MiniTwitApi.Server.csproj",
+      "projectUniqueName": "/home/jokk/git/PythonKindergarten/MiniTwitApi/Server/MiniTwitApi.Server.csproj",
       "projectName": "MiniTwitApi.Server",
-      "projectPath": "/home/vic/Documents/School/PythonKindergarten/MiniTwitApi/Server/MiniTwitApi.Server.csproj",
-      "packagesPath": "/home/vic/.nuget/packages/",
-      "outputPath": "/home/vic/Documents/School/PythonKindergarten/MiniTwitApi/Server/obj/",
+      "projectPath": "/home/jokk/git/PythonKindergarten/MiniTwitApi/Server/MiniTwitApi.Server.csproj",
+      "packagesPath": "/home/jokk/.nuget/packages/",
+      "outputPath": "/home/jokk/git/PythonKindergarten/MiniTwitApi/Server/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/vic/.nuget/NuGet/NuGet.Config"
+        "/home/jokk/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -965,11 +1006,11 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "/home/vic/Documents/School/PythonKindergarten/MiniTwitApi/Client/MiniTwitApi.Client.csproj": {
-              "projectPath": "/home/vic/Documents/School/PythonKindergarten/MiniTwitApi/Client/MiniTwitApi.Client.csproj"
+            "/home/jokk/git/PythonKindergarten/MiniTwitApi/Client/MiniTwitApi.Client.csproj": {
+              "projectPath": "/home/jokk/git/PythonKindergarten/MiniTwitApi/Client/MiniTwitApi.Client.csproj"
             },
-            "/home/vic/Documents/School/PythonKindergarten/MiniTwitApi/Shared/MiniTwitApi.Shared.csproj": {
-              "projectPath": "/home/vic/Documents/School/PythonKindergarten/MiniTwitApi/Shared/MiniTwitApi.Shared.csproj"
+            "/home/jokk/git/PythonKindergarten/MiniTwitApi/Shared/MiniTwitApi.Shared.csproj": {
+              "projectPath": "/home/jokk/git/PythonKindergarten/MiniTwitApi/Shared/MiniTwitApi.Shared.csproj"
             }
           }
         }
@@ -987,6 +1028,10 @@
           "Microsoft.AspNetCore.Components.WebAssembly.Server": {
             "target": "Package",
             "version": "[5.0.1, )"
+          },
+          "Newtonsoft.Json": {
+            "target": "Package",
+            "version": "[12.0.3, )"
           },
           "System.Data.SQLite.Core": {
             "target": "Package",
@@ -1011,7 +1056,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.101/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.103/RuntimeIdentifierGraph.json"
       }
     }
   }

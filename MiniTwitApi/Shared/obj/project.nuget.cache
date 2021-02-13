@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "fToP27NnoLzNADYxxfENJpk2ikNGF6msHh3QXIb8KLnKOF/sIDw7+cGglrZiwXcXgc1t3EmPys6eQ2lkdUgN6g==",
+  "dgSpecHash": "Bbuzj5adBlLH42vGHdjMWcJuFM6UWa4qhdPpKrai5evkcm0Qmq2VDNjr9P0AzjES2BAWEOmMGiIiFtu+NTZy5g==",
   "success": true,
-  "projectFilePath": "/home/vic/Documents/School/PythonKindergarten/MiniTwitApi/Shared/MiniTwitApi.Shared.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "/home/jokk/git/PythonKindergarten/MiniTwitApi/Shared/MiniTwitApi.Shared.csproj",
+  "expectedPackageFiles": [
+    "/home/jokk/.nuget/packages/microsoft.data.sqlite.core/6.0.0-preview.1.21102.2/microsoft.data.sqlite.core.6.0.0-preview.1.21102.2.nupkg.sha512",
+    "/home/jokk/.nuget/packages/newtonsoft.json/12.0.3/newtonsoft.json.12.0.3.nupkg.sha512",
+    "/home/jokk/.nuget/packages/sqlitepclraw.core/2.0.5-pre20210119130047/sqlitepclraw.core.2.0.5-pre20210119130047.nupkg.sha512",
+    "/home/jokk/.nuget/packages/system.memory/4.5.3/system.memory.4.5.3.nupkg.sha512"
+  ],
   "logs": []
 }

@@ -1,3 +1,5 @@
+using System;
+
 namespace MiniTwitApi.Shared.Repositories 
 {
     public static class EpochConverter

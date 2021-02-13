@@ -1,3 +1,7 @@
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using MiniTwitApi.Shared.Models;
+
 namespace MiniTwitApi.Shared.Repositories.Abstractions
 {
     public interface IMiniTwitRepository
@@ -9,8 +13,8 @@ namespace MiniTwitApi.Shared.Repositories.Abstractions
         Task InsertMessageAsync(MessageDTO message);
         Task<UserDTO> QueryUserByIdAsync(int userId);
         Task<UserDTO> QueryUserByUsernameAsync(string username);
-        Task InsertFollowAsync(FollowDTO follow);
-        Task RemoveFollowAsync(FollowDTO follow);
+        Task InsertFollowAsync(FollowerDTO follow);
+        Task RemoveFollowAsync(FollowerDTO follow);
         Task<IList<FollowerDTO>> QueryFollowers(string userid);
     }
 }

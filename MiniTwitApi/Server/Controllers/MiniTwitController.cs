@@ -5,121 +5,121 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MiniTwitApi.Shared;
+using MiniTwitApi.Shared.Models;
+using MiniTwitApi.Shared.Repositories;
+using MiniTwitApi.Shared.Repositories.Abstractions;
 
 namespace MiniTwitApi.Server.Controllers
 {
     [ApiController]
     [Route("")]
-    public class WeatherForecastController : ControllerBase
+    public class MiniTwitController : ControllerBase
     {
-        private readonly ISQLRepository _database;
-        private int _latest;
+        private readonly IMiniTwitRepository _database;
 
-        public MiniTwitController(ISQLRepository repository)
+        public MiniTwitController (IMiniTwitRepository repository)
         {
-            _database = respository;
+            _database = repository;
         }
 
         [HttpGet("latest")]
-        public async Task<IActionResult<GetLatestResponse>> GetLatest([FromQuery] int latest)
-            => Ok(new GetLatestResponse(_latest));
+        public async Task<ActionResult<GetLatestResponse>> GetLatest([FromQuery] int latest)
+            => Ok(new GetLatestResponse(DeleteMe.Latest));
 
 
         [HttpPost("register")]
-        public async Task<IActionResult> PostRegister([FromBody] UserDTO user, [FromQuery] int latest)
+        public async Task<ActionResult> PostRegister([FromBody] UserDTO user, [FromQuery] int latest)
         {
             //checks if the user exists
-            if(_database.UserExistsAsync(user.Username))
+            if(await _database.UserExistsAsync(user.Username))
                 BadRequest("User already exists with given username");
             
             //insert the user
             await _database.InsertUserAsync(user);
-            _latest = latest;         
-            Created();
+            DeleteMe.Latest = latest;
+            return Ok();
         }
 
         [HttpGet("msgs")]
-        public async Task<IActionResult<IEnumerable<MessageDTO>> GetMsgs([FromQuery] int no, [FromQuery] int latest)
+        public async Task<ActionResult<IEnumerable<MessageDTO>>> GetMsgs([FromQuery] int no, [FromQuery] int latest)
         {
             // Query all messages
             var messages = await _database.QueryMessagesAsync(no);
 
             // Update latest counter for simulator tests
-            _latest = latest;
-
+            DeleteMe.Latest = latest;
             // Return messages
             return Ok(messages);
         }
 
         [HttpGet("msgs/{username}")]
-        public async Task<IActionResult<IEnumerable<MessageDTO>>> GetMsgsByUsername(string username, [FromQuery] int no, [FromQuery] int latest)
+        public async Task<ActionResult<IEnumerable<MessageDTO>>> GetMsgsByUsername(string username, [FromQuery] int no, [FromQuery] int latest)
         {
             //Query messages by username
             var messages = await _database.QueryMessagesAsync(username, no);
             
             // Update latest counter for simulator tests
-            _latest = latest;
-
+            DeleteMe.Latest = latest;
+            
             // Return messages
             return Ok(messages);
         }
 
         [HttpPost("msgs/{username}")]
-        public async Task<IActionResult> PostMessageByUsername(string username, [FromBody] MessageToPost message, [FromQuery] int latest)
+        public async Task<ActionResult> PostMessageByUsername(string username, [FromBody] MessageToPost message, [FromQuery] int latest)
         {
             //check message for profanity, then flag it if it is true (this is a later thing)
             var actionUser = await _database.QueryUserByUsernameAsync(username);
-            var insert = await _database.InsertMessage(new MessageDTO{
+            await _database.InsertMessageAsync(new MessageDTO
+            {
                 Author = actionUser.Id,
                 Text = message.Content,
-                PublishDate = EpochConverter.ToEpoch(DateTime.Now),
+                PublishDate = (int) EpochConverter.ToEpoch(DateTime.Now),
                 Flagged = 0 // Flag if profanity is detected
-            })
+            });
 
-            _latest = latest;
-
-            return OK();
+            DeleteMe.Latest = latest;
+            
+            return Ok();
         }
 
         [HttpGet("fllws/{username}")]
-        public async Task<IActionResult<IEnumerable<FollowerDTO>>> GetFollowsByUsername(string username, [FromQuery] int latest)
+        public async Task<ActionResult<IList<FollowerDTO>>> GetFollowsByUsername(string username, [FromQuery] int latest)
         {
             // Query follows from database by username
-            var follows = _database.QueryFollowers(string username)
+            var follows = await _database.QueryFollowers(username);
 
-            _latest = latest;
-
+            DeleteMe.Latest = latest;
+            
             return Ok(follows);
         }
 
         [HttpPost("fllws/{username}")]
-        public async Task<IActionResult> PostFollowsByUsername(string username, [FromBody] Follow follow, [FromQuery] int latest)
+        public async Task<ActionResult> PostFollowsByUsername(string username, [FromBody] Follow follow, [FromQuery] int latest)
         {
             // Find the user executing the action
             var actionUser = await _database.QueryUserByUsernameAsync(username);
-            var targetUser = await _database.QueryUserByUsernameAsync(follow.Follow ?? follow.Unfollow);
+            var targetUser = await _database.QueryUserByUsernameAsync(follow.ToFollow ?? follow.ToUnfollow);
 
-            // CHeck if user is following or unfollowing
-            if(follow.Follow != null){
+            // Check if user is following or unfollowing
+            if(follow.ToFollow != null){
                 // Create follow from username to specified username
-                var insert = await InsertFollowAsync(new FollowerDTO{
+                await _database.InsertFollowAsync(new FollowerDTO
+                {
                     WhoId = actionUser.Id,
                     WhomId = targetUser.Id,
-                }                
                 });
-
             }else{
                 // Unfollow from username
                 // Create follow from username to specified username
-                var remove = await RemoveFollowAsync(new FollowerDTO{
+                await _database.RemoveFollowAsync(new FollowerDTO
+                {
                     WhoId = actionUser.Id,
                     WhomId = targetUser.Id,
-                }                
                 });
             }
 
-            _latest = latest;
-
+            DeleteMe.Latest = latest;
             return Ok();
         }
     }

@@ -1,3 +1,5 @@
+using Newtonsoft.Json;
+
 namespace MiniTwitApi.Shared.Models
 {
     /*
@@ -8,7 +10,7 @@ namespace MiniTwitApi.Shared.Models
   */
     public class FollowerDTO
     {
-        [JsonProperty("who_id")] int WhoId { get; set; }
-        [JsonProperty("whom_id")] int WhomId { get; set; }
+        [JsonProperty("who_id")] public int WhoId { get; set; }
+        [JsonProperty("whom_id")] public int WhomId { get; set; }
     }
 }

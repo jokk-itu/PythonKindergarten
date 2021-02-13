@@ -1,3 +1,5 @@
+using Newtonsoft.Json;
+
 namespace MiniTwitApi.Shared.Models
 {
     /*message_id integer primary key autoincrement,

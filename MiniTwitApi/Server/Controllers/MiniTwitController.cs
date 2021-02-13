@@ -26,14 +26,16 @@ namespace MiniTwitApi.Server.Controllers
 
 
         [HttpPost("register")]
-        public async Task<IActionResult> PostRegister([FromQuery] int latest)
+        public async Task<IActionResult> PostRegister([FromBody] UserDTO user, [FromQuery] int latest)
         {
-            //check for correct userdata
-            //check for already used username
-            //insert new user
-            //return Created()
-
+            //checks if the user exists
+            if(_database.UserExistsAsync(user.Username))
+                BadRequest("User already exists with given username");
+            
+            //insert the user
+            await _database.InsertUserAsync(user);
             _latest = latest;         
+            Created();
         }
 
         [HttpGet("msgs")]
@@ -46,7 +48,7 @@ namespace MiniTwitApi.Server.Controllers
             _latest = latest;
 
             // Return messages
-            return messages;
+            return Ok(messages);
         }
 
         [HttpGet("msgs/{username}")]
@@ -59,31 +61,66 @@ namespace MiniTwitApi.Server.Controllers
             _latest = latest;
 
             // Return messages
-            return messages;
+            return Ok(messages);
         }
 
         [HttpPost("msgs/{username}")]
-        public async Task<IActionResult> PostMessageByUsername([FromBody] Message message, [FromQuery] int latest)
+        public async Task<IActionResult> PostMessageByUsername(string username, [FromBody] MessageToPost message, [FromQuery] int latest)
         {
             //check message for profanity, then flag it if it is true (this is a later thing)
+            var actionUser = await _database.QueryUserByUsernameAsync(username);
+            var insert = await _database.InsertMessage(new MessageDTO{
+                Author = actionUser.Id,
+                Text = message.Content,
+                PublishDate = EpochConverter.ToEpoch(DateTime.Now),
+                Flagged = 0 // Flag if profanity is detected
+            })
 
-            _latest = latest;            
+            _latest = latest;
+
+            return OK();
         }
 
         [HttpGet("fllws/{username}")]
-        public async Task<IActionResult<IEnumerable<FollowerDTO>>> GetFollowsByUsername([FromQuery] int latest)
+        public async Task<IActionResult<IEnumerable<FollowerDTO>>> GetFollowsByUsername(string username, [FromQuery] int latest)
         {
             // Query follows from database by username
+            var follows = _database.QueryFollowers(string username)
 
             _latest = latest;
+
+            return Ok(follows);
         }
 
         [HttpPost("fllws/{username}")]
-        public async Task<IActionResult> PostFollowsByUsername([FromBody] Follow follow, [FromQuery] int latest)
+        public async Task<IActionResult> PostFollowsByUsername(string username, [FromBody] Follow follow, [FromQuery] int latest)
         {
-            // Create follow from username to specified username
+            // Find the user executing the action
+            var actionUser = await _database.QueryUserByUsernameAsync(username);
+            var targetUser = await _database.QueryUserByUsernameAsync(follow.Follow ?? follow.Unfollow);
+
+            // CHeck if user is following or unfollowing
+            if(follow.Follow != null){
+                // Create follow from username to specified username
+                var insert = await InsertFollowAsync(new FollowerDTO{
+                    WhoId = actionUser.Id,
+                    WhomId = targetUser.Id,
+                }                
+                });
+
+            }else{
+                // Unfollow from username
+                // Create follow from username to specified username
+                var remove = await RemoveFollowAsync(new FollowerDTO{
+                    WhoId = actionUser.Id,
+                    WhomId = targetUser.Id,
+                }                
+                });
+            }
 
             _latest = latest;
+
+            return Ok();
         }
     }
 }

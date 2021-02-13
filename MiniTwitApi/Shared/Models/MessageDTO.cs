@@ -13,6 +13,5 @@ namespace MiniTwitApi.Shared.Models
         [JsonProperty("text")] public string Text { get; set; }
         [JsonProperty("pub_date")] public int PublishDate { get; set; }
         [JsonProperty("flagged")] public int Flagged { get; set; }
-
     }
 }

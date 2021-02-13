@@ -4,15 +4,13 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace MiniTwit
 {
-    public class DateArticleModel : PageModel
+    public class TimelinePageModel : PageModel
     {
         [BindProperty(SupportsGet = true)]
         public int UserId { get; set; }
-
+        [BindProperty(SupportsGet = true)]
+        public string TimelineType { get; set; }
         [BindProperty(SupportsGet = true)]
         public string Username { get; set; }
-
-        [BindProperty(SupportsGet = true)]
-        public string timeline { get; set; }
     }
 }

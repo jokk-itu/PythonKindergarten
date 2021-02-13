@@ -1,50 +1,43 @@
 
-@page "/{userid:int}/{username:string}/{timeline:string}"
-@model TimelineModel
-@{    
-}  
+@page "/timeline/{timelineType:int}/{userId:int}"
+@using System.Data.SQLite;
 
-<h2>Public/Private Timeline</h2> <!-- Should change between public and private depending on what is requested and check that 
-userId above is not an int-->
+<h2>Public/Private Timeline</h2> @*-- Should change between public and private depending on what is requested and check that 
+userId above is not an int-*@
 
-@if(RouteData.RouteValues.ContainsKey("userid"))
+@if(@currentUserId == 2) @*should check if in database*@
 {
-    if(@RouteData.RouteValues["timeline"] == "user_timeline")
+    @if(@currentTimelineType == 1) @* Timelinetype 1 = user_timeline*@
     {
         <div class=followstatus>
-            if(@RouteData.RouteValues["userid"] == "user_id")
+            @if(@currentUserId == 2) @*Should check if user has the same id as the user which has posted the post*@
             {
                 <p>This is you!</p>
             }
-            else if(false) //Should check if the user which posted the messaged is followed by the viewing user, must be done via API?
+            else if(false) @*Should check if the user which posted the messaged is followed by the viewing user, must be done via API?*@
             {
                 <p>You are currently following this user.</p>
-                <a class=unfollow href="{{ url_for('unfollow_user', username=profile_user.username)}}">Unfollow user</a>.
+                <a class=unfollow href="{{ url_for('unfollow_user', username=profile_user.username)}}">Unfollow user</a> @*Implement unfollowing user*@
             }
             else
             {
                 <p>You are not yet following this user.</p>
-                <a class=follow href="{{ url_for('follow_user', username=profile_user.username)
-                }}">Follow user</a>.
+                <a class=follow href="{{ url_for('follow_user', username=profile_user.username)}}">Follow user</a> @*Implement following user*@
             }
         </div>
+    }else if(@currentTimelineType == 2){ @* Timelinetype 2 = timeline*@
+        <div class=twitbox>
+            <h3>What's on your mind @currentUsername?</h3>
+            <form action="{{ url_for('add_message') }}" method=post>
+                <input type=text name=text size=60>
+                <input type=submit value="Share">
+            </form>
+        </div>
     }
-
-    
-
-     @if(@RouteData.RouteValues["timeline"] == "timeline"){
-         <div class=twitbox>
-        <h3>What's on your mind {{ @RouteData.RouteValues["username"] }}?</h3>
-        <form action="{{ url_for('add_message') }}" method=post>
-            <input type=text name=text size=60>
-            <input type=submit value="Share">
-        </form>
-      </div>
-     }
 }
 
   <ul class=messages>
-        @if(messages != null)
+        @* @if(messages != null)
         {
             @foreach (var message in messages)
             {
@@ -58,56 +51,72 @@ userId above is not an int-->
         else
         {
             <li><em>There's no message so far.</em></li>
-        }
+        }*@
   </ul>
 
-<!--dotnet add package System.Data.SQLite.Core-->
-@using System.Data.SQLite;
+@code{
+    [Parameter]    
+    public int TimelineType {get;set;}
+    [Parameter]
+    public int UserId {get;set;}
 
-@code {
+    int currentTimelineType = 0;
+    int currentUserId = 0;
+    string currentUsername = "Not defined";
+
+    protected override void OnInitialized()
+    {
+        currentTimelineType = TimelineType;
+        currentUserId = UserId;
+        currentUsername = "Should be received based on ID from database";
+    }
+}
+
+
+@*@code{
     string username;
     protected override async Task OnInitializedAsync()
     {
-        <!--SQL QUERY-->
-        <!--OR make a class which retrieves the data and use it here-->
-        <!---https://zetcode.com/csharp/sqlite/-->
-        var connection_string = @"URI=../tmp/minitwit.db";
+        @*SQL QUERY*
+        @*OR make a class which retrieves the data and use it here*
+        @*https://zetcode.com/csharp/sqlite/*
+        var connection_string = "URI=../tmp/minitwit.db";
         using (var connection = new SQLiteConnection(connection_string))
         {
-            <!--RAW query for retrieval-->
+            @*RAW query for retrieval
             var statement = "SQL QUERY";
             connection.Open();
             using (var reader =  await new SQLiteCommand(statement, new SQLiteConnection(connection_string)).ExecuteReaderAsync())
             {
                 while(reader.Read()) 
                 {
-                    <!--Use the data from reader object-->
+                    @*Use the data from reader object*
                 }
             };
-            <!---PREPARED query for retrieval-->
+            @*PREPARED query for retrieval*
             using (var command = new SQLiteCommand(connection_string))
             {
-                command.CommandText = "Prepared SQL query"; <!--Prepared values are written like so: @nameofvalue-->
+                command.CommandText = "Prepared SQL query"; @*Prepared values are written like so: @nameofvalue*
                 command.Parameters.AddWithValue("name of prepared value", "actual value");
-                <!---Repeat as many times as there are prepared values-->
+                @*Repeat as many times as there are prepared values*
                 command.Prepare();
                 using (var reader_p = await command.ExecuteReaderAsync())
                 {
                     while (reader_p.Read())
                     {
-                        <!--Use the data from reader_p object-->
+                        @*Use the data from reader_p object*
                     }
                 }
             }
             
-            <!---RAW insertion query-->
+            @*RAW insertion query*
             using (var command = new SQLiteCommand())
             {
                 command.CommandText = "SQL query for insertion";
-                command.ExecuteNonQuery(); <!--async?-->
+                command.ExecuteNonQuery(); @*async?*
             }
 
-            <!--PREAPRED insertion query-->
+            @*PREAPRED insertion query*
             using (var command = new SQLiteCommand())
             {
                 command.CommandText = "SQL query for insertion with prepared values";
@@ -118,4 +127,4 @@ userId above is not an int-->
             
         };
     }
-}
+}*@

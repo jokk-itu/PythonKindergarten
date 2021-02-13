@@ -1,6 +1,6 @@
 ﻿<div class=navigation>
     <!--{% if g.user %}
-    <a href="timeline">my timeline</a> |
+    <a asp-page="/Timeline/" asp-route-ID="@user.Id">my timeline</a> |
     <a href="timeline">public timeline</a> |
     <a href="signout">sign out [{{ g.user.username }}]</a>
     {% else %}-->

@@ -1,4 +1,5 @@
-@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
+//@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
+//@import url('reset.css');
 
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -49,8 +50,6 @@ a, .btn-link {
     top: 0.5rem;
 }
 
-
-
 body {
     background: #CAECE9;
     font-family: 'Trebuchet MS', sans-serif;
@@ -89,14 +88,15 @@ input[type="submit"] {
     color: white;
 }
 
-div.page {
+.page {
     background: white;
     border: 1px solid #6ECCC4;
     width: 700px;
     margin: 30px auto;
+    
 }
 
-div.page h1 {
+.page h1 {
     background: #6ECCC4;
     margin: 0;
     padding: 10px 14px;

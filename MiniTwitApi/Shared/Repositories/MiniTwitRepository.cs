@@ -24,9 +24,9 @@ namespace MiniTwitApi.Shared.Repositories
 
         public async Task<bool> UserExistsAsync(string username) 
         {
-            using (var command = new SqliteCommand(@"SELECT user.user_id FROM user WHERE username = '@username'", _connection))
+            using (var command = new SqliteCommand($"SELECT user.user_id FROM user WHERE username = '{username}'", _connection))
             {
-                command.Parameters.AddWithValue("@username", username);
+                //command.Parameters.AddWithValue("@username", username);
                 command.Prepare();
                 using (var reader = await command.ExecuteReaderAsync())
                 {
@@ -35,17 +35,14 @@ namespace MiniTwitApi.Shared.Repositories
             }
         }
 
-        public async Task<IList<MessageDTO>> QueryMessagesAsync(string userId, int limit) 
+        public async Task<IList<MessageDTO>> QueryMessagesAsync(string userId, int limit = 20) 
         {
             var messages = new List<MessageDTO>();
 
-            using (var command = new SqliteCommand(@"SELECT message.*, user.* FROM message, user 
-                                      WHERE message.flagged = 0 AND
-                                      user.user_id = message.author_id AND user.user_id = '@userId'
-                                      ORDER BY message.pub_date DESC LIMIT '@limit'", _connection))
+            using (var command = new SqliteCommand($"SELECT message.* FROM message WHERE message.flagged = 0 AND message.author_id = {userid} ORDER BY message.pub_date DESC LIMIT {limit}", _connection))
             {
-                command.Parameters.AddWithValue("@userId", userId);
-                command.Parameters.AddWithValue("@limit", limit);
+                //command.Parameters.AddWithValue("@userId", userId);
+                //command.Parameters.AddWithValue("@limit", limit);
                 command.Prepare();
                 
                 using (var reader = await command.ExecuteReaderAsync())
@@ -67,15 +64,13 @@ namespace MiniTwitApi.Shared.Repositories
             return messages;
         }
 
-        public async Task<List<MessageDTO>> QueryMessagesAsync(int limit) 
+        public async Task<List<MessageDTO>> QueryMessagesAsync(int limit = 20) 
         {
             var messages = new List<MessageDTO>();
             
-            using (var command = new SqliteCommand(@"SELECT message.*, user.* FROM message, user
-                                        WHERE message.flagged = 0 AND message.author_id = user.user_id
-                                        ORDER BY message.pub_date DESC LIMIT @limit", _connection))
+            using (var command = new SqliteCommand($"SELECT message.* FROM message WHERE message.flagged = 0 ORDER BY message.pub_date DESC LIMIT {limit}", _connection))
             {
-                command.Parameters.AddWithValue("@limit", limit);
+                //command.Parameters.AddWithValue("@limit", limit);
                 command.Prepare();
                 using (var reader = await command.ExecuteReaderAsync())
                 {
@@ -100,9 +95,9 @@ namespace MiniTwitApi.Shared.Repositories
         {
             using (var command = new SqliteCommand($"INSERT INTO user (username, email, pw_hash) VALUES ('{user.Username}', '{user.Email}', '{user.Password}')", _connection))
             {
-                command.Parameters.AddWithValue("@username", user.Username);
-                command.Parameters.AddWithValue("@email", user.Email);
-                command.Parameters.AddWithValue("@pwd", user.Password);
+                //command.Parameters.AddWithValue("@username", user.Username);
+                //command.Parameters.AddWithValue("@email", user.Email);
+                //command.Parameters.AddWithValue("@pwd", user.Password);
                 command.Prepare();
                 command.ExecuteNonQuery();
             }
@@ -110,9 +105,9 @@ namespace MiniTwitApi.Shared.Repositories
         
         public async Task<UserDTO> QueryUserByIdAsync(int userId) 
         {
-            using(var command = new SqliteCommand(@"SELECT user FROM user WHERE user_id = @userid", _connection)) 
+            using(var command = new SqliteCommand($"SELECT user FROM user WHERE user_id = {userid}", _connection)) 
             {
-                command.Parameters.AddWithValue("@userid", userId);
+                //command.Parameters.AddWithValue("@userid", userId);
                 command.Prepare();
                 using(var reader = await command.ExecuteReaderAsync()) 
                 {
@@ -134,10 +129,10 @@ namespace MiniTwitApi.Shared.Repositories
 
         public async Task<UserDTO> QueryUserByUsernameAsync(string username) 
         {
-            using(var command = new SqliteCommand(@"SELECT * FROM user WHERE username = '@username'", _connection)) 
+            using(var command = new SqliteCommand($"SELECT * FROM user WHERE username = '{username}'", _connection)) 
             {
 
-                command.Parameters.AddWithValue("@username", username);
+                //command.Parameters.AddWithValue("@username", username);
                 command.Prepare();
                 using(var reader = await command.ExecuteReaderAsync()) 
                 {
@@ -159,10 +154,10 @@ namespace MiniTwitApi.Shared.Repositories
 
         public async Task InsertFollowAsync(FollowerDTO follow) 
         {
-            using (var command = new SqliteCommand(@"INSERT INTO follower (who_id, whom_id) VALUES (@who_id, @whom_id)", _connection))
+            using (var command = new SqliteCommand($"INSERT INTO follower (who_id, whom_id) VALUES ({follow.WhoId}, {follow.WhomId})", _connection))
             {
-                command.Parameters.AddWithValue("@who_id", follow.WhoId);
-                command.Parameters.AddWithValue("@whom_id", follow.WhomId);
+                //command.Parameters.AddWithValue("@who_id", follow.WhoId);
+                //command.Parameters.AddWithValue("@whom_id", follow.WhomId);
                 command.Prepare();
                 command.ExecuteNonQuery();
             }
@@ -170,25 +165,22 @@ namespace MiniTwitApi.Shared.Repositories
         
         public async Task RemoveFollowAsync(FollowerDTO follow)
         {
-            using (var command = new SqliteCommand( @"DELETE FROM follower WHERE who_id=@who_id and WHOM_ID=@whom_id", _connection))
+            using (var command = new SqliteCommand($"DELETE FROM follower WHERE who_id={follow.WhoId} and whom_id={follow.WhomId}", _connection))
             {
-                command.Parameters.AddWithValue("@who_id", follow.WhoId);
-                command.Parameters.AddWithValue("@whom_id", follow.WhomId);
+                //command.Parameters.AddWithValue("@who_id", follow.WhoId);
+                //command.Parameters.AddWithValue("@whom_id", follow.WhomId);
                 command.Prepare();
                 command.ExecuteNonQuery();
             }
         }
 
         //TODO might need a limit from query
-        public async Task<IList<FollowerDTO>> QueryFollowers(string userid) 
+        public async Task<IList<FollowerDTO>> QueryFollowers(string userid, int limit = 20) 
         {
             var followers = new List<FollowerDTO>();
-            using (var command = new SqliteCommand(@"SELECT follower.whom_id, follower.who_id FROM user
-                                        INNER JOIN follower ON follower.whom_id=user.user_id
-                                        WHERE follower.who_id=@userid
-                                        LIMIT 20", _connection))
+            using (var command = new SqliteCommand($"SELECT follower.whom_id, follower.who_id FROM user INNER JOIN follower ON follower.whom_id=user.user_id WHERE follower.who_id={userid} LIMIT {limit}", _connection))
             {
-                command.Parameters.AddWithValue("@userid", userid);
+                //command.Parameters.AddWithValue("@userid", userid);
                 command.Prepare();
                 using (var reader = await command.ExecuteReaderAsync())
                 {
@@ -208,8 +200,7 @@ namespace MiniTwitApi.Shared.Repositories
 
         public async Task InsertMessageAsync(MessageDTO message)
         {
-            using (var command = new SqliteCommand(@"INSERT INTO message (author_id, text, pub_date, flagged)
-                                        values (@author_id, @text, @pub_date, @flagged)", _connection))
+            using (var command = new SqliteCommand($"INSERT INTO message (author_id, text, pub_date, flagged) VALUES ({message.Author}, '{message.Text}', {message.PublishDate}, {message.Flagged})", _connection))
             {
                 command.Parameters.AddWithValue("@author_id", message.Author);
                 command.Parameters.AddWithValue("@text", message.Text);

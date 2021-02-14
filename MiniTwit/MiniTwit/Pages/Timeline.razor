@@ -1,6 +1,9 @@
 @page "/timeline/{timelinetype}" 
 @page "/timeline/{timelinetype}/{username}" 
 @using System.Data.SQLite;
+@using System.Collections
+@using System.Text
+@using System.Security.Cryptography
 
 @*
 Timelinetype 1 = public timeline
@@ -12,7 +15,7 @@ Timelinetype 3 = My timeline / timeline
 {
     <h2>Public Timeline</h2>
 }
-else if(@TimelineType == "usertimeline")
+else if(@TimelineType == "user_timeline")
 {
     <h2>@Username's Timeline</h2>
 }
@@ -21,9 +24,9 @@ else if(@TimelineType == "mytimeline")
     <h2>My timeline</h2>
 }
 
-@if(CheckIfUserIsLoggedIn()) @*should check if in database*@
+@if(UserIsLoggedIn)
 {
-    @if(@TimelineType == "userTimeline")
+    @if(@TimelineType == "user_timeline")
     {
         <div class=followstatus>
             @if(@CurrentUserId == @ProfileUserId) @*Should check if user has the same id as the user which has posted the post*@
@@ -53,46 +56,78 @@ else if(@TimelineType == "mytimeline")
 }
 
   <ul class=messages>
-        @* @if(messages != null)
+        @if(messages != null)
         {
             @foreach (var message in messages)
             {
-                <li><img src="{{ message.email|gravatar(size=48) }}">
-                <strong><a href="{{ url_for('user_timeline', username=message.username)
-                }}">{{ message.username }}</a></strong>
-                {{ message.text }}
-                <small>&mdash; {{ message.pub_date|datetimeformat }}</small></li>
+                <li>
+                    <img width="48" src="http://www.gravatar.com/avatar/">
+                    <strong><a href="{{ url_for('user_timeline', username=message.username)}}">{{ message.username }}</a></strong>
+                    @message.Text;
+                    <small>&mdash; @message.PublishDate.ToString()</small>
+                </li>
             }
         }
         else
         {
             <li><em>There's no message so far.</em></li>
-        }*@
+        }
   </ul>
 
 @code{
     [Parameter]    
     public string TimelineType {get;set;}
     [Parameter]
-    public string Username { get; set; }
-
+    public string Username { get; set;}
+    public bool UserIsLoggedIn = false;
     public int CurrentUserId = 0;
     public int ProfileUserId = 0;
-    protected override void OnInitialized()
+
+    public class Message
     {
-        CurrentUserId = 1; @* The user which is currently logged in*@
-        ProfileUserId = 2; @* If a user timeline is shown, this profile user id should get the userid of the username from the API *@
+        public int Id {get;set;}
+        public int Author {get;set;}
+        public string Text {get;set;}
+        public DateTime PublishDate{get;set;}
+        public int Flagged {get;set;}
+        public Message(int id, int author, string text, DateTime publishDate, int flagged)
+        {
+            Id = id;
+            Author = author;
+            Text = text;
+            PublishDate = publishDate;
+            Flagged = flagged;
+        }
     }
-    public bool CheckIfUserIsLoggedIn()
+    List<Message> messages = new List<Message>();  
+
+    protected override void OnInitialized(){
+        Message testMessage = new Message(1, 1, "Test", new DateTime(2008, 5, 1, 8, 30, 52), 0);
+        
+        messages.Add(testMessage);
+    }
+
+    public string GenerateProfilePictureLinkFromEmail(string email)
     {
-        if(CurrentUserId == 1) @* CheckIfUserIsLoggedIn*@
+        string hash = email.Trim(); 
+        hash = hash.ToLower();
+        hash = MD5Hash(hash);
+        string link = "https://www.gravatar.com/avatar/" + hash;
+        return link;
+    }
+    
+    //Retrieved from https://coderwall.com/p/4puszg/c-convert-string-to-md5-hash
+    public static string MD5Hash(string input)
+    {
+        StringBuilder hash = new StringBuilder();
+        MD5CryptoServiceProvider md5provider = new MD5CryptoServiceProvider();
+        byte[] bytes = md5provider.ComputeHash(new UTF8Encoding().GetBytes(input));
+
+        for (int i = 0; i < bytes.Length; i++)
         {
-            return true;
+            hash.Append(bytes[i].ToString("x2"));
         }
-        else
-        {
-            return false;
-        }
+        return hash.ToString();
     }
 }
 

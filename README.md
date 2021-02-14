@@ -1,6 +1,6 @@
 # PythonKindergarten - DevOps at IT University of Copenhagen 2021
 ## 🔗Usefull links
-** Contribute.md-file: ** https://github.com/jokk-itu/PythonKindergarten/blob/master/contribute.md
+**Contribute.md-file:** https://github.com/jokk-itu/PythonKindergarten/blob/master/contribute.md
 
 
 

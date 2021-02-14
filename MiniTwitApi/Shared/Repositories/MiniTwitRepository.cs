@@ -39,7 +39,7 @@ namespace MiniTwitApi.Shared.Repositories
         {
             var messages = new List<MessageDTO>();
 
-            using (var command = new SqliteCommand($"SELECT message.* FROM message WHERE message.flagged = 0 AND message.author_id = {userid} ORDER BY message.pub_date DESC LIMIT {limit}", _connection))
+            using (var command = new SqliteCommand($"SELECT message.* FROM message WHERE message.flagged = 0 AND message.author_id = {userId} ORDER BY message.pub_date DESC LIMIT {limit}", _connection))
             {
                 //command.Parameters.AddWithValue("@userId", userId);
                 //command.Parameters.AddWithValue("@limit", limit);
@@ -105,7 +105,7 @@ namespace MiniTwitApi.Shared.Repositories
         
         public async Task<UserDTO> QueryUserByIdAsync(int userId) 
         {
-            using(var command = new SqliteCommand($"SELECT user FROM user WHERE user_id = {userid}", _connection)) 
+            using(var command = new SqliteCommand($"SELECT user FROM user WHERE user_id = {userId}", _connection)) 
             {
                 //command.Parameters.AddWithValue("@userid", userId);
                 command.Prepare();
@@ -175,10 +175,10 @@ namespace MiniTwitApi.Shared.Repositories
         }
 
         //TODO might need a limit from query
-        public async Task<IList<FollowerDTO>> QueryFollowers(string userid, int limit = 20) 
+        public async Task<IList<FollowerDTO>> QueryFollowers(string userId, int limit = 20) 
         {
             var followers = new List<FollowerDTO>();
-            using (var command = new SqliteCommand($"SELECT follower.whom_id, follower.who_id FROM user INNER JOIN follower ON follower.whom_id=user.user_id WHERE follower.who_id={userid} LIMIT {limit}", _connection))
+            using (var command = new SqliteCommand($"SELECT follower.whom_id, follower.who_id FROM user INNER JOIN follower ON follower.whom_id=user.user_id WHERE follower.who_id={userId} LIMIT {limit}", _connection))
             {
                 //command.Parameters.AddWithValue("@userid", userid);
                 command.Prepare();

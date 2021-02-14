@@ -1,44 +1,204 @@
-@page "/RouteParameter/{UserId}/{Username}/{TL}"
+@page "/timeline/{timelinetype}" 
+@page "/timeline/{timelinetype}/{username}" 
+@using System.Data.SQLite;
+@using System.Collections
+@using System.Text
+@using System.Security.Cryptography
+@using Newtonsoft.Json;
+@using MiniTwitApi.Shared.Models;
 
+@inject HttpClient httpClient
 
-<h2>Public/Private Timeline</h2> <!-- Should change between public and private depending on what is requested -->
+@*
+Timelinetype 1 = public timeline
+Timelinetype 2 = user_timeline
+Timelinetype 3 = My timeline / timeline
+*@
 
-if(UserId != null){
-     if(TL == "timeline"){
-      <div class=twitbox>
-        <h3>What's on your mind {{ Username }}?</h3>
-        <form action="{{ url_for('add_message') }}" method=post>
-            <input type=text name=text size=60>
-            <input type=submit value="Share">
-        </form>
-      </div>
-     }
+@if(@TimelineType == "public")
+{
+    <h2>Public Timeline</h2>
+}
+else if(@TimelineType == "user_timeline")
+{
+    <h2>@Username's Timeline</h2>
+}
+else if(@TimelineType == "mytimeline")
+{
+    <h2>My timeline</h2>
+}
+
+@if(UserIsLoggedIn)
+{
+    @if(@TimelineType == "user_timeline")
+    {
+        <div class=followstatus>
+            @if(@CurrentUserId == @ProfileUserId) @*Should check if user has the same id as the user which has posted the post*@
+            {
+                <p>This is you!</p>
+            }
+            else if(false) @*Should check if the user which posted the messaged is followed by the viewing user, must be done via API?*@
+            {
+                <p>You are currently following this user.</p>
+                <a class=unfollow href="{{ url_for('unfollow_user', username=profile_user.username)}}">Unfollow user</a> @*Implement unfollowing user*@
+            }
+            else
+            {
+                <p>You are not yet following this user.</p>
+                <a class=follow href="{{ url_for('follow_user', username=profile_user.username)}}">Follow user</a> @*Implement following user*@
+            }
+        </div>
+    }else if(@TimelineType == "myTimeline"){
+        <div class=twitbox>
+            <h3>What's on your mind @*The name of the user which is logged in*@?</h3>
+            <form action="@*To API*@" method=post>
+                <input type=text name=text size=60>res
+                <input type=submit value="Share">
+            </form>
+        </div>
+    }
 }
 
   <ul class=messages>
-  {% for message in messages %}
-    <li><img src="{{ message.email|gravatar(size=48) }}">
-      <strong><a href="{{ url_for('user_timeline', username=message.username)
-      }}">{{ message.username }}</a></strong>
-      {{ message.text }}
-      <small>&mdash; {{ message.pub_date|datetimeformat }}</small></li>
-  {% else %}
-    <li><em>There's no message so far.</em></li>
-  {% endfor %}
+        @if(messages != null)
+        {
+            @foreach (var message in messages)
+            {
+                <li>
+                    <img width="48" src="http://www.gravatar.com/avatar/">
+                    <strong><a href="{{ url_for('user_timeline', username=message.username)}}">{{ message.username }}</a></strong>
+                    @message.Text;
+                    <small>&mdash; @message.PublishDate.ToString()</small>
+                </li>
+            }
+        }
+        else
+        {
+            <li><em>There's no message so far.</em></li>
+        }
   </ul>
 
-@code {
+@code{
+    [Parameter]    
+    public string TimelineType {get;set;}
     [Parameter]
-    public string UserId { get; set; }
+    public string Username { get; set;}
+    public bool UserIsLoggedIn = false;
+    public int CurrentUserId = 0;
+    public int ProfileUserId = 0;
 
-    [Parameter]
-    public string Username { get; set; }
-
-    [Parameter]
-    public string TL { get; set; }
-
-    protected override async Task OnInitializedAsync()
+    /*public class Message
     {
+        public int Id {get;set;}
+        public int Author {get;set;}
+        public string Text {get;set;}
+        public DateTime PublishDate{get;set;}
+        public int Flagged {get;set;}
+        public Message(int id, int author, string text, DateTime publishDate, int flagged)
+        {
+            Id = id;
+            Author = author;
+            Text = text;
+            PublishDate = publishDate;
+            Flagged = flagged;
+        }
+    }*/
+    List<MessageDTO> messages = new List<MessageDTO>();  
+
+    protected override void OnInitialized(){
+        //MessageDTO testMessage = new MessageDTO(1, 1, "Test", 1613309227, 0);
         
+        //messages.Add(testMessage);
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+      if(firstRender)
+      {
+          //Get messages
+          var responseJson = await httpClient.GetStringAsync("https://localhost:5000/msgs?no=10&latest=2");
+          var messages = JsonConvert.DeserializeObject<List<MessageDTO>>(responseJson);
+          StateHasChanged();
+      }
+
+    }
+
+    public string GenerateProfilePictureLinkFromEmail(string email)
+    {
+        string hash = email.Trim(); 
+        hash = hash.ToLower();
+        hash = MD5Hash(hash);
+        string link = "https://www.gravatar.com/avatar/" + hash;
+        return link;
+    }
+    
+    //Retrieved from https://coderwall.com/p/4puszg/c-convert-string-to-md5-hash
+    public static string MD5Hash(string input)
+    {
+        StringBuilder hash = new StringBuilder();
+        MD5CryptoServiceProvider md5provider = new MD5CryptoServiceProvider();
+        byte[] bytes = md5provider.ComputeHash(new UTF8Encoding().GetBytes(input));
+
+        for (int i = 0; i < bytes.Length; i++)
+        {
+            hash.Append(bytes[i].ToString("x2"));
+        }
+        return hash.ToString();
     }
 }
+
+@* @code{
+    string username;
+    protected override async Task OnInitializedAsync()
+    {
+        @*SQL QUERY* 
+        @*OR make a class which retrieves the data and use it here*
+        @*https://zetcode.com/csharp/sqlite/*
+        var connection_string = "URI=../tmp/minitwit.db";
+        using (var connection = new SQLiteConnection(connection_string))
+        {
+            @*RAW query for retrieval
+            var statement = "SQL QUERY";
+            connection.Open();
+            using (var reader =  await new SQLiteCommand(statement, new SQLiteConnection(connection_string)).ExecuteReaderAsync())
+            {
+                while(reader.Read()) 
+                {
+                    @*Use the data from reader object*
+                }
+            };
+            @*PREPARED query for retrieval*
+            using (var command = new SQLiteCommand(connection_string))
+            {
+                command.CommandText = "Prepared SQL query"; @*Prepared values are written like so: @nameofvalue*
+                command.Parameters.AddWithValue("name of prepared value", "actual value");
+                @*Repeat as many times as there are prepared values*
+                command.Prepare();
+                using (var reader_p = await command.ExecuteReaderAsync())
+                {
+                    while (reader_p.Read())
+                    {
+                        @*Use the data from reader_p object*
+                    }
+                }
+            }
+            
+            @*RAW insertion query*
+            using (var command = new SQLiteCommand())
+            {
+                command.CommandText = "SQL query for insertion";
+                command.ExecuteNonQuery(); @*async?*
+            }
+
+            @*PREAPRED insertion query*
+            using (var command = new SQLiteCommand())
+            {
+                command.CommandText = "SQL query for insertion with prepared values";
+                command.Parameters.AddWithValue("name of prepared value", "actual value");
+                command.Prepare();
+                command.ExecuteNonQuery();
+            }
+            
+        };
+    }
+} *@

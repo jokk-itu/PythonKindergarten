@@ -13,7 +13,7 @@ namespace MiniTwitApi.Shared.Repositories
         private string _connectionString = "";
         public MiniTwitRepository() 
         {
-            _connection = new SqliteConnection("Data Source=../../tmp/minitwit.db");
+            _connection = new SqliteConnection("Data Source=../../tmp/itu-minitwit.db");
             _connection.Open();
         }
 

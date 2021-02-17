@@ -28,6 +28,10 @@ else if(@TimelineType == "mytimeline")
     <h2>My timeline</h2>
 }
 
+@if(ErrorRaised){
+    <div class="error"><strong>Error:</strong> @ErrorMessage</div>
+}
+
 @if(UserIsLoggedIn)
 {
     @if(@TimelineType == "user_timeline")
@@ -64,12 +68,20 @@ else if(@TimelineType == "mytimeline")
         {
             @foreach (var message in messages)
             {
-                <li>
-                    <img width="48" src="http://www.gravatar.com/avatar/">
-                    <strong><a href="{{ url_for('user_timeline', username=message.username)}}">{{ message.username }}</a></strong>
-                    @message.Text;
-                    <small>&mdash; @message.PublishDate.ToString()</small>
-                </li>
+                UserDTO currentUser = GetUserDetails(message.Author).Result;
+                if(currentUser!=null)
+                {
+                    <li>
+                        <img width="48" src=@GenerateProfilePictureLinkFromEmail(currentUser.Email)>
+                        <strong><a href="/timeline/user_timline/+@currentUser.Username">@currentUser.Username</a></strong>
+                        @message.Text;
+                        <small>&mdash; @message.PublishDate </small>
+                    </li>
+                }
+                else
+                {
+                    <li><em>Loading messages....</em></li>
+                }
             }
         }
         else
@@ -87,40 +99,39 @@ else if(@TimelineType == "mytimeline")
     public int CurrentUserId = 0;
     public int ProfileUserId = 0;
 
-    /*public class Message
-    {
-        public int Id {get;set;}
-        public int Author {get;set;}
-        public string Text {get;set;}
-        public DateTime PublishDate{get;set;}
-        public int Flagged {get;set;}
-        public Message(int id, int author, string text, DateTime publishDate, int flagged)
-        {
-            Id = id;
-            Author = author;
-            Text = text;
-            PublishDate = publishDate;
-            Flagged = flagged;
-        }
-    }*/
     List<MessageDTO> messages = new List<MessageDTO>();  
 
-    protected override void OnInitialized(){
-        //MessageDTO testMessage = new MessageDTO(1, 1, "Test", 1613309227, 0);
-        
-        //messages.Add(testMessage);
+    protected override async Task OnInitializedAsync(){
+        try{
+            var responseJson = await httpClient.GetStringAsync("/msgs?no=10&latest=2");
+            messages = JsonConvert.DeserializeObject<List<MessageDTO>>(responseJson);
+        }
+        catch(Exception e)
+        {
+            ErrorRaised = true;
+            ErrorMessage = e.Message;
+        }
     }
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-      if(firstRender)
-      {
-          //Get messages
-          var responseJson = await httpClient.GetStringAsync("https://localhost:5000/msgs?no=10&latest=2");
-          var messages = JsonConvert.DeserializeObject<List<MessageDTO>>(responseJson);
-          StateHasChanged();
-      }
+    private bool ErrorRaised = false;
+    private string ErrorMessage;
 
+
+    public async Task<UserDTO> GetUserDetails(int userid)
+    {
+        UserDTO user = new UserDTO();
+        try{
+            var responseJson = await httpClient.GetStringAsync($"/user/{userid}");
+            user = JsonConvert.DeserializeObject<UserDTO>(responseJson);
+            
+            return user;
+        }
+        catch(Exception e)
+        {
+            ErrorRaised = true;
+            ErrorMessage = e.Message;
+            return user;
+        }
     }
 
     public string GenerateProfilePictureLinkFromEmail(string email)

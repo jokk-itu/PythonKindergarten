@@ -66,7 +66,7 @@ else if(@TimelineType == "mytimeline")
             {
                 <li>
                     <img width="48" src="http://www.gravatar.com/avatar/">
-                    <strong><a href="{{ url_for('user_timeline', username=message.username)}}">{{ message.username }}</a></strong>
+                    <strong><a href="{{ url_for('user_timeline', username=message.username)}}">@message.AuthorUsername</a></strong>
                     @message.Text;
                     <small>&mdash; @message.PublishDate.ToString()</small>
                 </li>
@@ -117,7 +117,7 @@ else if(@TimelineType == "mytimeline")
       {
           //Get messages
           var responseJson = await httpClient.GetStringAsync("https://localhost:5000/msgs?no=10&latest=2");
-          var messages = JsonConvert.DeserializeObject<List<MessageDTO>>(responseJson);
+          messages.AddRange(JsonConvert.DeserializeObject<List<MessageDTO>>(responseJson));
           StateHasChanged();
       }
 

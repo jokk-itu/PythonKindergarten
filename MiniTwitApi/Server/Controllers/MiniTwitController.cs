@@ -73,6 +73,7 @@ namespace MiniTwitApi.Server.Controllers
             await _database.InsertMessageAsync(new MessageDTO
             {
                 Author = actionUser.Id,
+                AuthorUsername = username,
                 Text = message.Content,
                 PublishDate = (int) EpochConverter.ToEpoch(DateTime.Now),
                 Flagged = 0 // Flag if profanity is detected

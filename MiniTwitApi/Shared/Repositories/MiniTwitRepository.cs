@@ -53,6 +53,7 @@ namespace MiniTwitApi.Shared.Repositories
                         {
                             Id = int.Parse(reader["message_id"].ToString()),
                             Author = int.Parse(reader["author_id"].ToString()),
+                            AuthorUsername = reader["author_username"].ToString(),
                             Text = reader["text"].ToString(),
                             PublishDate = int.Parse(reader["pub_date"].ToString()),
                             Flagged = int.Parse(reader["flagged"].ToString()),
@@ -80,6 +81,7 @@ namespace MiniTwitApi.Shared.Repositories
                         {
                             Id = int.Parse(reader["message_id"].ToString()),
                             Author = int.Parse(reader["author_id"].ToString()),
+                            AuthorUsername = reader["author_username"].ToString(),
                             Text = reader["text"].ToString(),
                             PublishDate = int.Parse(reader["pub_date"].ToString()),
                             Flagged = int.Parse(reader["flagged"].ToString()),
@@ -200,12 +202,12 @@ namespace MiniTwitApi.Shared.Repositories
 
         public async Task InsertMessageAsync(MessageDTO message)
         {
-            using (var command = new SqliteCommand($"INSERT INTO message (author_id, text, pub_date, flagged) VALUES ({message.Author}, '{message.Text}', {message.PublishDate}, {message.Flagged})", _connection))
+            using (var command = new SqliteCommand($"INSERT INTO message (author_id, author_username, text, pub_date, flagged) VALUES ({message.Author}, '{message.AuthorUsername}', '{message.Text}', {message.PublishDate}, {message.Flagged})", _connection))
             {
-                command.Parameters.AddWithValue("@author_id", message.Author);
-                command.Parameters.AddWithValue("@text", message.Text);
-                command.Parameters.AddWithValue("@pub_date", message.PublishDate);
-                command.Parameters.AddWithValue("@flagged", message.Flagged);
+                //command.Parameters.AddWithValue("@author_id", message.Author);
+                //command.Parameters.AddWithValue("@text", message.Text);
+                //command.Parameters.AddWithValue("@pub_date", message.PublishDate);
+                //command.Parameters.AddWithValue("@flagged", message.Flagged);
                 command.Prepare();
                 command.ExecuteNonQuery();
             }

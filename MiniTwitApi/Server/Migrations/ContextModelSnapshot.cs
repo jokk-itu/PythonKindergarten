@@ -3,7 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using MyApp.Entities;
+using MiniTwitApi.Server.Entities;
 
 namespace MiniTwitApi.Server.Migrations
 {
@@ -16,7 +16,7 @@ namespace MiniTwitApi.Server.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "5.0.3");
 
-            modelBuilder.Entity("MyApp.Entities.Follower", b =>
+            modelBuilder.Entity("MiniTwitApi.Server.Entities.Follower", b =>
                 {
                     b.Property<int>("WhoId")
                         .HasColumnType("INTEGER");
@@ -36,39 +36,39 @@ namespace MiniTwitApi.Server.Migrations
 
                     b.HasIndex("WhomUserUserId");
 
-                    b.ToTable("Gender");
+                    b.ToTable("Followers");
                 });
 
-            modelBuilder.Entity("MyApp.Entities.Message", b =>
+            modelBuilder.Entity("MiniTwitApi.Server.Entities.Message", b =>
                 {
-                    b.Property<int>("messageId")
+                    b.Property<int>("MessageId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("authorId")
+                    b.Property<int>("AuthorId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("authorUsername")
+                    b.Property<string>("AuthorUsername")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("flagged")
+                    b.Property<int>("Flagged")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("pubDate")
+                    b.Property<int>("PubDate")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("text")
+                    b.Property<string>("Text")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.HasKey("messageId");
+                    b.HasKey("MessageId");
 
-                    b.HasIndex("authorId");
+                    b.HasIndex("AuthorId");
 
-                    b.ToTable("Message");
+                    b.ToTable("Messages");
                 });
 
-            modelBuilder.Entity("MyApp.Entities.User", b =>
+            modelBuilder.Entity("MiniTwitApi.Server.Entities.User", b =>
                 {
                     b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
@@ -78,7 +78,7 @@ namespace MiniTwitApi.Server.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("PwHash")
+                    b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -88,16 +88,19 @@ namespace MiniTwitApi.Server.Migrations
 
                     b.HasKey("UserId");
 
+                    b.HasIndex("Username")
+                        .IsUnique();
+
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("MyApp.Entities.Follower", b =>
+            modelBuilder.Entity("MiniTwitApi.Server.Entities.Follower", b =>
                 {
-                    b.HasOne("MyApp.Entities.User", "WhoUser")
+                    b.HasOne("MiniTwitApi.Server.Entities.User", "WhoUser")
                         .WithMany()
                         .HasForeignKey("WhoUserUserId");
 
-                    b.HasOne("MyApp.Entities.User", "WhomUser")
+                    b.HasOne("MiniTwitApi.Server.Entities.User", "WhomUser")
                         .WithMany()
                         .HasForeignKey("WhomUserUserId");
 
@@ -106,15 +109,20 @@ namespace MiniTwitApi.Server.Migrations
                     b.Navigation("WhoUser");
                 });
 
-            modelBuilder.Entity("MyApp.Entities.Message", b =>
+            modelBuilder.Entity("MiniTwitApi.Server.Entities.Message", b =>
                 {
-                    b.HasOne("MyApp.Entities.User", "User")
-                        .WithMany()
-                        .HasForeignKey("authorId")
+                    b.HasOne("MiniTwitApi.Server.Entities.User", "User")
+                        .WithMany("Messages")
+                        .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("MiniTwitApi.Server.Entities.User", b =>
+                {
+                    b.Navigation("Messages");
                 });
 #pragma warning restore 612, 618
         }

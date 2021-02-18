@@ -14,7 +14,7 @@ namespace MiniTwitApi.Server.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Username = table.Column<string>(type: "TEXT", nullable: false),
                     Email = table.Column<string>(type: "TEXT", nullable: false),
-                    PwHash = table.Column<string>(type: "TEXT", nullable: false)
+                    Password = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -22,7 +22,7 @@ namespace MiniTwitApi.Server.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Gender",
+                name: "Followers",
                 columns: table => new
                 {
                     WhoId = table.Column<int>(type: "INTEGER", nullable: false),
@@ -32,15 +32,15 @@ namespace MiniTwitApi.Server.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Gender", x => new { x.WhoId, x.WhomId });
+                    table.PrimaryKey("PK_Followers", x => new { x.WhoId, x.WhomId });
                     table.ForeignKey(
-                        name: "FK_Gender_Users_WhomUserUserId",
+                        name: "FK_Followers_Users_WhomUserUserId",
                         column: x => x.WhomUserUserId,
                         principalTable: "Users",
                         principalColumn: "UserId",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Gender_Users_WhoUserUserId",
+                        name: "FK_Followers_Users_WhoUserUserId",
                         column: x => x.WhoUserUserId,
                         principalTable: "Users",
                         principalColumn: "UserId",
@@ -48,51 +48,57 @@ namespace MiniTwitApi.Server.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Message",
+                name: "Messages",
                 columns: table => new
                 {
-                    messageId = table.Column<int>(type: "INTEGER", nullable: false)
+                    MessageId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    authorId = table.Column<int>(type: "INTEGER", nullable: false),
-                    authorUsername = table.Column<string>(type: "TEXT", nullable: true),
-                    text = table.Column<string>(type: "TEXT", nullable: false),
-                    pubDate = table.Column<int>(type: "INTEGER", nullable: false),
-                    flagged = table.Column<int>(type: "INTEGER", nullable: false)
+                    AuthorId = table.Column<int>(type: "INTEGER", nullable: false),
+                    AuthorUsername = table.Column<string>(type: "TEXT", nullable: true),
+                    Text = table.Column<string>(type: "TEXT", nullable: false),
+                    PubDate = table.Column<int>(type: "INTEGER", nullable: false),
+                    Flagged = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Message", x => x.messageId);
+                    table.PrimaryKey("PK_Messages", x => x.MessageId);
                     table.ForeignKey(
-                        name: "FK_Message_Users_authorId",
-                        column: x => x.authorId,
+                        name: "FK_Messages_Users_AuthorId",
+                        column: x => x.AuthorId,
                         principalTable: "Users",
                         principalColumn: "UserId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Gender_WhomUserUserId",
-                table: "Gender",
+                name: "IX_Followers_WhomUserUserId",
+                table: "Followers",
                 column: "WhomUserUserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Gender_WhoUserUserId",
-                table: "Gender",
+                name: "IX_Followers_WhoUserUserId",
+                table: "Followers",
                 column: "WhoUserUserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Message_authorId",
-                table: "Message",
-                column: "authorId");
+                name: "IX_Messages_AuthorId",
+                table: "Messages",
+                column: "AuthorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_Username",
+                table: "Users",
+                column: "Username",
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Gender");
+                name: "Followers");
 
             migrationBuilder.DropTable(
-                name: "Message");
+                name: "Messages");
 
             migrationBuilder.DropTable(
                 name: "Users");

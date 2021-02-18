@@ -1,7 +1,7 @@
-using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using Microsoft.VisualBasic;
-namespace MyApp.Entities
+
+namespace MiniTwitApi.Server.Entities
 {
     public class User
     {
@@ -12,7 +12,9 @@ namespace MyApp.Entities
         [Required]
         public string Email{get;set;}
         [Required]
-        public string PwHash{get;set;}
+        public string Password{get;set;}
+        
+        public ICollection<Message> Messages { get; set; }
     }
 }
 

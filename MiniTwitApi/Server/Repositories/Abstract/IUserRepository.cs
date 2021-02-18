@@ -1,8 +1,9 @@
-using System;
-using Microsoft.EntityFrameworkCore;
-using MyApp.Entities;
+using MiniTwitApi.Server.Entities;
 
-public interface IUserRepository 
+namespace MiniTwitApi.Server.Repositories.Abstract
 {
-    Context Context { get; }
+    public interface IUserRepository 
+    {
+        Context Context { get; }
+    }
 }

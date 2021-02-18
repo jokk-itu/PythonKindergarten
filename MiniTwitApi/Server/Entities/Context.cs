@@ -1,7 +1,6 @@
-using System;
 using Microsoft.EntityFrameworkCore;
 
-namespace MyApp.Entities
+namespace MiniTwitApi.Server.Entities
 {
     public class Context : DbContext
     {
@@ -25,9 +24,9 @@ namespace MyApp.Entities
         {
             //Make One-to-Many relationship for Users to Messages
             modelBuilder.Entity<Message>()
-                .HasOne<User>(m => m.User)
-                .WithMany()
-                .HasForeignKey(m => m.authorId);
+                .HasOne(m => m.User)
+                .WithMany(u => u.Messages)
+                .HasForeignKey(m => m.AuthorId);
             
             //make Many-to-Many relationship in Followers table
             modelBuilder.Entity<Follower>().HasKey(f => new {f.WhoId, f.WhomId});

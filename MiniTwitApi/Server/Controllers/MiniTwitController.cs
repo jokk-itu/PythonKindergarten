@@ -95,6 +95,14 @@ namespace MiniTwitApi.Server.Controllers
             return Ok(follows);
         }
 
+        [HttpGet("user/{userid}")]
+        public async Task<ActionResult<UserDTO>> GetUserByUserId(int userid, [FromQuery] int latest)
+        {
+            var user = await _database.QueryUserByIdAsync(userid);
+            
+            return user;
+        }
+
         [HttpPost("fllws/{username}")]
         public async Task<ActionResult> PostFollowsByUsername(string username, [FromBody] Follow follow, [FromQuery] int latest)
         {

@@ -13,7 +13,7 @@ namespace MiniTwitApi.Shared.Repositories
         private string _connectionString = "";
         public MiniTwitRepository() 
         {
-            _connection = new SqliteConnection("Data Source=../../tmp/minitwit.db");
+            _connection = new SqliteConnection("Data Source=../../tmp/itu-minitwit.db");
             _connection.Open();
         }
 
@@ -107,7 +107,7 @@ namespace MiniTwitApi.Shared.Repositories
         
         public async Task<UserDTO> QueryUserByIdAsync(int userId) 
         {
-            using(var command = new SqliteCommand($"SELECT user FROM user WHERE user_id = {userId}", _connection)) 
+            using(var command = new SqliteCommand($"SELECT * FROM user WHERE user_id = {userId}", _connection)) 
             {
                 //command.Parameters.AddWithValue("@userid", userId);
                 command.Prepare();

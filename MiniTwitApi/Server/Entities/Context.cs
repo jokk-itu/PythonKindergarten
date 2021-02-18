@@ -6,8 +6,8 @@ namespace MyApp.Entities
     public class Context : DbContext
     {
         public DbSet<User> Users { get; set; }
-        public DbSet<Follower> Gender { get; set; }
-        public DbSet<Message> Message { get; set; }
+        public DbSet<Follower> Followers { get; set; }
+        public DbSet<Message> Messages { get; set; }
 
         public Context()
         {}

@@ -3,9 +3,9 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.VisualBasic;
 namespace MyApp.Entities
 {
-
-  public class Message
+    public class Message
   {
+      [Key]
       public int messageId {get; set; }
       [Required]
       public int authorId {get; set; }

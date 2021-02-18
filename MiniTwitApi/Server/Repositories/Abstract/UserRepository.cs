@@ -1,59 +1,71 @@
 using System;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using MiniTwitApi.Client.Pages;
+using MiniTwitApi.Shared.Models;
+using MyApp.Entities;
+using System.Linq;
+
 public class UserRepository : IUserRepository 
 {
-    public DbContext Context { get; }
+    public Context Context { get; }
 
-    public UserRepository(DbContext _context) 
+    public UserRepository(Context context) 
     {
-        Context = _context;
+        Context = context;
     }
 
-    public Task<bool> UserExistsAsync(string username) 
+    public async Task<bool> UserExistsAsync(string username)
     {
-        if(username is null || username == "")
+        if (username is null || username == "")
             throw new ArgumentException($"Username must be a valid username not: {username}");
-        s
-        var userExists = await _context.FindAsync(username);
+        var userExists = from u in Context.Users 
+                                      where u.Username.Equals(username) 
+                                      select u;
+        return userExists.Any();
     }
 
     /**
     /* May not be needed
     */
-    public Task<bool> UserExistsAsync(string userid) 
+    public async Task<bool> UserExistsAsync(int userid) 
     {
         throw new NotImplementedException();
     }
 
-    public Task CreateAsync(UserDTO user) 
+    public async Task CreateAsync(UserDTO user) 
     {
-        var _user = new User() 
+        
+
+        var id = await Context.AddAsync(
+            new User() 
         {
             UserId = user.Id,
             Username = user.Username,
             Email = user.Email,
             PwHash = user.Password,
+        });
+        await Context.SaveChangesAsync();
+    }
+
+    public async Task<UserDTO> ReadAsync(int userid)
+    {
+        var user = await Context.Users.FindAsync(userid);
+    
+        return new UserDTO()
+        {
+            Id = user.UserId,
+            Email = user.Email,
+            Password = user.PwHash,
+            Username = user.Username
         };
-
-        var id = await _context.AddAsync(_user);
-        await _context.SaveChangesAsync();
     }
-
-    public Task<UserDTO> ReadAsync(int userid) 
+    /**
+     * Is it really needed?
+     */
+    public async Task<UserDTO> ReadAsync(string username)
     {
-        var user = from u in context.Users where u.Id = userid
-                    select new UserDTO
-                    {
-                        UserId = u.Id,
-                        Username = u.Username,
-                        Email = u.Email,
-                        PwHash = u.PwHash
-                    }
-    }
-
-    public Task<UserDTO> ReadAsync(string username) 
-    {
-        
+        throw new NotImplementedException();
     }
 
     

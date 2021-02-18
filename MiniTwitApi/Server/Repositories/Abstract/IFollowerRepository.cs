@@ -1,7 +1,8 @@
 using System;
 using Microsoft.EntityFrameworkCore;
+using MyApp.Entities;
 
 public interface IFollowerRepository 
 {
-    DbContext Context { get; }
+    Context Context { get; }
 }

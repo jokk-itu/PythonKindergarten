@@ -23,13 +23,19 @@ namespace MyApp.Entities
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //Make One-to-Many relationship for Users to Messages
             modelBuilder.Entity<Message>()
                 .HasOne<User>(m => m.User)
                 .WithMany()
                 .HasForeignKey(m => m.authorId);
-
-            modelBuilder.Entity<Follower>().HasKey(f => new{f.WhoId, f.WhomId});
-            //Add relationships between Entities
+            
+            //make Many-to-Many relationship in Followers table
+            modelBuilder.Entity<Follower>().HasKey(f => new {f.WhoId, f.WhomId});
+            
+            //make User's username unique
+            modelBuilder.Entity<User>()
+                .HasIndex(u => u.Username)
+                .IsUnique();
 
         }
     }

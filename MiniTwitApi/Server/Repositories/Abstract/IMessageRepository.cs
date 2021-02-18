@@ -1,7 +1,8 @@
 using System;
 using Microsoft.EntityFrameworkCore;
+using MyApp.Entities;
 
 public interface IMessageRepository 
 {
-    DbContext Context { get; }
+    Context Context { get; }
 }

@@ -19,9 +19,9 @@ namespace MiniTwitApi.Server.Repositories
         }
 
         /* Should be implmeneted: int limit = 20*/
-        public async Task<ICollection<FollowerDTO>> ReadAllAsync(int userid) =>
+        public async Task<ICollection<FollowerDTO>> ReadAllAsync(string username) =>
             await (from s in Context.Followers
-                where s.WhoId == userid
+                where s.WhoUser.Username.Equals(username)
                 select new FollowerDTO
                 {
                     WhoId = s.WhoId,

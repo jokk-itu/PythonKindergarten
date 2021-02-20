@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MiniTwitApi.Server.Entities
 {
-    public class Context : DbContext
+    public class Context : DbContext, IContext
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Follower> Followers { get; set; }

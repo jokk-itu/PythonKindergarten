@@ -8,8 +8,8 @@ using MiniTwitApi.Shared.Models;
 namespace MiniTwitApi.Server.Controllers
 {
     [ApiController]
-    [Route("/follow")]
-    public class FollowController
+    [Route("/api")]
+    public class FollowController : ControllerBase
     {
         private readonly FollowerRepository _followerRepository;
         private readonly UserRepository _userRepository;

@@ -35,7 +35,12 @@ namespace MiniTwitApi.Shared.Repositories
             }
         }
 
-        public async Task<IList<MessageDTO>> QueryMessagesAsync(string userId, int limit = 20) 
+        public Task<IList<MessageDTO>> QueryMessagesAsync(string userId, int limit)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<IList<MessageDTO>> QueryMessagesAsync(int userId, int limit = 20) 
         {
             var messages = new List<MessageDTO>();
 

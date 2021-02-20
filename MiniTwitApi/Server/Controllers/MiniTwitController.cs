@@ -81,6 +81,7 @@ namespace MiniTwitApi.Server.Controllers
             
             return Ok();
         }
+        
         //DONE
         [HttpGet("fllws/{username}")]
         public async Task<ActionResult<IList<FollowerDTO>>> GetFollowsByUsername(string username, [FromQuery] int latest)

@@ -6,6 +6,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Linq;
+using System.Xml.Serialization;
+using MiniTwitApi.Server.Entities;
 using MiniTwitApi.Shared.Repositories.Abstractions;
 using MiniTwitApi.Shared.Repositories;
 
@@ -27,6 +29,7 @@ namespace MiniTwitApi.Server
             services.AddControllersWithViews();
             services.AddRazorPages();
             services.AddSingleton<IMiniTwitRepository, MiniTwitRepository>();
+            services.AddSingleton<IContext, Context>();
             services.AddSwaggerGen();
         }
 

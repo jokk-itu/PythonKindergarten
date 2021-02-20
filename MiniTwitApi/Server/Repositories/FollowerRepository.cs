@@ -11,16 +11,16 @@ namespace MiniTwitApi.Server.Repositories
 {
     public class FollowerRepository : IFollowerRepository
     {
-        public Context Context { get; }
+        private IContext _context { get; }
 
-        public FollowerRepository(Context context) 
+        public FollowerRepository(IContext context) 
         {
-            Context = context;
+            _context = context;
         }
 
         /* Should be implmeneted: int limit = 20*/
         public async Task<ICollection<FollowerDTO>> ReadAllAsync(string username) =>
-            await (from s in Context.Followers
+            await (from s in _context.Followers
                 where s.WhoUser.Username.Equals(username)
                 select new FollowerDTO
                 {
@@ -32,16 +32,16 @@ namespace MiniTwitApi.Server.Repositories
 
         public async Task DeleteAsync(FollowerDTO follower) 
         {
-            var _follower = await Context.Followers.FindAsync(follower);
+            var _follower = await _context.Followers.FindAsync(follower);
 
             if(_follower == null)
             {
                 throw new ArgumentException($"Could not remove follower, because it does not exist.");
             }
 
-            Context.Followers.Remove(_follower);
+            _context.Followers.Remove(_follower);
 
-            await Context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
         }
 
         public async Task<int> CreateAsync(FollowerDTO follower) 
@@ -52,8 +52,8 @@ namespace MiniTwitApi.Server.Repositories
                 WhomId = follower.WhomId
             };
 
-            await Context.Followers.AddAsync(entity);
-            await Context.SaveChangesAsync();
+            await _context.Followers.AddAsync(entity);
+            await _context.SaveChangesAsync();
 
             return entity.WhoId;
         }

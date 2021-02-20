@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using MiniTwitApi.Server.Entities;
 using MiniTwitApi.Server.Repositories.Abstract;
 using MiniTwitApi.Shared.Models;
@@ -9,34 +10,32 @@ namespace MiniTwitApi.Server.Repositories
 {
     public class UserRepository : IUserRepository 
     {
-        public Context Context { get; }
+        private IContext _context { get; }
 
-        public UserRepository(Context context) 
+        public UserRepository(IContext context) 
         {
-            Context = context;
+            _context = context;
         }
 
         public async Task<bool> UserExistsAsync(string username)
         {
             if (username is null || username == "")
                 throw new ArgumentException($"Username must be a valid username not: {username}");
-            var userExists = from u in Context.Users 
+            var userExists = from u in _context.Users 
                 where u.Username.Equals(username) 
                 select u;
             return userExists.Any();
         }
-
-        /**
-    /* May not be needed
-    */
-        public async Task<bool> UserExistsAsync(int userid) 
+        
+        public async Task<bool> UserExistsAsync(int userid)
         {
-            throw new NotImplementedException();
+            var user = await _context.Users.FindAsync(userid);
+            return user is not null;
         }
 
         public async Task CreateAsync(UserDTO user) 
         {
-            var id = await Context.AddAsync(
+            var id = await _context.Users.AddAsync(
                 new User() 
                 {
                     UserId = user.Id,
@@ -44,12 +43,12 @@ namespace MiniTwitApi.Server.Repositories
                     Email = user.Email,
                     Password = user.Password,
                 });
-            await Context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
         }
 
         public async Task<UserDTO> ReadAsync(int userid)
         {
-            var user = await Context.Users.FindAsync(userid);
+            var user = await _context.Users.FindAsync(userid);
     
             return new UserDTO()
             {
@@ -59,14 +58,24 @@ namespace MiniTwitApi.Server.Repositories
                 Username = user.Username
             };
         }
+
         /**
-     * Is it really needed?
-     */
+        * Is it really needed?
+        */
         public async Task<UserDTO> ReadAsync(string username)
         {
-            throw new NotImplementedException();
+            var user = from u in _context.Users
+                where u.Username.Equals(username)
+                select new UserDTO()
+                {
+                    Id = u.UserId,
+                    Email = u.Email,
+                    Password = u.Password,
+                    Username = u.Username
+                };
+            return await user.FirstAsync();
         }
 
-    
+
     }
 }

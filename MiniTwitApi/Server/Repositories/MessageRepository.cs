@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,11 +11,11 @@ namespace MiniTwitApi.Server.Repositories
 {
     public class MessageRepository : IMessageRepository 
     {
-        public Context Context { get; }
+        private Context _context { get; }
 
         public MessageRepository(Context context) 
         {
-            Context = context;
+            _context = context;
         }
 
         public async Task CreateAsync(MessageDTO message) 
@@ -28,8 +29,8 @@ namespace MiniTwitApi.Server.Repositories
                 Flagged = message.Flagged
             };
 
-            var id = await Context.AddAsync(m);
-            await Context.SaveChangesAsync();
+            var id = await _context.AddAsync(m);
+            await _context.SaveChangesAsync();
         }
 
         /**
@@ -37,7 +38,7 @@ namespace MiniTwitApi.Server.Repositories
         */
         public async Task<ICollection<MessageDTO>> ReadAllAsync(int limit = 20)
         {
-            return await (from m in Context.Messages
+            return await (from m in _context.Messages
                 select new MessageDTO()
                 {
                     Id = m.MessageId,
@@ -53,9 +54,12 @@ namespace MiniTwitApi.Server.Repositories
         /**
         /* Add support for limit
         */
-        public async Task<ICollection<MessageDTO>> ReadAllAsync(int userid, int limit = 20)
+        public async Task<ICollection<MessageDTO>> ReadAllAsync(string username, int limit = 20)
         {
-            return await (from m in Context.Messages
+            var userRepository = new UserRepository(_context);
+            var userid = userRepository.ReadAsync(username).Id;
+
+            return await (from m in _context.Messages
                 where m.AuthorId == userid
                 select new MessageDTO()
                 {

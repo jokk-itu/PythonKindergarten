@@ -59,7 +59,7 @@ namespace MiniTwitApi.Server.Repositories
         {
             Console.WriteLine($"This is the username: {username}");
             var userRepository = new UserRepository(_context);
-            var user = userRepository.ReadAsync(username);
+            var user = await userRepository.ReadAsync(username);
             if(user is null) 
                 throw new ArgumentException("Provided username does not exist");
 

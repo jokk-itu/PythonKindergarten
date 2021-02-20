@@ -24,8 +24,8 @@ namespace MiniTwitApi.Server.Entities
         {
             //Make One-to-Many relationship for Users to Messages
             modelBuilder.Entity<Message>()
-                .HasOne(m => m.User)
-                .WithMany(u => u.Messages)
+                .HasOne<User>(m => m.User)
+                .WithMany()
                 .HasForeignKey(m => m.AuthorId);
             
             //make Many-to-Many relationship in Followers table

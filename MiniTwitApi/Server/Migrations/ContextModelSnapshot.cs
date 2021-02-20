@@ -112,17 +112,12 @@ namespace MiniTwitApi.Server.Migrations
             modelBuilder.Entity("MiniTwitApi.Server.Entities.Message", b =>
                 {
                     b.HasOne("MiniTwitApi.Server.Entities.User", "User")
-                        .WithMany("Messages")
+                        .WithMany()
                         .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("MiniTwitApi.Server.Entities.User", b =>
-                {
-                    b.Navigation("Messages");
                 });
 #pragma warning restore 612, 618
         }

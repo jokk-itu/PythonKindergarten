@@ -9,7 +9,7 @@ using MiniTwitApi.Server.Entities;
 namespace MiniTwitApi.Server.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20210220102941_InitialCreate")]
+    [Migration("20210220120904_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -114,17 +114,12 @@ namespace MiniTwitApi.Server.Migrations
             modelBuilder.Entity("MiniTwitApi.Server.Entities.Message", b =>
                 {
                     b.HasOne("MiniTwitApi.Server.Entities.User", "User")
-                        .WithMany("Messages")
+                        .WithMany()
                         .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("MiniTwitApi.Server.Entities.User", b =>
-                {
-                    b.Navigation("Messages");
                 });
 #pragma warning restore 612, 618
         }

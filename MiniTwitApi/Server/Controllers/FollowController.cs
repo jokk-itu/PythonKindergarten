@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using MiniTwitApi.Server.Repositories;
 using MiniTwitApi.Shared;
 using MiniTwitApi.Shared.Models;
+using MiniTwitApi.Server.Repositories.Abstract;
 
 namespace MiniTwitApi.Server.Controllers
 {
@@ -11,10 +12,10 @@ namespace MiniTwitApi.Server.Controllers
     [Route("/api")]
     public class FollowController : ControllerBase
     {
-        private readonly FollowerRepository _followerRepository;
-        private readonly UserRepository _userRepository;
+        private readonly IFollowerRepository _followerRepository;
+        private readonly IUserRepository _userRepository;
     
-        public FollowController(FollowerRepository repository, UserRepository userRepository)
+        public FollowController(IFollowerRepository repository, IUserRepository userRepository)
         {
             _userRepository = userRepository;
             _followerRepository = repository;

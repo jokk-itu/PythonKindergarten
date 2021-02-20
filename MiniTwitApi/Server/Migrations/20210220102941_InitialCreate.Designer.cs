@@ -9,7 +9,7 @@ using MiniTwitApi.Server.Entities;
 namespace MiniTwitApi.Server.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20210218155438_InitialCreate")]
+    [Migration("20210220102941_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

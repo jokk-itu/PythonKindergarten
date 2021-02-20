@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using MiniTwitApi.Server.Repositories;
 using MiniTwitApi.Shared;
 using MiniTwitApi.Shared.Models;
+using MiniTwitApi.Server.Repositories.Abstract;
 
 namespace MiniTwitApi.Server.Controllers
 {
@@ -10,9 +11,9 @@ namespace MiniTwitApi.Server.Controllers
     [Route("/user")]
     public class UserController : ControllerBase
     {
-        private readonly UserRepository _repository;
+        private readonly IUserRepository _repository;
 
-        public UserController(UserRepository repository)
+        public UserController(IUserRepository repository)
         {
             _repository = repository;
         }
@@ -24,7 +25,7 @@ namespace MiniTwitApi.Server.Controllers
         }
         
         [HttpPost("register")]
-        public async Task<ActionResult> PostRegister([FromBody] UserDTO user, [FromQuery] int latest)
+        public async Task<ActionResult> PostRegister([FromBody] CreateUserDTO user, [FromQuery] int latest)
         {
             //checks if the user exists
             if(await _repository.UserExistsAsync(user.Username))

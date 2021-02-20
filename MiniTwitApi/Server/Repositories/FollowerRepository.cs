@@ -19,14 +19,15 @@ namespace MiniTwitApi.Server.Repositories
         }
 
         /* Should be implmeneted: int limit = 20*/
-        public async Task<ICollection<FollowerDTO>> ReadAllAsync(string username) =>
-            await (from s in _context.Followers
+        public async Task<ICollection<FollowerDTO>> ReadAllAsync(string username) {
+            return await (from s in _context.Followers
                 where s.WhoUser.Username.Equals(username)
                 select new FollowerDTO
                 {
                     WhoId = s.WhoId,
                     WhomId = s.WhomId
                 }).ToListAsync();
+        }
 
         
 

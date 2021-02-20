@@ -19,26 +19,19 @@ namespace MiniTwitApi.Server.Repositories
 
         public async Task<bool> UserExistsAsync(string username)
         {
-            if (username is null || username == "")
-                throw new ArgumentException($"Username must be a valid username not: {username}");
-            var userExists = from u in _context.Users 
-                where u.Username.Equals(username) 
-                select u;
-            return userExists.Any();
+            return await ReadAsync(username) is not null;
         }
         
         public async Task<bool> UserExistsAsync(int userid)
         {
-            var user = await _context.Users.FindAsync(userid);
-            return user is not null;
+            return await ReadAsync(userid) is not null;
         }
 
-        public async Task CreateAsync(UserDTO user) 
+        public async Task CreateAsync(CreateUserDTO user) 
         {
             var id = await _context.Users.AddAsync(
                 new User() 
                 {
-                    UserId = user.Id,
                     Username = user.Username,
                     Email = user.Email,
                     Password = user.Password,
@@ -49,7 +42,10 @@ namespace MiniTwitApi.Server.Repositories
         public async Task<UserDTO> ReadAsync(int userid)
         {
             var user = await _context.Users.FindAsync(userid);
-    
+
+            if(user is null)
+                return null;
+                
             return new UserDTO()
             {
                 Id = user.UserId,
@@ -59,12 +55,9 @@ namespace MiniTwitApi.Server.Repositories
             };
         }
 
-        /**
-        * Is it really needed?
-        */
         public async Task<UserDTO> ReadAsync(string username)
         {
-            var user = from u in _context.Users
+            var user =  from u in _context.Users
                 where u.Username.Equals(username)
                 select new UserDTO()
                 {
@@ -73,7 +66,15 @@ namespace MiniTwitApi.Server.Repositories
                     Password = u.Password,
                     Username = u.Username
                 };
-            return await user.FirstAsync();
+            switch(user.Count()) 
+            {
+                case 0:
+                    return null;
+                case 1:
+                    return await user.FirstAsync();
+                default:
+                    throw new Exception("There exists multiple users with the same username. SHOULD NOT HAPPEN.");   
+            }
         }
 
 

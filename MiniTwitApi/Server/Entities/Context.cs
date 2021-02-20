@@ -17,7 +17,7 @@ namespace MiniTwitApi.Server.Entities
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //Add connection string to DB
-            optionsBuilder.UseSqlite(@"../../tmp/minitwit.db");
+            optionsBuilder.UseSqlite(@"Data Source = ../../tmp/minitwit.db");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -35,7 +35,6 @@ namespace MiniTwitApi.Server.Entities
             modelBuilder.Entity<User>()
                 .HasIndex(u => u.Username)
                 .IsUnique();
-
         }
     }
 }

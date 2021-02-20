@@ -11,9 +11,9 @@ namespace MiniTwitApi.Server.Repositories
 {
     public class MessageRepository : IMessageRepository 
     {
-        private Context _context { get; }
+        private IContext _context { get; }
 
-        public MessageRepository(Context context) 
+        public MessageRepository(IContext context) 
         {
             _context = context;
         }
@@ -29,7 +29,7 @@ namespace MiniTwitApi.Server.Repositories
                 Flagged = message.Flagged
             };
 
-            var id = await _context.AddAsync(m);
+            var id = await _context.Messages.AddAsync(m);
             await _context.SaveChangesAsync();
         }
 
@@ -53,14 +53,18 @@ namespace MiniTwitApi.Server.Repositories
 
         /**
         /* Add support for limit
+        /* Sometimes works, sometimes doesn't. wth.
         */
-        public async Task<ICollection<MessageDTO>> ReadAllAsync(string username, int limit = 20)
+        public async Task<ICollection<MessageDTO>> ReadAllUserAsync(string username, int limit = 20)
         {
+            Console.WriteLine($"This is the username: {username}");
             var userRepository = new UserRepository(_context);
-            var userid = userRepository.ReadAsync(username).Id;
+            var user = userRepository.ReadAsync(username);
+            if(user is null) 
+                throw new ArgumentException("Provided username does not exist");
 
             return await (from m in _context.Messages
-                where m.AuthorId == userid
+                where m.AuthorId == user.Id
                 select new MessageDTO()
                 {
                     Id = m.MessageId,

@@ -6,6 +6,7 @@ using MiniTwitApi.Server.Repositories;
 using MiniTwitApi.Shared;
 using MiniTwitApi.Shared.Models;
 using MiniTwitApi.Shared.Repositories;
+using MiniTwitApi.Server.Repositories.Abstract;
 
 namespace MiniTwitApi.Server.Controllers
 {
@@ -13,10 +14,10 @@ namespace MiniTwitApi.Server.Controllers
     [Route("/api")]
     public class MessageController : ControllerBase
     {
-        private readonly MessageRepository _messagesRepository;
-        private readonly UserRepository _userRepository;
+        private readonly IMessageRepository _messagesRepository;
+        private readonly IUserRepository _userRepository;
 
-        public MessageController(MessageRepository messagesRepository, UserRepository userRepository)
+        public MessageController(IMessageRepository messagesRepository, IUserRepository userRepository)
         {
             _messagesRepository = messagesRepository;
             _userRepository = userRepository;
@@ -39,8 +40,11 @@ namespace MiniTwitApi.Server.Controllers
         public async Task<ActionResult<IEnumerable<MessageDTO>>> GetMsgsByUsername(string username, [FromQuery] int no, [FromQuery] int latest)
         {
             //Query messages by username
-            var messages = await _messagesRepository.ReadAllAsync(username, no);
-            
+            var messages = await _messagesRepository.ReadAllUserAsync(username, no);
+            foreach(var message in messages)
+            {
+               Console.WriteLine(message.Text); 
+            }
             // Update latest counter for simulator tests
             DeleteMe.Latest = latest;
             

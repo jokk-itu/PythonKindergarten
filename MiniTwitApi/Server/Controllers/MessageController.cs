@@ -11,7 +11,7 @@ using MiniTwitApi.Server.Repositories.Abstract;
 namespace MiniTwitApi.Server.Controllers
 {
     [ApiController]
-    [Route("/api")]
+    [Route("")]
     public class MessageController : ControllerBase
     {
         private readonly IMessageRepository _messagesRepository;

@@ -8,7 +8,7 @@ using MiniTwitApi.Server.Repositories.Abstract;
 namespace MiniTwitApi.Server.Controllers
 {
     [ApiController]
-    [Route("/user")]
+    [Route("")]
     public class UserController : ControllerBase
     {
         private readonly IUserRepository _repository;

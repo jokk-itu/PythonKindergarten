@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using MiniTwitApi.Shared;
 using MiniTwitApi.Shared.Models;
 using MiniTwitApi.Shared.Repositories;
@@ -12,7 +10,7 @@ using MiniTwitApi.Shared.Repositories.Abstractions;
 namespace MiniTwitApi.Server.Controllers
 {
     [ApiController]
-    [Route("")]
+    [Route("/old")]
     public class MiniTwitController : ControllerBase
     {
         private readonly IMiniTwitRepository _database;
@@ -26,7 +24,7 @@ namespace MiniTwitApi.Server.Controllers
         public async Task<ActionResult<GetLatestResponse>> GetLatest([FromQuery] int latest)
             => Ok(new GetLatestResponse(DeleteMe.Latest));
 
-
+        //DONE
         [HttpPost("register")]
         public async Task<ActionResult> PostRegister([FromBody] UserDTO user, [FromQuery] int latest)
         {
@@ -83,7 +81,8 @@ namespace MiniTwitApi.Server.Controllers
             
             return Ok();
         }
-
+        
+        //DONE
         [HttpGet("fllws/{username}")]
         public async Task<ActionResult<IList<FollowerDTO>>> GetFollowsByUsername(string username, [FromQuery] int latest)
         {
@@ -94,7 +93,17 @@ namespace MiniTwitApi.Server.Controllers
             
             return Ok(follows);
         }
-
+        
+        //DONE
+        [HttpGet("user/{userid}")]
+        public async Task<ActionResult<UserDTO>> GetUserByUserId(int userid, [FromQuery] int latest)
+        {
+            var user = await _database.QueryUserByIdAsync(userid);
+            
+            return user;
+        }
+        
+        //DONE
         [HttpPost("fllws/{username}")]
         public async Task<ActionResult> PostFollowsByUsername(string username, [FromBody] Follow follow, [FromQuery] int latest)
         {
@@ -125,11 +134,3 @@ namespace MiniTwitApi.Server.Controllers
         }
     }
 }
-
-/** ENDPOINTS
-* /latest    GET 
-* /register  POST {'username': username, 'email': email, 'pwd': pwd} params ?latest=1
-* /msgs  GET ?no=20&latest=3
-* /msgs/{username}   GET ?no=20?latest=3, POST{'content' : content} ?latest=2
-* /fllws/{username}     GET ?no=20&latest=9, POST {'follow': 'b'} | {'unfollow': 'b'} params ?latest=1
-*/

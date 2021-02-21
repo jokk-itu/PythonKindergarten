@@ -9,7 +9,7 @@ using MiniTwitApi.Server.Repositories.Abstract;
 namespace MiniTwitApi.Server.Controllers
 {
     [ApiController]
-    [Route("/api")]
+    [Route("")]
     public class FollowController : ControllerBase
     {
         private readonly IFollowerRepository _followerRepository;

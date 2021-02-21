@@ -10,7 +10,7 @@ using MiniTwitApi.Shared.Repositories.Abstractions;
 namespace MiniTwitApi.Server.Controllers
 {
     [ApiController]
-    [Route("")]
+    [Route("/old")]
     public class MiniTwitController : ControllerBase
     {
         private readonly IMiniTwitRepository _database;

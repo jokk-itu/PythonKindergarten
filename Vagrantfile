@@ -35,11 +35,17 @@ Vagrant.configure("2") do |config|
 
         sudo apt-get update
         sudo apt-get install -y apt-transport-https
+        sudo apt-get install -y dotnet-sdk-5.0
         sudo apt-get install -y aspnetcore-runtime-5.0
+        dotnet dev-certs https
         
         cp -r /vagrant/* $HOME
+        echo "ls"
         ls
-        sudo nohup ./MiniTwitApi > out.log &
+        cd vagrant
+        echo "ls"
+        ls
+        sudo nohup ./MiniTwitApi.Server > out.log &
         echo "================================================================="
         echo "=                            DONE                               ="
         echo "================================================================="

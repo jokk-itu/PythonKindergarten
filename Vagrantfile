@@ -12,7 +12,7 @@ Vagrant.configure("2") do |config|
     config.vm.box = 'digital_ocean'
     config.vm.box_url = "https://github.com/devopsgroup-io/vagrant-digitalocean/raw/master/box/digital_ocean.box"
     config.ssh.private_key_path = '~/.ssh/id_rsa'
-    config.vm.synced_folder ".", "/vagrant", type: "rsync"
+    #config.vm.synced_folder ".", "/vagrant", type: "rsync"
 
     config.vm.define "kindergartenserver", primary: false do |server|
   
@@ -38,20 +38,18 @@ Vagrant.configure("2") do |config|
         sudo apt-get install -y dotnet-sdk-5.0
         sudo apt-get install -y aspnetcore-runtime-5.0
         dotnet dev-certs https
+        sudo apt-get install git
+
+        git clone https://github.com/jokk-itu/PythonKindergarten.git
+        cd PythonKindergarten/MiniTwitApi/Server
         
-        cp -r /vagrant/* $HOME
-        echo "ls"
-        ls
-        cd vagrant
-        echo "ls"
-        ls
-        sudo nohup ./MiniTwitApi.Server > out.log &
+        sudo nohup dotnet run > out.log &
         echo "================================================================="
         echo "=                            DONE                               ="
         echo "================================================================="
         echo "Navigate in your browser to:"
         THIS_IP=`hostname -I | cut -d" " -f1`
-        echo "http://${THIS_IP}:5000"
+        echo "https://${THIS_IP}:5001"
       SHELL
     end
     

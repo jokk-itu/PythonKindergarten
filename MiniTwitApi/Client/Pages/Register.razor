@@ -15,7 +15,7 @@
     <div class="error"><strong>Error:</strong> @ErrorMessage</div>
 }
 
-<EditForm EditContext="EditContext" OnValidSubmit="@CreateNewProfile">
+<EditForm EditContext="@EditContext" OnValidSubmit="@CreateNewProfile">
     <DataAnnotationsValidator />
     <ValidationSummary />
     <p>
@@ -66,7 +66,6 @@
             var response = await httpClient.PostAsync($"/register", data);
             var result = response.Content.ReadAsStringAsync().Result;
             Console.WriteLine(result);
-            Console.WriteLine("User created");
         }
         catch (Exception e)
         {

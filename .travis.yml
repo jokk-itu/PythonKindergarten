@@ -6,7 +6,7 @@ python:
   - 3.7
 
 services:
-  - docker  # required, but travis uses older version of docker :(
+  - docker  # required, but travis uses older version of docker  :)
 
 before_install:
   # Decrypt the git_deploy_key.enc key into /tmp/git_deploy_key

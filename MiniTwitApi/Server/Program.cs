@@ -21,7 +21,7 @@ namespace MiniTwitApi.Server
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                    webBuilder.UseUrls(new string[]{ "http://localhost:5001", "https://localhost:5000"});
+                    webBuilder.UseUrls(new string[]{ "http://+:5001", "https://+:5000"});
                 });
     }
 }

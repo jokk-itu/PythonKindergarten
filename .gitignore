@@ -62,3 +62,15 @@ vagrant/
 # Visual Studio 2015
 .vs/
 ssh_keys/do_ssh_key
+.vagrant/machines/minitwitdocker/digital_ocean/vagrant_cwd
+.vagrant/machines/minitwitdocker/digital_ocean/action_provision
+.vagrant/machines/minitwitdocker/digital_ocean/id
+.vagrant/machines/minitwitdocker/digital_ocean/index_uuid
+.vagrant/machines/minitwitdocker/digital_ocean/id
+.vagrant/machines/minitwitdocker/digital_ocean/synced_folders
+.vagrant/machines/minitwitdocker/digital_ocean/id
+.vagrant/machines/minitwitdocker/digital_ocean/index_uuid
+.vagrant/machines/minitwitdocker/digital_ocean/id
+.vagrant/machines/minitwitdocker/digital_ocean/index_uuid
+.vagrant/machines/minitwitdocker/digital_ocean/id
+.vagrant/machines/minitwitdocker/digital_ocean/index_uuid

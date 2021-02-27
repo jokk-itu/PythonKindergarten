@@ -8,53 +8,44 @@
 
 $ip_file = "db_ip.txt"
 
-Vagrant.configure("2") do |config|
+  Vagrant.configure("2") do |config|
     config.vm.box = 'digital_ocean'
     config.vm.box_url = "https://github.com/devopsgroup-io/vagrant-digitalocean/raw/master/box/digital_ocean.box"
-    config.ssh.private_key_path = '~/.ssh/id_rsa'
-    #config.vm.synced_folder ".", "/vagrant", type: "rsync"
-
-    config.vm.define "kindergartenserver", primary: false do |server|
+    config.ssh.private_key_path = 'ssh_keys/do_ssh_key'
+  
+    config.vm.synced_folder "remote_files", "/vagrant", type: "rsync"
+    
+    config.vm.define "minitwitdocker", primary: true do |server|
   
       server.vm.provider :digital_ocean do |provider|
-        provider.ssh_key_name = ENV["SSH_KEY_NAME"]
+        provider.ssh_key_name = "do_ssh_key"
         provider.token = ENV["DIGITAL_OCEAN_TOKEN"]
-        provider.image = 'ubuntu-18-04-x64'
-        provider.region = 'fra1'
+        provider.image = 'docker-18-04'
+        provider.region = 'lon1'
         provider.size = 's-1vcpu-1gb'
-        provider.privatenetworking = true
+        provider.privatenetworking = false
       end
-
-      server.vm.hostname = "pythonkindergarten"
-
+  
+      server.vm.hostname = "minitwit-ci-server"
       server.vm.provision "shell", inline: <<-SHELL
-
-        echo "Installing .NET 5.0"
-        wget https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
-        sudo dpkg -i packages-microsoft-prod.deb
-
-        sudo apt-get update
-        sudo apt-get install -y apt-transport-https
-        sudo apt-get install -y dotnet-sdk-5.0
-        sudo apt-get install -y aspnetcore-runtime-5.0
-        dotnet dev-certs https
-        sudo apt-get install git
-
-        git clone https://github.com/jokk-itu/PythonKindergarten.git
-        cd PythonKindergarten/MiniTwitApi/Server
-        
-        sudo nohup dotnet run > out.log &
-        echo "================================================================="
-        echo "=                            DONE                               ="
-        echo "================================================================="
-        echo "Navigate in your browser to:"
-        THIS_IP=`hostname -I | cut -d" " -f1`
-        echo "https://${THIS_IP}:5001"
+  
+      echo -e "\nVerifying that docker works ...\n"
+      docker run --rm hello-world
+      docker rmi hello-world
+  
+      echo -e "\nOpening port for minitwit ...\n"
+      ufw allow 5000
+  
+      echo -e "\nOpening port for minitwit ...\n"
+      echo ". $HOME/.bashrc" >> $HOME/.bash_profile
+  
+      echo -e "\nConfiguring credentials as environment variables...\n"
+      echo "export DOCKER_USERNAME='${ENV["DOCKER_USERNAME"]}'" >> $HOME/.bash_profile
+      echo "export DOCKER_PASSWORD='${ENV["DOCKER_PASSWORD"]}'" >> $HOME/.bash_profile
+      source $HOME/.bash_profile
+  
+      echo -e "\nVagrant setup done ..."
+      echo -e "minitwit will later be accessible at http://$(hostname -I | awk '{print $1}'):5000"
       SHELL
     end
-    
-    config.vm.provision "shell", privileged: false, inline: <<-SHELL
-      sudo apt-get update
-    SHELL
-
   end

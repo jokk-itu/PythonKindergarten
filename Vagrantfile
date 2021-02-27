@@ -21,7 +21,7 @@ $ip_file = "db_ip.txt"
         provider.ssh_key_name = "do_ssh_key"
         provider.token = ENV["DIGITAL_OCEAN_TOKEN"]
         provider.image = 'docker-18-04'
-        provider.region = 'fra1'
+        provider.region = 'lon1'
         provider.size = 's-1vcpu-1gb'
         provider.privatenetworking = false
       end

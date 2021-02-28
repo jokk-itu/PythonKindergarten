@@ -5,7 +5,7 @@ networks:
 
 services:
 
-  minitwitimage:
+  pythonkindergarten:
     image: ${DOCKER_USERNAME}/pythonkindergartenimage
     container_name: pythonkindergarten
     networks:

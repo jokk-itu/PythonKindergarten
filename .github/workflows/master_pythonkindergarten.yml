@@ -22,10 +22,10 @@ jobs:
         dotnet-version: '5.0.x'
 
     - name: Build with dotnet
-      run: dotnet build --configuration Release
+      run: dotnet build --configuration Release ./MiniTwitApi
 
     - name: dotnet publish
-      run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
+      run: dotnet publish ./MiniTwitApi -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v2

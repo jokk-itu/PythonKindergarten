@@ -33,15 +33,16 @@ stages:
   displayName: Release stage
 
   jobs:
-  - job: Release
-    displayName: Release to Azure
+  - job: Publish
+    displayName: Publishing Artifacts
 
     pool:
       vmImage: $(vmImageName)
 
-    steps:
+    steps:    
     - task: DotNetCoreCLI@2
-      displayName: Publish the project
       inputs:
         command: 'publish'
         publishWebProjects: true
+        workingDirectory: '$(System.DefaultWorkingDirectory)/MiniTwitApi'
+        

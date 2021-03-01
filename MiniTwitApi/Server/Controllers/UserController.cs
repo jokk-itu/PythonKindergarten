@@ -1,4 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿using System.Text;
+using System.Buffers.Text;
+using System;
+using System.Reflection.Metadata;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MiniTwitApi.Server.Repositories;
 using MiniTwitApi.Shared;
@@ -29,7 +33,20 @@ namespace MiniTwitApi.Server.Controllers
         {
             //checks if the user exists
             if(await _repository.UserExistsAsync(user.Username))
-                BadRequest("User already exists with given username");
+                return BadRequest("User already exists with given username");
+
+            // Check if username is provided
+            if(string.IsNullOrEmpty(user.Username))
+                return BadRequest("You have to enter a username");
+
+            // Check if password is provided
+            if(string.IsNullOrEmpty(user.Password))
+                return BadRequest("You have to enter a password");
+                
+            //Check if email is provided
+            if(string.IsNullOrEmpty(user.Email) || !user.Email.Contains("@"))
+                return BadRequest("You have to enter a valid email address");
+            
             
             //insert the user
             await _repository.CreateAsync(user);

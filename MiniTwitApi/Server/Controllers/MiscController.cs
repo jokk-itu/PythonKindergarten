@@ -11,12 +11,9 @@ namespace MiniTwitApi.Server.Controllers
     [Route("")]
     public class MiscController : ControllerBase
     {
-        
-
         public MiscController()
         {
-        }
-        
+        }       
         
         [HttpGet("latest")]
         public async Task<ActionResult<GetLatestResponse>> GetLatest()

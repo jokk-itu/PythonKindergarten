@@ -33,7 +33,7 @@ namespace MiniTwitApi.Server
             services.AddControllersWithViews();
             services.AddRazorPages();
             services.AddSingleton<IMiniTwitRepository, MiniTwitRepository>();
-            services.AddSingleton<IContext, Context>();
+            services.AddScoped<IContext, Context>();
             services.AddSingleton<IUserRepository, UserRepository>();
             services.AddSingleton<IFollowerRepository, FollowerRepository>();
             services.AddSingleton<IMessageRepository, MessageRepository>();

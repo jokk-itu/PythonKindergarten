@@ -1,54 +1,28 @@
 trigger:
-  branches:
-    include:
-    - master
-  paths:
-    exclude:
-    - azure-pipelines.yml
+- master
+
+pool:
+  vmImage: 'ubuntu:latest'
 
 variables:
   buildConfiguration: 'Release'
-  vmImageName: 'ubuntu-latest'
 
-stages:
-- stage: Build
-  displayName: Build stage
+steps:
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    arguments: '--configuration $(buildConfiguration)'
+  displayName: 'dotnet build $(buildConfiguration)'
 
-  jobs:
-  - job: Build
-    displayName: Build
+- task: DotNetCoreCLI@2
+  inputs:
+    command: publish
+    publishWebProjects: True
+    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+    zipAfterPublish: True
 
-    pool:
-      vmImage: $(vmImageName)
-
-    steps:
-    - task: DotNetCoreCLI@2
-      displayName: Build Server
-      inputs:
-        command: 'build'
-        projects: '**/MiniTwitApi.Server.csproj'
-
-
-- stage: Release
-  displayName: Release stage
-
-  jobs:
-  - job: Publish
-    displayName: Publishing Artifacts
-
-    pool:
-      vmImage: $(vmImageName)
-
-    steps:    
-    - task: DotNetCoreCLI@2
-      inputs:
-        command: 'publish'
-        publishWebProjects: true
-    
-    - task: AzureRmWebAppDeployment@4
-      inputs:
-        ConnectionType: 'AzureRM'
-        azureSubscription: 'Azure til studerende (a52df485-da39-47f1-beac-ac42b035fcba)'
-        appType: 'webApp'
-        WebAppName: 'PythonKindergarten'
-        packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+# this code takes all the files in $(Build.ArtifactStagingDirectory) and uploads them as an artifact of your build.
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
+    artifactName: 'PythonKindergarten'

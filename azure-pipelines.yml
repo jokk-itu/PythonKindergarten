@@ -44,5 +44,11 @@ stages:
       inputs:
         command: 'publish'
         publishWebProjects: true
-        workingDirectory: '$(System.DefaultWorkingDirectory)/MiniTwitApi'
-        
+    
+    - task: AzureRmWebAppDeployment@4
+      inputs:
+        ConnectionType: 'AzureRM'
+        azureSubscription: 'Azure til studerende (a52df485-da39-47f1-beac-ac42b035fcba)'
+        appType: 'webApp'
+        WebAppName: 'PythonKindergarten'
+        packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'

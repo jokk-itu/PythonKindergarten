@@ -55,6 +55,9 @@ namespace MiniTwitApi.Server.Controllers
         [HttpPost("msgs/{username}")]
         public async Task<ActionResult> PostMessageByUsername(string username, [FromBody] MessageToPost message, [FromQuery] int latest)
         {
+            if(!await _repository.UserExistsAsync(username))
+                return NotFound();
+            
             //TODO check message for profanity, then flag it if it is true
             var actionUser = await _userRepository.ReadAsync(username);
             await _messagesRepository.CreateAsync(new MessageDTO

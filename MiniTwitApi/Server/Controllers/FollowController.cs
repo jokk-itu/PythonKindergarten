@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Xml.Xsl.Runtime;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MiniTwitApi.Server.Repositories;
@@ -35,6 +36,9 @@ namespace MiniTwitApi.Server.Controllers
         [HttpPost("fllws/{username}")]
         public async Task<ActionResult> PostFollowsByUsername(string username, [FromBody] Follow follow, [FromQuery] int latest)
         {
+            if(!await _repository.UserExistsAsync(username))
+                return NotFound();
+
             // Find the user executing the action
             var actionUser = await _userRepository.ReadAsync(username);
             var targetUser = await _userRepository.ReadAsync(follow.ToFollow ?? follow.ToUnfollow);

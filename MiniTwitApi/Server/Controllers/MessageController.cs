@@ -39,6 +39,9 @@ namespace MiniTwitApi.Server.Controllers
         [HttpGet("msgs/{username}")]
         public async Task<ActionResult<IEnumerable<MessageDTO>>> GetMsgsByUsername(string username, [FromQuery] int no, [FromQuery] int latest)
         {
+            if(!await _userRepository.UserExistsAsync(username))
+                return NotFound();
+
             //Query messages by username
             var messages = await _messagesRepository.ReadAllUserAsync(username, no);
             foreach(var message in messages)
@@ -55,8 +58,13 @@ namespace MiniTwitApi.Server.Controllers
         [HttpPost("msgs/{username}")]
         public async Task<ActionResult> PostMessageByUsername(string username, [FromBody] MessageToPost message, [FromQuery] int latest)
         {
-            if(!await _repository.UserExistsAsync(username))
+
+            if(!await _userRepository.UserExistsAsync(username))
                 return NotFound();
+
+            if(string.IsNullOrEmpty(message.Content))
+                return BadRequest("You have to enter content");
+
             
             //TODO check message for profanity, then flag it if it is true
             var actionUser = await _userRepository.ReadAsync(username);

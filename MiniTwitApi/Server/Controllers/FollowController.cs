@@ -1,8 +1,6 @@
-﻿using System.Xml.Xsl.Runtime;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using MiniTwitApi.Server.Repositories;
 using MiniTwitApi.Shared;
 using MiniTwitApi.Shared.Models;
 using MiniTwitApi.Server.Repositories.Abstract;
@@ -25,6 +23,9 @@ namespace MiniTwitApi.Server.Controllers
         [HttpGet("fllws/{username}")]
         public async Task<ActionResult<IList<FollowerDTO>>> GetFollowsByUsername(string username, [FromQuery] int latest)
         {
+            if(!await _userRepository.UserExistsAsync(username))
+                return NotFound();
+
             // Query follows from database by username
             var follows = await _followerRepository.ReadAllAsync(username);
 
@@ -36,8 +37,14 @@ namespace MiniTwitApi.Server.Controllers
         [HttpPost("fllws/{username}")]
         public async Task<ActionResult> PostFollowsByUsername(string username, [FromBody] Follow follow, [FromQuery] int latest)
         {
-            if(!await _repository.UserExistsAsync(username))
+            if(!await _userRepository.UserExistsAsync(username))
                 return NotFound();
+
+            if(string.IsNullOrEmpty(follow.ToFollow))
+                return BadRequest("You have to enter how to follow");
+
+            if(string.IsNullOrEmpty(follow.ToUnfollow))
+                return BadRequest("You have to enter how to unfollow");
 
             // Find the user executing the action
             var actionUser = await _userRepository.ReadAsync(username);

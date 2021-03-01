@@ -51,4 +51,4 @@ stages:
         azureSubscription: 'Azure til studerende (a52df485-da39-47f1-beac-ac42b035fcba)'
         appType: 'webApp'
         WebAppName: 'PythonKindergarten'
-        packageForLinux: '$(System.DefaultWorkingDirectory)/**/Client.zip'
+        packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'

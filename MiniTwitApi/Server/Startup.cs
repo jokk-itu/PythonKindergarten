@@ -34,9 +34,9 @@ namespace MiniTwitApi.Server
             services.AddRazorPages();
             services.AddSingleton<IMiniTwitRepository, MiniTwitRepository>();
             services.AddScoped<IContext, Context>();
-            services.AddSingleton<IUserRepository, UserRepository>();
-            services.AddSingleton<IFollowerRepository, FollowerRepository>();
-            services.AddSingleton<IMessageRepository, MessageRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IFollowerRepository, FollowerRepository>();
+            services.AddScoped<IMessageRepository, MessageRepository>();
             services.AddSwaggerGen();
 
             if(!DeleteMe.TestRun)

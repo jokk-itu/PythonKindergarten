@@ -11,7 +11,7 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
-    arguments: '--configuration $(buildConfiguration) ./MiniTwitApi/Server'
+    arguments: '--configuration $(buildConfiguration)'
     projects: '**/MiniTwitApi.Server.csproj'
   displayName: 'dotnet build $(buildConfiguration)'
 

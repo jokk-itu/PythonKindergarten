@@ -2,6 +2,7 @@ Vagrant.configure("2") do |config|
   config.ssh.private_key_path = 'ssh_keys/do_ssh_key'
   config.vm.box = 'digital_ocean' 
   config.vm.box_url = "https://github.com/devopsgroup-io/vagrant-digitalocean/raw/master/box/digital_ocean.box"
+  config.vm.synced_folder "remote_files", "/vagrant", type: "rsync"
 
   config.vm.define "production" do |production|
     config.vm.provider :digital_ocean do |provider|
@@ -25,8 +26,15 @@ Vagrant.configure("2") do |config|
       echo "Reloading firewall"
       sudo ufw reload
 
-      echo "Installing Docker from snap"
-      sudo snap install docker
+      echo "Installing Docker"
+      curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+      sudo add-apt-repository \
+      "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+      $(lsb_release -cs) \
+      stable"
+      sudo apt-get update
+      yes | sudo apt install docker-ce docker-ce-cli containerd.io
+      yes | sudo apt install docker-compose
 
       echo "+---------------------------------------------------------------+"
       echo "|         Finally DONE and ready for Travis Delployment         |"

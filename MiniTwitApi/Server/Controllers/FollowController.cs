@@ -26,9 +26,7 @@ namespace MiniTwitApi.Server.Controllers
         {
             // Query follows from database by username
             var follows = await _followerRepository.ReadAllAsync(username);
-
-            DeleteMe.Latest = latest;
-            
+            Latest.GetInstance().Update(latest);
             return Ok(follows);
         }
         
@@ -60,7 +58,7 @@ namespace MiniTwitApi.Server.Controllers
                 });
             }
 
-            DeleteMe.Latest = latest;
+            Latest.GetInstance().Update(latest);
             return Ok();
         }
     }

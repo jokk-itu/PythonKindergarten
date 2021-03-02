@@ -31,7 +31,7 @@ namespace MiniTwitApi.Server.Controllers
             var messages = await _messagesRepository.ReadAllAsync(no);
 
             // Update latest counter for simulator tests
-            DeleteMe.Latest = latest;
+            Latest.GetInstance().Update(latest);
             // Return messages
             return Ok(messages);
         }
@@ -46,7 +46,7 @@ namespace MiniTwitApi.Server.Controllers
                Console.WriteLine(message.Text); 
             }
             // Update latest counter for simulator tests
-            DeleteMe.Latest = latest;
+            Latest.GetInstance().Update(latest);
             
             // Return messages
             return Ok(messages);
@@ -66,7 +66,7 @@ namespace MiniTwitApi.Server.Controllers
                 Flagged = 0 // Flag if profanity is detected
             });
 
-            DeleteMe.Latest = latest;
+            Latest.GetInstance().Update(latest);
             
             return Ok();
         }

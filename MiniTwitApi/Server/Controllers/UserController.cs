@@ -1,7 +1,5 @@
-﻿using System.Reflection.Emit;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using MiniTwitApi.Server.Repositories;
 using MiniTwitApi.Shared;
 using MiniTwitApi.Shared.Models;
 using MiniTwitApi.Server.Repositories.Abstract;
@@ -32,7 +30,7 @@ namespace MiniTwitApi.Server.Controllers
             if(BCrypt.CheckPassword(user.Password, userFromDatabase.Password))
                 return BadRequest("Provided password is wrong");
 
-            DeleteMe.Latest = latest;
+            Latest.GetInstance().Update(latest);
             return Ok();
         }
         
@@ -41,11 +39,11 @@ namespace MiniTwitApi.Server.Controllers
         {
             //checks if the user exists
             if(await _repository.UserExistsAsync(user.Username))
-                BadRequest("User already exists with given username");
+                return BadRequest("User already exists with given username");
             
             //insert the user
             await _repository.CreateAsync(user);
-            DeleteMe.Latest = latest;
+            Latest.GetInstance().Update(latest);
             return Ok();
         }
         
@@ -53,7 +51,7 @@ namespace MiniTwitApi.Server.Controllers
         public async Task<ActionResult<UserDTO>> GetUserByUserId(int userid, [FromQuery] int latest)
         {
             var user = await _repository.ReadAsync(userid);
-            
+            Latest.GetInstance().Update(latest);
             return user;
         }
     }

@@ -15,6 +15,7 @@ using MiniTwitApi.Server.Repositories.Abstract;
 using MiniTwitApi.Server.Repositories;
 using MiniTwitApi.Shared;
 using System.IO;
+using LettuceEncrypt;
 
 namespace MiniTwitApi.Server
 {

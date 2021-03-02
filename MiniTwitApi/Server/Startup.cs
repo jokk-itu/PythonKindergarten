@@ -1,3 +1,4 @@
+using System.Dynamic;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Hosting;
@@ -12,6 +13,7 @@ using MiniTwitApi.Shared.Repositories.Abstractions;
 using MiniTwitApi.Shared.Repositories;
 using MiniTwitApi.Server.Repositories.Abstract;
 using MiniTwitApi.Server.Repositories;
+using MiniTwitApi.Shared;
 
 namespace MiniTwitApi.Server
 {
@@ -31,11 +33,14 @@ namespace MiniTwitApi.Server
             services.AddControllersWithViews();
             services.AddRazorPages();
             services.AddSingleton<IMiniTwitRepository, MiniTwitRepository>();
-            services.AddSingleton<IContext, Context>();
-            services.AddSingleton<IUserRepository, UserRepository>();
-            services.AddSingleton<IFollowerRepository, FollowerRepository>();
-            services.AddSingleton<IMessageRepository, MessageRepository>();
+            services.AddScoped<IContext, Context>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IFollowerRepository, FollowerRepository>();
+            services.AddScoped<IMessageRepository, MessageRepository>();
             services.AddSwaggerGen();
+
+            if(!DeleteMe.TestRun)
+                services.AddLettuceEncrypt();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

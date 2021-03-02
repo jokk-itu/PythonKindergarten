@@ -17,25 +17,25 @@
     <div class="error"><strong>Error:</strong> @ErrorMessage</div>
 }
 
-<EditForm EditContext="EditContext" OnValidSubmit="@CreateNewProfile">
+<EditForm Model="@createUserDTO" OnValidSubmit="@CreateNewProfile">
     <DataAnnotationsValidator />
     <ValidationSummary />
     <p>
         <label>
             Username:
-            <InputText @bind-Value="_dto.Username" />
+            <InputText @bind-Value="createUserDTO.Username" />
         </label>
     </p>
     <p>
         <label>
             E-mail:
-            <InputText @bind-Value="_dto.Email" />
+            <InputText @bind-Value="createUserDTO.Email" />
         </label>
     </p>
     <p>
         <label>
             Password:
-            <InputText @bind-Value="_dto.Password" />
+            <InputText @bind-Value="createUserDTO.Password" />
         </label>
     </p>
     @*<div class="form-group">
@@ -46,20 +46,17 @@
 </EditForm>
 
 @code{
-    private UserDTO _dto;
     private bool ErrorRaised = false;
     private string ErrorMessage;
-    public EditContext EditContext;
+    public CreateUserDTO createUserDTO = new CreateUserDTO();
 
     protected override void OnInitialized()
     {
-        _dto = new UserDTO();
-        EditContext = new EditContext(_dto);
     }
     
-    private async Task CreateNewProfile(EditContext editContext)
+    private async Task CreateNewProfile()
     {
-        var json = JsonConvert.SerializeObject(editContext);
+        var json = JsonConvert.SerializeObject(createUserDTO);
         var data = new StringContent(json, Encoding.UTF8, "application/json");
         
         try
@@ -67,7 +64,6 @@
             var response = await httpClient.PostAsync($"/register", data);
             var result = response.Content.ReadAsStringAsync().Result;
             Console.WriteLine(result);
-            Console.WriteLine("User created");
         }
         catch (Exception e)
         {

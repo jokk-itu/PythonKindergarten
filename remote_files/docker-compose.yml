@@ -6,9 +6,10 @@ networks:
 services:
 
   minitwitimage:
-    image: ${DOCKER_USERNAME}/pythonkindergartenimage
+    image: victornor/pythonkindergartenimage
     container_name: pythonkindergarten
     networks:
       - main
     ports:
-        - '5000:5000'
+        - '80:80'
+        - '443:443'

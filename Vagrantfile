@@ -7,7 +7,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "production" do |production|
     config.vm.provider :digital_ocean do |provider|
       provider.ssh_key_name = 'do_ssh_key'
-      provider.token = ENV["DIGITAL_OCEAN_TOKEN"]
+      provider.token = ENV["PYTHON_KINDERGARTEN_DO_TOKEN"]
       provider.region = 'fra1'
       provider.image = 'ubuntu-18-04-x64'
       provider.size = 's-1vcpu-1gb'

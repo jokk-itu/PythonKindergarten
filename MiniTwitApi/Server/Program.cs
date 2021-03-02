@@ -1,4 +1,4 @@
-﻿using System.Data.SqlTypes;
+using System.Data.SqlTypes;
 using System.Diagnostics;
 using System.Dynamic;
 using System.ComponentModel;

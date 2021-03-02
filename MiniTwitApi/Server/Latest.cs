@@ -13,7 +13,7 @@ namespace MiniTwitApi.Server
             {
                 using var writer = new StreamWriter("latest.txt"); 
                 writer.WriteLineAsync($"{latest}");
-                writer.FlushAsync();
+                writer.Close();
             }
         }
 
@@ -22,7 +22,9 @@ namespace MiniTwitApi.Server
             lock (_fileLock)
             {
                 using var reader = new StreamReader("latest.txt");
-                return int.Parse(reader.ReadLine());
+                var latest = int.Parse(reader.ReadLine());
+                reader.Close();
+                return latest;
             }
         }
 

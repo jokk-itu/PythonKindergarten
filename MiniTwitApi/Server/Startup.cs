@@ -14,6 +14,7 @@ using MiniTwitApi.Shared.Repositories;
 using MiniTwitApi.Server.Repositories.Abstract;
 using MiniTwitApi.Server.Repositories;
 using MiniTwitApi.Shared;
+using System.IO;
 
 namespace MiniTwitApi.Server
 {
@@ -40,7 +41,7 @@ namespace MiniTwitApi.Server
             services.AddSwaggerGen();
 
             if(!DeleteMe.TestRun)
-                services.AddLettuceEncrypt();
+                services.AddLettuceEncrypt().PersistDataToDirectory(new DirectoryInfo("/vagrant"), "Password123");
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

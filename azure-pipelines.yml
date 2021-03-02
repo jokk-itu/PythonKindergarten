@@ -12,7 +12,7 @@ steps:
   inputs:
     command: 'build'
     arguments: '--configuration $(buildConfiguration)'
-    projects: '**/MiniTwitApi.Server.csproj'
+    workingDirectory: 'MiniTwitApi/Server/'
   displayName: 'dotnet build $(buildConfiguration)'
 
 - task: DotNetCoreCLI@2
@@ -20,8 +20,9 @@ steps:
     command: publish
     publishWebProjects: true
     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
-    projects: 'MiniTwitApi/Server/MiniTwitApi.Server.csproj'
+    workingDirectory: 'MiniTwitApi/Server/'
     zipAfterPublish: True
+
 
 # this code takes all the files in $(Build.ArtifactStagingDirectory) and uploads them as an artifact of your build.
 - task: PublishBuildArtifacts@1

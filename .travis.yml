@@ -36,4 +36,4 @@ jobs:
       cd /vagrant && \
       docker-compose pull && \
       docker-compose up -d && \
-      docker pull $DOCKER_USERNAME/pythonkindergartenimage:latest"
+      docker pull $DOCKER_USERNAME/pythonkindergartenimage:latest

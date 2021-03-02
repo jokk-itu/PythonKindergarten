@@ -3,6 +3,7 @@
 @using Newtonsoft.Json;
 @using System;
 @using System.Net.Http;
+@using System.Net.Security
 @using System.Text;
 @using MiniTwitApi.Shared.Models;
 
@@ -11,7 +12,8 @@
 
 <h2>Register</h2>
 
-@if(ErrorRaised){
+@if(ErrorRaised)
+{
     <div class="error"><strong>Error:</strong> @ErrorMessage</div>
 }
 
@@ -53,7 +55,6 @@
     {
         _dto = new UserDTO();
         EditContext = new EditContext(_dto);
-
     }
     
     private async Task CreateNewProfile(EditContext editContext)

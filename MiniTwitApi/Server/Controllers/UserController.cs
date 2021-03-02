@@ -1,9 +1,11 @@
-﻿using System.Threading.Tasks;
+﻿using System.Reflection.Emit;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MiniTwitApi.Server.Repositories;
 using MiniTwitApi.Shared;
 using MiniTwitApi.Shared.Models;
 using MiniTwitApi.Server.Repositories.Abstract;
+using MiniTwitApi.Shared.Models.UserModels;
 
 namespace MiniTwitApi.Server.Controllers
 {
@@ -18,9 +20,19 @@ namespace MiniTwitApi.Server.Controllers
             _repository = repository;
         }
         
+        //TODO The bad requests gives away if the username exists. This is only used for debugging.
         [HttpPost("login")]
-        public async Task<ActionResult> GetLogin([FromBody] UserDTO user, [FromQuery] int latest)
+        public async Task<ActionResult> GetLogin([FromBody] LoginUserDTO user, [FromQuery] int latest)
         {
+            var userFromDatabase = await _repository.ReadAsync(user.Username);
+
+            if(userFromDatabase is null)
+                return BadRequest("User does not exist");
+            
+            if(BCrypt.CheckPassword(user.Password, userFromDatabase.Password))
+                return BadRequest("Provided password is wrong");
+
+            DeleteMe.Latest = latest;
             return Ok();
         }
         

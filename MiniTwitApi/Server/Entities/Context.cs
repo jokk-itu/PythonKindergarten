@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Org.BouncyCastle.Crypto.Engines;
 
 namespace MiniTwitApi.Server.Entities
 {
@@ -38,6 +39,22 @@ namespace MiniTwitApi.Server.Entities
             modelBuilder.Entity<User>()
                 .HasIndex(u => u.Username)
                 .IsUnique();
+
+            modelBuilder.Entity<Follower>()
+                .HasOne<User>(u => u.Who)
+                .WithMany(u => u.Followers);
         }
+        
+        private void Seed(ModelBuilder modelBuilder)
+        {
+            /*
+            modelBuilder.Entity<Message>()
+                .HasData(new Message()
+                {
+                    Text = "This is a Seed message",
+                    A
+                });*/
+        }
+        
     }
 }

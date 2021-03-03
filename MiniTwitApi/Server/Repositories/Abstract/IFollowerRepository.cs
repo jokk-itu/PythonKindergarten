@@ -8,7 +8,7 @@ namespace MiniTwitApi.Server.Repositories.Abstract
     public interface IFollowerRepository 
     {
         Task<ICollection<FollowerDTO>> ReadAllAsync(string username);
-        Task DeleteAsync(FollowerDTO follower);
+        Task<int> DeleteAsync(FollowerDTO follower);
         Task<int> CreateAsync(FollowerDTO follower);
         
     }

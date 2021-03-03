@@ -53,6 +53,7 @@ namespace MiniTwitApi.Server.Repositories
                 WhoId = follower.WhoId,
                 WhomId = follower.WhomId
             };
+            
             await _context.Followers.AddAsync(entity);
             await _context.SaveChangesAsync();
 

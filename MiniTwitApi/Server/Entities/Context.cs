@@ -40,9 +40,11 @@ namespace MiniTwitApi.Server.Entities
                 .HasIndex(u => u.Username)
                 .IsUnique();
 
+            //relate the followers in the Users table to the followers WhoUser.
             modelBuilder.Entity<Follower>()
                 .HasOne<User>(u => u.Who)
-                .WithMany(u => u.Followers);
+                .WithMany(u => u.Followers)
+                .OnDelete(DeleteBehavior.ClientCascade);
         }
         
         private void Seed(ModelBuilder modelBuilder)
@@ -53,7 +55,8 @@ namespace MiniTwitApi.Server.Entities
                 {
                     Text = "This is a Seed message",
                     A
-                });*/
+                });
+            */
         }
         
     }

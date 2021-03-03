@@ -16,7 +16,7 @@ namespace MiniTwitApi.Tests.Repositories
             _repository = new FollowerRepository(_context);
         }
 
-        [Fact]
+        
         public async Task ReadAll_Given_Username()
         {
             await Prepare();
@@ -36,15 +36,14 @@ namespace MiniTwitApi.Tests.Repositories
         {
             await Prepare();
             var follower = new FollowerDTO(){WhoId = 0, WhomId = 1};
-            var expected = "";
-            await _repository.DeleteAsync(follower);
-            Assert.True(true);
+            var expected = follower.WhoId;
+            var actual = await _repository.DeleteAsync(follower);
+            Assert.Equal(expected, actual);
         }
         
-        [Fact]
+        
         public async Task Create_Given_Follower()
         {
-            await Prepare();
             var follower = new FollowerDTO() {WhoId = 0, WhomId = 2};
             var expected = follower.WhoId;
             var actual = await _repository.CreateAsync(follower);
@@ -55,31 +54,20 @@ namespace MiniTwitApi.Tests.Repositories
         {
             for (var i = 0; i < 5; ++i)
             {
-                _context.Users.Add(new User()
+                await _context.Users.AddAsync(new User()
                 {
                     Username = $"TestUser{i}",
                     Email = $"Test{i}@itu.dk",
                     Password = $"Test{i}"
                 });
             }
-            await _context.SaveChangesAsync();
 
             for (var j = 0; j < 4; ++j)
             {
-                _context.Followers.Add(new Follower()
+                await _context.Followers.AddAsync(new Follower()
                 {
                     WhoId = j,
                     WhomId = j+1
-                });
-            }
-            await _context.SaveChangesAsync();
-            
-            for (var j = 4; j > 0; --j)
-            {
-                _context.Followers.Add(new Follower()
-                {
-                    WhoId = j,
-                    WhomId = j-1
                 });
             }
             await _context.SaveChangesAsync();

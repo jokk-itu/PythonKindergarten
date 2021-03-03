@@ -1,11 +1,9 @@
 @page "/timeline/{timelinetype}" 
-@page "/timeline/{timelinetype}/{username}" 
-@using System.Data.SQLite;
-@using System.Collections
-@using System.Text
-@using System.Security.Cryptography
+@page "/timeline/{timelinetype}/{username}"
 @using Newtonsoft.Json;
 @using MiniTwitApi.Shared.Models;
+@using System.Globalization
+@using System.Text
 
 @inject HttpClient httpClient
 
@@ -15,15 +13,15 @@ Timelinetype 2 = user_timeline
 Timelinetype 3 = My timeline / timeline
 *@
 
-@if(@TimelineType == "public")
+@if(@TimelineType.Contains("public"))
 {
     <h2>Public Timeline</h2>
 }
-else if(@TimelineType == "user_timeline")
+else if(@TimelineType.Contains("user_timeline"))
 {
     <h2>@Username's Timeline</h2>
 }
-else if(@TimelineType == "mytimeline")
+else if(@TimelineType.Contains("mytimeline"))
 {
     <h2>My timeline</h2>
 }
@@ -34,10 +32,10 @@ else if(@TimelineType == "mytimeline")
 
 @if(UserIsLoggedIn)
 {
-    @if(@TimelineType == "user_timeline")
+    @if(@TimelineType.Contains("user_timeline"))
     {
         <div class=followstatus>
-            @if(@CurrentUserId == @ProfileUserId) @*Should check if user has the same id as the user which has posted the post*@
+            @if(@CurrentLoggedInUser.Username == @Username)
             {
                 <p>This is you!</p>
             }
@@ -52,41 +50,35 @@ else if(@TimelineType == "mytimeline")
                 <a class=follow href="{{ url_for('follow_user', username=profile_user.username)}}">Follow user</a> @*Implement following user*@
             }
         </div>
-    }else if(@TimelineType == "myTimeline"){
+    }else if(@TimelineType.Contains("mytimeline")){
         <div class=twitbox>
-            <h3>What's on your mind @*The name of the user which is logged in*@?</h3>
-            <form action="@*To API*@" method=post>
-                <input type=text name=text size=60>res
-                <input type=submit value="Share">
-            </form>
+            <h3>What's on your mind @CurrentLoggedInUser.Username?</h3>
+            <EditForm Model="@PostDTO" OnValidSubmit="@PostMessage">
+                <DataAnnotationsValidator />
+                <ValidationSummary />
+                <InputText @bind-Value="PostDTO.Content" />
+                <button type="submit" class="btn btn-primary">Share</button>
+            </EditForm>
         </div>
     }
 }
 
   <ul class=messages>
-        @if(messages != null)
+        @if(messageList.Count > 0)
         {
-            @foreach (var message in messages)
+            @foreach (KeyValuePair<MessageDTO, UserDTO> message in messageList)
             {
-                UserDTO currentUser = GetUserDetails(message.Author).Result;
-                if(currentUser!=null)
-                {
-                    <li>
-                        <img width="48" src=@GenerateProfilePictureLinkFromEmail(currentUser.Email)>
-                        <strong><a href="/timeline/user_timline/+@currentUser.Username">@currentUser.Username</a></strong>
-                        @message.Text;
-                        <small>&mdash; @message.PublishDate </small>
-                    </li>
-                }
-                else
-                {
-                    <li><em>Loading messages....</em></li>
-                }
+                <li>
+                    <img width="48" src=@message.Value.GenerateProfilePictureLink()>
+                    <strong><a href="/timeline/user_timeline/@message.Value.Username">@message.Value.Username</a></strong>
+                        @message.Key.Text;
+                    <small>&mdash; @GenerateDateTime(message.Key.PublishDate).ToString("dd.MM.yyyy - HH.mm", CultureInfo.InvariantCulture) </small>
+                </li>
             }
         }
         else
         {
-            <li><em>There's no message so far.</em></li>
+            <li><em>Loading...</em></li>
         }
   </ul>
 
@@ -95,15 +87,21 @@ else if(@TimelineType == "mytimeline")
     public string TimelineType {get;set;}
     [Parameter]
     public string Username { get; set;}
-    public bool UserIsLoggedIn = false;
-    public int CurrentUserId = 0;
-    public int ProfileUserId = 0;
 
-    List<MessageDTO> messages = new List<MessageDTO>();  
+    public bool UserIsLoggedIn = true;
+    public UserDTO CurrentLoggedInUser = new UserDTO{Id = 1, Username = "test", Email = "test@email.com", Password = "Password1234"};
+    private bool ErrorRaised = false;
+    private string ErrorMessage;
+
+    private MessageToPost PostDTO = new MessageToPost();
+
+
+    Dictionary<MessageDTO, UserDTO> messageList = new Dictionary<MessageDTO, UserDTO>();
 
     protected override async Task OnInitializedAsync(){
+        List<MessageDTO> messages = new List<MessageDTO>();
         try{
-            var responseJson = await httpClient.GetStringAsync("/msgs?no=10&latest=2");
+            var responseJson = await httpClient.GetStringAsync("/msgs");
             messages = JsonConvert.DeserializeObject<List<MessageDTO>>(responseJson);
         }
         catch(Exception e)
@@ -111,105 +109,41 @@ else if(@TimelineType == "mytimeline")
             ErrorRaised = true;
             ErrorMessage = e.Message;
         }
+
+        foreach(var m in messages)
+        {   
+            UserDTO user = new UserDTO();
+            var responseJson = await httpClient.GetStringAsync($"/user/{m.Author}");
+            user = JsonConvert.DeserializeObject<UserDTO>(responseJson);
+            messageList.Add(m, user);
+        }
+
     }
 
-    private bool ErrorRaised = false;
-    private string ErrorMessage;
-
-
-    public async Task<UserDTO> GetUserDetails(int userid)
+    //Retrieved from https://www.thecodebuzz.com/convert-unix-epoch-time-to-datetime-and-date-to-unix-datecsharp-net/
+    public DateTime GenerateDateTime(int date)
     {
-        UserDTO user = new UserDTO();
-        try{
-            var responseJson = await httpClient.GetStringAsync($"/user/{userid}");
-            user = JsonConvert.DeserializeObject<UserDTO>(responseJson);
-            
-            return user;
+        DateTimeOffset dateTimeOffSet = DateTimeOffset.FromUnixTimeMilliseconds(date);
+        return dateTimeOffSet.DateTime;
+    }
+
+    private async Task PostMessage()
+    {
+        var json = JsonConvert.SerializeObject(PostDTO);
+        var data = new StringContent(json, Encoding.UTF8, "application/json");
+
+        string linkToPostTo = "/msgs/"+CurrentLoggedInUser.Username;
+    
+        try
+        {
+            var response = await httpClient.PostAsync(linkToPostTo, data);
+            var result = response.Content.ReadAsStringAsync().Result;
+            Console.WriteLine(result);
         }
-        catch(Exception e)
+        catch (Exception e)
         {
             ErrorRaised = true;
             ErrorMessage = e.Message;
-            return user;
         }
-    }
-
-    public string GenerateProfilePictureLinkFromEmail(string email)
-    {
-        string hash = email.Trim(); 
-        hash = hash.ToLower();
-        hash = MD5Hash(hash);
-        string link = "https://www.gravatar.com/avatar/" + hash;
-        return link;
-    }
-    
-    //Retrieved from https://coderwall.com/p/4puszg/c-convert-string-to-md5-hash
-    public static string MD5Hash(string input)
-    {
-        StringBuilder hash = new StringBuilder();
-        MD5CryptoServiceProvider md5provider = new MD5CryptoServiceProvider();
-        byte[] bytes = md5provider.ComputeHash(new UTF8Encoding().GetBytes(input));
-
-        for (int i = 0; i < bytes.Length; i++)
-        {
-            hash.Append(bytes[i].ToString("x2"));
-        }
-        return hash.ToString();
     }
 }
-
-@* @code{
-    string username;
-    protected override async Task OnInitializedAsync()
-    {
-        @*SQL QUERY* 
-        @*OR make a class which retrieves the data and use it here*
-        @*https://zetcode.com/csharp/sqlite/*
-        var connection_string = "URI=../tmp/minitwit.db";
-        using (var connection = new SQLiteConnection(connection_string))
-        {
-            @*RAW query for retrieval
-            var statement = "SQL QUERY";
-            connection.Open();
-            using (var reader =  await new SQLiteCommand(statement, new SQLiteConnection(connection_string)).ExecuteReaderAsync())
-            {
-                while(reader.Read()) 
-                {
-                    @*Use the data from reader object*
-                }
-            };
-            @*PREPARED query for retrieval*
-            using (var command = new SQLiteCommand(connection_string))
-            {
-                command.CommandText = "Prepared SQL query"; @*Prepared values are written like so: @nameofvalue*
-                command.Parameters.AddWithValue("name of prepared value", "actual value");
-                @*Repeat as many times as there are prepared values*
-                command.Prepare();
-                using (var reader_p = await command.ExecuteReaderAsync())
-                {
-                    while (reader_p.Read())
-                    {
-                        @*Use the data from reader_p object*
-                    }
-                }
-            }
-            
-            @*RAW insertion query*
-            using (var command = new SQLiteCommand())
-            {
-                command.CommandText = "SQL query for insertion";
-                command.ExecuteNonQuery(); @*async?*
-            }
-
-            @*PREAPRED insertion query*
-            using (var command = new SQLiteCommand())
-            {
-                command.CommandText = "SQL query for insertion with prepared values";
-                command.Parameters.AddWithValue("name of prepared value", "actual value");
-                command.Prepare();
-                command.ExecuteNonQuery();
-            }
-            
-        };
-    }
-} *@

@@ -23,7 +23,6 @@ namespace MiniTwitApi.Server.Controllers
             _userRepository = userRepository;
         }
         
-        //What is no???? Number of messages perhaps?
         [HttpGet("msgs")]
         public async Task<ActionResult<IEnumerable<MessageDTO>>> GetMsgs([FromQuery] int no, [FromQuery] int latest)
         {
@@ -31,7 +30,7 @@ namespace MiniTwitApi.Server.Controllers
             var messages = await _messagesRepository.ReadAllAsync(no);
 
             // Update latest counter for simulator tests
-            DeleteMe.Latest = latest;
+            Latest.GetInstance().Update(latest);
             // Return messages
             return Ok(messages);
         }
@@ -39,6 +38,9 @@ namespace MiniTwitApi.Server.Controllers
         [HttpGet("msgs/{username}")]
         public async Task<ActionResult<IEnumerable<MessageDTO>>> GetMsgsByUsername(string username, [FromQuery] int no, [FromQuery] int latest)
         {
+            if(!await _userRepository.UserExistsAsync(username))
+                return NotFound();
+
             //Query messages by username
             var messages = await _messagesRepository.ReadAllUserAsync(username, no);
             foreach(var message in messages)
@@ -46,7 +48,7 @@ namespace MiniTwitApi.Server.Controllers
                Console.WriteLine(message.Text); 
             }
             // Update latest counter for simulator tests
-            DeleteMe.Latest = latest;
+            Latest.GetInstance().Update(latest);
             
             // Return messages
             return Ok(messages);
@@ -55,6 +57,14 @@ namespace MiniTwitApi.Server.Controllers
         [HttpPost("msgs/{username}")]
         public async Task<ActionResult> PostMessageByUsername(string username, [FromBody] MessageToPost message, [FromQuery] int latest)
         {
+
+            if(!await _userRepository.UserExistsAsync(username))
+                return NotFound();
+
+            if(string.IsNullOrEmpty(message.Content))
+                return BadRequest("You have to enter content");
+
+            
             //TODO check message for profanity, then flag it if it is true
             var actionUser = await _userRepository.ReadAsync(username);
             await _messagesRepository.CreateAsync(new MessageDTO
@@ -66,7 +76,7 @@ namespace MiniTwitApi.Server.Controllers
                 Flagged = 0 // Flag if profanity is detected
             });
 
-            DeleteMe.Latest = latest;
+            Latest.GetInstance().Update(latest);
             
             return Ok();
         }

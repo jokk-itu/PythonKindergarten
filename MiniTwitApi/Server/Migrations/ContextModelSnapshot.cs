@@ -24,17 +24,9 @@ namespace MiniTwitApi.Server.Migrations
                     b.Property<int>("WhomId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("WhoUserUserId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int?>("WhomUserUserId")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("WhoId", "WhomId");
 
-                    b.HasIndex("WhoUserUserId");
-
-                    b.HasIndex("WhomUserUserId");
+                    b.HasIndex("WhomId");
 
                     b.ToTable("Followers");
                 });
@@ -61,9 +53,14 @@ namespace MiniTwitApi.Server.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<int?>("UserId1")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("MessageId");
 
                     b.HasIndex("AuthorId");
+
+                    b.HasIndex("UserId1");
 
                     b.ToTable("Messages");
                 });
@@ -96,17 +93,21 @@ namespace MiniTwitApi.Server.Migrations
 
             modelBuilder.Entity("MiniTwitApi.Server.Entities.Follower", b =>
                 {
-                    b.HasOne("MiniTwitApi.Server.Entities.User", "WhoUser")
+                    b.HasOne("MiniTwitApi.Server.Entities.User", "Who")
+                        .WithMany("Followers")
+                        .HasForeignKey("WhoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MiniTwitApi.Server.Entities.User", "Whom")
                         .WithMany()
-                        .HasForeignKey("WhoUserUserId");
+                        .HasForeignKey("WhomId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasOne("MiniTwitApi.Server.Entities.User", "WhomUser")
-                        .WithMany()
-                        .HasForeignKey("WhomUserUserId");
+                    b.Navigation("Who");
 
-                    b.Navigation("WhomUser");
-
-                    b.Navigation("WhoUser");
+                    b.Navigation("Whom");
                 });
 
             modelBuilder.Entity("MiniTwitApi.Server.Entities.Message", b =>
@@ -117,7 +118,18 @@ namespace MiniTwitApi.Server.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("MiniTwitApi.Server.Entities.User", null)
+                        .WithMany("Messages")
+                        .HasForeignKey("UserId1");
+
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("MiniTwitApi.Server.Entities.User", b =>
+                {
+                    b.Navigation("Followers");
+
+                    b.Navigation("Messages");
                 });
 #pragma warning restore 612, 618
         }

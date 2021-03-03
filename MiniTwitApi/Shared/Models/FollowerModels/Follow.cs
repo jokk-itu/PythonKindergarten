@@ -1,11 +1,11 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace MiniTwitApi.Shared.Models
 {
     // {'follow': 'b'} | {'unfollow': 'b'}
     public class Follow
     {
-        [JsonProperty("follow")] public string ToFollow { get; set; }
-        [JsonProperty("unfollow")] public string ToUnfollow { get; set; }
+        [JsonPropertyName("follow")] public string ToFollow { get; set; }
+        [JsonPropertyName("unfollow")] public string ToUnfollow { get; set; }
     }
 }

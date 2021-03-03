@@ -1,18 +1,18 @@
 using System.ComponentModel.DataAnnotations;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace MiniTwitApi.Shared.Models.UserModels
 {
     public class LoginUserDTO
     {
-        [JsonProperty("username")] 
+        [JsonPropertyName("username")] 
         [StringLength(30, ErrorMessage = "Identifier too long (30 character limit).")]
         public string Username { get; set; }
 
-        [JsonProperty("email")] 
+        [JsonPropertyName("email")] 
         public string Email { get; set; }
 
-        [JsonProperty("pwd")] 
+        [JsonPropertyName("pwd")] 
         [StringLength(30, ErrorMessage = "Identifier too long (30 character limit).")]
         public string Password { get; set; }
     }

@@ -1,10 +1,11 @@
-using Newtonsoft.Json;
+
+using System.Text.Json.Serialization;
 
 namespace MiniTwitApi.Shared.Models
 {
     public class GetLatestResponse
     {
-        [JsonProperty("latest")] public int Latest {get;set;}
+        [JsonPropertyName("latest")] public int Latest {get;set;}
 
         public GetLatestResponse(int latest)
             => Latest = latest;

@@ -43,7 +43,7 @@ namespace MiniTwitApi.Server.Controllers
 
             // Find the user executing the action
             var actionUser = await _userRepository.ReadAsync(username);
-            var targetUser = await _userRepository.ReadAsync(follow.ToFollow ?? follow.ToUnfollow);
+            var targetUser = await _userRepository.ReadAsync(string.IsNullOrEmpty(follow.ToFollow) ? follow.ToUnfollow : follow.ToFollow);
 
             // Check if user is following or unfollowing
             if(string.IsNullOrEmpty(follow.ToFollow))

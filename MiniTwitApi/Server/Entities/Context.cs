@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Org.BouncyCastle.Crypto.Engines;
 
 namespace MiniTwitApi.Server.Entities
 {
@@ -16,8 +17,11 @@ namespace MiniTwitApi.Server.Entities
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //Add connection string to DB
-            optionsBuilder.UseSqlite(@"Data Source = ../../tmp/minitwit.db");
+            if (!optionsBuilder.IsConfigured)
+            {
+                //Add connection string to DB
+                optionsBuilder.UseSqlite(@"Data Source = ../../tmp/minitwit.db");
+            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -35,6 +39,25 @@ namespace MiniTwitApi.Server.Entities
             modelBuilder.Entity<User>()
                 .HasIndex(u => u.Username)
                 .IsUnique();
+
+            //relate the followers in the Users table to the followers WhoUser.
+            modelBuilder.Entity<Follower>()
+                .HasOne<User>(u => u.Who)
+                .WithMany(u => u.Followers)
+                .OnDelete(DeleteBehavior.ClientCascade);
         }
+        
+        private void Seed(ModelBuilder modelBuilder)
+        {
+            /*
+            modelBuilder.Entity<Message>()
+                .HasData(new Message()
+                {
+                    Text = "This is a Seed message",
+                    A
+                });
+            */
+        }
+        
     }
 }

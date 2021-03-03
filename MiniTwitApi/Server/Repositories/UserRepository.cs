@@ -66,15 +66,12 @@ namespace MiniTwitApi.Server.Repositories
                     Password = u.Password,
                     Username = u.Username
                 };
-            switch(user.Count()) 
+            return user.Count() switch
             {
-                case 0:
-                    return null;
-                case 1:
-                    return await user.FirstAsync();
-                default:
-                    throw new Exception("There exists multiple users with the same username. SHOULD NOT HAPPEN.");   
-            }
+                0 => null,
+                1 => await user.FirstAsync(),
+                _ => throw new Exception("There exists multiple users with the same username. SHOULD NOT HAPPEN.")
+            };
         }
 
 

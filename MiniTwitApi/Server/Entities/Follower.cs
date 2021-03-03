@@ -7,12 +7,12 @@ namespace MiniTwitApi.Server.Entities
         [Key]
         public int WhoId {get;set;}
         
-        public User WhoUser {get; set;}
-        
+        public User Who { get; set; }
+
         [Key]
         public int WhomId {get;set;}
         
-        public User WhomUser {get; set;}
+        public User Whom { get; set; }
     }
 }
 

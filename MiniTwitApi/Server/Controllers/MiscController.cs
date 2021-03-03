@@ -16,8 +16,8 @@ namespace MiniTwitApi.Server.Controllers
         }       
         
         [HttpGet("latest")]
-        public async Task<ActionResult<GetLatestResponse>> GetLatest()
-            => Ok(new GetLatestResponse(DeleteMe.Latest));
+        public async Task<ActionResult<GetLatestResponse>> GetLatest([FromQuery] int latest)
+            => Ok(new GetLatestResponse(Latest.GetInstance().Read()));
         
     }
 }

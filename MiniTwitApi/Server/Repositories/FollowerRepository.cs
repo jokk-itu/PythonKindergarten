@@ -30,9 +30,9 @@ namespace MiniTwitApi.Server.Repositories
                 }).ToListAsync();
         }
 
-        public async Task<int> DeleteAsync(FollowerDTO follower) 
+        public async Task<int> DeleteAsync(FollowerDTO follower)
         {
-            var _follower = await _context.Followers.FindAsync(follower);
+            var _follower = await _context.Followers.FindAsync(follower.WhoId, follower.WhomId);
 
             if(_follower is null)
             {

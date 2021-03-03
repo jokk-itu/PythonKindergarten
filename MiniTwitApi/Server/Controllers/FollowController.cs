@@ -38,18 +38,17 @@ namespace MiniTwitApi.Server.Controllers
             if(!await _userRepository.UserExistsAsync(username))
                 return NotFound();
 
-            if(string.IsNullOrEmpty(follow.ToFollow) || string.IsNullOrEmpty(follow.ToUnfollow))
+            if(string.IsNullOrEmpty(follow.ToFollow) && string.IsNullOrEmpty(follow.ToUnfollow))
                 return BadRequest("You have to send a username to follow or unfollow");
 
             // Find the user executing the action
             var actionUser = await _userRepository.ReadAsync(username);
-            var targetUser = await _userRepository.ReadAsync(string.IsNullOrEmpty(follow.ToFollow) ? follow.ToUnfollow : follow.ToFollow);
+            var targetUser = await _userRepository.ReadAsync(
+                string.IsNullOrEmpty(follow.ToFollow) ? follow.ToUnfollow : follow.ToFollow);
 
             // Check if user is following or unfollowing
             if(string.IsNullOrEmpty(follow.ToFollow))
             {
-                // Unfollow from username
-                // Create follow from username to specified username
                 await _followerRepository.DeleteAsync(new FollowerDTO
                 {
                     WhoId = actionUser.Id,
@@ -58,7 +57,6 @@ namespace MiniTwitApi.Server.Controllers
             }
             else
             {
-                // Create follow from username to specified username
                 await _followerRepository.CreateAsync(new FollowerDTO
                 {
                     WhoId = actionUser.Id,

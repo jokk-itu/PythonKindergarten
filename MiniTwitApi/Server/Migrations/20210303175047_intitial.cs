@@ -2,10 +2,25 @@
 
 namespace MiniTwitApi.Server.Migrations
 {
-    public partial class InitialCreater : Migration
+    public partial class intitial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    UserId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Username = table.Column<string>(type: "TEXT", nullable: false),
+                    Email = table.Column<string>(type: "TEXT", nullable: false),
+                    Password = table.Column<string>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.UserId);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Followers",
                 columns: table => new
@@ -16,28 +31,18 @@ namespace MiniTwitApi.Server.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Followers", x => new { x.WhoId, x.WhomId });
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Users",
-                columns: table => new
-                {
-                    UserId = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Username = table.Column<string>(type: "TEXT", nullable: false),
-                    Email = table.Column<string>(type: "TEXT", nullable: false),
-                    Password = table.Column<string>(type: "TEXT", nullable: false),
-                    UserId1 = table.Column<int>(type: "INTEGER", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Users", x => x.UserId);
                     table.ForeignKey(
-                        name: "FK_Users_Users_UserId1",
-                        column: x => x.UserId1,
+                        name: "FK_Followers_Users_WhoId",
+                        column: x => x.WhoId,
                         principalTable: "Users",
                         principalColumn: "UserId",
                         onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Followers_Users_WhomId",
+                        column: x => x.WhomId,
+                        principalTable: "Users",
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -71,6 +76,11 @@ namespace MiniTwitApi.Server.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Followers_WhomId",
+                table: "Followers",
+                column: "WhomId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Messages_AuthorId",
                 table: "Messages",
                 column: "AuthorId");
@@ -78,11 +88,6 @@ namespace MiniTwitApi.Server.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Messages_UserId1",
                 table: "Messages",
-                column: "UserId1");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Users_UserId1",
-                table: "Users",
                 column: "UserId1");
 
             migrationBuilder.CreateIndex(

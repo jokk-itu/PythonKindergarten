@@ -96,7 +96,7 @@ namespace MiniTwitApi.Server.Migrations
                     b.HasOne("MiniTwitApi.Server.Entities.User", "Who")
                         .WithMany("Followers")
                         .HasForeignKey("WhoId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.ClientCascade)
                         .IsRequired();
 
                     b.HasOne("MiniTwitApi.Server.Entities.User", "Whom")

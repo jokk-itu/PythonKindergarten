@@ -12,7 +12,7 @@ namespace MiniTwitApi.Server
             lock (_fileLock)
             {
                 using var writer = new StreamWriter("latest.txt"); 
-                writer.WriteLineAsync($"{latest}");
+                writer.WriteLine($"{latest}");
                 writer.Close();
             }
         }

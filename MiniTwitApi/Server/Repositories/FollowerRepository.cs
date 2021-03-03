@@ -19,7 +19,8 @@ namespace MiniTwitApi.Server.Repositories
         }
 
         /* Should be implmeneted: int limit = 20*/
-        public async Task<ICollection<FollowerDTO>> ReadAllAsync(string username) {
+        public async Task<ICollection<FollowerDTO>> ReadAllAsync(string username) 
+        {
             return await (from s in _context.Followers
                 where s.WhoUser.Username.Equals(username)
                 select new FollowerDTO
@@ -35,7 +36,7 @@ namespace MiniTwitApi.Server.Repositories
         {
             var _follower = await _context.Followers.FindAsync(follower);
 
-            if(_follower == null)
+            if(_follower is null)
             {
                 throw new ArgumentException($"Could not remove follower, because it does not exist.");
             }

@@ -10,7 +10,7 @@ using MiniTwitApi.Shared.Repositories.Abstractions;
 namespace MiniTwitApi.Server.Controllers
 {
     [ApiController]
-    [Route("/old")]
+    [Route("/old/")]
     public class MiniTwitController : ControllerBase
     {
         private readonly IMiniTwitRepository _database;
@@ -19,10 +19,6 @@ namespace MiniTwitApi.Server.Controllers
         {
             _database = repository;
         }
-
-        [HttpGet("latest")]
-        public async Task<ActionResult<GetLatestResponse>> GetLatest([FromQuery] int latest)
-            => Ok(new GetLatestResponse(DeleteMe.Latest));
 
         //DONE
         [HttpPost("register")]

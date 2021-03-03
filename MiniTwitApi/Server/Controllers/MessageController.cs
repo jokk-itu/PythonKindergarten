@@ -23,7 +23,6 @@ namespace MiniTwitApi.Server.Controllers
             _userRepository = userRepository;
         }
         
-        //What is no???? Number of messages perhaps?
         [HttpGet("msgs")]
         public async Task<ActionResult<IEnumerable<MessageDTO>>> GetMsgs([FromQuery] int no, [FromQuery] int latest)
         {

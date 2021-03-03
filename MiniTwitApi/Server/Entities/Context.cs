@@ -16,8 +16,11 @@ namespace MiniTwitApi.Server.Entities
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //Add connection string to DB
-            optionsBuilder.UseSqlite(@"Data Source = ../../tmp/minitwit.db");
+            if (!optionsBuilder.IsConfigured)
+            {
+                //Add connection string to DB
+                optionsBuilder.UseSqlite(@"Data Source = ../../tmp/minitwit.db");
+            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

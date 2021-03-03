@@ -34,7 +34,7 @@ namespace MiniTwitApi.Server
                     if(args.Length > 0 && args[0] == "test")
                         webBuilder.UseUrls(new string[]{"https://0.0.0.0:5001", "http://0.0.0.0:5000"});
                     else
-                        webBuilder.UseUrls(new string[]{"https://0.0.0.0:443", "http://0.0.0.0:80"});
+                        webBuilder.UseUrls(new string[]{"https://*:443", "http://*:80"});
                         
                 });
     }

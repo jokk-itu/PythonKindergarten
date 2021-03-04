@@ -31,7 +31,7 @@ namespace MiniTwitApi.Server.Controllers
             if(userFromDatabase is null)
                 return BadRequest("User does not exist");
             
-            if(BCrypt.CheckPassword(user.Password, userFromDatabase.Password))
+            if(!BCrypt.CheckPassword(user.Password, userFromDatabase.Password))
                 return BadRequest("Provided password is wrong");
 
             Latest.GetInstance().Update(latest);
@@ -58,6 +58,10 @@ namespace MiniTwitApi.Server.Controllers
                 return BadRequest("User already exists with given username");
             
             //insert the user
+            var hashedPassword = BCrypt.HashPassword(user.Password, BCrypt.GenerateSalt(12));
+            Console.WriteLine(hashedPassword);
+            Console.WriteLine(hashedPassword.Length);
+            user.Password = hashedPassword;
             await _repository.CreateAsync(user);
             Latest.GetInstance().Update(latest);
             return Ok();

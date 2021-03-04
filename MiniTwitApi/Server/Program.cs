@@ -33,7 +33,7 @@ namespace MiniTwitApi.Server
                     webBuilder.UseStartup<Startup>()
                         .UseKestrel(options =>
                         {
-                            options.Listen(IPAddress.Loopback, 5001, listenOptions =>
+                            options.Listen(IPAddress.Any, 5001, listenOptions =>
                             {
                                 var serverCertificate = LoadCertificate();
                                 listenOptions.UseHttps(serverCertificate); // <- Configures SSL

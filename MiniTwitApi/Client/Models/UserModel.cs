@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using MiniTwitApi.Client.Models.Abstract;
 using MiniTwitApi.Shared.Models;
 using MiniTwitApi.Shared.Models.UserModels;
-using Newtonsoft.Json;
+using System.Text.Json;
 
 namespace MiniTwitApi.Client.Models
 {
@@ -20,7 +20,7 @@ namespace MiniTwitApi.Client.Models
 
         public async Task<string> RegisterUser(CreateUserDTO user)
         {
-            var json = JsonConvert.SerializeObject(user);
+            var json = JsonSerializer.Serialize(user);
             var data = new StringContent(json, Encoding.UTF8, "application/json");
             var response = await Client.PostAsync($"/register", data);
             return await response.Content.ReadAsStringAsync();

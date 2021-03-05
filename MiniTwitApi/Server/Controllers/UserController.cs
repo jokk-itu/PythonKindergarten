@@ -59,8 +59,6 @@ namespace MiniTwitApi.Server.Controllers
             
             //insert the user
             var hashedPassword = BCrypt.HashPassword(user.Password, BCrypt.GenerateSalt(12));
-            Console.WriteLine(hashedPassword);
-            Console.WriteLine(hashedPassword.Length);
             user.Password = hashedPassword;
             await _repository.CreateAsync(user);
             Latest.GetInstance().Update(latest);

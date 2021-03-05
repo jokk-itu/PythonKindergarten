@@ -17,6 +17,7 @@ namespace MiniTwitApi.Shared.Models
         public string Password {get; set;}
 
         [JsonPropertyName("email")]
+        [EmailAddress]
         public string Email {get; set;}
 
     }

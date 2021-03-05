@@ -9,8 +9,8 @@ using MiniTwitApi.Server.Entities;
 namespace MiniTwitApi.Server.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20210303104605_NewFollowRelationship")]
-    partial class NewFollowRelationship
+    [Migration("20210303175047_intitial")]
+    partial class intitial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -98,7 +98,7 @@ namespace MiniTwitApi.Server.Migrations
                     b.HasOne("MiniTwitApi.Server.Entities.User", "Who")
                         .WithMany("Followers")
                         .HasForeignKey("WhoId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.ClientCascade)
                         .IsRequired();
 
                     b.HasOne("MiniTwitApi.Server.Entities.User", "Whom")

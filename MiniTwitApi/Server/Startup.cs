@@ -13,7 +13,6 @@ using MiniTwitApi.Shared.Repositories.Abstractions;
 using MiniTwitApi.Shared.Repositories;
 using MiniTwitApi.Server.Repositories.Abstract;
 using MiniTwitApi.Server.Repositories;
-using MiniTwitApi.Shared;
 
 namespace MiniTwitApi.Server
 {
@@ -38,9 +37,6 @@ namespace MiniTwitApi.Server
             services.AddScoped<IFollowerRepository, FollowerRepository>();
             services.AddScoped<IMessageRepository, MessageRepository>();
             services.AddSwaggerGen();
-
-            if(!DeleteMe.TestRun)
-                services.AddLettuceEncrypt();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

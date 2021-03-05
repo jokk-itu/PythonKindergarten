@@ -1,4 +1,3 @@
-using System;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,10 +25,13 @@ namespace MiniTwitApi.Client.Models
             return await response.Content.ReadAsStringAsync();
         }
 
-        public async Task LoginUser(LoginUserDTO user)
+        public async Task<string> LoginUser(LoginUserDTO user)
         {
-            throw new NotImplementedException();
+            var json = JsonSerializer.Serialize(user);
+            var data = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = await Client.PostAsync($"/login", data);
+            return await response.Content.ReadAsStringAsync();
         }
-        
+
     }
 }

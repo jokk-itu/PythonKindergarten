@@ -1,4 +1,10 @@
 @page "/timeline/{timelinetype}/{username}"
+@using MiniTwitApi.Shared.Models.UserModels
+@using Newtonsoft.Json
+@using MiniTwitApi.Shared.Models
+@using System.Net
+
+@inject HttpClient HttpClient;
 
 @if(TimelineType.Equals("user_timeline"))
 {
@@ -9,6 +15,8 @@ else
     <h2>My timeline</h2>
 }
 
+
+
 <Messages messages="@null"/>
 
 @code 
@@ -17,4 +25,25 @@ else
     public string TimelineType { get; set; }
     [Parameter]
     public string Username { get; set;}
+    
+    public UserDTO LoggedInUser { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        
+    }
+    
+    public async Task<bool> IsFollowed()
+    {
+        var response = await HttpClient.GetStringAsync($"$follws/{LoggedInUser.Username}");
+        var followers = JsonConvert.DeserializeObject<List<FollowerDTO>>(response);
+        foreach (var follower in followers)
+        {
+            var getUser = await HttpClient.GetStringAsync($"/user/{follower.WhomId}");
+            var jsonUser = JsonConvert.DeserializeObject<UserDTO>(getUser);
+            if (jsonUser.Username.Equals(Username))
+                return true;
+        }
+        return false;
+    }
 }

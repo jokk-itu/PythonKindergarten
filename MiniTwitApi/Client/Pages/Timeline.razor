@@ -11,24 +11,6 @@
 @inject HttpClient httpClient
 @inject IJSRuntime JSRuntime
 
-@if(@TimelineType.Contains("public"))
-{
-    <h2>Public Timeline</h2>
-}
-else if(@TimelineType.Contains("user_timeline"))
-{
-    <h2>@Username's Timeline</h2>
-}
-else if(@TimelineType.Contains("mytimeline"))
-{
-    <h2>My timeline</h2>
-}
-
-@if(ErrorRaised)
-{
-    <div class="error"><strong>Error:</strong> @ErrorMessage</div>
-}
-
 @if(CurrentLoggedInUser is not null)
 {
     @if(@TimelineType.Contains("user_timeline"))

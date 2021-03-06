@@ -32,6 +32,7 @@ namespace MiniTwitApi.Client
             //Register Models for the ViewModels to use them
             builder.Services.AddTransient<IUserModel, UserModel>();
             builder.Services.AddTransient<IMessageModel, MessageModel>();
+            builder.Services.AddTransient<IFollowModel, FollowModel>();
             
             await builder.Build().RunAsync();
         }

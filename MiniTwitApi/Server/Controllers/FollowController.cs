@@ -65,7 +65,7 @@ namespace MiniTwitApi.Server.Controllers
             }
 
             Latest.GetInstance().Update(latest);
-            return Ok();
+            return NoContent();
         }
     }
 }

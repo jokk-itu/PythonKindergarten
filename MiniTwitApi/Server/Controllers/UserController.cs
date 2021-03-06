@@ -35,7 +35,7 @@ namespace MiniTwitApi.Server.Controllers
                 return BadRequest("Provided password is wrong");
 
             Latest.GetInstance().Update(latest);
-            return Ok();
+            return NoContent();
         }
         
         [HttpPost("register")]
@@ -60,7 +60,7 @@ namespace MiniTwitApi.Server.Controllers
             //insert the user
             await _repository.CreateAsync(user);
             Latest.GetInstance().Update(latest);
-            return Ok();
+            return NoContent();
         }
         
         [HttpGet("user/{userid}")]
@@ -68,7 +68,7 @@ namespace MiniTwitApi.Server.Controllers
         {
             var user = await _repository.ReadAsync(userid);
             Latest.GetInstance().Update(latest);
-            return user;
+            return Ok(user);
         }
     }
 }

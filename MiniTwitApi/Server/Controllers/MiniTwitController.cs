@@ -31,7 +31,7 @@ namespace MiniTwitApi.Server.Controllers
             //insert the user
             await _database.InsertUserAsync(user);
             DeleteMe.Latest = latest;
-            return Ok();
+            return NoContent();
         }
 
         [HttpGet("msgs")]
@@ -75,7 +75,7 @@ namespace MiniTwitApi.Server.Controllers
 
             DeleteMe.Latest = latest;
             
-            return Ok();
+            return NoContent();
         }
         
         //DONE
@@ -96,7 +96,7 @@ namespace MiniTwitApi.Server.Controllers
         {
             var user = await _database.QueryUserByIdAsync(userid);
             
-            return user;
+            return Ok(user);
         }
         
         //DONE
@@ -126,7 +126,7 @@ namespace MiniTwitApi.Server.Controllers
             }
 
             DeleteMe.Latest = latest;
-            return Ok();
+            return NoContent();
         }
     }
 }

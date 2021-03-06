@@ -20,6 +20,33 @@
         <a class="dismiss">🗙</a>
     </div>
     <script src="_framework/blazor.webassembly.js"></script>
+    <script>
+        function login (data)
+        {
+            let user = JSON.parse(data);
+            localStorage.setItem("Username", user.Username)
+            localStorage.setItem("Email", user.Email);
+        }
+        function getUser () 
+        {
+            let username = localStorage.getItem("Username");
+            let user =  new User(username);
+            return JSON.stringify(user);
+        }
+        function isUserLoggedIn () 
+        {
+            return localStorage.getItem("Username") !== null
+        }
+        class User 
+        {
+            constructor(username) 
+            {
+                this.username = username;        
+            }
+        }
+        
+            
+    </script>
 </body>
 
 </html>

@@ -16,4 +16,8 @@
     <ProjectReference Include="..\Shared\MiniTwitApi.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\loader.gif" />
+  </ItemGroup>
+
 </Project>

@@ -1,0 +1,20 @@
+@page "/timeline/{timelinetype}/{username}"
+
+@if(TimelineType.Equals("user_timeline"))
+{
+    <h2>@Username's Timeline</h2>
+}
+else
+{
+    <h2>My timeline</h2>
+}
+
+<Messages messages="@null"/>
+
+@code 
+{
+    [Parameter]    
+    public string TimelineType { get; set; }
+    [Parameter]
+    public string Username { get; set;}
+}

@@ -9,12 +9,7 @@
 @using System.Text.Json;
 
 @inject HttpClient httpClient
-
-@*
-Timelinetype 1 = public timeline
-Timelinetype 2 = user_timeline
-Timelinetype 3 = My timeline / timeline
-*@
+@inject IJSRuntime JSRuntime
 
 @if(@TimelineType.Contains("public"))
 {
@@ -29,20 +24,21 @@ else if(@TimelineType.Contains("mytimeline"))
     <h2>My timeline</h2>
 }
 
-@if(ErrorRaised){
+@if(ErrorRaised)
+{
     <div class="error"><strong>Error:</strong> @ErrorMessage</div>
 }
 
-@if(UserIsLoggedIn)
+@if(CurrentLoggedInUser is not null)
 {
     @if(@TimelineType.Contains("user_timeline"))
     {
         <div class=followstatus>
-            @if(@CurrentLoggedInUser.Username == @Username)
+            @if (async () => await GetUser().Username.Equals(Username))
             {
                 <p>This is you!</p>
             }
-            else if(@IsFollowed().Result) @*Should check if the user which posted the messaged is followed by the viewing user, must be done via API?*@
+            else if (IsFollowed()) @*Should check if the user which posted the messaged is followed by the viewing user, must be done via API?*@
             {
                 <p>You are currently following this user.</p>
                 <a class=unfollow href="@UnfollowUser()">Unfollow user</a> @*Implement unfollowing user*@
@@ -68,51 +64,31 @@ else if(@TimelineType.Contains("mytimeline"))
     }
 }
 
-  <ul class=messages>
-        @if(messageList.Count > 0)
-        {
-            @foreach (KeyValuePair<MessageDTO, UserDTO> message in messageList)
-            {
-                <li>
-                    <img width="48" src=@message.Value.GenerateProfilePictureLink()>
-                    <strong><a href="/timeline/user_timeline/@message.Value.Username">@message.Value.Username</a></strong>
-                        @message.Key.Text;
-                    <small>&mdash; @GenerateDateTime(message.Key.PublishDate).ToString("dd.MM.yyyy - HH.mm", CultureInfo.InvariantCulture) </small>
-                </li>
-            }
-        }
-        else
-        {
-            <li><em>Loading...</em></li>
-        }
-  </ul>
+<Messages messages="@messageList" />
 
 @code{
     [Parameter]    
     public string TimelineType {get;set;}
     [Parameter]
     public string Username { get; set;}
-
-    public bool UserIsLoggedIn;
+    
     public UserDTO CurrentLoggedInUser;
     private bool ErrorRaised = false;
     private string ErrorMessage;
 
     private MessageToPost PostDTO = new MessageToPost();
 
-
     Dictionary<MessageDTO, UserDTO> messageList = new Dictionary<MessageDTO, UserDTO>();
 
     protected override async Task OnInitializedAsync()
     {
-        if (LoggedInUser.User is not null)
+        var json = await JSRuntime.InvokeAsync<string>("getUser");
+        CurrentLoggedInUser = JsonConvert.DeserializeObject<UserDTO>(json);
+        
+        ICollection<MessageDTO> messages = new List<MessageDTO>();
+        try
         {
-            CurrentLoggedInUser = LoggedInUser.User;
-            UserIsLoggedIn = true;
-        }
-        List<MessageDTO> messages = new List<MessageDTO>();
-        try{
-            var responseJson = await httpClient.GetStringAsync("/msgs");
+            var responseJson = await httpClient.GetStringAsync("/msgs/?no=20");
             messages = JsonConvert.DeserializeObject<List<MessageDTO>>(responseJson);
         }
         catch(Exception e)
@@ -165,6 +141,12 @@ else if(@TimelineType.Contains("mytimeline"))
         var data = new StringContent(json, Encoding.UTF8, "application/json");
         var response = await httpClient.PostAsync($"/fllws", data);
         //Handle Errors
+    }
+
+    public async Task<UserDTO> GetUser()
+    {
+        var user = await JSRuntime.InvokeAsync<string>("GetUser");
+        return System.Text.Json.JsonSerializer.Deserialize<UserDTO>(user);
     }
 
     //Retrieved from https://www.thecodebuzz.com/convert-unix-epoch-time-to-datetime-and-date-to-unix-datecsharp-net/

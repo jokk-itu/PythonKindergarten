@@ -7,12 +7,11 @@ namespace MiniTwitApi.Shared
     {
         public static UserDTO User {get; set;}
 
-        public static void Login(string username, string email) 
+        public static void Login(string username) 
         {
             User = new UserDTO() 
             {
-                Username = username,
-                Email = email
+                Username = username
             };
         }   
     }

@@ -34,15 +34,15 @@ namespace MiniTwitApi.Client.Models
             var response = await Client.PostAsync($"/login", data);
             if(response.IsSuccessStatusCode) 
             {
-                LoggedInUser.Login(user.Username, user.Email);
+                LoggedInUser.Login(user.Username);
             } 
             else if(response.StatusCode == System.Net.HttpStatusCode.BadRequest) 
             {
-                throw new Exception(response.ToString());
+                throw new Exception(response.Content.ToString());
             }
             else 
             {
-                throw new Exception($"StatusCode: {response.StatusCode}, Error: {response.ToString()}");
+                throw new Exception($"StatusCode: {response.StatusCode}, Error: {response.Content}");
             }
         }
 

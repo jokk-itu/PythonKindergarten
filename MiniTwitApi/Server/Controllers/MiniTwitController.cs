@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MiniTwitApi.Shared;
+using MiniTwitApi.Shared.Models.UserModels;
 using MiniTwitApi.Shared.Models;
 using MiniTwitApi.Shared.Repositories;
 using MiniTwitApi.Shared.Repositories.Abstractions;

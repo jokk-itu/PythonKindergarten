@@ -4,7 +4,9 @@ using System.Threading.Tasks;
 using MiniTwitApi.Client.Models.Abstract;
 using MiniTwitApi.Shared.Models;
 using MiniTwitApi.Shared.Models.UserModels;
+using MiniTwitApi.Shared;
 using System.Text.Json;
+using System;
 
 namespace MiniTwitApi.Client.Models
 {
@@ -17,20 +19,31 @@ namespace MiniTwitApi.Client.Models
             Client = client;
         }
 
-        public async Task<string> RegisterUser(CreateUserDTO user)
+        public async Task RegisterUser(CreateUserDTO user)
         {
             var json = JsonSerializer.Serialize(user);
             var data = new StringContent(json, Encoding.UTF8, "application/json");
             var response = await Client.PostAsync($"/register", data);
-            return await response.Content.ReadAsStringAsync();
+            //Handle errors
         }
 
-        public async Task<string> LoginUser(LoginUserDTO user)
+        public async Task LoginUser(LoginUserDTO user)
         {
             var json = JsonSerializer.Serialize(user);
             var data = new StringContent(json, Encoding.UTF8, "application/json");
             var response = await Client.PostAsync($"/login", data);
-            return await response.Content.ReadAsStringAsync();
+            if(response.IsSuccessStatusCode) 
+            {
+                LoggedInUser.Login(user.Username, user.Email);
+            } 
+            else if(response.StatusCode == System.Net.HttpStatusCode.BadRequest) 
+            {
+                throw new Exception(response.ToString());
+            }
+            else 
+            {
+                throw new Exception($"StatusCode: {response.StatusCode}, Error: {response.ToString()}");
+            }
         }
 
     }

@@ -6,6 +6,6 @@ namespace MiniTwitApi.Client.ViewModels.Abstract
     public interface ILoginViewModel
     {
         public LoginUserDTO User { get; set; }
-        public Task<string> LoginUser();
+        public Task LoginUser();
     }
 }

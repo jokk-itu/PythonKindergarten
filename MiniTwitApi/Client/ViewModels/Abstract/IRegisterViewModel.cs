@@ -1,5 +1,5 @@
 using System.Threading.Tasks;
-using MiniTwitApi.Shared.Models;
+using MiniTwitApi.Shared.Models.UserModels;
 
 namespace MiniTwitApi.Client.ViewModels.Abstract
 {
@@ -8,6 +8,6 @@ namespace MiniTwitApi.Client.ViewModels.Abstract
         public CreateUserDTO User { get; set; }
         public string RepeatPassword { get; set; }
         
-        public Task<string> RegisterUser();
+        public Task RegisterUser();
     }
 }

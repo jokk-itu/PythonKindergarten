@@ -45,19 +45,6 @@ namespace MiniTwitApi.Server.Entities
                 .HasOne<User>(u => u.Who)
                 .WithMany(u => u.Followers)
                 .OnDelete(DeleteBehavior.ClientCascade);
-        }
-        
-        private void Seed(ModelBuilder modelBuilder)
-        {
-            /*
-            modelBuilder.Entity<Message>()
-                .HasData(new Message()
-                {
-                    Text = "This is a Seed message",
-                    A
-                });
-            */
-        }
-        
+        }        
     }
 }

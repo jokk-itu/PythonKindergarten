@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using MiniTwitApi.Server.Entities;
 using System.Threading.Tasks;
-using MiniTwitApi.Shared.Models;
+using MiniTwitApi.Shared.Models.UserModels;
 
 namespace MiniTwitApi.Server.Repositories.Abstract
 {

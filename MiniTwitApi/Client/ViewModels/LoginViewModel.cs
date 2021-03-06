@@ -16,9 +16,9 @@ namespace MiniTwitApi.Client.ViewModels
             User = new LoginUserDTO();
         }
 
-        public async Task<string> LoginUser()
+        public async Task LoginUser()
         {
-            return await _userModel.LoginUser(User);
+            await _userModel.LoginUser(User);
         }
     }
 }

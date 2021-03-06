@@ -4,7 +4,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json.Serialization;
 
-namespace MiniTwitApi.Shared.Models
+namespace MiniTwitApi.Shared.Models.UserModels
 {
     // {'username': username, 'email': email, 'pwd': pwd}
     public class UserDTO

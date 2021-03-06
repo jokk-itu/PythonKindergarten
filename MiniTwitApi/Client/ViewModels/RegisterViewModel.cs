@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using MiniTwitApi.Client.Models.Abstract;
 using MiniTwitApi.Client.ViewModels.Abstract;
+using MiniTwitApi.Shared.Models.UserModels;
 using MiniTwitApi.Shared.Models;
 
 namespace MiniTwitApi.Client.ViewModels
@@ -19,10 +20,10 @@ namespace MiniTwitApi.Client.ViewModels
             User = new CreateUserDTO();
         }
 
-        public async Task<string> RegisterUser()
+        public async Task RegisterUser()
         {
             ValidatePassword();
-            return await _userModel.RegisterUser(User);
+            await _userModel.RegisterUser(User);
         }
 
         private void ValidatePassword()

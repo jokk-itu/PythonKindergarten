@@ -51,7 +51,9 @@ else if(@TimelineType.Contains("mytimeline"))
                 <a class=follow href="{{ url_for('follow_user', username=profile_user.username)}}">Follow user</a> @*Implement following user*@
             }
         </div>
-    }else if(@TimelineType.Contains("mytimeline")){
+    }
+    else if(@TimelineType.Contains("mytimeline"))
+    {
         <div class=twitbox>
             <h3>What's on your mind @CurrentLoggedInUser.Username?</h3>
             <EditForm Model="@PostDTO" OnValidSubmit="@PostMessage">

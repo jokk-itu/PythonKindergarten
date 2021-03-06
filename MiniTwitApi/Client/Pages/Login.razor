@@ -5,13 +5,19 @@
 <h2>Sign In</h2>
 
 <EditForm Model="@LoginViewModel.User" OnValidSubmit="@LoginViewModel.LoginUser">
-    <div class="form-group">
-        <label for="username">Username:</label>
-        <input type="username" class="form-control" size=30 id="username" placeholder="Enter your username here">
-    </div>
-    <div class="form-group">
-        <label for="password">Password:</label>
-        <input type="password" class="form-control" size=30 id="password">
-    </div>
+    <DataAnnotationsValidator />
+        <ValidationSummary />
+        <p>
+            <label>
+                Username:
+                <InputText @bind-Value="LoginViewModel.User.Username" />
+            </label>
+        </p>
+        <p>
+            <label>
+                Password:
+                <InputText @bind-Value="LoginViewModel.User.Password" />
+            </label>
+        </p>
     <button type="submit" class="btn btn-primary">Sign In</button>
 </EditForm>

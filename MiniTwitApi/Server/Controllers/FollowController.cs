@@ -76,8 +76,8 @@ namespace MiniTwitApi.Server.Controllers
 
             if(latest > 0 && _configuration["ApiSafeList"].Contains(_accessor.ActionContext.HttpContext.Connection.RemoteIpAddress.ToString()))
                 Latest.GetInstance().Update(latest);
-
-            return Ok();
+            
+            return NoContent();
         }
     }
 }

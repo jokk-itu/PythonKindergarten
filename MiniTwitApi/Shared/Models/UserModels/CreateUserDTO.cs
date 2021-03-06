@@ -1,6 +1,6 @@
 using System;
-using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace MiniTwitApi.Shared.Models 
 {
@@ -8,15 +8,15 @@ namespace MiniTwitApi.Shared.Models
     {
         public CreateUserDTO() {}
 
-        [JsonProperty("username")]
+        [JsonPropertyName("username")]
         [StringLength(30, ErrorMessage = "Identifier too long (30 character limit).")]
         public string Username {get; set;}
 
-        [JsonProperty("pwd")]
+        [JsonPropertyName("pwd")]
         [StringLength(30, ErrorMessage = "Identifier too long (30 character limit).")]
         public string Password {get; set;}
 
-        [JsonProperty("email")]
+        [JsonPropertyName("email")]
         public string Email {get; set;}
 
     }

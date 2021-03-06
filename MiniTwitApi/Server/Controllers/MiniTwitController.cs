@@ -39,8 +39,8 @@ namespace MiniTwitApi.Server.Controllers
             
             if(latest > 0 && _configuration["ApiSafeList"].Contains(_accessor.ActionContext.HttpContext.Connection.RemoteIpAddress.ToString()))
                 Latest.GetInstance().Update(latest);
-
-            return Ok();
+            
+            return NoContent();
         }
 
         [HttpGet("msgs")]
@@ -86,7 +86,7 @@ namespace MiniTwitApi.Server.Controllers
             if(latest > 0 && _configuration["ApiSafeList"].Contains(_accessor.ActionContext.HttpContext.Connection.RemoteIpAddress.ToString()))
                 Latest.GetInstance().Update(latest);
             
-            return Ok();
+            return NoContent();
         }
         
         //DONE
@@ -110,8 +110,8 @@ namespace MiniTwitApi.Server.Controllers
             
             if(latest > 0 && _configuration["ApiSafeList"].Contains(_accessor.ActionContext.HttpContext.Connection.RemoteIpAddress.ToString()))
                 Latest.GetInstance().Update(latest);
-
-            return user;
+            
+            return Ok(user);
         }
         
         //DONE
@@ -142,8 +142,8 @@ namespace MiniTwitApi.Server.Controllers
 
             if(latest > 0 && _configuration["ApiSafeList"].Contains(_accessor.ActionContext.HttpContext.Connection.RemoteIpAddress.ToString()))
                 Latest.GetInstance().Update(latest);
-
-            return Ok();
+            
+            return NoContent();
         }
     }
 }

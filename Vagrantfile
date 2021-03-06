@@ -7,7 +7,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "production" do |production|
     config.vm.provider :digital_ocean do |provider|
       provider.ssh_key_name = 'do_ssh_key'
-      provider.token = ENV["DIGITAL_OCEAN_TOKEN"]
+      provider.token = ENV["PYTHON_KINDERGARTEN_DO_TOKEN"]
       provider.region = 'fra1'
       provider.image = 'ubuntu-18-04-x64'
       provider.size = 's-1vcpu-1gb'
@@ -38,6 +38,31 @@ Vagrant.configure("2") do |config|
 
       echo "+---------------------------------------------------------------+"
       echo "|         Finally DONE and ready for Travis Delployment         |"
+      echo "+---------------------------------------------------------------+"
+    SHELL
+  end
+
+  config.vm.define "database" do |database|
+    config.vm.provider :digital_ocean do |provider|
+      provider.ssh_key_name = 'do_ssh_key'
+      provider.token = ENV["PYTHON_KINDERGARTEN_DO_TOKEN"]
+      provider.region = 'fra1'
+      provider.image = 'ubuntu-18-04-x64'
+      provider.size = 's-1vcpu-1gb'
+      provider.privatenetworking = true
+      
+    end
+    
+    database.vm.hostname = "pythonkindergarten-database-server"
+    database.vm.provision "shell", inline: <<-SHELL
+      sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+      wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+      sudo apt-get update
+      sudo apt-get -y install postgresql
+      sudo ufw allow 5432
+
+      echo "+---------------------------------------------------------------+"
+      echo "|             Finally DONE and ready for data                   |"
       echo "+---------------------------------------------------------------+"
     SHELL
   end

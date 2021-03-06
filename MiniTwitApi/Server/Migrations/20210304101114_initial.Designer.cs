@@ -5,28 +5,33 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MiniTwitApi.Server.Entities;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace MiniTwitApi.Server.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20210303085436_InitialCreater")]
-    partial class InitialCreater
+    [Migration("20210304101114_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "5.0.3");
+                .HasAnnotation("Relational:MaxIdentifierLength", 63)
+                .HasAnnotation("ProductVersion", "5.0.3")
+                .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
             modelBuilder.Entity("MiniTwitApi.Server.Entities.Follower", b =>
                 {
                     b.Property<int>("WhoId")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("integer");
 
                     b.Property<int>("WhomId")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("integer");
 
                     b.HasKey("WhoId", "WhomId");
+
+                    b.HasIndex("WhomId");
 
                     b.ToTable("Followers");
                 });
@@ -35,26 +40,27 @@ namespace MiniTwitApi.Server.Migrations
                 {
                     b.Property<int>("MessageId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<int>("AuthorId")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("integer");
 
                     b.Property<string>("AuthorUsername")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("text");
 
                     b.Property<int>("Flagged")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("integer");
 
                     b.Property<int>("PubDate")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("integer");
 
                     b.Property<string>("Text")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("text");
 
                     b.Property<int?>("UserId1")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("integer");
 
                     b.HasKey("MessageId");
 
@@ -69,31 +75,46 @@ namespace MiniTwitApi.Server.Migrations
                 {
                     b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("text");
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<int?>("UserId1")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("text");
 
                     b.Property<string>("Username")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("text");
 
                     b.HasKey("UserId");
-
-                    b.HasIndex("UserId1");
 
                     b.HasIndex("Username")
                         .IsUnique();
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("MiniTwitApi.Server.Entities.Follower", b =>
+                {
+                    b.HasOne("MiniTwitApi.Server.Entities.User", "Who")
+                        .WithMany("Followers")
+                        .HasForeignKey("WhoId")
+                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
+
+                    b.HasOne("MiniTwitApi.Server.Entities.User", "Whom")
+                        .WithMany()
+                        .HasForeignKey("WhomId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Who");
+
+                    b.Navigation("Whom");
                 });
 
             modelBuilder.Entity("MiniTwitApi.Server.Entities.Message", b =>
@@ -109,13 +130,6 @@ namespace MiniTwitApi.Server.Migrations
                         .HasForeignKey("UserId1");
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("MiniTwitApi.Server.Entities.User", b =>
-                {
-                    b.HasOne("MiniTwitApi.Server.Entities.User", null)
-                        .WithMany("Followers")
-                        .HasForeignKey("UserId1");
                 });
 
             modelBuilder.Entity("MiniTwitApi.Server.Entities.User", b =>

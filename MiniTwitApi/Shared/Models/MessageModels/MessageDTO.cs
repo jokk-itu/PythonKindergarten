@@ -1,27 +1,27 @@
 using System.ComponentModel.DataAnnotations;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace MiniTwitApi.Shared.Models
 {
     public class MessageDTO
     {
-        [JsonProperty("id")] 
+        [JsonPropertyName("id")] 
         public int Id { get; set; }
         
-        [JsonProperty("author")] 
+        [JsonPropertyName("author")] 
         public int Author { get; set; }
         
-        [JsonProperty("authorUsername")] 
+        [JsonPropertyName("authorUsername")] 
         public string AuthorUsername { get; set; }
         
-        [JsonProperty("text")]
+        [JsonPropertyName("text")]
         [StringLength(60, ErrorMessage = "Identifier too long (60 character limit).")] 
         public string Text { get; set; }
         
-        [JsonProperty("publishDate")] 
+        [JsonPropertyName("publishDate")] 
         public int PublishDate { get; set; }
         
-        [JsonProperty("flagged")] 
+        [JsonPropertyName("flagged")] 
         public int Flagged { get; set; }
     }
 }

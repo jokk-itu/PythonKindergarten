@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using Org.BouncyCastle.Crypto.Engines;
 
 namespace MiniTwitApi.Server.Entities
 {
@@ -20,8 +19,9 @@ namespace MiniTwitApi.Server.Entities
             if (!optionsBuilder.IsConfigured)
             {
                 //Add connection string to DB
-                optionsBuilder.UseSqlite(@"Data Source = ../../tmp/minitwit.db");
+                optionsBuilder.UseNpgsql("Server=161.35.215.154;Database=pythonkindergarten;User Id=postgres;Password=postgres;Port=5432");
             }
+            
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

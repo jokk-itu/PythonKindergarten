@@ -1,4 +1,4 @@
-﻿using System.Data.SqlTypes;
+using System.Data.SqlTypes;
 using System.Diagnostics;
 using System.Dynamic;
 using System.ComponentModel;
@@ -6,9 +6,13 @@ using System.IO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Reflection;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using MiniTwitApi.Shared;
@@ -19,9 +23,6 @@ namespace MiniTwitApi.Server
     {
         public static void Main(string[] args)
         {
-            if(args.Length > 0)
-                DeleteMe.TestRun = args[0] == "test";
-
             CreateHostBuilder(args).Build().Run();
         }
 
@@ -29,13 +30,34 @@ namespace MiniTwitApi.Server
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>();
+                    webBuilder.UseStartup<Startup>()
+                        .UseKestrel(options =>
+                        {
+                            options.Listen(IPAddress.Any, 5001, listenOptions =>
+                            {
+                                var serverCertificate = LoadCertificate();
+                                listenOptions.UseHttps(serverCertificate); // <- Configures SSL
+                            });
+                        });
 
-                    if(args.Length > 0 && args[0] == "test")
-                        webBuilder.UseUrls(new string[]{"https://0.0.0.0:5001", "http://0.0.0.0:5000"});
-                    else
-                        webBuilder.UseUrls(new string[]{"https://165.227.161.247:443", "http://165.227.161.247:80"});
-                        
                 });
+        
+        private static X509Certificate2 LoadCertificate()
+        {
+            var assembly = typeof(Startup).GetTypeInfo().Assembly;
+            var embeddedFileProvider = new EmbeddedFileProvider(assembly, "MiniTwitApi.Server");
+            var certificateFileInfo = embeddedFileProvider.GetFileInfo("certificate.pfx");
+            using (var certificateStream = certificateFileInfo.CreateReadStream())
+            {
+                byte[] certificatePayload;
+                using (var memoryStream = new MemoryStream())
+                {
+                    certificateStream.CopyTo(memoryStream);
+                    certificatePayload = memoryStream.ToArray();
+                }
+
+                return new X509Certificate2(certificatePayload, "");
+            }
+        }
     }
 }

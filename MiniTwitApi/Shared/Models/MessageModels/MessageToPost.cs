@@ -1,11 +1,11 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace MiniTwitApi.Shared.Models
 {
     // {'content' : content}
     public class MessageToPost
     {
-        [JsonProperty("content")] 
+        [JsonPropertyName("content")] 
         public string Content { get; set; }
     }
 }

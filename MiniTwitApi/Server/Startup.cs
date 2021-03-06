@@ -42,14 +42,6 @@ namespace MiniTwitApi.Server
             services.AddSwaggerGen();
 
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
-            /*services.AddScoped<ClientIpCheckActionFilter>(container =>
-            {
-                var loggerFactory = container.GetRequiredService<ILoggerFactory>();
-                var logger = loggerFactory.CreateLogger<ClientIpCheckActionFilter>();
-
-                return new ClientIpCheckActionFilter(
-                    Configuration["ApiSafeList"], logger);
-            });*/
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

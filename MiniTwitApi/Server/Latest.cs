@@ -7,7 +7,7 @@ namespace MiniTwitApi.Server
         private static readonly Latest _latest = new Latest();
         private readonly object _fileLock = new object();
         
-        public void Update(int latest)
+        public void Update(long latest)
         {
             lock (_fileLock)
             {
@@ -17,12 +17,12 @@ namespace MiniTwitApi.Server
             }
         }
 
-        public int Read()
+        public long Read()
         {
             lock (_fileLock)
             {
                 using var reader = new StreamReader("latest.txt");
-                var latest = int.Parse(reader.ReadLine());
+                var latest = long.Parse(reader.ReadLine());
                 reader.Close();
                 return latest;
             }

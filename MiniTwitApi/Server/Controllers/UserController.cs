@@ -8,6 +8,8 @@ using MiniTwitApi.Shared;
 using MiniTwitApi.Shared.Models;
 using MiniTwitApi.Server.Repositories.Abstract;
 using MiniTwitApi.Shared.Models.UserModels;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.Extensions.Configuration;
 
 namespace MiniTwitApi.Server.Controllers
 {
@@ -16,30 +18,36 @@ namespace MiniTwitApi.Server.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUserRepository _repository;
+        private readonly IConfiguration _configuration;
+        private readonly IActionContextAccessor _accessor;
 
-        public UserController(IUserRepository repository)
+        public UserController(IUserRepository repository, IConfiguration configuration, IActionContextAccessor accessor)
         {
             _repository = repository;
+            _configuration = configuration;
+            _accessor = accessor;
         }
         
         //TODO The bad requests gives away if the username exists. This is only used for debugging.
         [HttpPost("login")]
-        public async Task<ActionResult> GetLogin([FromBody] LoginUserDTO user, [FromQuery] int latest)
+        public async Task<ActionResult> GetLogin([FromBody] LoginUserDTO user, [FromQuery] long latest)
         {
             var userFromDatabase = await _repository.ReadAsync(user.Username);
 
             if(userFromDatabase is null)
                 return BadRequest("User does not exist");
             
-            if(BCrypt.CheckPassword(user.Password, userFromDatabase.Password))
+            if(!BCrypt.CheckPassword(user.Password, userFromDatabase.Password))
                 return BadRequest("Provided password is wrong");
 
-            Latest.GetInstance().Update(latest);
+            if(latest > 0 && _configuration["ApiSafeList"].Contains(_accessor.ActionContext.HttpContext.Connection.RemoteIpAddress.ToString()))
+                Latest.GetInstance().Update(latest);
+            
             return NoContent();
         }
         
         [HttpPost("register")]
-        public async Task<ActionResult> PostRegister([FromBody] CreateUserDTO user, [FromQuery] int latest)
+        public async Task<ActionResult> PostRegister([FromBody] CreateUserDTO user, [FromQuery] long latest)
         {
             // Check if username is provided
             if(string.IsNullOrEmpty(user.Username))
@@ -58,16 +66,26 @@ namespace MiniTwitApi.Server.Controllers
                 return BadRequest("User already exists with given username");
             
             //insert the user
+            var hashedPassword = BCrypt.HashPassword(user.Password, BCrypt.GenerateSalt(12));
+            Console.WriteLine(hashedPassword);
+            Console.WriteLine(hashedPassword.Length);
+            user.Password = hashedPassword;
             await _repository.CreateAsync(user);
-            Latest.GetInstance().Update(latest);
+
+            if(latest > 0 && _configuration["ApiSafeList"].Contains(_accessor.ActionContext.HttpContext.Connection.RemoteIpAddress.ToString()))
+                Latest.GetInstance().Update(latest);
+
             return NoContent();
         }
         
         [HttpGet("user/{userid}")]
-        public async Task<ActionResult<UserDTO>> GetUserByUserId(int userid, [FromQuery] int latest)
+        public async Task<ActionResult<UserDTO>> GetUserByUserId(int userid, [FromQuery] long latest)
         {
             var user = await _repository.ReadAsync(userid);
-            Latest.GetInstance().Update(latest);
+            
+            if(latest > 0 && _configuration["ApiSafeList"].Contains(_accessor.ActionContext.HttpContext.Connection.RemoteIpAddress.ToString()))
+                Latest.GetInstance().Update(latest);
+            
             return Ok(user);
         }
     }

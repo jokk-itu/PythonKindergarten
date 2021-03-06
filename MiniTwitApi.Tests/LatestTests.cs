@@ -8,7 +8,7 @@ namespace MiniTwitApi.Tests
         [Theory]
         [InlineData(5)]
         [InlineData(1000)]
-        public void Read_And_Update(int latest)
+        public void Read_And_Update(long latest)
         {
             Latest.GetInstance().Update(latest);
             var actual = Latest.GetInstance().Read();

@@ -5,6 +5,8 @@
 @using MiniTwitApi.Shared.Models.UserModels;
 @using System.Globalization
 @using System.Text
+@using MiniTwitApi.Shared
+@using System.Text.Json;
 
 @inject HttpClient httpClient
 
@@ -40,15 +42,15 @@ else if(@TimelineType.Contains("mytimeline"))
             {
                 <p>This is you!</p>
             }
-            else if(false) @*Should check if the user which posted the messaged is followed by the viewing user, must be done via API?*@
+            else if(@IsFollowed().Result) @*Should check if the user which posted the messaged is followed by the viewing user, must be done via API?*@
             {
                 <p>You are currently following this user.</p>
-                <a class=unfollow href="{{ url_for('unfollow_user', username=profile_user.username)}}">Unfollow user</a> @*Implement unfollowing user*@
+                <a class=unfollow href="@UnfollowUser()">Unfollow user</a> @*Implement unfollowing user*@
             }
             else
             {
                 <p>You are not yet following this user.</p>
-                <a class=follow href="{{ url_for('follow_user', username=profile_user.username)}}">Follow user</a> @*Implement following user*@
+                <a class=follow href="@FollowUser()">Follow user</a> @*Implement following user*@
             }
         </div>
     }
@@ -91,8 +93,8 @@ else if(@TimelineType.Contains("mytimeline"))
     [Parameter]
     public string Username { get; set;}
 
-    public bool UserIsLoggedIn = true;
-    public UserDTO CurrentLoggedInUser = new UserDTO{Id = 1, Username = "test", Email = "test@email.com", Password = "Password1234"};
+    public bool UserIsLoggedIn;
+    public UserDTO CurrentLoggedInUser;
     private bool ErrorRaised = false;
     private string ErrorMessage;
 
@@ -101,7 +103,13 @@ else if(@TimelineType.Contains("mytimeline"))
 
     Dictionary<MessageDTO, UserDTO> messageList = new Dictionary<MessageDTO, UserDTO>();
 
-    protected override async Task OnInitializedAsync(){
+    protected override async Task OnInitializedAsync()
+    {
+        if (LoggedInUser.User is not null)
+        {
+            CurrentLoggedInUser = LoggedInUser.User;
+            UserIsLoggedIn = true;
+        }
         List<MessageDTO> messages = new List<MessageDTO>();
         try{
             var responseJson = await httpClient.GetStringAsync("/msgs");
@@ -120,7 +128,43 @@ else if(@TimelineType.Contains("mytimeline"))
             user = JsonConvert.DeserializeObject<UserDTO>(responseJson);
             messageList.Add(m, user);
         }
+    }
 
+    //TODO IsFollowedBy should be an Endpoint
+    public async Task<bool> IsFollowed()
+    {
+        var response = await httpClient.GetStringAsync($"$follws/{CurrentLoggedInUser.Username}");
+        var followers = JsonConvert.DeserializeObject<List<FollowerDTO>>(response);
+        foreach (var follower in followers)
+        {
+            var getUser = await httpClient.GetStringAsync($"/user/{follower.WhomId}");
+            var jsonUser = JsonConvert.DeserializeObject<UserDTO>(getUser);
+            if (jsonUser.Username.Equals(Username))
+                return true;
+        }
+        return false;
+    }
+
+    public async Task FollowUser()
+    {
+        var json = System.Text.Json.JsonSerializer.Serialize(new Follow()
+        {
+            ToFollow = Username
+        });
+        var data = new StringContent(json, Encoding.UTF8, "application/json");
+        var response = await httpClient.PostAsync($"/fllws", data);
+        //Handle Errors
+    }
+    
+    public async Task UnfollowUser()
+    {
+        var json = System.Text.Json.JsonSerializer.Serialize(new Follow()
+        {
+            ToUnfollow = Username
+        });
+        var data = new StringContent(json, Encoding.UTF8, "application/json");
+        var response = await httpClient.PostAsync($"/fllws", data);
+        //Handle Errors
     }
 
     //Retrieved from https://www.thecodebuzz.com/convert-unix-epoch-time-to-datetime-and-date-to-unix-datecsharp-net/

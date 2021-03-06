@@ -30,6 +30,7 @@ jobs:
     - docker push $DOCKER_USERNAME/pythonkindergartenimage:latest
   - stage: deploy
     name: deploy new version
+    if: branch = master
     install: skip
     script: |
       ssh -o "StrictHostKeyChecking no" ${MT_USER}@${MT_SERVER} \

@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using MiniTwitApi.Shared;
 using MiniTwitApi.Shared.Models;
 using MiniTwitApi.Server.Repositories.Abstract;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.Extensions.Configuration;
 
 namespace MiniTwitApi.Server.Controllers
 {
@@ -13,27 +15,35 @@ namespace MiniTwitApi.Server.Controllers
     {
         private readonly IFollowerRepository _followerRepository;
         private readonly IUserRepository _userRepository;
+        private readonly IConfiguration _configuration;
+        private readonly IActionContextAccessor _accessor;
     
-        public FollowController(IFollowerRepository repository, IUserRepository userRepository)
+        public FollowController(IFollowerRepository repository, IUserRepository userRepository, 
+            IConfiguration configuration, IActionContextAccessor accessor)
         {
             _userRepository = userRepository;
             _followerRepository = repository;
+            _configuration = configuration;
+            _accessor = accessor;
         }
         
         [HttpGet("fllws/{username}")]
-        public async Task<ActionResult<IList<FollowerDTO>>> GetFollowsByUsername(string username, [FromQuery] int latest)
+        public async Task<ActionResult<IList<FollowerDTO>>> GetFollowsByUsername(string username, [FromQuery] long latest)
         {
             if(!await _userRepository.UserExistsAsync(username))
                 return NotFound();
 
             // Query follows from database by username
             var follows = await _followerRepository.ReadAllAsync(username);
-            Latest.GetInstance().Update(latest);
+
+            if(latest > 0 && _configuration["ApiSafeList"].Contains(_accessor.ActionContext.HttpContext.Connection.RemoteIpAddress.ToString()))
+                Latest.GetInstance().Update(latest);
+
             return Ok(follows);
         }
         
         [HttpPost("fllws/{username}")]
-        public async Task<ActionResult> PostFollowsByUsername(string username, [FromBody] Follow follow, [FromQuery] int latest)
+        public async Task<ActionResult> PostFollowsByUsername(string username, [FromBody] Follow follow, [FromQuery] long latest)
         {
             if(!await _userRepository.UserExistsAsync(username))
                 return NotFound();
@@ -64,7 +74,9 @@ namespace MiniTwitApi.Server.Controllers
                 });
             }
 
-            Latest.GetInstance().Update(latest);
+            if(latest > 0 && _configuration["ApiSafeList"].Contains(_accessor.ActionContext.HttpContext.Connection.RemoteIpAddress.ToString()))
+                Latest.GetInstance().Update(latest);
+
             return Ok();
         }
     }

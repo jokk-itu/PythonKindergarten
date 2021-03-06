@@ -1,9 +1,12 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MiniTwitApi.Server.Repositories;
 using MiniTwitApi.Shared;
 using MiniTwitApi.Shared.Models;
 using MiniTwitApi.Server.Repositories.Abstract;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.Extensions.Configuration;
 
 namespace MiniTwitApi.Server.Controllers
 {
@@ -11,13 +14,22 @@ namespace MiniTwitApi.Server.Controllers
     [Route("")]
     public class MiscController : ControllerBase
     {
-        public MiscController()
+        private readonly IConfiguration _configuration;
+        private readonly IActionContextAccessor _accessor;
+
+        public MiscController(IConfiguration configuration, IActionContextAccessor accessor)
         {
+            _configuration = configuration;
+            _accessor = accessor;
         }       
         
         [HttpGet("latest")]
         public async Task<ActionResult<GetLatestResponse>> GetLatest([FromQuery] long latest)
-            => Ok(new GetLatestResponse(Latest.GetInstance().Read()));
+        {
+            if(latest > 0 && _configuration["ApiSafeList"].Contains(_accessor.ActionContext.HttpContext.Connection.RemoteIpAddress.ToString()))
+                Latest.GetInstance().Update(latest);
+            return Ok(new GetLatestResponse(Latest.GetInstance().Read()));
+        }
         
     }
 }

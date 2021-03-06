@@ -14,6 +14,8 @@ using MiniTwitApi.Shared.Repositories;
 using MiniTwitApi.Server.Repositories.Abstract;
 using MiniTwitApi.Server.Repositories;
 using MiniTwitApi.Shared;
+using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 
 namespace MiniTwitApi.Server
 {
@@ -39,8 +41,15 @@ namespace MiniTwitApi.Server
             services.AddScoped<IMessageRepository, MessageRepository>();
             services.AddSwaggerGen();
 
-            if(!DeleteMe.TestRun)
-                services.AddLettuceEncrypt();
+            services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
+            /*services.AddScoped<ClientIpCheckActionFilter>(container =>
+            {
+                var loggerFactory = container.GetRequiredService<ILoggerFactory>();
+                var logger = loggerFactory.CreateLogger<ClientIpCheckActionFilter>();
+
+                return new ClientIpCheckActionFilter(
+                    Configuration["ApiSafeList"], logger);
+            });*/
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,6 +1,6 @@
 using System;
 
-namespace MiniTwitApi.Shared.Repositories 
+namespace MiniTwitApi.Shared
 {
     public static class EpochConverter
     {

@@ -20,6 +20,47 @@
         <a class="dismiss">🗙</a>
     </div>
     <script src="_framework/blazor.webassembly.js"></script>
+    <script>
+        function login (data)
+        {
+            let user = JSON.parse(data);
+            sessionStorage.setItem("Username", user.Username)
+        }
+        function getUser () 
+        {
+            let username = sessionStorage.getItem("Username");
+            let user =  new User(username);
+            return JSON.stringify(user);
+        }
+        function isUserLoggedIn () 
+        {
+            return sessionStorage.getItem("Username") !== null
+        }
+        class User 
+        {
+            constructor(username) 
+            {
+                this.username = username;        
+            }
+        }
+        function scrollCheckerForMessages() 
+        {
+            let messages = document.getElementById("messages");
+            messages.onscroll = (event) => 
+            {
+                let elem = event.currentTarget;
+                if(elem[0].scrollHeight - elem.scrollTop() === elem.outerHeight()) 
+                {
+                    DotNet.invokeMethodAsync('MiniTwitApi.Client', 'GetMessages').then(() => 
+                    {
+                        console.log("GetMessages has been called");
+                    });
+                }
+            };
+        }
+        
+            
+    </script>
 </body>
 
 </html>

@@ -58,7 +58,7 @@ namespace MiniTwitApi.Server.Controllers
                 return BadRequest("You have to enter a password");
                 
             //Check if email is provided
-            if(string.IsNullOrEmpty(user.Email) || !user.Email.Contains("@"))
+            if(string.IsNullOrEmpty(user.Email))
                 return BadRequest("You have to enter a valid email address");
             
             //checks if the user exists
@@ -67,8 +67,6 @@ namespace MiniTwitApi.Server.Controllers
             
             //insert the user
             var hashedPassword = BCrypt.HashPassword(user.Password, BCrypt.GenerateSalt(12));
-            Console.WriteLine(hashedPassword);
-            Console.WriteLine(hashedPassword.Length);
             user.Password = hashedPassword;
             await _repository.CreateAsync(user);
 

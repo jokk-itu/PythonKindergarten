@@ -1,14 +1,40 @@
-﻿<div class=navigation>
-    <!--{% if g.user %}
-    <a href="timeline">my timeline</a> |
-    <a href="timeline">public timeline</a> |
-    <a href="signout">sign out [{{ g.user.username }}]</a>
-    {% else %}-->
-    <a href="timeline/public">public timeline</a> |
-    <a href="register">sign up</a> |
-    <a href="login">sign in</a>
+﻿@using MiniTwitApi.Shared.Models.UserModels
+@using System.Text.Json
+
+@inject IJSRuntime JSRuntime;
+
+<div class=navigation>
+    @if (IsUserLoggedIn)
+    {
+        <a href="timeline/my_timeline">my timeline</a>
+        <a href="timeline/public">public timeline</a>
+        <a href="signout">sign out</a>
+    }
+    else
+    {
+        <a href="timeline/public">public timeline</a>
+        <a href="register">sign up</a>
+        <a href="login">sign in</a>
+    }
 </div>
 
-@code {
+@code
+{
+    private bool IsUserLoggedIn { get; set; }
+    
+    protected override async Task OnInitializedAsync()
+    {
+        IsUserLoggedIn = await IsLoggedIn();
+    }
 
+    private async Task<UserDTO> GetUser()
+    {
+        var user = await JSRuntime.InvokeAsync<string>("getUser");
+        return JsonSerializer.Deserialize<UserDTO>(user);
+    }
+    
+    private async Task<bool> IsLoggedIn()
+    {
+        return await JSRuntime.InvokeAsync<bool>("isUserLoggedIn");
+    }
 }

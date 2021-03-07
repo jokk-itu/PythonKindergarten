@@ -7,6 +7,10 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using MiniTwitApi.Client.Models;
+using MiniTwitApi.Client.Models.Abstract;
+using MiniTwitApi.Client.ViewModels;
+using MiniTwitApi.Client.ViewModels.Abstract;
 
 namespace MiniTwitApi.Client
 {
@@ -18,7 +22,19 @@ namespace MiniTwitApi.Client
             builder.RootComponents.Add<App>("#app");
 
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+            
+            //Register the ViewModels for the Views to use them
+            builder.Services.AddTransient<IRegisterViewModel, RegisterViewModel>();
+            builder.Services.AddTransient<ILoginViewModel, LoginViewModel>();
+            builder.Services.AddTransient<IMyTimelineViewModel, MyTimelineViewModel>();
+            builder.Services.AddTransient<IUserTimelineViewModel, UserTimelineViewModel>();
+            builder.Services.AddTransient<IMessageViewModel, MessageViewModel>();
 
+            //Register Models for the ViewModels to use them
+            builder.Services.AddTransient<IUserModel, UserModel>();
+            builder.Services.AddTransient<IMessageModel, MessageModel>();
+            builder.Services.AddTransient<IFollowModel, FollowModel>();
+            
             await builder.Build().RunAsync();
         }
     }

@@ -8,6 +8,6 @@ namespace MiniTwitApi.Client.Models.Abstract
     public interface IMessageModel
     {
         public IAsyncEnumerable<(MessageDTO, UserDTO)> GetMessages(string path);
-        private Task PostMessage(MessageDTO message, string username)
+        public Task PostMessage(CreateMessage message, string username);
     }
 }

@@ -6,7 +6,7 @@
 <h3>Messages</h3>
 
 <ul class="messages">
-    @if(_messages.Count > 0)
+    @if(_messages is not null)
     {
         @foreach (var (message, user) in _messages)
         {
@@ -21,7 +21,7 @@
     else
     {
         <li><em>Loading...</em></li>
-        <img width="200px" src="../wwwroot/loader.gif"  alt="loading"/>
+        <!---<img width="200px" src="../wwwroot/loader.gif"  alt="loading"/>--->
     }
 </ul>
 
@@ -34,8 +34,9 @@
 
     protected override async Task OnInitializedAsync()
     {
+        _messages = new List<(MessageDTO, UserDTO)>();
         await MessageViewModel.RequestMessages(Path);
-        await foreach (var m in MessageViewModel.messages)
+        await foreach (var m in MessageViewModel.Messages)
         {
             _messages.Add(m);
             StateHasChanged();

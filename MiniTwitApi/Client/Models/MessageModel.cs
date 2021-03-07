@@ -34,7 +34,7 @@ namespace MiniTwitApi.Client.Models
             }
         }
         
-        private async Task PostMessage(MessageDTO message, string username)
+        public async Task PostMessage(CreateMessage message, string username)
         {
             var json = JsonSerializer.Serialize(message);
             var data = new StringContent(json, Encoding.UTF8, "application/json");

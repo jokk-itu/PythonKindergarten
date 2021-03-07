@@ -55,13 +55,13 @@ namespace MiniTwitApi.Server.Controllers
         }
 
         [HttpPost("msgs/{username}")]
-        public async Task<ActionResult> PostMessageByUsername(string username, [FromBody] MessageToPost message, [FromQuery] int latest)
+        public async Task<ActionResult> PostMessageByUsername(string username, [FromBody] CreateMessage createMessage, [FromQuery] int latest)
         {
 
             if(!await _userRepository.UserExistsAsync(username))
                 return NotFound();
 
-            if(string.IsNullOrEmpty(message.Content))
+            if(string.IsNullOrEmpty(createMessage.Content))
                 return BadRequest("You have to enter content");
 
             
@@ -71,7 +71,7 @@ namespace MiniTwitApi.Server.Controllers
             {
                 Author = actionUser.Id,
                 AuthorUsername = username,
-                Text = message.Content,
+                Text = createMessage.Content,
                 PublishDate = (int) EpochConverter.ToEpoch(DateTime.Now),
                 Flagged = 0 // Flag if profanity is detected
             });

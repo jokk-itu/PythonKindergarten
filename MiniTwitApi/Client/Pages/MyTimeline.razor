@@ -1,0 +1,54 @@
+@page "/my_timeline"
+@using MiniTwitApi.Shared.Models.UserModels
+@using MiniTwitApi.Client.ViewModels.Abstract
+
+@inject HttpClient HttpClient;
+@inject IJSRuntime JSRuntime;
+@inject IMyTimelineViewModel MyTimelineViewModel;
+
+@if (MyTimelineViewModel.LoggedInUser is null)
+{
+    <h3>You need to be logged in</h3>
+}
+else
+{
+    <h3>MyTimeline</h3>
+
+    <div class=twitbox>
+        <h3>What's on your mind @Username</h3>
+        <EditForm Model="MyTimelineViewModel.Message" OnValidSubmit="MyTimelineViewModel.PostMessage">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+            <InputText @bind-Value="MyTimelineViewModel.Message.Content" />
+            <button type="submit" class="btn btn-primary">Share</button>
+        </EditForm>
+    </div>
+
+    <Messages path="@MyTimelineViewModel.Path" />
+}
+
+@code 
+{
+    [Parameter]
+    public string Username { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (await IsLoggedIn())
+        {
+            MyTimelineViewModel.Username = Username;
+            MyTimelineViewModel.LoggedInUser = await GetUser();
+        }
+    }
+
+    private async Task<UserDTO> GetUser()
+    {
+        var user = await JSRuntime.InvokeAsync<string>("GetUser");
+        return System.Text.Json.JsonSerializer.Deserialize<UserDTO>(user);
+    }
+
+    private async Task<bool> IsLoggedIn()
+    {
+        return await JSRuntime.InvokeAsync<bool>("isLoggedIn");
+    }
+}

@@ -51,7 +51,10 @@
                 let elem = event.currentTarget;
                 if(elem[0].scrollHeight - elem.scrollTop() === elem.outerHeight()) 
                 {
-                    DotNet.invokeMethodAsync('MiniTwitApi.Client', '');
+                    DotNet.invokeMethodAsync('MiniTwitApi.Client', 'GetMessages').then(() => 
+                    {
+                        console.log("GetMessages has been called");
+                    });
                 }
             };
         }

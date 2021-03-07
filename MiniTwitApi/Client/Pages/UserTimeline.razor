@@ -48,6 +48,7 @@ else
             UserTimelineViewModel.Username = Username;
             UserTimelineViewModel.IsUserFollowed = await IsFollowed();
             UserTimelineViewModel.LoggedInUser = await GetUser();
+            UserTimelineViewModel.Path = $"msgs/{Username}";
         }
     }
     

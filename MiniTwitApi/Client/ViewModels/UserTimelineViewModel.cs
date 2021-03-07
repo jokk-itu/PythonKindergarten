@@ -19,7 +19,6 @@ namespace MiniTwitApi.Client.ViewModels
 
         public UserTimelineViewModel(IFollowModel followModel)
         {
-            Path = $"msgs/{Username}";
             _followModel = followModel;
         }
 

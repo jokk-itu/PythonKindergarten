@@ -1,5 +1,8 @@
+using System.Text.Json;
 using System.Threading.Tasks;
+using Microsoft.JSInterop;
 using MiniTwitApi.Client.Models;
+using MiniTwitApi.Client.Models.Abstract;
 using MiniTwitApi.Client.ViewModels.Abstract;
 using MiniTwitApi.Shared.Models.UserModels;
 
@@ -12,9 +15,9 @@ namespace MiniTwitApi.Client.ViewModels
         public bool IsUserFollowed { get; set; }
         public string Path { get; set; }
 
-        private readonly FollowModel _followModel;
+        private readonly IFollowModel _followModel;
 
-        public UserTimelineViewModel(FollowModel followModel)
+        public UserTimelineViewModel(IFollowModel followModel)
         {
             Path = $"msgs/{Username}";
             _followModel = followModel;
@@ -22,12 +25,12 @@ namespace MiniTwitApi.Client.ViewModels
 
         public async Task FollowUser()
         {
-            await _followModel.FollowUser(Username);
+            await _followModel.FollowUser(LoggedInUser.Username, Username);
         }
         
         public async Task UnfollowUser()
         {
-            await _followModel.UnfollowUser(Username);
+            await _followModel.UnfollowUser(LoggedInUser.Username, Username);
         }
     }
 }

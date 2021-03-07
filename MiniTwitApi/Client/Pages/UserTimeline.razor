@@ -1,6 +1,6 @@
 @page "/timeline/user_timeline/{username}"
 @using MiniTwitApi.Shared.Models.UserModels
-@using Newtonsoft.Json
+@using System.Text.Json;
 @using MiniTwitApi.Shared.Models
 @using MiniTwitApi.Client.ViewModels.Abstract
 
@@ -10,29 +10,31 @@
 
 @if (UserTimelineViewModel.LoggedInUser is null)
 {
-    throw new Exception("You need to be logged in");
+    <h2>You need to be logged in to access this page</h2>
 }
-
-<h2>@Username's Timeline</h2>
+else
+{
+    <h2>@Username's Timeline</h2>
     
-<div class=followstatus>
-     @if (UserTimelineViewModel.LoggedInUser.Username.Equals(Username))
-     {
-         <p>This is you!</p>
-     }
-     else if (UserTimelineViewModel.IsUserFollowed)
-     {
-         <p>You are currently following this user.</p>
-         <a class=unfollow href="@UserTimelineViewModel.UnfollowUser()">Unfollow user</a> 
-     }
-     else
-     {
-         <p>You are not yet following this user.</p>
-         <a class=follow href="@UserTimelineViewModel.FollowUser()">Follow user</a>
-     }
-</div>
+    <div class=followstatus>
+        @if (UserTimelineViewModel.LoggedInUser.Username.Equals(Username))
+        {
+            <p>This is you!</p>
+        }
+        else if (UserTimelineViewModel.IsUserFollowed)
+        {
+            <p>You are currently following this user.</p>
+            <button class="btn btn-primary" @onclick="@(() => UserTimelineViewModel.UnfollowUser())">Unfollow User</button>
+        }
+        else
+        {
+            <p>You are not yet following this user.</p>
+            <button class="btn btn-primary" @onclick="@(() => UserTimelineViewModel.FollowUser())">Follow User</button>
+        }
+    </div>
 
-<Messages path="@UserTimelineViewModel.Path" />
+    <Messages path="@UserTimelineViewModel.Path" />    
+}
 
 @code 
 {
@@ -48,30 +50,28 @@
             UserTimelineViewModel.LoggedInUser = await GetUser();
         }
     }
-
-    //Could be in an AbstractTimeLineViewModel
+    
     private async Task<UserDTO> GetUser()
     {
-        var user = await JSRuntime.InvokeAsync<string>("GetUser");
-        return System.Text.Json.JsonSerializer.Deserialize<UserDTO>(user);
+        var user = await JSRuntime.InvokeAsync<string>("getUser");
+        return JsonSerializer.Deserialize<UserDTO>(user);
     }
-
-    //Could be in an AbstractTimeLineViewModel
+    
     private async Task<bool> IsLoggedIn()
     {
-        return await JSRuntime.InvokeAsync<bool>("isLoggedIn");
+        return await JSRuntime.InvokeAsync<bool>("isUserLoggedIn");
     }
 
     //Should be in the FollowModel, and implemented as an easier Endpoint in the API.
     //Something like, is this Username being followed by this Username...
     private async Task<bool> IsFollowed()
     {
-        var response = await HttpClient.GetStringAsync($"$follws/{Username}");
-        var followers = JsonConvert.DeserializeObject<List<FollowerDTO>>(response);
+        var response = await HttpClient.GetStringAsync($"/fllws/{Username}");
+        var followers = JsonSerializer.Deserialize<List<FollowerDTO>>(response);
         foreach (var follower in followers)
         {
             var getUser = await HttpClient.GetStringAsync($"/user/{follower.WhomId}");
-            var jsonUser = JsonConvert.DeserializeObject<UserDTO>(getUser);
+            var jsonUser = JsonSerializer.Deserialize<UserDTO>(getUser);
             if (jsonUser.Username.Equals(Username))
                 return true;
         }

@@ -17,25 +17,25 @@ namespace MiniTwitApi.Client.Models
             _client = client;
         }
         
-        public async Task FollowUser(string username)
+        public async Task FollowUser(string myUsername, string followerUsername)
         {
             var json = JsonSerializer.Serialize(new Follow()
             {
-                ToFollow = username
+                ToFollow = followerUsername
             });
             var data = new StringContent(json, Encoding.UTF8, "application/json");
-            var response = await _client.PostAsync($"/fllws", data);
+            var response = await _client.PostAsync($"/fllws/{myUsername}", data);
             //Handle Errors
         }
     
-        public async Task UnfollowUser(string username)
+        public async Task UnfollowUser(string myUsername, string followerUsername)
         {
-            var json = System.Text.Json.JsonSerializer.Serialize(new Follow()
+            var json = JsonSerializer.Serialize(new Follow()
             {
-                ToUnfollow = username
+                ToUnfollow = followerUsername
             });
             var data = new StringContent(json, Encoding.UTF8, "application/json");
-            var response = await _client.PostAsync($"/fllws", data);
+            var response = await _client.PostAsync($"/fllws/{myUsername}", data);
             //Handle Errors
         }
     }

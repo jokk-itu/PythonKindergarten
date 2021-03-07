@@ -1,4 +1,4 @@
-@page "/my_timeline"
+@page "/timeline/my_timeline"
 @using MiniTwitApi.Shared.Models.UserModels
 @using MiniTwitApi.Client.ViewModels.Abstract
 
@@ -15,7 +15,7 @@ else
     <h3>MyTimeline</h3>
 
     <div class=twitbox>
-        <h3>What's on your mind @Username</h3>
+        <h3>What's on your mind @MyTimelineViewModel.LoggedInUser.Username</h3>
         <EditForm Model="MyTimelineViewModel.Message" OnValidSubmit="MyTimelineViewModel.PostMessage">
             <DataAnnotationsValidator />
             <ValidationSummary />
@@ -29,26 +29,23 @@ else
 
 @code 
 {
-    [Parameter]
-    public string Username { get; set; }
-
     protected override async Task OnInitializedAsync()
     {
         if (await IsLoggedIn())
         {
-            MyTimelineViewModel.Username = Username;
             MyTimelineViewModel.LoggedInUser = await GetUser();
+            MyTimelineViewModel.Path = $"msgs/{MyTimelineViewModel.LoggedInUser.Username}";
         }
     }
 
     private async Task<UserDTO> GetUser()
     {
-        var user = await JSRuntime.InvokeAsync<string>("GetUser");
+        var user = await JSRuntime.InvokeAsync<string>("getUser");
         return System.Text.Json.JsonSerializer.Deserialize<UserDTO>(user);
     }
 
     private async Task<bool> IsLoggedIn()
     {
-        return await JSRuntime.InvokeAsync<bool>("isLoggedIn");
+        return await JSRuntime.InvokeAsync<bool>("isUserLoggedIn");
     }
 }

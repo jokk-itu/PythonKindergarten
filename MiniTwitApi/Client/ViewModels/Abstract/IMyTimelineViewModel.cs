@@ -7,8 +7,7 @@ namespace MiniTwitApi.Client.ViewModels.Abstract
     public interface IMyTimelineViewModel
     {
         public CreateMessage Message { get; set; }
-        public string Username { get; set; }
-        
+
         public UserDTO LoggedInUser { get; set; }
 
         public string Path { get; set; }

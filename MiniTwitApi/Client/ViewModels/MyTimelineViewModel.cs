@@ -10,8 +10,7 @@ namespace MiniTwitApi.Client.ViewModels
     public class MyTimelineViewModel : IMyTimelineViewModel
     {
         public CreateMessage Message { get; set; }
-        public string Username { get; set; }
-        
+
         public UserDTO LoggedInUser { get; set; }
 
         public string Path { get; set; }
@@ -20,14 +19,13 @@ namespace MiniTwitApi.Client.ViewModels
 
         public MyTimelineViewModel(IMessageModel messageModel)
         {
-            Path = $"msgs/{Username}";
             Message = new CreateMessage();
             _messageModel = messageModel;
         }
 
         public async Task PostMessage()
         {
-            await _messageModel.PostMessage(Message, Username);
+            await _messageModel.PostMessage(Message, LoggedInUser.Username);
         }
     }
 

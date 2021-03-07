@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore.Update.Internal;
 using MiniTwitApi.Client.Models.Abstract;
 using MiniTwitApi.Client.ViewModels.Abstract;
 using MiniTwitApi.Shared.Models;
@@ -11,7 +10,7 @@ namespace MiniTwitApi.Client.ViewModels
 {
     public class MessageViewModel : IMessageViewModel
     {
-        public IAsyncEnumerable<(MessageDTO, UserDTO)> messages { get; set; }
+        public IAsyncEnumerable<(MessageDTO, UserDTO)> Messages { get; set; }
         private readonly IMessageModel _messageModel;
 
         public MessageViewModel(IMessageModel messageModel)
@@ -21,7 +20,7 @@ namespace MiniTwitApi.Client.ViewModels
 
         public async Task RequestMessages(string path)
         {
-            messages = _messageModel.GetMessages(path);
+            Messages = _messageModel.GetMessages(path);
         }
         
         public DateTime GenerateDateTime(int date)

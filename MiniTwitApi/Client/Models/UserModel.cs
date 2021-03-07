@@ -2,7 +2,6 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using MiniTwitApi.Client.Models.Abstract;
-using MiniTwitApi.Shared.Models;
 using MiniTwitApi.Shared.Models.UserModels;
 using MiniTwitApi.Shared;
 using System.Text.Json;

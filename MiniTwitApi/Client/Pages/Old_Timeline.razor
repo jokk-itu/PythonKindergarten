@@ -1,44 +1,23 @@
-@page "/timeline/{timelinetype}" 
-@page "/timeline/{timelinetype}/{username}"
+@page "/old/timeline/{timelinetype}" 
+@page "/old/timeline/{timelinetype}/{username}"
 @using Newtonsoft.Json;
 @using MiniTwitApi.Shared.Models;
 @using MiniTwitApi.Shared.Models.UserModels;
-@using System.Globalization
 @using System.Text
-@using MiniTwitApi.Shared
-@using System.Text.Json;
 
 @inject HttpClient httpClient
 @inject IJSRuntime JSRuntime
-
-@if(@TimelineType.Contains("public"))
-{
-    <h2>Public Timeline</h2>
-}
-else if(@TimelineType.Contains("user_timeline"))
-{
-    <h2>@Username's Timeline</h2>
-}
-else if(@TimelineType.Contains("mytimeline"))
-{
-    <h2>My timeline</h2>
-}
-
-@if(ErrorRaised)
-{
-    <div class="error"><strong>Error:</strong> @ErrorMessage</div>
-}
 
 @if(CurrentLoggedInUser is not null)
 {
     @if(@TimelineType.Contains("user_timeline"))
     {
         <div class=followstatus>
-            @if (async () => await GetUser().Username.Equals(Username))
+            @if (GetUser().Result.Username.Equals(Username))
             {
                 <p>This is you!</p>
             }
-            else if (IsFollowed()) @*Should check if the user which posted the messaged is followed by the viewing user, must be done via API?*@
+            else if (IsFollowed().Result) @*Should check if the user which posted the messaged is followed by the viewing user, must be done via API?*@
             {
                 <p>You are currently following this user.</p>
                 <a class=unfollow href="@UnfollowUser()">Unfollow user</a> @*Implement unfollowing user*@
@@ -76,7 +55,7 @@ else if(@TimelineType.Contains("mytimeline"))
     private bool ErrorRaised = false;
     private string ErrorMessage;
 
-    private MessageToPost PostDTO = new MessageToPost();
+    private CreateMessage PostDTO = new CreateMessage();
 
     Dictionary<MessageDTO, UserDTO> messageList = new Dictionary<MessageDTO, UserDTO>();
 
@@ -107,7 +86,7 @@ else if(@TimelineType.Contains("mytimeline"))
     }
 
     //TODO IsFollowedBy should be an Endpoint
-    public async Task<bool> IsFollowed()
+    private async Task<bool> IsFollowed()
     {
         var response = await httpClient.GetStringAsync($"$follws/{CurrentLoggedInUser.Username}");
         var followers = JsonConvert.DeserializeObject<List<FollowerDTO>>(response);
@@ -121,7 +100,7 @@ else if(@TimelineType.Contains("mytimeline"))
         return false;
     }
 
-    public async Task FollowUser()
+    private async Task FollowUser()
     {
         var json = System.Text.Json.JsonSerializer.Serialize(new Follow()
         {
@@ -131,8 +110,8 @@ else if(@TimelineType.Contains("mytimeline"))
         var response = await httpClient.PostAsync($"/fllws", data);
         //Handle Errors
     }
-    
-    public async Task UnfollowUser()
+
+    private async Task UnfollowUser()
     {
         var json = System.Text.Json.JsonSerializer.Serialize(new Follow()
         {
@@ -143,7 +122,7 @@ else if(@TimelineType.Contains("mytimeline"))
         //Handle Errors
     }
 
-    public async Task<UserDTO> GetUser()
+    private async Task<UserDTO> GetUser()
     {
         var user = await JSRuntime.InvokeAsync<string>("GetUser");
         return System.Text.Json.JsonSerializer.Deserialize<UserDTO>(user);

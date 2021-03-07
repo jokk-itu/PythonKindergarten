@@ -2,11 +2,12 @@
 @using MiniTwitApi.Shared.Models.UserModels
 @using System.Globalization
 @using MiniTwitApi.Client.ViewModels.Abstract
-@inject IMessageViewModel MessageViewModel; 
-<h3>Messages</h3>
 
-<ul class="messages">
-    @if(_messages.Count > 0)
+@inject IMessageViewModel MessageViewModel; 
+@inject IJSRuntime JSRuntime;
+
+<ul class="messages" id="messages">
+    @if(_messages is not null)
     {
         @foreach (var (message, user) in _messages)
         {
@@ -21,7 +22,7 @@
     else
     {
         <li><em>Loading...</em></li>
-        <img width="200px" src="../wwwroot/loader.gif"  alt="loading"/>
+        <img width="200px" src="/loader.gif"  alt="loading"/>
     }
 </ul>
 
@@ -29,13 +30,29 @@
 {
     [Parameter]
     public string Path { get; set; }
+    
+    private int Skip { get; set; }
 
     private ICollection<(MessageDTO, UserDTO)> _messages;
 
     protected override async Task OnInitializedAsync()
     {
-        await MessageViewModel.RequestMessages(Path);
-        await foreach (var m in MessageViewModel.messages)
+        Skip = 20;
+        _messages = new List<(MessageDTO, UserDTO)>();
+        await MessageViewModel.RequestMessages($"{Path}/?no={Skip}");
+        await foreach (var m in MessageViewModel.Messages)
+        {
+            _messages.Add(m);
+            StateHasChanged();
+        }
+        await JSRuntime.InvokeVoidAsync("scrollCheckerForMessages");
+    }
+
+    [JSInvokable]
+    public async Task GetMessages()
+    {
+        await MessageViewModel.RequestMessages($"{Path}/?no={Skip+20}");
+        await foreach (var m in MessageViewModel.Messages)
         {
             _messages.Add(m);
             StateHasChanged();

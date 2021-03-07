@@ -10,6 +10,7 @@ namespace MiniTwitApi.Shared.Models.UserModels
         public string Username { get; set; }
 
         [JsonPropertyName("email")] 
+        [EmailAddress]
         public string Email { get; set; }
 
         [JsonPropertyName("pwd")] 

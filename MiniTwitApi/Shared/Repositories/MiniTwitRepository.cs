@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.Data.Sqlite;
 using MiniTwitApi.Shared.Models;
+using MiniTwitApi.Shared.Models.UserModels;
 using MiniTwitApi.Shared.Repositories.Abstractions;
 
 namespace MiniTwitApi.Shared.Repositories 

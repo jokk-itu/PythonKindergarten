@@ -1,0 +1,49 @@
+@using MiniTwitApi.Shared.Models
+@using MiniTwitApi.Shared.Models.UserModels
+@using System.Globalization
+@using MiniTwitApi.Client.ViewModels.Abstract
+
+@inject IMessageViewModel MessageViewModel; 
+@inject IJSRuntime JSRuntime;
+
+<ul class="messages" id="messages">
+    @if(_messages is not null)
+    {
+        @foreach (var (message, user) in _messages)
+        {
+            <li>
+                <img width="48" src=@user.GenerateProfilePictureLink() alt="UserPicture">
+                <strong><a href="/timeline/user_timeline/@user.Username">@user.Username</a></strong>
+                @message.Text;
+                <small>&mdash; @MessageViewModel.GenerateDateTime(message.PublishDate).ToString("dd.MM.yyyy - HH.mm", CultureInfo.InvariantCulture) </small>
+            </li>
+        }
+    }
+    else
+    {
+        <li><em>Loading...</em></li>
+        <img width="200px" src="/loader.gif"  alt="loading"/>
+    }
+</ul>
+
+@code 
+{
+    [Parameter]
+    public string Path { get; set; }
+    
+    private int Skip { get; set; }
+
+    private ICollection<(MessageDTO, UserDTO)> _messages;
+
+    protected override async Task OnInitializedAsync()
+    {
+        Skip = 20;
+        _messages = new List<(MessageDTO, UserDTO)>();
+        await MessageViewModel.RequestMessages($"{Path}/?no={Skip}");
+        await foreach (var m in MessageViewModel.Messages)
+        {
+            _messages.Add(m);
+            StateHasChanged();
+        }
+    }
+}

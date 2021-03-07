@@ -20,6 +20,32 @@
         <a class="dismiss">🗙</a>
     </div>
     <script src="_framework/blazor.webassembly.js"></script>
+    <script>
+        function login (data)
+        {
+            let user = JSON.parse(data);
+            sessionStorage.setItem("Username", user.Username)
+        }
+        function getUser () 
+        {
+            let username = sessionStorage.getItem("Username");
+            let user =  new User(username);
+            return JSON.stringify(user);
+        }
+        function isUserLoggedIn () 
+        {
+            return sessionStorage.getItem("Username") !== null
+        }
+        class User 
+        {
+            constructor(username) 
+            {
+                this.username = username;        
+            }
+        }
+        
+            
+    </script>
 </body>
 
 </html>

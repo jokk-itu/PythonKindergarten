@@ -1,47 +1,32 @@
 @page "/login"
-@using System.Data.SQLite;
+@using MiniTwitApi.Client.ViewModels.Abstract
+@using MiniTwitApi.Shared
+@using Newtonsoft.Json
+@inject ILoginViewModel LoginViewModel 
+@inject IJSRuntime JSRuntime
 
 <h2>Sign In</h2>
 
-@if(ErrorRaised){
-    <div class="error"><strong>Error:</strong> @ErrorMessage</div>
-}
-
-<EditForm Model="@_dto" OnValidSubmit="@LoginUser">
-    <div class="form-group">
-        <label for="username">Username:</label>
-        <input type="username" class="form-control" size=30 id="username" placeholder="Enter your username here">
-    </div>
-    <div class="form-group">
-        <label for="password">Password:</label>
-        <input type="password" class="form-control" size=30 id="password">
-    </div>
+<EditForm Model="@LoginViewModel.User" OnValidSubmit="@LoginViewModel.LoginUser">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <p>
+        <label>
+            Username:
+            <InputText @bind-Value="LoginViewModel.User.Username" />
+        </label>
+    </p>
+    <p>
+        <label>
+            Password:
+            <InputText @bind-Value="LoginViewModel.User.Password" />
+        </label>
+    </p>
     <button type="submit" class="btn btn-primary">Sign In</button>
 </EditForm>
 
-@code{
-    private UserDTO _dto = new UserDTO();
-    private bool ErrorRaised = false;
-    private string ErrorMessage;
-    public void LoginUser()
-    {
-        try{
-            LoginUserExternally();
-        }catch(NotImplementedException e)
-        {
-            ErrorRaised = true;
-            ErrorMessage = e.Message;
-        }
-    }
-
-    public void LoginUserExternally()
-    {
-        throw new NotImplementedException("Not implemented yet");
-    }
-
-    public class UserDTO
-    {
-        public string Username { get; set; }
-        public string Password { get; set; }
-    }
+@if (LoggedInUser.User is not null)
+{
+    var json = JsonConvert.SerializeObject(LoggedInUser.User);
+    var response = JSRuntime.InvokeAsync<string>("login", json);
 }

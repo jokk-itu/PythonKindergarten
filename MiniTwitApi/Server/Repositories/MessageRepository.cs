@@ -35,11 +35,14 @@ namespace MiniTwitApi.Server.Repositories
 
         /**
         /* Add support for limit
+        /* Add support for Skip(). Use before Take()
         */
         public async Task<ICollection<MessageDTO>> ReadAllAsync(int limit = 20)
         {
-            return await (from m in _context.Messages
-                select new MessageDTO()
+            return await (
+                 _context.Messages
+                .OrderByDescending(m => m.PubDate)
+                .Take(limit)).Select(m => new MessageDTO()
                 {
                     Id = m.MessageId,
                     Author = m.AuthorId,

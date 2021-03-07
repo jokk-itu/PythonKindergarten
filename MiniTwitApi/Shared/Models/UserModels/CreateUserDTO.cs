@@ -2,7 +2,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
-namespace MiniTwitApi.Shared.Models 
+namespace MiniTwitApi.Shared.Models.UserModels
 {
     public class CreateUserDTO 
     {
@@ -17,6 +17,7 @@ namespace MiniTwitApi.Shared.Models
         public string Password {get; set;}
 
         [JsonPropertyName("email")]
+        [EmailAddress]
         public string Email {get; set;}
 
     }

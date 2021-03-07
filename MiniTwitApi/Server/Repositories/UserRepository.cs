@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using MiniTwitApi.Server.Entities;
 using MiniTwitApi.Server.Repositories.Abstract;
-using MiniTwitApi.Shared.Models;
+using MiniTwitApi.Shared.Models.UserModels;
 
 namespace MiniTwitApi.Server.Repositories
 {

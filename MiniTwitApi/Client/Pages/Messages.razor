@@ -3,9 +3,8 @@
 @using System.Globalization
 @using MiniTwitApi.Client.ViewModels.Abstract
 @inject IMessageViewModel MessageViewModel; 
-<h3>Messages</h3>
 
-<ul class="messages">
+<ul class="messages" id="messages">
     @if(_messages is not null)
     {
         @foreach (var (message, user) in _messages)
@@ -21,7 +20,7 @@
     else
     {
         <li><em>Loading...</em></li>
-        <!---<img width="200px" src="../wwwroot/loader.gif"  alt="loading"/>--->
+        <img width="200px" src="/loader.gif"  alt="loading"/>
     }
 </ul>
 

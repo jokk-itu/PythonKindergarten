@@ -45,17 +45,5 @@
             _messages.Add(m);
             StateHasChanged();
         }
-        await JSRuntime.InvokeVoidAsync("scrollCheckerForMessages");
-    }
-
-    [JSInvokable]
-    public async Task GetMessages()
-    {
-        await MessageViewModel.RequestMessages($"{Path}/?no={Skip+20}");
-        await foreach (var m in MessageViewModel.Messages)
-        {
-            _messages.Add(m);
-            StateHasChanged();
-        }
     }
 }

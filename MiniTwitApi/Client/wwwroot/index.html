@@ -43,21 +43,6 @@
                 this.username = username;        
             }
         }
-        function scrollCheckerForMessages() 
-        {
-            let messages = document.getElementById("messages");
-            messages.onscroll = (event) => 
-            {
-                let elem = event.currentTarget;
-                if(elem[0].scrollHeight - elem.scrollTop() === elem.outerHeight()) 
-                {
-                    DotNet.invokeMethodAsync('MiniTwitApi.Client', 'GetMessages').then(() => 
-                    {
-                        console.log("GetMessages has been called");
-                    });
-                }
-            };
-        }
         
             
     </script>

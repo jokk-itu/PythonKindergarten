@@ -19,7 +19,7 @@ namespace MiniTwitApi.Client.Models
             _client = client;
         }
 
-        public async IAsyncEnumerable<(MessageDTO, UserDTO)> GetMessages(string path)
+        public async IAsyncEnumerable<MessageDTO> GetMessages(string path)
         {
             var messagesFromApi = await _client.GetStringAsync(path);
             var messages = JsonSerializer.Deserialize<List<MessageDTO>>(messagesFromApi);
@@ -28,9 +28,7 @@ namespace MiniTwitApi.Client.Models
             
             foreach(var m in messages)
             {
-                var userFromApi = await _client.GetStringAsync($"/user/{m.Author}");
-                var user = JsonSerializer.Deserialize<UserDTO>(userFromApi);
-                yield return (m, user);
+                yield return m;
             }
         }
         

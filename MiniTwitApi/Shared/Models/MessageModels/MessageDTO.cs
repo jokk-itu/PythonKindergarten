@@ -14,6 +14,10 @@ namespace MiniTwitApi.Shared.Models
         [JsonPropertyName("authorUsername")] 
         public string AuthorUsername { get; set; }
         
+        [JsonPropertyName("authorEmail")]
+        [EmailAddress]
+        public string AuthorEmail { get; set; }
+        
         [JsonPropertyName("text")]
         [StringLength(60, ErrorMessage = "Identifier too long (60 character limit).")] 
         public string Text { get; set; }

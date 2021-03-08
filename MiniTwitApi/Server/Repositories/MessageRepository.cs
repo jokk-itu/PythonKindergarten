@@ -36,16 +36,19 @@ namespace MiniTwitApi.Server.Repositories
         /**
          * Add support for limit and skip
          */
-        public async Task<ICollection<MessageDTO>> ReadAllAsync(int limit = 20)
+        public async Task<ICollection<MessageDTO>> ReadAllAsync(int limit = 20, int skip = 0)
         {
             return await (
                  _context.Messages
                 .OrderByDescending(m => m.PubDate)
+                .Skip(skip)
+                .Take(limit)
                 .Select(m => new MessageDTO()
                 {
                     Id = m.MessageId,
                     Author = m.AuthorId,
                     AuthorUsername = m.AuthorUsername,
+                    AuthorEmail = m.User.Email,
                     Text = m.Text,
                     PublishDate = m.PubDate,
                     Flagged = m.Flagged
@@ -55,24 +58,29 @@ namespace MiniTwitApi.Server.Repositories
         /*
          * Add support for limit and skip
          */
-        public async Task<ICollection<MessageDTO>> ReadAllUserAsync(string username, int limit = 20)
+        public async Task<ICollection<MessageDTO>> ReadAllUserAsync(string username, int limit = 20, int skip = 0)
         {
             var userRepository = new UserRepository(_context);
             var user = await userRepository.ReadAsync(username);
             if(user is null) 
                 throw new ArgumentException("Provided username does not exist");
 
-            return await (from m in _context.Messages
-                where m.AuthorId == user.Id
-                select new MessageDTO()
+            return await (
+                _context.Messages
+                .Where(m => m.AuthorUsername.Equals(username))
+                .OrderByDescending(m => m.PubDate)
+                .Skip(skip)
+                .Take(limit)
+                .Select(m => new MessageDTO()
                 {
                     Id = m.MessageId,
                     Author = m.AuthorId,
                     AuthorUsername = m.AuthorUsername,
+                    AuthorEmail = m.User.Email,
                     Text = m.Text,
                     PublishDate = m.PubDate,
                     Flagged = m.Flagged
-                }).ToListAsync();
+                })).ToListAsync();
         }
     }
 }

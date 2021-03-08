@@ -4,8 +4,14 @@
 
 @inject IRegisterViewModel RegisterViewModel
 
-
 <h2>Register</h2>
+
+@if (RegisterViewModel.Error is not null)
+{
+    <div class="alert alert-danger" role="alert">
+        <p>@RegisterViewModel.Error</p>
+    </div>
+}
 
 <EditForm Model="@RegisterViewModel.User" OnValidSubmit="@RegisterViewModel.RegisterUser">
     <DataAnnotationsValidator />
@@ -28,3 +34,11 @@
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </EditForm>
+
+@if (RegisterViewModel.IsRegistered)
+{
+    <div class="alert alert-success" role="alert">
+        <p>Successfully logged in</p>
+        <!---Call redirect function here-->
+    </div>
+}

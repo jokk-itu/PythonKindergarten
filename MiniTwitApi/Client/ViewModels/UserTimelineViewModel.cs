@@ -1,3 +1,4 @@
+using System;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.JSInterop;
@@ -14,6 +15,7 @@ namespace MiniTwitApi.Client.ViewModels
         public UserDTO LoggedInUser { get; set; }
         public bool IsUserFollowed { get; set; }
         public string Path { get; set; }
+        public string Error { get; set; }
 
         private readonly IFollowModel _followModel;
 
@@ -24,12 +26,26 @@ namespace MiniTwitApi.Client.ViewModels
 
         public async Task FollowUser()
         {
-            await _followModel.FollowUser(LoggedInUser.Username, Username);
+            try
+            {
+                await _followModel.FollowUser(LoggedInUser.Username, Username);
+            }
+            catch (Exception e)
+            {
+                Error = e.Message;
+            }
         }
         
         public async Task UnfollowUser()
         {
-            await _followModel.UnfollowUser(LoggedInUser.Username, Username);
+            try
+            {
+                await _followModel.UnfollowUser(LoggedInUser.Username, Username);
+            }
+            catch (Exception e)
+            {
+                Error = e.Message;
+            }
         }
     }
 }

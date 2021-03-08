@@ -9,6 +9,7 @@ namespace MiniTwitApi.Client.ViewModels.Abstract
         public UserDTO LoggedInUser { get; set; }
         public bool IsUserFollowed { get; set; }
         public string Path { get; set; }
+        public string Error { get; set; }
 
         public Task UnfollowUser();
         public Task FollowUser();

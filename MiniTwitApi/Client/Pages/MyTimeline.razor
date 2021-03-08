@@ -13,6 +13,13 @@
 else
 {
     <h3>MyTimeline</h3>
+    
+    @if (MyTimelineViewModel.Error is not null)
+    {
+        <div class="alert alert-danger" role="alert">
+            <p>@MyTimelineViewModel.Error</p>
+        </div>
+    }
 
     <div class=twitbox>
         <h3>What's on your mind @MyTimelineViewModel.LoggedInUser.Username</h3>

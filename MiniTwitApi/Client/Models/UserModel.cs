@@ -18,12 +18,17 @@ namespace MiniTwitApi.Client.Models
             Client = client;
         }
 
-        public async Task RegisterUser(CreateUserDTO user)
+        public async Task<bool> RegisterUser(CreateUserDTO user)
         {
             var json = JsonSerializer.Serialize(user);
             var data = new StringContent(json, Encoding.UTF8, "application/json");
             var response = await Client.PostAsync($"/register", data);
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
             HttpFailureHelper.HandleStatusCode(response);
+            return false;
         }
 
         public async Task<bool> LoginUser(LoginUserDTO user)

@@ -8,6 +8,14 @@
 @inject IJSRuntime JSRuntime;
 @inject IUserTimelineViewModel UserTimelineViewModel;
 
+@if (UserTimelineViewModel.Error is not null)
+{
+    <div class="alert alert-danger" role="alert">
+        <p>@UserTimelineViewModel.Error</p>
+    </div>
+}
+
+
 @if (UserTimelineViewModel.LoggedInUser is null)
 {
     <h2>You need to be logged in to access this page</h2>

@@ -27,7 +27,7 @@ namespace MiniTwitApi.Shared.Models.UserModels
         public static string GenerateProfilePictureLink(string email)
         {
             var fixedEmail = email.Trim().ToLower();
-            Console.WriteLine(fixedEmail);
+            Console.WriteLine($"This is the email to be hashed: {fixedEmail}");
             var hash = MD5Hash(fixedEmail);
             var link = "https://www.gravatar.com/avatar/" + hash;
             Console.WriteLine(link);

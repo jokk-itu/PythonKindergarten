@@ -10,18 +10,14 @@
 <EditForm Model="@LoginViewModel.User" OnValidSubmit="@LoginViewModel.LoginUser">
     <DataAnnotationsValidator />
     <ValidationSummary />
-    <p>
-        <label>
-            Username:
-            <InputText @bind-Value="LoginViewModel.User.Username" />
-        </label>
-    </p>
-    <p>
-        <label>
-            Password:
-            <InputText @bind-Value="LoginViewModel.User.Password" />
-        </label>
-    </p>
+    <div class="form-group">
+        <label for="Username">Username</label>
+        <input @bind="LoginViewModel.User.Username" type="text" class="form-control" id="Username" placeholder="Write your Username here" />
+    </div>
+    <div class="form-group">
+        <label for="Password">Password</label>
+        <input @bind="LoginViewModel.User.Password" class="form-control" type="password" id="Password" placeholder="Write your password here" />
+    </div>
     <button type="submit" class="btn btn-primary">Sign In</button>
 </EditForm>
 

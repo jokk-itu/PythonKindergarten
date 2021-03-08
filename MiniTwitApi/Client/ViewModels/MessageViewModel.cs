@@ -10,7 +10,6 @@ namespace MiniTwitApi.Client.ViewModels
 {
     public class MessageViewModel : IMessageViewModel
     {
-        public IAsyncEnumerable<(MessageDTO, UserDTO)> Messages { get; set; }
         private readonly IMessageModel _messageModel;
 
         public MessageViewModel(IMessageModel messageModel)
@@ -18,9 +17,12 @@ namespace MiniTwitApi.Client.ViewModels
             _messageModel = messageModel;
         }
 
-        public async Task RequestMessages(string path)
+        public async IAsyncEnumerable<(MessageDTO, UserDTO)> RequestMessages(string path)
         {
-            Messages = _messageModel.GetMessages(path);
+            await foreach (var m in _messageModel.GetMessages(path))
+            {
+                yield return m;
+            }
         }
         
         public DateTime GenerateDateTime(int date)

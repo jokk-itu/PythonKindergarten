@@ -7,7 +7,7 @@
 @inject IJSRuntime JSRuntime;
 
 <ul class="messages" id="messages">
-    @if(_messages is not null)
+    @if(_messages.Count < 1)
     {
         @foreach (var (message, user) in _messages)
         {
@@ -30,17 +30,13 @@
 {
     [Parameter]
     public string Path { get; set; }
-    
-    private int Skip { get; set; }
 
     private ICollection<(MessageDTO, UserDTO)> _messages;
 
     protected override async Task OnInitializedAsync()
     {
-        Skip = 20;
         _messages = new List<(MessageDTO, UserDTO)>();
-        await MessageViewModel.RequestMessages($"{Path}/?no={Skip}");
-        await foreach (var m in MessageViewModel.Messages)
+        await foreach (var m in MessageViewModel.RequestMessages($"{Path}"))
         {
             _messages.Add(m);
             StateHasChanged();

@@ -1,6 +1,7 @@
 @using MiniTwitApi.Shared.Models
 @using MiniTwitApi.Shared.Models.UserModels
 @using System.Globalization
+@using System.Text
 @using MiniTwitApi.Client.ViewModels.Abstract
 
 @inject IMessageViewModel MessageViewModel; 
@@ -12,7 +13,7 @@
         @foreach (var message in _messages)
         {
             <li>
-                <img width="48" src="@UserDTO.GenerateProfilePictureLink(message.AuthorEmail)" alt="UserPicture">
+                <img width="48" src="http://www.gravatar.com/avatar/@message.HashedAuthorEmail?d=identicon&s=48" alt="UserPicture">
                 <strong><a href="/timeline/user_timeline/@message.AuthorUsername">@message.AuthorUsername</a></strong>
                 @message.Text;
                 <small>&mdash; @MessageViewModel.GenerateDateTime(message.PublishDate).ToString("dd.MM.yyyy - HH.mm", CultureInfo.InvariantCulture) </small>
@@ -22,7 +23,7 @@
     else
     {
         <li><em>Loading...</em></li>
-        <img width="200px" src="/loader.gif"  alt="loading"/>
+        <img width="200px" src="/loader.gif" alt="loading"/>
     }
 </ul>
 
@@ -35,7 +36,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        await foreach (var m in MessageViewModel.RequestMessages($"{Path}/?no=100&skip=0"))
+        await foreach (var m in MessageViewModel.RequestMessages($"{Path}?no=100&skip=0"))
         {
             _messages.Add(m);
             StateHasChanged();

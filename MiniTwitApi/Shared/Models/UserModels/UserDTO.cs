@@ -20,21 +20,21 @@ namespace MiniTwitApi.Shared.Models.UserModels
         [EmailAddress]
         public string Email { get; set; }
 
-        [JsonPropertyName("pwd")] 
+        [JsonPropertyName("pwd")]
         [StringLength(30, ErrorMessage = "Identifier too long (30 character limit).")]
         public string Password { get; set; }
-
+        
         public static string GenerateProfilePictureLink(string email)
         {
             var fixedEmail = email.Trim().ToLower();
             Console.WriteLine($"This is the email to be hashed: {fixedEmail}");
             var hash = MD5Hash(fixedEmail);
-            var link = "https://www.gravatar.com/avatar/" + hash;
+            var link = $"http://www.gravatar.com/avatar/{hash}?d=identicon&s=48";
             Console.WriteLine(link);
             return link;
         }
         
-        private static string MD5Hash(string input)
+        public static string MD5Hash(string input)
         {
             var md5Hash = MD5.Create();
             var data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));

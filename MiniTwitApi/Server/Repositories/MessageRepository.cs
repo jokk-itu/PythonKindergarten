@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using MiniTwitApi.Server.Entities;
 using MiniTwitApi.Server.Repositories.Abstract;
 using MiniTwitApi.Shared.Models;
+using MiniTwitApi.Shared.Models.UserModels;
 
 namespace MiniTwitApi.Server.Repositories
 {
@@ -48,7 +49,7 @@ namespace MiniTwitApi.Server.Repositories
                     Id = m.MessageId,
                     Author = m.AuthorId,
                     AuthorUsername = m.AuthorUsername,
-                    AuthorEmail = m.User.Email,
+                    HashedAuthorEmail = UserDTO.MD5Hash(m.User.Email),
                     Text = m.Text,
                     PublishDate = m.PubDate,
                     Flagged = m.Flagged
@@ -76,7 +77,7 @@ namespace MiniTwitApi.Server.Repositories
                     Id = m.MessageId,
                     Author = m.AuthorId,
                     AuthorUsername = m.AuthorUsername,
-                    AuthorEmail = m.User.Email,
+                    HashedAuthorEmail = UserDTO.MD5Hash(m.User.Email),
                     Text = m.Text,
                     PublishDate = m.PubDate,
                     Flagged = m.Flagged

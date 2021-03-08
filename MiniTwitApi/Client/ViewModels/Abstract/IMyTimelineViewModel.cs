@@ -12,7 +12,7 @@ namespace MiniTwitApi.Client.ViewModels.Abstract
 
         public string Path { get; set; }
         public string Error { get; set; }
-        
+
         public Task PostMessage();
     }
 }

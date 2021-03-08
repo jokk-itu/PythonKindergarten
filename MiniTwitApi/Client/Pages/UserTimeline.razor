@@ -7,6 +7,7 @@
 @inject HttpClient HttpClient;
 @inject IJSRuntime JSRuntime;
 @inject IUserTimelineViewModel UserTimelineViewModel;
+@inject NavigationManager NavManager; 
 
 @if (UserTimelineViewModel.Error is not null)
 {
@@ -29,7 +30,7 @@ else
         {
             <p>This is you!</p>
         }
-        else if (UserTimelineViewModel.IsUserFollowed)
+        else if (UserTimelineViewModel.IsFollowed)
         {
             <p>You are currently following this user.</p>
             <button class="btn btn-primary" @onclick="@(() => UserTimelineViewModel.UnfollowUser())">Unfollow User</button>
@@ -40,6 +41,19 @@ else
             <button class="btn btn-primary" @onclick="@(() => UserTimelineViewModel.FollowUser())">Follow User</button>
         }
     </div>
+    
+    @if (UserTimelineViewModel.IsFollowed)
+    {
+        <div class="alert alert-success" role="alert">
+            <p>@Username is now followed!</p>
+        </div>
+    }
+    @if (UserTimelineViewModel.IsUnfollowed)
+    {
+        <div class="alert alert-success" role="alert">
+            <p>@Username is now unfollowed!</p>
+        </div>
+    }
 
     <Messages path="@UserTimelineViewModel.Path" />    
 }
@@ -54,7 +68,7 @@ else
         if (await IsLoggedIn())
         {
             UserTimelineViewModel.Username = Username;
-            UserTimelineViewModel.IsUserFollowed = await IsFollowed();
+            UserTimelineViewModel.IsFollowed = await UserTimelineViewModel.CheckIfUserIsFollowed();
             UserTimelineViewModel.LoggedInUser = await GetUser();
             UserTimelineViewModel.Path = $"msgs/{Username}";
         }
@@ -69,21 +83,5 @@ else
     private async Task<bool> IsLoggedIn()
     {
         return await JSRuntime.InvokeAsync<bool>("isUserLoggedIn");
-    }
-
-    //Should be in the FollowModel, and implemented as an easier Endpoint in the API.
-    //Something like, is this Username being followed by this Username...
-    private async Task<bool> IsFollowed()
-    {
-        var response = await HttpClient.GetStringAsync($"/fllws/{Username}");
-        var followers = JsonSerializer.Deserialize<List<FollowerDTO>>(response);
-        foreach (var follower in followers)
-        {
-            var getUser = await HttpClient.GetStringAsync($"/user/{follower.WhomId}");
-            var jsonUser = JsonSerializer.Deserialize<UserDTO>(getUser);
-            if (jsonUser.Username.Equals(Username))
-                return true;
-        }
-        return false;
     }
 }

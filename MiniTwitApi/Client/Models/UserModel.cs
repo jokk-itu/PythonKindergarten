@@ -23,12 +23,8 @@ namespace MiniTwitApi.Client.Models
             var json = JsonSerializer.Serialize(user);
             var data = new StringContent(json, Encoding.UTF8, "application/json");
             var response = await Client.PostAsync($"/register", data);
-            if (response.IsSuccessStatusCode)
-            {
-                return true;
-            }
             HttpFailureHelper.HandleStatusCode(response);
-            return false;
+            return response.IsSuccessStatusCode;
         }
 
         public async Task<bool> LoginUser(LoginUserDTO user)
@@ -36,12 +32,8 @@ namespace MiniTwitApi.Client.Models
             var json = JsonSerializer.Serialize(user);
             var data = new StringContent(json, Encoding.UTF8, "application/json");
             var response = await Client.PostAsync($"/login", data);
-            if (response.IsSuccessStatusCode)
-            {
-                return true;
-            }
             HttpFailureHelper.HandleStatusCode(response);
-            return false;
+            return response.IsSuccessStatusCode;
         }
     }
 }

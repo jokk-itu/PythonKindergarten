@@ -86,5 +86,16 @@ namespace MiniTwitApi.Server.Controllers
             
             return Ok(user);
         }
+        
+        [HttpGet("user/{username}")]
+        public async Task<ActionResult<UserDTO>> GetUserByUserId(string username, [FromQuery] long latest)
+        {
+            var user = await _repository.ReadAsync(username);
+            
+            if(latest > 0 && _configuration["ApiSafeList"].Contains(_accessor.ActionContext.HttpContext.Connection.RemoteIpAddress.ToString()))
+                Latest.GetInstance().Update(latest);
+            
+            return Ok(user);
+        }
     }
 }

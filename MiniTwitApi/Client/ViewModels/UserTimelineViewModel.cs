@@ -13,9 +13,12 @@ namespace MiniTwitApi.Client.ViewModels
     {
         public string Username { get; set; }
         public UserDTO LoggedInUser { get; set; }
-        public bool IsUserFollowed { get; set; }
         public string Path { get; set; }
         public string Error { get; set; }
+        
+        public bool IsFollowed { get; set; }
+
+        public bool IsUnfollowed { get; set; }
 
         private readonly IFollowModel _followModel;
 
@@ -23,12 +26,25 @@ namespace MiniTwitApi.Client.ViewModels
         {
             _followModel = followModel;
         }
+        
+        public async Task<bool> CheckIfUserIsFollowed()
+        {
+            try
+            {
+                return await _followModel.IsFollowed(LoggedInUser.Username, Username);
+            }
+            catch (Exception e)
+            {
+                Error = e.Message;
+                return false;
+            }
+        }
 
         public async Task FollowUser()
         {
             try
             {
-                await _followModel.FollowUser(LoggedInUser.Username, Username);
+                IsFollowed = await _followModel.FollowUser(LoggedInUser.Username, Username);
             }
             catch (Exception e)
             {
@@ -40,7 +56,7 @@ namespace MiniTwitApi.Client.ViewModels
         {
             try
             {
-                await _followModel.UnfollowUser(LoggedInUser.Username, Username);
+                IsUnfollowed = await _followModel.UnfollowUser(LoggedInUser.Username, Username);
             }
             catch (Exception e)
             {

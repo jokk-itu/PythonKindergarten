@@ -6,6 +6,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using MiniTwitApi.Client.Models.Abstract;
 using MiniTwitApi.Shared.Models;
+using MiniTwitApi.Shared.Models.UserModels;
 
 namespace MiniTwitApi.Client.Models
 {
@@ -18,7 +19,7 @@ namespace MiniTwitApi.Client.Models
             _client = client;
         }
         
-        public async Task FollowUser(string myUsername, string followerUsername)
+        public async Task<bool> FollowUser(string myUsername, string followerUsername)
         {
             var json = JsonSerializer.Serialize(new Follow()
             {
@@ -27,9 +28,10 @@ namespace MiniTwitApi.Client.Models
             var data = new StringContent(json, Encoding.UTF8, "application/json");
             var response = await _client.PostAsync($"/fllws/{myUsername}", data);
             HttpFailureHelper.HandleStatusCode(response);
+            return response.IsSuccessStatusCode;
         }
     
-        public async Task UnfollowUser(string myUsername, string followerUsername)
+        public async Task<bool> UnfollowUser(string myUsername, string followerUsername)
         {
             var json = JsonSerializer.Serialize(new Follow()
             {
@@ -38,6 +40,17 @@ namespace MiniTwitApi.Client.Models
             var data = new StringContent(json, Encoding.UTF8, "application/json");
             var response = await _client.PostAsync($"/fllws/{myUsername}", data);
             HttpFailureHelper.HandleStatusCode(response);
+            return response.IsSuccessStatusCode;
+        }
+
+        public async Task<bool> IsFollowed(string whoUsername, string whomUsername)
+        {
+            var whoUser = await _client.GetStringAsync($"/user/{whoUsername}");
+            var whomUser = await _client.GetStringAsync($"/user/{whomUsername}");
+            var whoUserId = JsonSerializer.Deserialize<UserDTO>(whoUser)?.Id;
+            var whomUserId = JsonSerializer.Deserialize<UserDTO>(whomUser)?.Id;
+            var response = await _client.GetAsync($"/fllws/{whoUserId}/{whomUserId}");
+            return response.IsSuccessStatusCode;
         }
     }
 }

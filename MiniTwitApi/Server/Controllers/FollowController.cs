@@ -26,6 +26,23 @@ namespace MiniTwitApi.Server.Controllers
             _configuration = configuration;
             _accessor = accessor;
         }
+
+        [HttpGet("fllws/findFollower/{whoUserid}")]
+        public async Task<ActionResult<FollowerDTO>> GetFollowRelationByWhoAndWhom(int whoUserid, [FromQuery] int whomUserid, [FromQuery] long latest)
+        {
+            if (whomUserid < 1 || whoUserid < 1)
+                return BadRequest("whomUserid and whoUserid must be valid ID's");
+            
+            var followRelation = await _followerRepository.ReadAsync(whomUserid, whomUserid);
+            
+            if(latest > 0 && _configuration["ApiSafeList"].Contains(_accessor.ActionContext.HttpContext.Connection.RemoteIpAddress.ToString()))
+                Latest.GetInstance().Update(latest);
+
+            if (followRelation is null)
+                return NotFound("Relation does not exist");
+
+            return Ok(followRelation);
+        }
         
         [HttpGet("fllws/{username}")]
         public async Task<ActionResult<IList<FollowerDTO>>> GetFollowsByUsername(string username, [FromQuery] long latest)

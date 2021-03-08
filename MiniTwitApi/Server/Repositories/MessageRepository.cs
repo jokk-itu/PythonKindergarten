@@ -33,10 +33,7 @@ namespace MiniTwitApi.Server.Repositories
             var id = await _context.Messages.AddAsync(m);
             await _context.SaveChangesAsync();
         }
-
-        /**
-         * Add support for limit and skip
-         */
+        
         public async Task<ICollection<MessageDTO>> ReadAllAsync(int limit = 20, int skip = 0)
         {
             return await (
@@ -55,10 +52,7 @@ namespace MiniTwitApi.Server.Repositories
                     Flagged = m.Flagged
                 })).ToListAsync();
         }
-
-        /*
-         * Add support for limit and skip
-         */
+        
         public async Task<ICollection<MessageDTO>> ReadAllUserAsync(string username, int limit = 20, int skip = 0)
         {
             var userRepository = new UserRepository(_context);

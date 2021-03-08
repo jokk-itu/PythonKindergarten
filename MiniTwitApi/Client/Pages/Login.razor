@@ -1,9 +1,10 @@
 @page "/login"
 @using MiniTwitApi.Client.ViewModels.Abstract
-@using MiniTwitApi.Shared
 @using Newtonsoft.Json
+
 @inject ILoginViewModel LoginViewModel 
 @inject IJSRuntime JSRuntime
+@inject NavigationManager NavManager
 
 <h2>Sign In</h2>
 
@@ -32,7 +33,6 @@
 {
     <div class="alert alert-success" role="alert">
         <p>Successfully logged in</p>
-        <!---Call redirect function here-->
     </div>
 }
 

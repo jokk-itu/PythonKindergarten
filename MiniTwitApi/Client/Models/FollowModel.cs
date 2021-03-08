@@ -1,4 +1,5 @@
 using System;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
@@ -25,7 +26,7 @@ namespace MiniTwitApi.Client.Models
             });
             var data = new StringContent(json, Encoding.UTF8, "application/json");
             var response = await _client.PostAsync($"/fllws/{myUsername}", data);
-            //Handle Errors
+            HttpFailureHelper.HandleStatusCode(response);
         }
     
         public async Task UnfollowUser(string myUsername, string followerUsername)
@@ -36,7 +37,7 @@ namespace MiniTwitApi.Client.Models
             });
             var data = new StringContent(json, Encoding.UTF8, "application/json");
             var response = await _client.PostAsync($"/fllws/{myUsername}", data);
-            //Handle Errors
+            HttpFailureHelper.HandleStatusCode(response);
         }
     }
 }

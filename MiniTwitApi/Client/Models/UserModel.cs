@@ -23,27 +23,20 @@ namespace MiniTwitApi.Client.Models
             var json = JsonSerializer.Serialize(user);
             var data = new StringContent(json, Encoding.UTF8, "application/json");
             var response = await Client.PostAsync($"/register", data);
-            //Handle errors
+            HttpFailureHelper.HandleStatusCode(response);
         }
 
-        public async Task LoginUser(LoginUserDTO user)
+        public async Task<bool> LoginUser(LoginUserDTO user)
         {
             var json = JsonSerializer.Serialize(user);
             var data = new StringContent(json, Encoding.UTF8, "application/json");
             var response = await Client.PostAsync($"/login", data);
-            if(response.IsSuccessStatusCode) 
+            if (response.IsSuccessStatusCode)
             {
-                LoggedInUser.Login(user.Username);
-            } 
-            else if(response.StatusCode == System.Net.HttpStatusCode.BadRequest) 
-            {
-                throw new Exception(response.Content.ToString());
+                return true;
             }
-            else 
-            {
-                throw new Exception($"StatusCode: {response.StatusCode}, Error: {response.Content}");
-            }
+            HttpFailureHelper.HandleStatusCode(response);
+            return false;
         }
-
     }
 }

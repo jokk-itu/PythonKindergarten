@@ -33,7 +33,7 @@ namespace MiniTwitApi.Client.Models
             var json = JsonSerializer.Serialize(message);
             var data = new StringContent(json, Encoding.UTF8, "application/json");
             var response = await _client.PostAsync($"/msgs/{username}", data);
-            var result = await response.Content.ReadAsStringAsync();
+            HttpFailureHelper.HandleStatusCode(response);
         }
     }
 }

@@ -8,6 +8,7 @@ namespace MiniTwitApi.Client.ViewModels
     public class LoginViewModel : ILoginViewModel
     {
         public LoginUserDTO User { get; set; }
+        public UserDTO LoggedInUser { get; set; }
         private readonly IUserModel _userModel;
 
         public LoginViewModel(IUserModel userModel)
@@ -18,7 +19,12 @@ namespace MiniTwitApi.Client.ViewModels
 
         public async Task LoginUser()
         {
-            await _userModel.LoginUser(User);
+            if (await _userModel.LoginUser(User))
+                LoggedInUser = new UserDTO()
+                {
+                    Username = User.Username,
+                    Email = User.Email
+                };
         }
     }
 }

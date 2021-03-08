@@ -21,8 +21,8 @@
     <button type="submit" class="btn btn-primary">Sign In</button>
 </EditForm>
 
-@if (LoggedInUser.User is not null)
+@if (LoginViewModel.LoggedInUser is not null)
 {
-    var json = JsonConvert.SerializeObject(LoggedInUser.User);
+    var json = JsonConvert.SerializeObject(LoginViewModel.LoggedInUser);
     var response = JSRuntime.InvokeAsync<string>("login", json);
 }

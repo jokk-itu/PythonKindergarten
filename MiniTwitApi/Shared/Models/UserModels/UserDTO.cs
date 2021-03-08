@@ -20,28 +20,30 @@ namespace MiniTwitApi.Shared.Models.UserModels
         [EmailAddress]
         public string Email { get; set; }
 
-        [JsonPropertyName("pwd")] 
+        [JsonPropertyName("pwd")]
         [StringLength(30, ErrorMessage = "Identifier too long (30 character limit).")]
         public string Password { get; set; }
-
-        public string GenerateProfilePictureLink()
+        
+        public static string GenerateProfilePictureLink(string email)
         {
-            string hash = this.Email.Trim(); 
-            hash = hash.ToLower();
-            hash = MD5Hash(hash);
-            string link = "https://www.gravatar.com/avatar/" + hash;
+            var fixedEmail = email.Trim().ToLower();
+            Console.WriteLine($"This is the email to be hashed: {fixedEmail}");
+            var hash = MD5Hash(fixedEmail);
+            var link = $"http://www.gravatar.com/avatar/{hash}?d=identicon&s=48";
+            Console.WriteLine(link);
             return link;
         }
-
-        //Retrieved from https://www.c-sharpcorner.com/article/hashing-passwords-in-net-core-with-tips/    
+        
         public static string MD5Hash(string input)
         {
-            using(var sha256 = SHA256.Create())  
-            {  
-                var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(input));  
-                var hash = BitConverter.ToString(hashedBytes).Replace("-", "").ToLower();    
-                return hash;  
-            }  
+            var md5Hash = MD5.Create();
+            var data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
+            var sBuilder = new StringBuilder();
+            foreach (var t in data)
+            {
+                sBuilder.Append(t.ToString("x2"));
+            }
+            return sBuilder.ToString();
         }
     }
 }

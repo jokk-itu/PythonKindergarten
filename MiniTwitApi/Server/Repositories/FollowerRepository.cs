@@ -18,7 +18,7 @@ namespace MiniTwitApi.Server.Repositories
             _context = context;
         }
 
-        /* Should be implmeneted: int limit = 20*/
+        
         public async Task<ICollection<FollowerDTO>> ReadAllAsync(string username)
         {
             return await (from s in _context.Followers

@@ -9,8 +9,6 @@ using Microsoft.Extensions.Hosting;
 using System.Linq;
 using System.Xml.Serialization;
 using MiniTwitApi.Server.Entities;
-using MiniTwitApi.Shared.Repositories.Abstractions;
-using MiniTwitApi.Shared.Repositories;
 using MiniTwitApi.Server.Repositories.Abstract;
 using MiniTwitApi.Server.Repositories;
 using MiniTwitApi.Shared;
@@ -34,7 +32,6 @@ namespace MiniTwitApi.Server
         {
             services.AddControllersWithViews();
             services.AddRazorPages();
-            services.AddSingleton<IMiniTwitRepository, MiniTwitRepository>();
             services.AddScoped<IContext, Context>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IFollowerRepository, FollowerRepository>();

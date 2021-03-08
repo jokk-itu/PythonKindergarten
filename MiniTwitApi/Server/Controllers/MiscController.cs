@@ -31,5 +31,7 @@ namespace MiniTwitApi.Server.Controllers
             return Ok(new GetLatestResponse(Latest.GetInstance().Read()));
         }
         
+        
+        
     }
 }

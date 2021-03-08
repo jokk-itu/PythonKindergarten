@@ -19,17 +19,13 @@ namespace MiniTwitApi.Client.Models
             _client = client;
         }
 
-        public async IAsyncEnumerable<MessageDTO> GetMessages(string path)
+        public async Task<ICollection<MessageDTO>> GetMessages(string path)
         {
             var messagesFromApi = await _client.GetStringAsync(path);
             var messages = JsonSerializer.Deserialize<List<MessageDTO>>(messagesFromApi);
             if (messages is null)
                 throw new Exception("No messages available");
-            
-            foreach(var m in messages)
-            {
-                yield return m;
-            }
+            return messages;
         }
         
         public async Task PostMessage(CreateMessage message, string username)

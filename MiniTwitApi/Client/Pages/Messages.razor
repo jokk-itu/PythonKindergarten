@@ -8,8 +8,8 @@
 @inject IJSRuntime JSRuntime;
 
 <ul class="messages" id="messages">
-    @if(_messages is not null)
-    {
+    
+        <button class="btn btn-primary" @onclick="@(() => AddMessages(20))">Load more messages</button>
         @foreach (var message in _messages)
         {
             <li>
@@ -19,11 +19,7 @@
                 <small>&mdash; @MessageViewModel.GenerateDateTime(message.PublishDate).ToString("dd.MM.yyyy - HH.mm", CultureInfo.InvariantCulture) </small>
             </li>
         }
-    }
-    else
-    {
-        <li><em>Loading...</em></li>
-        <img width="200px" src="/loader.gif" alt="loading"/>
+        <button class="btn btn-primary" @onclick="@(() => AddMessages(20))">Load more messages</button>
     }
 </ul>
 
@@ -34,12 +30,21 @@
 
     private ICollection<MessageDTO> _messages = new List<MessageDTO>();
 
+    private int Skip { get; set; }
+    
     protected override async Task OnInitializedAsync()
     {
-        await foreach (var m in MessageViewModel.RequestMessages($"{Path}?no=100&skip=0"))
+        Skip = 0;
+        await AddMessages(20);
+    }
+
+    private async Task AddMessages(int no)
+    {
+        await foreach (var m in MessageViewModel.RequestMessages($"{Path}?no={no}&skip={Skip}"))
         {
             _messages.Add(m);
             StateHasChanged();
         }
+        Skip++;
     }
 }

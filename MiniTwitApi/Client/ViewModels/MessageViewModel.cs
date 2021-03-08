@@ -19,7 +19,7 @@ namespace MiniTwitApi.Client.ViewModels
 
         public async IAsyncEnumerable<MessageDTO> RequestMessages(string path)
         {
-            await foreach (var m in _messageModel.GetMessages(path))
+            foreach (var m in await _messageModel.GetMessages(path))
             {
                 yield return m;
             }

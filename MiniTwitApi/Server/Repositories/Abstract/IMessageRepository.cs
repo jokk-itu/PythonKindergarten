@@ -8,7 +8,7 @@ namespace MiniTwitApi.Server.Repositories.Abstract
     public interface IMessageRepository 
     {
         Task CreateAsync(MessageDTO message);
-        Task<ICollection<MessageDTO>> ReadAllAsync(int limit);
-        Task<ICollection<MessageDTO>> ReadAllUserAsync(string username, int limit);
+        Task<ICollection<MessageDTO>> ReadAllAsync(int limit, int skip);
+        Task<ICollection<MessageDTO>> ReadAllUserAsync(string username, int limit, int skip);
     }
 }

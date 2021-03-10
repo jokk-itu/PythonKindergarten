@@ -8,9 +8,7 @@ namespace MiniTwitApi.Client.ViewModels.Abstract
 {
     public interface IMessageViewModel
     {
-        public IAsyncEnumerable<(MessageDTO, UserDTO)> Messages { get; set; }
-        
-        public Task RequestMessages(string path);
+        public IAsyncEnumerable<MessageDTO> RequestMessages(string path);
         public DateTime GenerateDateTime(int date);
 
     }

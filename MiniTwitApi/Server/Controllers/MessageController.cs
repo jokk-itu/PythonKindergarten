@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using MiniTwitApi.Server.Repositories;
 using MiniTwitApi.Shared;
 using MiniTwitApi.Shared.Models;
-using MiniTwitApi.Shared.Repositories;
 using MiniTwitApi.Server.Repositories.Abstract;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.Extensions.Configuration;
@@ -31,10 +29,10 @@ namespace MiniTwitApi.Server.Controllers
         }
         
         [HttpGet("msgs")]
-        public async Task<ActionResult<IEnumerable<MessageDTO>>> GetMsgs([FromQuery] int no, [FromQuery] long latest)
+        public async Task<ActionResult<IEnumerable<MessageDTO>>> GetMsgs([FromQuery] int no, [FromQuery] int skip, [FromQuery] long latest)
         {
             // Query all messages
-            var messages = await _messagesRepository.ReadAllAsync(no);
+            var messages = await _messagesRepository.ReadAllAsync(no, skip);
 
             if(latest > 0 && _configuration["ApiSafeList"].Contains(_accessor.ActionContext.HttpContext.Connection.RemoteIpAddress.ToString()))
                 Latest.GetInstance().Update(latest);
@@ -44,13 +42,13 @@ namespace MiniTwitApi.Server.Controllers
         }
         
         [HttpGet("msgs/{username}")]
-        public async Task<ActionResult<IEnumerable<MessageDTO>>> GetMsgsByUsername(string username, [FromQuery] int no, [FromQuery] long latest)
+        public async Task<ActionResult<IEnumerable<MessageDTO>>> GetMsgsByUsername(string username, [FromQuery] int no, [FromQuery] int skip, [FromQuery] long latest)
         {
             if(!await _userRepository.UserExistsAsync(username))
                 return NotFound();
 
             //Query messages by username
-            var messages = await _messagesRepository.ReadAllUserAsync(username, no);
+            var messages = await _messagesRepository.ReadAllUserAsync(username, no, skip);
             foreach(var message in messages)
             {
                Console.WriteLine(message.Text); 

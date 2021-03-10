@@ -9,6 +9,8 @@ namespace MiniTwitApi.Client.ViewModels.Abstract
         public CreateMessage Message { get; set; }
 
         public UserDTO LoggedInUser { get; set; }
+        
+        public bool IsMessageSent { get; set; }
 
         public string Path { get; set; }
         public string Error { get; set; }

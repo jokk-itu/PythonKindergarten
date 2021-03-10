@@ -8,6 +8,6 @@ namespace MiniTwitApi.Client.Models.Abstract
     public interface IMessageModel
     {
         public Task<ICollection<MessageDTO>> GetMessages(string path);
-        public Task PostMessage(CreateMessage message, string username);
+        public Task<bool> PostMessage(CreateMessage message, string username);
     }
 }

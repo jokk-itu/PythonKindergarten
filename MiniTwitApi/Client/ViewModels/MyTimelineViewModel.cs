@@ -14,6 +14,8 @@ namespace MiniTwitApi.Client.ViewModels
         public string Error { get; set; }
 
         public UserDTO LoggedInUser { get; set; }
+        
+        public bool IsMessageSent { get; set; }
 
         public string Path { get; set; }
         
@@ -29,7 +31,7 @@ namespace MiniTwitApi.Client.ViewModels
         {
             try
             {
-                await _messageModel.PostMessage(Message, LoggedInUser.Username);
+                IsMessageSent = await _messageModel.PostMessage(Message, LoggedInUser.Username);
             }
             catch (Exception e)
             {

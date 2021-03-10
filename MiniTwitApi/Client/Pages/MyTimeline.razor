@@ -30,6 +30,13 @@ else
             <button type="submit" class="btn btn-primary">Share</button>
         </EditForm>
     </div>
+    
+    @if (MyTimelineViewModel.IsMessageSent)
+    {
+        <div class="alert alert-success" role="alert">
+            <p>@MyTimelineViewModel.Error</p>
+        </div>
+    }
 
     <Messages path="@MyTimelineViewModel.Path" />
 }

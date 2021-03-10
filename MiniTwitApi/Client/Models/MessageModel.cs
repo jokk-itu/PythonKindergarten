@@ -28,12 +28,13 @@ namespace MiniTwitApi.Client.Models
             return messages;
         }
         
-        public async Task PostMessage(CreateMessage message, string username)
+        public async Task<bool> PostMessage(CreateMessage message, string username)
         {
             var json = JsonSerializer.Serialize(message);
             var data = new StringContent(json, Encoding.UTF8, "application/json");
             var response = await _client.PostAsync($"/msgs/{username}", data);
             HttpFailureHelper.HandleStatusCode(response);
+            return response.IsSuccessStatusCode;
         }
     }
 }

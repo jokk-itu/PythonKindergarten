@@ -1,8 +1,5 @@
 using System;
-using System.Text.Json;
 using System.Threading.Tasks;
-using Microsoft.JSInterop;
-using MiniTwitApi.Client.Models;
 using MiniTwitApi.Client.Models.Abstract;
 using MiniTwitApi.Client.ViewModels.Abstract;
 using MiniTwitApi.Shared.Models.UserModels;

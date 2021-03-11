@@ -19,7 +19,7 @@ Our implemenatation of "MiniTwit" can be accesed [here](https://pythonkindergart
 
 ## Usefull links
 
-[Contribute.md-file](https://github.com/jokk-itu/PythonKindergarten/blob/master/contribute.md)
+[Contribute.md-file](https://github.com/jokk-itu/PythonKindergarten/blob/master/CONTRIBUTING.md)
 
 [Depencies graph](https://github.com/jokk-itu/PythonKindergarten/releases/tag/v3.0)
 

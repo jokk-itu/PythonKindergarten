@@ -28,16 +28,17 @@ namespace MiniTwitApi.Client.ViewModels
             _followModel = followModel;
         }
         
-        public async Task<bool> CheckIfUserIsFollowed()
+        public async Task CheckIfUserIsFollowed()
         {
             try
             {
-                return await _followModel.IsFollowed(LoggedInUser.Username, Username);
+                var _isFollowed =  await _followModel.IsFollowed(LoggedInUser.Username, Username);
+                IsFollowed = _isFollowed;
+                IsUnfollowed = !_isFollowed;
             }
             catch (Exception e)
             {
                 Error = e.Message;
-                return false;
             }
         }
 

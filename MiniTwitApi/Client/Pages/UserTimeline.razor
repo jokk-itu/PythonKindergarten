@@ -27,26 +27,30 @@ else
         {
             <p>This is you!</p>
         }
-        else if (UserTimelineViewModel.IsFollowed)
+        else if (UserTimelineViewModel.IsFollowed && !UserTimelineViewModel.IsUnfollowed)
         {
             <p>You are currently following this user.</p>
             <button class="btn btn-primary" @onclick="@(() => UserTimelineViewModel.UnfollowUser())">Unfollow User</button>
         }
-        else
+        else if(!UserTimelineViewModel.IsFollowed && UserTimelineViewModel.IsUnfollowed)
         {
             <p>You are not yet following this user.</p>
             <button class="btn btn-primary" @onclick="@(() => UserTimelineViewModel.FollowUser())">Follow User</button>
         }
+        else
+        {
+            <p>Something went wrong using stupid booleans</p>
+        }
     </div>
     
-    @if (UserTimelineViewModel.IsFollowed)
+    @if (UserTimelineViewModel.FollowIsDone)
     {
         JSRuntime.InvokeVoidAsync("successMessage", $"{Username} is now followed");
         UserTimelineViewModel.IsFollowed = true;
         UserTimelineViewModel.IsUnfollowed = false;
         StateHasChanged();
     }
-    @if (UserTimelineViewModel.IsUnfollowed)
+    @if (UserTimelineViewModel.UnFollowIsDone)
     {
         JSRuntime.InvokeVoidAsync("successMessage", $"{Username} is now unfollowed");
         UserTimelineViewModel.IsUnfollowed = true;
@@ -68,11 +72,7 @@ else
         {
             UserTimelineViewModel.Username = Username;
             UserTimelineViewModel.LoggedInUser = await GetUser();
-            await JSRuntime.InvokeVoidAsync("console.log", $"Getting the user: {UserTimelineViewModel.LoggedInUser}");
-            var isFollowed = await UserTimelineViewModel.CheckIfUserIsFollowed();
-            await JSRuntime.InvokeVoidAsync("console.log", $"Fetching the follower relation: {isFollowed}");
-            UserTimelineViewModel.IsFollowed = isFollowed;
-            UserTimelineViewModel.IsUnfollowed = !isFollowed;
+            await UserTimelineViewModel.CheckIfUserIsFollowed();
             UserTimelineViewModel.Path = $"msgs/{Username}";
         }
     }

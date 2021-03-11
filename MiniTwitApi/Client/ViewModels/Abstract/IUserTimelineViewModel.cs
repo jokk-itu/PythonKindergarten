@@ -17,6 +17,6 @@ namespace MiniTwitApi.Client.ViewModels.Abstract
         public Task UnfollowUser();
         public Task FollowUser();
 
-        public Task<bool> CheckIfUserIsFollowed();
+        public Task CheckIfUserIsFollowed();
     }
 }

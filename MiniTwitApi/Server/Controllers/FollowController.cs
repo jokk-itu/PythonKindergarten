@@ -38,7 +38,7 @@ namespace MiniTwitApi.Server.Controllers
                 Latest.GetInstance().Update(latest);
 
             if (followRelation is null)
-                return NotFound("Relation does not exist");
+                return NotFound();
 
             return Ok(followRelation);
         }

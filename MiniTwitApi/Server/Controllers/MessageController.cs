@@ -49,11 +49,7 @@ namespace MiniTwitApi.Server.Controllers
 
             //Query messages by username
             var messages = await _messagesRepository.ReadAllUserAsync(username, no, skip);
-            foreach(var message in messages)
-            {
-               Console.WriteLine(message.Text); 
-            }
-            
+
             if(latest > 0 && _configuration["ApiSafeList"].Contains(_accessor.ActionContext.HttpContext.Connection.RemoteIpAddress.ToString()))
                 Latest.GetInstance().Update(latest);
             

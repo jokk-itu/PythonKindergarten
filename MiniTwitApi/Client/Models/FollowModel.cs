@@ -47,9 +47,12 @@ namespace MiniTwitApi.Client.Models
         {
             var whoUser = await _client.GetStringAsync($"/user/{whoUsername}");
             var whomUser = await _client.GetStringAsync($"/user/{whomUsername}");
-            var whoUserId = JsonSerializer.Deserialize<UserDTO>(whoUser)?.Id;
-            var whomUserId = JsonSerializer.Deserialize<UserDTO>(whomUser)?.Id;
-            var response = await _client.GetAsync($"/fllws/{whoUserId}/{whomUserId}");
+            if (whoUser is null || whomUser is null)
+                throw new Exception("One user does not exist");
+            
+            var whoUserId = JsonSerializer.Deserialize<UserDTO>(whoUser).Id;
+            var whomUserId = JsonSerializer.Deserialize<UserDTO>(whomUser).Id;
+            var response = await _client.GetAsync($"/fllws/findFollower/?whoUserId={whoUserId}&whomUserId={whomUserId}");
             return response.IsSuccessStatusCode;
         }
     }

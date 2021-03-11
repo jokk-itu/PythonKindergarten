@@ -39,7 +39,6 @@ namespace MiniTwitApi.Server
                                 listenOptions.UseHttps(serverCertificate); // <- Configures SSL
                             });
                         });
-
                 });
         
         private static X509Certificate2 LoadCertificate()

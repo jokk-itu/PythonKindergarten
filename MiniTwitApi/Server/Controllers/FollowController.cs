@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using MiniTwitApi.Shared;
 using MiniTwitApi.Shared.Models;
 using MiniTwitApi.Server.Repositories.Abstract;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
@@ -27,13 +26,13 @@ namespace MiniTwitApi.Server.Controllers
             _accessor = accessor;
         }
 
-        [HttpGet("fllws/findFollower/{whoUserid}")]
-        public async Task<ActionResult<FollowerDTO>> GetFollowRelationByWhoAndWhom(int whoUserid, [FromQuery] int whomUserid, [FromQuery] long latest)
+        [HttpGet("fllws/findFollower")]
+        public async Task<ActionResult<FollowerDTO>> GetFollowRelationByWhoAndWhom([FromQuery]int whoUserId, [FromQuery] int whomUserId, [FromQuery] long latest)
         {
-            if (whomUserid < 1 || whoUserid < 1)
+            if (whomUserId < 1 || whoUserId < 1)
                 return BadRequest("whomUserid and whoUserid must be valid ID's");
             
-            var followRelation = await _followerRepository.ReadAsync(whomUserid, whomUserid);
+            var followRelation = await _followerRepository.ReadAsync(whomUserId, whomUserId);
             
             if(latest > 0 && _configuration["ApiSafeList"].Contains(_accessor.ActionContext.HttpContext.Connection.RemoteIpAddress.ToString()))
                 Latest.GetInstance().Update(latest);

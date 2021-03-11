@@ -10,6 +10,7 @@
 @if (MessageViewModel.Error is not null)
 {
     JSRuntime.InvokeVoidAsync("errorMessage", MessageViewModel.Error);
+    MessageViewModel.Error = null;
 }
 
 @if (_messages.Count > 0)

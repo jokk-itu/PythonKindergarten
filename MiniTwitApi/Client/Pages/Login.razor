@@ -11,6 +11,7 @@
 @if (LoginViewModel.Error is not null)
 {
     JSRuntime.InvokeVoidAsync("errorMessage", LoginViewModel.Error);
+    LoginViewModel.Error = null;
 }
 
 <EditForm Model="@LoginViewModel.User" OnValidSubmit="@LoginViewModel.LoginUser">

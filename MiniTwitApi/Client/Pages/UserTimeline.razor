@@ -11,6 +11,7 @@
 @if (UserTimelineViewModel.Error is not null)
 {
     JSRuntime.InvokeVoidAsync("errorMessage", UserTimelineViewModel.Error);
+    UserTimelineViewModel.Error = null;
 }
 
 
@@ -67,10 +68,10 @@ else
         if (await IsLoggedIn())
         {
             UserTimelineViewModel.Username = Username;
+            UserTimelineViewModel.LoggedInUser = await GetUser();
             var isFollowed = await UserTimelineViewModel.CheckIfUserIsFollowed();
             UserTimelineViewModel.IsFollowed = isFollowed;
             UserTimelineViewModel.IsUnfollowed = !isFollowed;
-            UserTimelineViewModel.LoggedInUser = await GetUser();
             UserTimelineViewModel.Path = $"msgs/{Username}";
         }
     }

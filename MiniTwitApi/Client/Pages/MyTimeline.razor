@@ -17,6 +17,7 @@ else
     @if (MyTimelineViewModel.Error is not null)
     {
         JSRuntime.InvokeVoidAsync("errorMessage", MyTimelineViewModel.Error);
+        MyTimelineViewModel.Error = null;
     }
 
     <div class=twitbox>

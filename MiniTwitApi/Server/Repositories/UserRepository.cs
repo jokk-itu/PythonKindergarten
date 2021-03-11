@@ -70,7 +70,7 @@ namespace MiniTwitApi.Server.Repositories
             {
                 0 => null,
                 1 => await user.FirstAsync(),
-                _ => throw new Exception("There exists multiple users with the same username. SHOULD NOT HAPPEN.")
+                _ => throw new Exception("There exists multiple users with the same username. MUST NOT HAPPEN.")
             };
         }
 

@@ -16,9 +16,7 @@ else
     
     @if (MyTimelineViewModel.Error is not null)
     {
-        <div class="alert alert-danger" role="alert">
-            <p>@MyTimelineViewModel.Error</p>
-        </div>
+        JSRuntime.InvokeVoidAsync("errorMessage", MyTimelineViewModel.Error);
     }
 
     <div class=twitbox>
@@ -26,16 +24,17 @@ else
         <EditForm Model="MyTimelineViewModel.Message" OnValidSubmit="MyTimelineViewModel.PostMessage">
             <DataAnnotationsValidator />
             <ValidationSummary />
-            <InputText @bind-Value="MyTimelineViewModel.Message.Content" />
+            <div class="form-group">
+                <label for="Confirm">Message</label>
+                <input @bind="MyTimelineViewModel.Message.Content" class="form-control" id="Message" placeholder="Share a message" type="text" />
+            </div>
             <button type="submit" class="btn btn-primary">Share</button>
         </EditForm>
     </div>
     
     @if (MyTimelineViewModel.IsMessageSent)
     {
-        <div class="alert alert-success" role="alert">
-            <p>@MyTimelineViewModel.Error</p>
-        </div>
+        JSRuntime.InvokeVoidAsync("successMessage", "Message is sent!");
     }
 
     <Messages path="@MyTimelineViewModel.Path" />

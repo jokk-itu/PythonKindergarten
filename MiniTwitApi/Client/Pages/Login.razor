@@ -10,9 +10,7 @@
 
 @if (LoginViewModel.Error is not null)
 {
-    <div class="alert alert-danger" role="alert">
-        <p>@LoginViewModel.Error</p>
-    </div>
+    JSRuntime.InvokeVoidAsync("errorMessage", LoginViewModel.Error);
 }
 
 <EditForm Model="@LoginViewModel.User" OnValidSubmit="@LoginViewModel.LoginUser">
@@ -31,13 +29,10 @@
 
 @if (LoginViewModel.LoggedInUser is not null)
 {
-    <div class="alert alert-success" role="alert">
-        <p>Successfully logged in</p>
-    </div>
-}
-
-@if (LoginViewModel.LoggedInUser is not null)
-{
     var json = JsonConvert.SerializeObject(LoginViewModel.LoggedInUser);
-    var response = JSRuntime.InvokeAsync<string>("login", json);
+    JSRuntime.InvokeVoidAsync("login", json);
+    
+    JSRuntime.InvokeVoidAsync("successMessage", "You have logged in");
+    
+    NavManager.NavigateTo("/");
 }

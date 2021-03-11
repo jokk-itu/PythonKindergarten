@@ -16,6 +16,10 @@ namespace MiniTwitApi.Client.ViewModels
         public bool IsFollowed { get; set; }
 
         public bool IsUnfollowed { get; set; }
+        
+        public bool FollowIsDone { get; set; }
+        
+        public bool UnFollowIsDone { get; set; }
 
         private readonly IFollowModel _followModel;
 
@@ -41,7 +45,7 @@ namespace MiniTwitApi.Client.ViewModels
         {
             try
             {
-                IsFollowed = await _followModel.FollowUser(LoggedInUser.Username, Username);
+                FollowIsDone = await _followModel.FollowUser(LoggedInUser.Username, Username);
             }
             catch (Exception e)
             {
@@ -53,7 +57,7 @@ namespace MiniTwitApi.Client.ViewModels
         {
             try
             {
-                IsUnfollowed = await _followModel.UnfollowUser(LoggedInUser.Username, Username);
+                UnFollowIsDone = await _followModel.UnfollowUser(LoggedInUser.Username, Username);
             }
             catch (Exception e)
             {

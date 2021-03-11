@@ -10,6 +10,7 @@ namespace MiniTwitApi.Client.ViewModels
     {
         public LoginUserDTO User { get; set; }
         public UserDTO LoggedInUser { get; set; }
+        
         private readonly IUserModel _userModel;
         public string Error { get; set; }
 

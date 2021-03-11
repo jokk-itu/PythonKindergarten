@@ -7,7 +7,14 @@
 @inject IMessageViewModel MessageViewModel; 
 @inject IJSRuntime JSRuntime;
 
-<ul class="list-group" id="messages">
+@if (MessageViewModel.Error is not null)
+{
+    JSRuntime.InvokeVoidAsync("errorMessage", MessageViewModel.Error);
+}
+
+@if (_messages.Count > 0)
+{
+    <ul class="list-group" id="messages">
     
         <button class="btn btn-primary" @onclick="@(() => AddMessages(20))">Load more messages</button>
         @foreach (var message in _messages)
@@ -21,7 +28,12 @@
             </li>
         }
         <button class="btn btn-primary" @onclick="@(() => AddMessages(20))">Load more messages</button>
-</ul>
+    </ul>
+}
+else
+{
+    <img src="loader.gif" width="200px" height="200px" alt="Loading messages..." />
+}
 
 @code 
 {

@@ -3,14 +3,14 @@
 @using MiniTwitApi.Client.ViewModels.Abstract
 
 @inject IRegisterViewModel RegisterViewModel
+@inject IJSRuntime JSRuntime
+@inject NavigationManager NavManager
 
 <h2>Register</h2>
 
 @if (RegisterViewModel.Error is not null)
 {
-    <div class="alert alert-danger" role="alert">
-        <p>@RegisterViewModel.Error</p>
-    </div>
+    JSRuntime.InvokeVoidAsync("errorMessage", RegisterViewModel.Error);
 }
 
 <EditForm Model="@RegisterViewModel.User" OnValidSubmit="@RegisterViewModel.RegisterUser">
@@ -37,8 +37,6 @@
 
 @if (RegisterViewModel.IsRegistered)
 {
-    <div class="alert alert-success" role="alert">
-        <p>Successfully registered</p>
-        <!---Call redirect function here-->
-    </div>
+    JSRuntime.InvokeVoidAsync("successMessage", "You have been successfully registered!");
+    NavManager.NavigateTo("/login");
 }

@@ -22,7 +22,7 @@ namespace MiniTwitApi.Client
             builder.RootComponents.Add<App>("#app");
 
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
-            
+
             //Register the ViewModels for the Views to use them
             builder.Services.AddTransient<IRegisterViewModel, RegisterViewModel>();
             builder.Services.AddTransient<ILoginViewModel, LoginViewModel>();

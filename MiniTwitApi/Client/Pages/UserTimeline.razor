@@ -1,7 +1,6 @@
 @page "/timeline/user_timeline/{username}"
 @using MiniTwitApi.Shared.Models.UserModels
 @using System.Text.Json;
-@using MiniTwitApi.Shared.Models
 @using MiniTwitApi.Client.ViewModels.Abstract
 
 @inject HttpClient HttpClient;
@@ -11,9 +10,7 @@
 
 @if (UserTimelineViewModel.Error is not null)
 {
-    <div class="alert alert-danger" role="alert">
-        <p>@UserTimelineViewModel.Error</p>
-    </div>
+    JSRuntime.InvokeVoidAsync("errorMessage", UserTimelineViewModel.Error);
 }
 
 
@@ -44,15 +41,17 @@ else
     
     @if (UserTimelineViewModel.IsFollowed)
     {
-        <div class="alert alert-success" role="alert">
-            <p>@Username is now followed!</p>
-        </div>
+        JSRuntime.InvokeVoidAsync("successMessage", $"{Username} is now followed");
+        UserTimelineViewModel.IsFollowed = true;
+        UserTimelineViewModel.IsUnfollowed = false;
+        StateHasChanged();
     }
     @if (UserTimelineViewModel.IsUnfollowed)
     {
-        <div class="alert alert-success" role="alert">
-            <p>@Username is now unfollowed!</p>
-        </div>
+        JSRuntime.InvokeVoidAsync("successMessage", $"{Username} is now unfollowed");
+        UserTimelineViewModel.IsUnfollowed = true;
+        UserTimelineViewModel.IsFollowed = false;
+        StateHasChanged();
     }
 
     <Messages path="@UserTimelineViewModel.Path" />    
@@ -68,7 +67,9 @@ else
         if (await IsLoggedIn())
         {
             UserTimelineViewModel.Username = Username;
-            UserTimelineViewModel.IsFollowed = await UserTimelineViewModel.CheckIfUserIsFollowed();
+            var isFollowed = await UserTimelineViewModel.CheckIfUserIsFollowed();
+            UserTimelineViewModel.IsFollowed = isFollowed;
+            UserTimelineViewModel.IsUnfollowed = !isFollowed;
             UserTimelineViewModel.LoggedInUser = await GetUser();
             UserTimelineViewModel.Path = $"msgs/{Username}";
         }

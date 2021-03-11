@@ -87,8 +87,8 @@ namespace MiniTwitApi.Server.Controllers
             return Ok(user);
         }
         
-        [HttpGet("user/{username}")]
-        public async Task<ActionResult<UserDTO>> GetUserByUserId(string username, [FromQuery] long latest)
+        [HttpGet("user/username/{username}")]
+        public async Task<ActionResult<UserDTO>> GetUserByUsername(string username, [FromQuery] long latest)
         {
             var user = await _repository.ReadAsync(username);
             

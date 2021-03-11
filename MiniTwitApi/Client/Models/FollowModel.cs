@@ -45,14 +45,7 @@ namespace MiniTwitApi.Client.Models
 
         public async Task<bool> IsFollowed(string whoUsername, string whomUsername)
         {
-            var whoUser = await _client.GetStringAsync($"/user/{whoUsername}");
-            var whomUser = await _client.GetStringAsync($"/user/{whomUsername}");
-            if (whoUser is null || whomUser is null)
-                throw new Exception("One user does not exist");
-            
-            var whoUserId = JsonSerializer.Deserialize<UserDTO>(whoUser).Id;
-            var whomUserId = JsonSerializer.Deserialize<UserDTO>(whomUser).Id;
-            var response = await _client.GetAsync($"/fllws/findFollower/?whoUserId={whoUserId}&whomUserId={whomUserId}");
+            var response = await _client.GetAsync($"/fllws/?whoUserName={whoUsername}&whomUserName={whomUsername}");
             return response.IsSuccessStatusCode;
         }
     }

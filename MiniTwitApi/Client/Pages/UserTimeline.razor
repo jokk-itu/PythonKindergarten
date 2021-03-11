@@ -8,12 +8,13 @@
 @inject IUserTimelineViewModel UserTimelineViewModel;
 @inject NavigationManager NavManager; 
 
+<h2>@Username's Timeline</h2>
+
 @if (UserTimelineViewModel.Error is not null)
 {
     JSRuntime.InvokeVoidAsync("errorMessage", UserTimelineViewModel.Error);
     UserTimelineViewModel.Error = null;
 }
-
 
 @if (UserTimelineViewModel.LoggedInUser is null)
 {
@@ -21,8 +22,6 @@
 }
 else
 {
-    <h2>@Username's Timeline</h2>
-    
     <div class=followstatus>
         @if (UserTimelineViewModel.LoggedInUser.Username.Equals(Username))
         {
@@ -69,7 +68,9 @@ else
         {
             UserTimelineViewModel.Username = Username;
             UserTimelineViewModel.LoggedInUser = await GetUser();
+            await JSRuntime.InvokeVoidAsync("console.log", $"Getting the user: {UserTimelineViewModel.LoggedInUser}");
             var isFollowed = await UserTimelineViewModel.CheckIfUserIsFollowed();
+            await JSRuntime.InvokeVoidAsync("console.log", $"Fetching the follower relation: {isFollowed}");
             UserTimelineViewModel.IsFollowed = isFollowed;
             UserTimelineViewModel.IsUnfollowed = !isFollowed;
             UserTimelineViewModel.Path = $"msgs/{Username}";

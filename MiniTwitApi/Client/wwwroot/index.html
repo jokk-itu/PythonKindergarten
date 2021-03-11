@@ -28,6 +28,7 @@
     <script>
         function login (data)
         {
+            console.log(data);
             let user = JSON.parse(data);
             sessionStorage.setItem("Username", user.Username)
         }

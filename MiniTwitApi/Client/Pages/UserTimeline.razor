@@ -16,11 +16,7 @@
     UserTimelineViewModel.Error = null;
 }
 
-@if (UserTimelineViewModel.LoggedInUser is null)
-{
-    <h2>You need to be logged in to access this page</h2>
-}
-else
+@if(UserTimelineViewModel.LoggedInUser is not null)
 {
     <div class=followstatus>
         @if (UserTimelineViewModel.LoggedInUser.Username.Equals(Username))
@@ -46,9 +42,9 @@ else
     @if (UserTimelineViewModel.FollowIsDone)
     {
         JSRuntime.InvokeVoidAsync("successMessage", $"{Username} is now followed");
-        UserTimelineViewModel.IsFollowed = true;
-        UserTimelineViewModel.IsUnfollowed = false;
-        StateHasChanged();
+        //UserTimelineViewModel.IsFollowed = true;
+        //UserTimelineViewModel.IsUnfollowed = false;
+        //StateHasChanged();
     }
     @if (UserTimelineViewModel.UnFollowIsDone)
     {
@@ -57,8 +53,10 @@ else
         UserTimelineViewModel.IsFollowed = false;
         StateHasChanged();
     }
-
-    <Messages path="@UserTimelineViewModel.Path" />    
+}
+@if (!string.IsNullOrEmpty(UserTimelineViewModel.Path))
+{
+    <Messages path="@UserTimelineViewModel.Path" />
 }
 
 @code 
@@ -68,12 +66,12 @@ else
 
     protected override async Task OnInitializedAsync()
     {
+        UserTimelineViewModel.Username = Username;
+        UserTimelineViewModel.Path = $"msgs/{Username}";
         if (await IsLoggedIn())
         {
-            UserTimelineViewModel.Username = Username;
             UserTimelineViewModel.LoggedInUser = await GetUser();
             await UserTimelineViewModel.CheckIfUserIsFollowed();
-            UserTimelineViewModel.Path = $"msgs/{Username}";
         }
     }
     

@@ -46,6 +46,7 @@ namespace MiniTwitApi.Client.ViewModels
         {
             try
             {
+                UnFollowIsDone = false;
                 FollowIsDone = await _followModel.FollowUser(LoggedInUser.Username, Username);
             }
             catch (Exception e)
@@ -58,6 +59,7 @@ namespace MiniTwitApi.Client.ViewModels
         {
             try
             {
+                FollowIsDone = false;
                 UnFollowIsDone = await _followModel.UnfollowUser(LoggedInUser.Username, Username);
             }
             catch (Exception e)

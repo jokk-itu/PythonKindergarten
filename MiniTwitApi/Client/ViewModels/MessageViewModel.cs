@@ -11,6 +11,7 @@ namespace MiniTwitApi.Client.ViewModels
     public class MessageViewModel : IMessageViewModel
     {
         private readonly IMessageModel _messageModel;
+        public string Error { get; set; }
 
         public MessageViewModel(IMessageModel messageModel)
         {

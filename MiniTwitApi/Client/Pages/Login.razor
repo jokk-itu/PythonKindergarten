@@ -1,32 +1,42 @@
 @page "/login"
 @using MiniTwitApi.Client.ViewModels.Abstract
-@using MiniTwitApi.Shared
+@using System.Text.Json.Serialization
+@using System.Text.Json
+@using MiniTwitApi.Shared.Models.UserModels
 @using Newtonsoft.Json
+
 @inject ILoginViewModel LoginViewModel 
 @inject IJSRuntime JSRuntime
+@inject NavigationManager NavManager
 
 <h2>Sign In</h2>
+
+@if (LoginViewModel.Error is not null)
+{
+    JSRuntime.InvokeVoidAsync("errorMessage", LoginViewModel.Error);
+    LoginViewModel.Error = null;
+}
 
 <EditForm Model="@LoginViewModel.User" OnValidSubmit="@LoginViewModel.LoginUser">
     <DataAnnotationsValidator />
     <ValidationSummary />
-    <p>
-        <label>
-            Username:
-            <InputText @bind-Value="LoginViewModel.User.Username" />
-        </label>
-    </p>
-    <p>
-        <label>
-            Password:
-            <InputText @bind-Value="LoginViewModel.User.Password" />
-        </label>
-    </p>
+    <div class="form-group">
+        <label for="Username">Username</label>
+        <input @bind="LoginViewModel.User.Username" type="text" class="form-control" id="Username" placeholder="Write your Username here" />
+    </div>
+    <div class="form-group">
+        <label for="Password">Password</label>
+        <input @bind="LoginViewModel.User.Password" class="form-control" type="password" id="Password" placeholder="Write your password here" />
+    </div>
     <button type="submit" class="btn btn-primary">Sign In</button>
 </EditForm>
 
-@if (LoggedInUser.User is not null)
+@if (LoginViewModel.LoggedInUser is not null)
 {
-    var json = JsonConvert.SerializeObject(LoggedInUser.User);
-    var response = JSRuntime.InvokeAsync<string>("login", json);
+    var json = JsonConvert.SerializeObject(LoginViewModel.LoggedInUser);
+    JSRuntime.InvokeVoidAsync("login", json);
+    
+    JSRuntime.InvokeVoidAsync("successMessage", "You have logged in");
+    
+    NavManager.NavigateTo("/");
 }

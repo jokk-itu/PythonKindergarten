@@ -18,15 +18,32 @@ namespace MiniTwitApi.Server.Repositories
             _context = context;
         }
 
+        public async Task<Follower> ReadAsync(string whoUsername, string whomUsername)
+        {
+            var whoUser = await _context.Users
+                .Where(u => u.Username.Equals(whoUsername))
+                .Select(u => u).FirstAsync();
+            
+            var whomUser = await _context.Users
+                .Where(u => u.Username.Equals(whomUsername))
+                .Select(u => u).FirstAsync();
+
+            var relationship = await _context.Followers.FindAsync(whoUser.UserId, whomUser.UserId);
+            return relationship ?? new Follower()
+            {
+                WhoId = -1,
+                WhomId = -1
+            };
+        }
         
         public async Task<ICollection<FollowerDTO>> ReadAllAsync(string username)
         {
-            return await (from s in _context.Followers
-                where s.Who.Username.Equals(username)
+            return await (from f in _context.Followers
+                where f.Who.Username.Equals(username)
                 select new FollowerDTO
                 {
-                    WhoId = s.WhoId,
-                    WhomId = s.WhomId
+                    WhoId = f.WhoId,
+                    WhomId = f.WhomId
                 }).ToListAsync();
         }
 

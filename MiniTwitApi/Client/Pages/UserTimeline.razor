@@ -1,39 +1,60 @@
 @page "/timeline/user_timeline/{username}"
 @using MiniTwitApi.Shared.Models.UserModels
 @using System.Text.Json;
-@using MiniTwitApi.Shared.Models
 @using MiniTwitApi.Client.ViewModels.Abstract
 
 @inject HttpClient HttpClient;
 @inject IJSRuntime JSRuntime;
 @inject IUserTimelineViewModel UserTimelineViewModel;
+@inject NavigationManager NavManager; 
 
-@if (UserTimelineViewModel.LoggedInUser is null)
+<h2>@Username's Timeline</h2>
+
+@if (UserTimelineViewModel.Error is not null)
 {
-    <h2>You need to be logged in to access this page</h2>
+    JSRuntime.InvokeVoidAsync("errorMessage", UserTimelineViewModel.Error);
+    UserTimelineViewModel.Error = null;
 }
-else
+
+@if(UserTimelineViewModel.LoggedInUser is not null)
 {
-    <h2>@Username's Timeline</h2>
-    
     <div class=followstatus>
         @if (UserTimelineViewModel.LoggedInUser.Username.Equals(Username))
         {
             <p>This is you!</p>
         }
-        else if (UserTimelineViewModel.IsUserFollowed)
+        else if (UserTimelineViewModel.IsFollowed && !UserTimelineViewModel.IsUnfollowed)
         {
             <p>You are currently following this user.</p>
             <button class="btn btn-primary" @onclick="@(() => UserTimelineViewModel.UnfollowUser())">Unfollow User</button>
         }
-        else
+        else if(!UserTimelineViewModel.IsFollowed && UserTimelineViewModel.IsUnfollowed)
         {
             <p>You are not yet following this user.</p>
             <button class="btn btn-primary" @onclick="@(() => UserTimelineViewModel.FollowUser())">Follow User</button>
         }
+        else
+        {
+            <p>Something went wrong using stupid booleans</p>
+        }
     </div>
-
-    <Messages path="@UserTimelineViewModel.Path" />    
+    
+    @if (UserTimelineViewModel.FollowIsDone)
+    {
+        JSRuntime.InvokeVoidAsync("successMessage", $"{Username} is now followed");
+        UserTimelineViewModel.IsFollowed = true;
+        UserTimelineViewModel.IsUnfollowed = false;
+    }
+    @if (UserTimelineViewModel.UnFollowIsDone)
+    {
+        JSRuntime.InvokeVoidAsync("successMessage", $"{Username} is now unfollowed");
+        UserTimelineViewModel.IsUnfollowed = true;
+        UserTimelineViewModel.IsFollowed = false;
+    }
+}
+@if (!string.IsNullOrEmpty(UserTimelineViewModel.Path))
+{
+    <Messages path="@UserTimelineViewModel.Path" />
 }
 
 @code 
@@ -43,12 +64,12 @@ else
 
     protected override async Task OnInitializedAsync()
     {
+        UserTimelineViewModel.Username = Username;
+        UserTimelineViewModel.Path = $"msgs/{Username}";
         if (await IsLoggedIn())
         {
-            UserTimelineViewModel.Username = Username;
-            UserTimelineViewModel.IsUserFollowed = await IsFollowed();
             UserTimelineViewModel.LoggedInUser = await GetUser();
-            UserTimelineViewModel.Path = $"msgs/{Username}";
+            await UserTimelineViewModel.CheckIfUserIsFollowed();
         }
     }
     
@@ -61,21 +82,5 @@ else
     private async Task<bool> IsLoggedIn()
     {
         return await JSRuntime.InvokeAsync<bool>("isUserLoggedIn");
-    }
-
-    //Should be in the FollowModel, and implemented as an easier Endpoint in the API.
-    //Something like, is this Username being followed by this Username...
-    private async Task<bool> IsFollowed()
-    {
-        var response = await HttpClient.GetStringAsync($"/fllws/{Username}");
-        var followers = JsonSerializer.Deserialize<List<FollowerDTO>>(response);
-        foreach (var follower in followers)
-        {
-            var getUser = await HttpClient.GetStringAsync($"/user/{follower.WhomId}");
-            var jsonUser = JsonSerializer.Deserialize<UserDTO>(getUser);
-            if (jsonUser.Username.Equals(Username))
-                return true;
-        }
-        return false;
     }
 }

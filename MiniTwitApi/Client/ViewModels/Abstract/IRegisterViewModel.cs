@@ -7,6 +7,8 @@ namespace MiniTwitApi.Client.ViewModels.Abstract
     {
         public CreateUserDTO User { get; set; }
         public string RepeatPassword { get; set; }
+        public string Error { get; set; }
+        public bool IsRegistered { get; set; }
         
         public Task RegisterUser();
     }

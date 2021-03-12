@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using MiniTwitApi.Client.Models;
 using MiniTwitApi.Client.Models.Abstract;
@@ -10,8 +11,11 @@ namespace MiniTwitApi.Client.ViewModels
     public class MyTimelineViewModel : IMyTimelineViewModel
     {
         public CreateMessage Message { get; set; }
+        public string Error { get; set; }
 
         public UserDTO LoggedInUser { get; set; }
+        
+        public bool IsMessageSent { get; set; }
 
         public string Path { get; set; }
         
@@ -25,7 +29,14 @@ namespace MiniTwitApi.Client.ViewModels
 
         public async Task PostMessage()
         {
-            await _messageModel.PostMessage(Message, LoggedInUser.Username);
+            try
+            {
+                IsMessageSent = await _messageModel.PostMessage(Message, LoggedInUser.Username);
+            }
+            catch (Exception e)
+            {
+                Error = e.Message;
+            }
         }
     }
 

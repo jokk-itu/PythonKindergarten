@@ -20,4 +20,9 @@
     <None Include="wwwroot\loader.gif" />
   </ItemGroup>
 
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\uikit-3.6.17\css\uikit-rtl.css" />
+    <_ContentIncludedByDefault Remove="wwwroot\uikit-3.6.17\css\uikit.css" />
+  </ItemGroup>
+
 </Project>

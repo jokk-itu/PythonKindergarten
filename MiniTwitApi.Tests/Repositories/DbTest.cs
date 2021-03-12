@@ -17,6 +17,7 @@ namespace MiniTwitApi.Tests.Repositories
             var builder = new DbContextOptionsBuilder<Context>().UseSqlite(_connection);
             _context = new Context(builder.Options);
             _context.Database.EnsureCreated();
+            _context.GenerateTestData();
         }
 
         public void Dispose() => _connection.Close();

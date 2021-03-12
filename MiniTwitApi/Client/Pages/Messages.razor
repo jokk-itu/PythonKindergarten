@@ -7,21 +7,34 @@
 @inject IMessageViewModel MessageViewModel; 
 @inject IJSRuntime JSRuntime;
 
-<ul class="messages" id="messages">
+@if (MessageViewModel.Error is not null)
+{
+    JSRuntime.InvokeVoidAsync("errorMessage", MessageViewModel.Error);
+    MessageViewModel.Error = null;
+}
+
+@if (_messages.Count > 0)
+{
+    <ul class="list-group" id="messages">
     
         <button class="btn btn-primary" @onclick="@(() => AddMessages(20))">Load more messages</button>
         @foreach (var message in _messages)
         {
-            <li>
-                <img width="48" src="http://www.gravatar.com/avatar/@message.HashedAuthorEmail?d=identicon&s=48" alt="UserPicture">
+            <li class="list-group-item">
+                <img class="img-thumbnail" width="48" src="http://www.gravatar.com/avatar/@message.HashedAuthorEmail?d=identicon&s=48" alt="UserPicture">
                 <strong><a href="/timeline/user_timeline/@message.AuthorUsername">@message.AuthorUsername</a></strong>
-                @message.Text;
+                <br />
+                <p>@message.Text;</p>
                 <small>&mdash; @MessageViewModel.GenerateDateTime(message.PublishDate).ToString("dd.MM.yyyy - HH.mm", CultureInfo.InvariantCulture) </small>
             </li>
         }
         <button class="btn btn-primary" @onclick="@(() => AddMessages(20))">Load more messages</button>
-    }
-</ul>
+    </ul>
+}
+else
+{
+    <img src="loader.gif" width="200px" height="200px" alt="Loading messages..." />
+}
 
 @code 
 {
@@ -45,6 +58,6 @@
             _messages.Add(m);
             StateHasChanged();
         }
-        Skip++;
+        Skip += 20;
     }
 }

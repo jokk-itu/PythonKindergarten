@@ -3,20 +3,35 @@
 
 @inject IJSRuntime JSRuntime;
 
-<div class=navigation>
-    @if (IsUserLoggedIn)
-    {
-        <a href="timeline/my_timeline">my timeline</a>
-        <a href="timeline/public">public timeline</a>
-        <a href="signout">sign out</a>
-    }
-    else
-    {
-        <a href="timeline/public">public timeline</a>
-        <a href="register">sign up</a>
-        <a href="login">sign in</a>
-    }
-</div>
+<nav class="navbar navbar-expand-sm navbar-light" style="background: #6ECCC4">
+    <div class="navbar-nav">
+            @if (IsUserLoggedIn)
+            {
+                <li class="nav-item">
+                    <a class="nav-link" href="timeline/my_timeline">my timeline</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="timeline/public">public timeline</a>
+                </li>
+                <!---
+                <li class="nav-item">
+                    <a class="nav-link" href="signout">sign out</a>
+                </li>--->
+            }
+            else
+            {
+                <li class="nav-item">
+                    <a class="nav-link" href="timeline/public">public timeline</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="register">sign up</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="login">sign in</a>
+                </li>
+            }
+    </div>
+</nav>
 
 @code
 {

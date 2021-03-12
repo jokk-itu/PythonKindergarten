@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -35,6 +36,8 @@ namespace MiniTwitApi.Server.Repositories
                     Username = user.Username,
                     Email = user.Email,
                     Password = user.Password,
+                    Followers = new List<Follower>(),
+                    Messages = new List<Message>(),
                 });
             await _context.SaveChangesAsync();
         }

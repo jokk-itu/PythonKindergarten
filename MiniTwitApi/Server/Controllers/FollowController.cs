@@ -31,16 +31,17 @@ namespace MiniTwitApi.Server.Controllers
         {
             if (string.IsNullOrEmpty(whomUserName) || string.IsNullOrEmpty(whomUserName))
                 return BadRequest("whomUserName and whoUserName must be valid Username's");
-            
+
             var followRelation = await _followerRepository.ReadAsync(whoUserName, whomUserName);
-            
+            var followerDto = new FollowerDTO()
+            {
+                WhoId = followRelation.WhoId,
+                WhomId = followRelation.WhomId
+            };
             if(latest > 0 && _configuration["ApiSafeList"].Contains(_accessor.ActionContext.HttpContext.Connection.RemoteIpAddress.ToString()))
                 Latest.GetInstance().Update(latest);
 
-            if (followRelation is null)
-                return NotFound();
-
-            return Ok(followRelation);
+            return Ok(followerDto);
         }
         
         [HttpGet("fllws/{username}")]

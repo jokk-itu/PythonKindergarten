@@ -42,16 +42,16 @@
     @if (UserTimelineViewModel.FollowIsDone)
     {
         JSRuntime.InvokeVoidAsync("successMessage", $"{Username} is now followed");
-        //UserTimelineViewModel.IsFollowed = true;
-        //UserTimelineViewModel.IsUnfollowed = false;
-        //StateHasChanged();
+        UserTimelineViewModel.IsFollowed = true;
+        UserTimelineViewModel.IsUnfollowed = false;
+        NavManager.NavigateTo($"timeline/user_timeline/{Username}");
     }
     @if (UserTimelineViewModel.UnFollowIsDone)
     {
         JSRuntime.InvokeVoidAsync("successMessage", $"{Username} is now unfollowed");
         UserTimelineViewModel.IsUnfollowed = true;
         UserTimelineViewModel.IsFollowed = false;
-        StateHasChanged();
+        NavManager.NavigateTo($"timeline/user_timeline/{Username}");
     }
 }
 @if (!string.IsNullOrEmpty(UserTimelineViewModel.Path))

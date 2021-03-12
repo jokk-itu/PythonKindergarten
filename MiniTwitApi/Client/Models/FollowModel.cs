@@ -1,6 +1,7 @@
 using System;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Json;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -46,7 +47,10 @@ namespace MiniTwitApi.Client.Models
         public async Task<bool> IsFollowed(string whoUsername, string whomUsername)
         {
             var response = await _client.GetAsync($"/fllws/?whoUserName={whoUsername}&whomUserName={whomUsername}");
-            return response.IsSuccessStatusCode;
+            HttpFailureHelper.HandleStatusCode(response);
+            Console.WriteLine(await response.Content.ReadAsStringAsync());
+            var relation = JsonSerializer.Deserialize<FollowerDTO>(await response.Content.ReadAsStringAsync());
+            return relation is not null && relation.WhoId != -1 && relation.WhomId != -1;
         }
     }
 }

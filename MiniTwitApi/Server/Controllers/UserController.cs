@@ -1,8 +1,15 @@
 ﻿using System.Text;
 using System.Buffers.Text;
 using System;
+using System.Collections.Generic;
+using System.Net;
 using System.Reflection.Metadata;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Components.WebAssembly.Http;
 using Microsoft.AspNetCore.Mvc;
 using MiniTwitApi.Shared;
 using MiniTwitApi.Shared.Models;
@@ -28,7 +35,6 @@ namespace MiniTwitApi.Server.Controllers
             _accessor = accessor;
         }
         
-        //TODO The bad requests gives away if the username exists. This is only used for debugging.
         [HttpPost("login")]
         public async Task<ActionResult> GetLogin([FromBody] LoginUserDTO user, [FromQuery] long latest)
         {
@@ -42,7 +48,32 @@ namespace MiniTwitApi.Server.Controllers
 
             if(latest > 0 && _configuration["ApiSafeList"].Contains(_accessor.ActionContext.HttpContext.Connection.RemoteIpAddress.ToString()))
                 Latest.GetInstance().Update(latest);
-            
+
+            var claims = new List<Claim>()
+            {
+                new (ClaimTypes.Name, user.Username),
+                new (ClaimTypes.Email, user.Email)
+            };
+
+            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+            var authProperties = new AuthenticationProperties()
+            {
+                IsPersistent = true
+            };
+
+            await HttpContext.SignInAsync(
+                CookieAuthenticationDefaults.AuthenticationScheme, 
+                new ClaimsPrincipal(claimsIdentity), 
+                authProperties);
+
+            return NoContent();
+        }
+
+        [HttpGet("logout")]
+        public async Task<ActionResult> GetLogout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return NoContent();
         }
         

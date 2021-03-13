@@ -26,7 +26,7 @@ namespace MiniTwitApi.Tests.Repositories
             var actual = await _repository.UserExistsAsync("TestUser1");
 
             // Assert
-            Assert.Equal(true, actual);
+            Assert.True(actual);
         }
 
         [Fact]
@@ -36,7 +36,7 @@ namespace MiniTwitApi.Tests.Repositories
             var actual = await _repository.UserExistsAsync("Nonexistant");
 
             // Assert
-            Assert.Equal(false, actual);
+            Assert.False(actual);
         }
 
         [Fact]
@@ -46,7 +46,7 @@ namespace MiniTwitApi.Tests.Repositories
             var actual = await _repository.UserExistsAsync(1);
 
             // Assert
-            Assert.Equal(true, actual);
+            Assert.True(actual);
         }
 
         [Fact]
@@ -56,29 +56,29 @@ namespace MiniTwitApi.Tests.Repositories
             var actual = await _repository.UserExistsAsync(10000000);
 
             // Assert
-            Assert.Equal(false, actual);
+            Assert.False(actual);
         }
 
         [Fact]
         public async Task Test_If_User_Can_Be_Created_And_Can_Be_Found()
         {
-            CreateUserDTO testUser = new CreateUserDTO{Username = "TestUser2", Password = "TestUser", Email="test@tester.test"};
+            var testUser = new CreateUserDTO{Username = "TestUser2", Password = "TestUser", Email="test@tester.test"};
 
             await _repository.CreateAsync(testUser);
     
             var actual = await _repository.UserExistsAsync("TestUser2");
 
             // Assert
-            Assert.Equal(true, actual);
+            Assert.True(actual);
         }
 
         [Fact]
         public async Task Test_If_Read_Returns_Correct_By_Userid()
         {
     
-            UserDTO actual = await _repository.ReadAsync(1);
+            var actual = await _repository.ReadAsync(1);
 
-            UserDTO expected = new UserDTO{Id = 1, Username = "TestUser1", Email="test@test.com", Password = "TestPassword1234"};
+            var expected = new UserDTO{Id = 1, Username = "TestUser1", Email="test@test.com", Password = "TestPassword1234"};
 
             // Assert
             Assert.Equal(expected, actual);
@@ -88,7 +88,7 @@ namespace MiniTwitApi.Tests.Repositories
         public async Task Test_If_Read_Returns_Null_When_False_By_Userid()
         {
     
-            UserDTO actual = await _repository.ReadAsync(10000);
+            var actual = await _repository.ReadAsync(10000);
 
             UserDTO expected = null;
 
@@ -100,9 +100,9 @@ namespace MiniTwitApi.Tests.Repositories
         public async Task Test_If_Read_Returns_Correct_By_Username()
         {
     
-            UserDTO actual = await _repository.ReadAsync("TestUser1");
+            var actual = await _repository.ReadAsync("TestUser1");
 
-            UserDTO expected = new UserDTO{Id = 1, Username = "TestUser1", Email="test@test.com", Password = "TestPassword1234"};
+            var expected = new UserDTO{Id = 1, Username = "TestUser1", Email="test@test.com", Password = "TestPassword1234"};
 
             // Assert
             Assert.Equal(expected, actual);

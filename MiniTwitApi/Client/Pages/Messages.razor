@@ -20,7 +20,7 @@
                 <img class="img-thumbnail" width="48" src="http://www.gravatar.com/avatar/@message.HashedAuthorEmail?d=identicon&s=48" alt="UserPicture">
                 <strong><a href="/timeline/user_timeline/@message.AuthorUsername">@message.AuthorUsername</a></strong>
                 <br />
-                <p>@message.Text;</p>
+                <p>@message.Text</p>
                 <small>&mdash; @MessageViewModel.GenerateDateTime(message.PublishDate).ToString("dd.MM.yyyy - HH.mm", CultureInfo.InvariantCulture) </small>
             </li>
         }
@@ -29,7 +29,7 @@
 }
 else
 {
-    <img src="loader.gif" width="200px" height="200px" alt="Loading messages..." />
+    <img src="loader.gif" styles="margin: auto;" width="200px" height="200px" alt="Loading messages..." />
 }
 
 @code 

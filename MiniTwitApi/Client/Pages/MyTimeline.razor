@@ -12,32 +12,30 @@
     </NotAuthorized>
     <Authorized>
         <h3>MyTimeline</h3>
-            
         <Error ViewModel="@MyTimelineViewModel"/>
-        
-            <div class=twitbox>
-                <h3>What's on your mind @MyTimelineViewModel.LoggedInUser.Username?</h3>
-                <EditForm Model="MyTimelineViewModel.Message" OnValidSubmit="MyTimelineViewModel.PostMessage">
-                    <DataAnnotationsValidator />
-                    <ValidationSummary />
-                    <div class="form-group">
-                        <label for="Confirm">Message</label>
-                        <input @bind="MyTimelineViewModel.Message.Content" class="form-control" id="Message" placeholder="Share a message" type="text" />
-                    </div>
-                    <button type="submit" class="btn btn-primary">Share</button>
-                </EditForm>
-            </div>
-            
-            @if (MyTimelineViewModel.IsMessageSent)
-            {
-                JSRuntime.InvokeVoidAsync("successMessage", "Message is sent!");
-            }
-        
-            <Messages path="@MyTimelineViewModel.Path" />
+        <div class=twitbox>
+            <!--<h3>What's on your mind @context.User.Identity?.Name?</h3>
+            <EditForm Model="MyTimelineViewModel.Message" OnValidSubmit="MyTimelineViewModel.PostMessage">
+                <DataAnnotationsValidator/>
+                <ValidationSummary/>
+                <div class="form-group">
+                    <label for="Confirm">Message</label>
+                    <input @bind="MyTimelineViewModel.Message.Content" class="form-control" id="Message" placeholder="Share a message" type="text"/>
+                </div>
+                <button type="submit" class="btn btn-primary">Share</button>
+            </EditForm>-->
+        </div>
+
+
+        @if (MyTimelineViewModel.IsMessageSent)
+        {
+            JSRuntime.InvokeVoidAsync("successMessage", "Message is sent!");
+        }
+        <Messages path="@MyTimelineViewModel.Path"/>
     </Authorized>
 </AuthorizeView>
 
-@code 
+@code
 {
     protected override async Task OnInitializedAsync()
     {

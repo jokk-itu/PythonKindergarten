@@ -43,6 +43,7 @@ namespace MiniTwitApi.Server
             
             //Authentication and Authorization using Cookies
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
+            services.AddAuthorizationCore();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

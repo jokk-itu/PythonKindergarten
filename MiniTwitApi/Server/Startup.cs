@@ -11,9 +11,10 @@ using System.Xml.Serialization;
 using MiniTwitApi.Server.Entities;
 using MiniTwitApi.Server.Repositories.Abstract;
 using MiniTwitApi.Server.Repositories;
-using MiniTwitApi.Shared;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Prometheus;
+using Prometheus.SystemMetrics;
 
 namespace MiniTwitApi.Server
 {
@@ -30,6 +31,7 @@ namespace MiniTwitApi.Server
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSystemMetrics();
             services.AddControllersWithViews();
             services.AddRazorPages();
             services.AddScoped<IContext, Context>();
@@ -37,6 +39,7 @@ namespace MiniTwitApi.Server
             services.AddScoped<IFollowerRepository, FollowerRepository>();
             services.AddScoped<IMessageRepository, MessageRepository>();
             services.AddSwaggerGen();
+
 
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
         }
@@ -56,6 +59,8 @@ namespace MiniTwitApi.Server
                 app.UseHsts();
             }
 
+            app.UseHttpMetrics();
+            app.UseMetricServer();
             app.UseHttpsRedirection();
             app.UseBlazorFrameworkFiles();
             app.UseStaticFiles();
@@ -77,6 +82,7 @@ namespace MiniTwitApi.Server
                 endpoints.MapRazorPages();
                 endpoints.MapControllers();
                 endpoints.MapFallbackToFile("index.html");
+                endpoints.MapMetrics();
             });
         }
     }

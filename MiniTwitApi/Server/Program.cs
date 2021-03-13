@@ -24,6 +24,7 @@ namespace MiniTwitApi.Server
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();
+            //Hello
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Linq;
 using System.Xml.Serialization;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using MiniTwitApi.Server.Entities;
 using MiniTwitApi.Server.Repositories.Abstract;
 using MiniTwitApi.Server.Repositories;
@@ -39,6 +40,9 @@ namespace MiniTwitApi.Server
             services.AddSwaggerGen();
 
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
+            
+            //Authentication and Authorization using Cookies
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -71,6 +75,9 @@ namespace MiniTwitApi.Server
             });
 
             app.UseRouting();
+            
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

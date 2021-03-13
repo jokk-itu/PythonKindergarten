@@ -17,8 +17,6 @@ namespace MiniTwitApi.Tests.Repositories
             _repository = new UserRepository(_context);
         }
 
-
-
         [Fact]
         public async Task Test_If_User_Exist_By_Username_True()
         {
@@ -112,7 +110,7 @@ namespace MiniTwitApi.Tests.Repositories
         public async Task Test_If_Read_Returns_Null_When_False_By_Username()
         {
     
-            UserDTO actual = await _repository.ReadAsync("Non Existant Test User");
+            var actual = await _repository.ReadAsync("Non Existant Test User");
 
             UserDTO expected = null;
 

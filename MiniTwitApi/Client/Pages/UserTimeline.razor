@@ -10,11 +10,7 @@
 
 <h2>@Username's Timeline</h2>
 
-@if (UserTimelineViewModel.Error is not null)
-{
-    JSRuntime.InvokeVoidAsync("errorMessage", UserTimelineViewModel.Error);
-    UserTimelineViewModel.Error = null;
-}
+<Error ViewModel="@UserTimelineViewModel"/>
 
 @if(UserTimelineViewModel.LoggedInUser is not null)
 {

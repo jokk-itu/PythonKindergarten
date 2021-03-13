@@ -7,11 +7,7 @@
 @inject IMessageViewModel MessageViewModel; 
 @inject IJSRuntime JSRuntime;
 
-@if (MessageViewModel.Error is not null)
-{
-    JSRuntime.InvokeVoidAsync("errorMessage", MessageViewModel.Error);
-    MessageViewModel.Error = null;
-}
+<Error ViewModel="@MessageViewModel"/>
 
 @if (_messages.Count > 0)
 {

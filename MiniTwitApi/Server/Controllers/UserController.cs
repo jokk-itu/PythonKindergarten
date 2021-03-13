@@ -49,10 +49,10 @@ namespace MiniTwitApi.Server.Controllers
             if(latest > 0 && _configuration["ApiSafeList"].Contains(_accessor.ActionContext.HttpContext.Connection.RemoteIpAddress.ToString()))
                 Latest.GetInstance().Update(latest);
 
-            var claims = new List<Claim>()
+            var claims = new List<Claim>
             {
-                new (ClaimTypes.Name, user.Username),
-                new (ClaimTypes.Email, user.Email)
+                new (ClaimTypes.Name, userFromDatabase.Username),
+                new (ClaimTypes.Email, userFromDatabase.Email)
             };
 
             var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);

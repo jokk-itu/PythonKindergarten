@@ -1,0 +1,14 @@
+@using MiniTwitApi.Client.ViewModels.Abstract
+
+@inject IJSRuntime JSRuntime
+
+@if (ViewModel.Error is not null)
+{
+    @JSRuntime.InvokeVoidAsync("errorMessage", ViewModel.Error);
+    ViewModel.Error = null;
+}
+
+@code {
+    [Parameter]
+    public IViewModel ViewModel { get; set; }
+}

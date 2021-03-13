@@ -2,6 +2,7 @@
 using System.Buffers.Text;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Reflection.Metadata;
 using System.Security.Claims;
@@ -75,6 +76,25 @@ namespace MiniTwitApi.Server.Controllers
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return NoContent();
+        }
+
+        [HttpGet("user")]
+        public async Task<ActionResult> GetLoggedInUser()
+        {
+            if (HttpContext.User.Identity is null || !HttpContext.User.Identity.IsAuthenticated)
+                return BadRequest("You are not authenticated");
+            
+            var username = HttpContext.User.Identity.Name;
+            var email = HttpContext.User.Claims.
+                            Where(c => c.Type.Equals(ClaimTypes.Email))
+                            .Select(c => c)
+                            .First().Value;
+            var user = new UserDTO()
+            {
+                Username = username,
+                Email = email
+            };
+            return Ok(user);
         }
         
         [HttpPost("register")]

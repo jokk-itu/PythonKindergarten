@@ -15,34 +15,34 @@
 <AuthorizeView>
     <Authorized>
         <div class=followstatus>
-                @if (UserTimelineViewModel.LoggedInUser.Username.Equals(Username))
-                {
-                    NavManager.NavigateTo("/timeline/my_timeline");
-                }
-                else if (UserTimelineViewModel.IsFollowed && !UserTimelineViewModel.IsUnfollowed)
-                {
-                    <p>You are currently following this user.</p>
-                    <button class="btn btn-primary" @onclick="@(() => UserTimelineViewModel.UnfollowUser())">Unfollow User</button>
-                }
-                else
-                {
-                    <p>You are not yet following this user.</p>
-                    <button class="btn btn-primary" @onclick="@(() => UserTimelineViewModel.FollowUser())">Follow User</button>
-                }
-                @if (UserTimelineViewModel.FollowIsDone || UserTimelineViewModel.UnFollowIsDone)
-                {
-                    HandleAction();
-                }
+            @if (@context.User.Identity.Name.Equals(Username))
+            {
+                NavManager.NavigateTo("/timeline/my_timeline");
+            }
+            else if (UserTimelineViewModel.IsFollowed && !UserTimelineViewModel.IsUnfollowed)
+            {
+                <p>You are currently following this user.</p>
+                <button class="btn btn-primary" @onclick="@(() => UserTimelineViewModel.UnfollowUser())">Unfollow User</button>
+            }
+            else
+            {
+                <p>You are not yet following this user.</p>
+                <button class="btn btn-primary" @onclick="@(() => UserTimelineViewModel.FollowUser())">Follow User</button>
+            }
+            @if (UserTimelineViewModel.FollowIsDone || UserTimelineViewModel.UnFollowIsDone)
+            {
+                HandleAction();
+            }
         </div>
     </Authorized>
 </AuthorizeView>
 
 @if (!string.IsNullOrEmpty(UserTimelineViewModel.Path))
 {
-    <Messages path="@UserTimelineViewModel.Path" />
+    <Messages path="@UserTimelineViewModel.Path"/>
 }
 
-@code 
+@code
 {
     [Parameter]
     public string Username { get; set; }
@@ -51,9 +51,8 @@
     {
         UserTimelineViewModel.Username = Username;
         UserTimelineViewModel.Path = $"msgs/{Username}";
-        if (await IsLoggedIn())
+        if (UserTimelineViewModel.LoggedInUser is not null)
         {
-            UserTimelineViewModel.LoggedInUser = await GetUser();
             await UserTimelineViewModel.CheckIfUserIsFollowed();
         }
     }
@@ -64,16 +63,5 @@
         await JSRuntime.InvokeVoidAsync("successMessage", $"{Username} is now {action}");
         UserTimelineViewModel.IsUnfollowed = UserTimelineViewModel.IsUnfollowed;
         UserTimelineViewModel.IsFollowed = UserTimelineViewModel.IsFollowed;
-    }
-    
-    private async Task<UserDTO> GetUser()
-    {
-        var user = await JSRuntime.InvokeAsync<string>("getUser");
-        return JsonSerializer.Deserialize<UserDTO>(user);
-    }
-    
-    private async Task<bool> IsLoggedIn()
-    {
-        return await JSRuntime.InvokeAsync<bool>("isUserLoggedIn");
     }
 }

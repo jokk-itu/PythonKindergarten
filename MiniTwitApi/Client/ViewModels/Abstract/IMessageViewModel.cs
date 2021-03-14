@@ -6,10 +6,10 @@ using MiniTwitApi.Shared.Models.UserModels;
 
 namespace MiniTwitApi.Client.ViewModels.Abstract
 {
-    public interface IMessageViewModel
+    public interface IMessageViewModel : IViewModel
     {
         public IAsyncEnumerable<MessageDTO> RequestMessages(string path);
-        public string Error { get; set; }
+        public new string Error { get; set; }
         public DateTime GenerateDateTime(int date);
 
     }

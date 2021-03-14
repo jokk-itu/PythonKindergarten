@@ -7,33 +7,38 @@
 @inject IMessageViewModel MessageViewModel; 
 @inject IJSRuntime JSRuntime;
 
-@if (MessageViewModel.Error is not null)
-{
-    JSRuntime.InvokeVoidAsync("errorMessage", MessageViewModel.Error);
-    MessageViewModel.Error = null;
-}
+<Error ViewModel="@MessageViewModel"/>
 
 @if (_messages.Count > 0)
 {
-    <ul class="list-group" id="messages">
-    
-        <button class="btn btn-primary" @onclick="@(() => AddMessages(20))">Load more messages</button>
+
         @foreach (var message in _messages)
         {
-            <li class="list-group-item">
-                <img class="img-thumbnail" width="48" src="http://www.gravatar.com/avatar/@message.HashedAuthorEmail?d=identicon&s=48" alt="UserPicture">
-                <strong><a href="/timeline/user_timeline/@message.AuthorUsername">@message.AuthorUsername</a></strong>
-                <br />
-                <p>@message.Text;</p>
-                <small>&mdash; @MessageViewModel.GenerateDateTime(message.PublishDate).ToString("dd.MM.yyyy - HH.mm", CultureInfo.InvariantCulture) </small>
-            </li>
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-auto profilepicture">
+                            <img class="img-thumbnail" width="48" src="https://www.gravatar.com/avatar/@message.HashedAuthorEmail?d=identicon&s=48" alt="UserPicture">
+                        </div>
+                        <div class="col-md-auto">
+                            <h5 class="card-title"><a href="timeline/user_timeline/@message.AuthorUsername">@message.AuthorUsername</a></h5>
+                            <h6 class="card-subtitle mb-2 text-muted">@MessageViewModel.GenerateDateTime(message.PublishDate).ToString("dd.MM.yyyy - HH.mm", CultureInfo.InvariantCulture)</h6>
+                        </div>
+                    </div>
+                    <p class="card-text">@message.Text</p>
+                </div>
+            </div>
         }
         <button class="btn btn-primary" @onclick="@(() => AddMessages(20))">Load more messages</button>
-    </ul>
+
 }
 else
 {
-    <img src="loader.gif" width="200px" height="200px" alt="Loading messages..." />
+    <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+            <span class="visually-hidden"></span>
+        </div>
+    </div>
 }
 
 @code 

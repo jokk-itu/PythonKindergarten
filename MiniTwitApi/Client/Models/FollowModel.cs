@@ -48,7 +48,6 @@ namespace MiniTwitApi.Client.Models
         {
             var response = await _client.GetAsync($"/fllws/?whoUserName={whoUsername}&whomUserName={whomUsername}");
             HttpFailureHelper.HandleStatusCode(response);
-            Console.WriteLine(await response.Content.ReadAsStringAsync());
             var relation = JsonSerializer.Deserialize<FollowerDTO>(await response.Content.ReadAsStringAsync());
             return relation is not null && relation.WhoId != -1 && relation.WhomId != -1;
         }

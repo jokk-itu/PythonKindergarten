@@ -1,55 +1,19 @@
 ﻿@using MiniTwitApi.Shared.Models.UserModels
 @using System.Text.Json
 
-@inject IJSRuntime JSRuntime;
+@inject IJSRuntime JSRuntime
 
-<nav class="navbar navbar-expand-sm navbar-light" style="background: #6ECCC4">
-    <div class="navbar-nav">
-            @if (IsUserLoggedIn)
-            {
-                <li class="nav-item">
-                    <a class="nav-link" href="timeline/my_timeline">my timeline</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="timeline/public">public timeline</a>
-                </li>
-                <!---
-                <li class="nav-item">
-                    <a class="nav-link" href="signout">sign out</a>
-                </li>--->
-            }
-            else
-            {
-                <li class="nav-item">
-                    <a class="nav-link" href="timeline/public">public timeline</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="register">sign up</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="login">sign in</a>
-                </li>
-            }
-    </div>
+<nav>
+    <AuthorizeView>
+        <Authorized>
+            <a href="timeline/my_timeline">My Timeline</a>
+            <a href="timeline/public">Public Timeline</a>
+            <a href="logout">Logout</a>
+        </Authorized>
+        <NotAuthorized>
+            <a href="timeline/public">Public Timeline</a>
+            <a href="register">Sign Up</a>
+            <a href="login">Sign In</a>
+        </NotAuthorized>
+    </AuthorizeView>
 </nav>
-
-@code
-{
-    private bool IsUserLoggedIn { get; set; }
-    
-    protected override async Task OnInitializedAsync()
-    {
-        IsUserLoggedIn = await IsLoggedIn();
-    }
-
-    private async Task<UserDTO> GetUser()
-    {
-        var user = await JSRuntime.InvokeAsync<string>("getUser");
-        return JsonSerializer.Deserialize<UserDTO>(user);
-    }
-    
-    private async Task<bool> IsLoggedIn()
-    {
-        return await JSRuntime.InvokeAsync<bool>("isUserLoggedIn");
-    }
-}

@@ -6,13 +6,9 @@
 @inject IJSRuntime JSRuntime
 @inject NavigationManager NavManager
 
-<h2>Register</h2>
+<h2>Register User</h2>
 
-@if (RegisterViewModel.Error is not null)
-{
-    JSRuntime.InvokeVoidAsync("errorMessage", RegisterViewModel.Error);
-    RegisterViewModel.Error = null;
-}
+<Error ViewModel="@RegisterViewModel"/>
 
 <EditForm Model="@RegisterViewModel.User" OnValidSubmit="@RegisterViewModel.RegisterUser">
     <DataAnnotationsValidator />
@@ -30,7 +26,7 @@
         <input @bind="RegisterViewModel.User.Password" class="form-control" id="Password" placeholder="Write your Password here" type="password" />
     </div>
     <div class="form-group">
-        <label for="Confirm">Confirm-Password</label>
+        <label for="Confirm">Confirm Password</label>
         <input @bind="RegisterViewModel.RepeatPassword" class="form-control" id="Confirm" placeholder="Write your password again" type="password" />
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
@@ -38,6 +34,5 @@
 
 @if (RegisterViewModel.IsRegistered)
 {
-    JSRuntime.InvokeVoidAsync("successMessage", "You have been successfully registered!");
-    NavManager.NavigateTo("/login");
+    JSRuntime.InvokeVoidAsync("redirect", $"login");
 }

@@ -7,24 +7,26 @@
 
 <AuthorizeView Context="authContext">
     <NotAuthorized>
-        <h3>You need to be logged in</h3>
+        <div class="alert alert-danger" role="alert">
+            You need to be logged in
+        </div>
     </NotAuthorized>
     <Authorized>
-        <h3>MyTimeLine</h3>
+        <h3>My Timeline</h3>
         <Error ViewModel="@MyTimelineViewModel"/>
         <div class=twitbox>
-            <h3>What's on your mind @authContext.User.Identity?.Name?</h3>
+            <p>What's on your mind @authContext.User.Identity?.Name?</p>
             <EditForm Model="MyTimelineViewModel.Message" OnValidSubmit="MyTimelineViewModel.PostMessage" Context="formContext">
                 <DataAnnotationsValidator/>
                 <ValidationSummary/>
                 <div class="form-group">
-                    <label for="Confirm">Message</label>
                     <input @bind="MyTimelineViewModel.Message.Content" class="form-control" id="Message" placeholder="Share a message" type="text"/>
                 </div>
                 <button type="submit" class="btn btn-primary">Share</button>
             </EditForm>
         </div>
 
+        <h3>Your messages</h3>
         @if (MyTimelineViewModel.IsMessageSent)
         {
             JSRuntime.InvokeVoidAsync("redirect", $"timeline/my_timeline");

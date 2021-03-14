@@ -129,6 +129,11 @@ div.error {
     color: #344966;
 }
 
+.img-thumbnail{
+    padding: 0px;
+    border: 0px white solid;
+}
+
 /* Register/login */
 h2{
     font-weight:500;
@@ -141,4 +146,10 @@ label{
 .form-control{
     background: white;
     border: 1px solid #344966;
+}
+
+/* My timeline */
+
+h3{
+    font-weight:500;
 }

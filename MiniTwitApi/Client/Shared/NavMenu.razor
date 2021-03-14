@@ -3,31 +3,17 @@
 
 @inject IJSRuntime JSRuntime
 
-<nav class="navbar navbar-expand-sm navbar-light" style="background: #6ECCC4">
-    <div class="navbar-nav">
-        <AuthorizeView>
-            <Authorized>
-                <li class="nav-item">
-                    <a class="nav-link" href="timeline/my_timeline">my timeline</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="timeline/public">public timeline</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="logout">logout</a>
-                </li>
-            </Authorized>
-            <NotAuthorized>
-                <li class="nav-item">
-                    <a class="nav-link" href="timeline/public">public timeline</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="register">sign up</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="login">sign in</a>
-                </li>
-            </NotAuthorized>
-        </AuthorizeView>
-    </div>
+<nav>
+    <AuthorizeView>
+        <Authorized>
+            <a href="timeline/my_timeline">My Timeline</a>
+            <a href="timeline/public">Public Timeline</a>
+            <a href="logout">Logout</a>
+        </Authorized>
+        <NotAuthorized>
+            <a href="timeline/public">Public Timeline</a>
+            <a href="register">Sign Up</a>
+            <a href="login">Sign In</a>
+        </NotAuthorized>
+    </AuthorizeView>
 </nav>

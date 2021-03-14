@@ -21,7 +21,7 @@
                             <img class="img-thumbnail" width="48" src="https://www.gravatar.com/avatar/@message.HashedAuthorEmail?d=identicon&s=48" alt="UserPicture">
                         </div>
                         <div class="col-md-auto">
-                            <h5 class="card-title">@message.AuthorUsername</h5>
+                            <h5 class="card-title"><a href="timeline/user_timeline/@message.AuthorUsername">@message.AuthorUsername</a></h5>
                             <h6 class="card-subtitle mb-2 text-muted">@MessageViewModel.GenerateDateTime(message.PublishDate).ToString("dd.MM.yyyy - HH.mm", CultureInfo.InvariantCulture)</h6>
                         </div>
                     </div>

@@ -69,7 +69,7 @@ nav a{
 }
 
 nav a:hover {
-    color: #AAABA9;
+    color: #7693B9;
 }
 
 footer{
@@ -95,12 +95,14 @@ div.error {
     width: 100%;
     background: #344966;
     border: 1px solid #344966;
+    font-weight:500;
 }
 
 .btn-primary:hover{
     width: 100%;
     background: #7693B9;
     border: 1px solid #7693B9;
+    font-weight:500;
 }
 
 /* Messages CSS */
@@ -125,4 +127,18 @@ div.error {
 
 .card-text{
     color: #344966;
+}
+
+/* Register/login */
+h2{
+    font-weight:500;
+}
+
+label{
+    font-weight:500;
+}
+
+.form-control{
+    background: white;
+    border: 1px solid #344966;
 }

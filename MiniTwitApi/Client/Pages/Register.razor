@@ -34,6 +34,5 @@
 
 @if (RegisterViewModel.IsRegistered)
 {
-    JSRuntime.InvokeVoidAsync("successMessage", "You have been successfully registered!");
-    NavManager.NavigateTo("/login");
+    JSRuntime.InvokeVoidAsync("redirect", $"login");
 }

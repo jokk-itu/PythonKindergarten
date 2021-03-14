@@ -31,24 +31,3 @@
         </AuthorizeView>
     </div>
 </nav>
-
-@code
-{
-    private bool IsUserLoggedIn { get; set; }
-
-    protected override async Task OnInitializedAsync()
-    {
-        IsUserLoggedIn = await IsLoggedIn();
-    }
-
-    private async Task<UserDTO> GetUser()
-    {
-        var user = await JSRuntime.InvokeAsync<string>("getUser");
-        return JsonSerializer.Deserialize<UserDTO>(user);
-    }
-
-    private async Task<bool> IsLoggedIn()
-    {
-        return await JSRuntime.InvokeAsync<bool>("isUserLoggedIn");
-    }
-}

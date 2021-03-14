@@ -47,9 +47,6 @@ namespace MiniTwitApi.Server.Controllers
             if(!BCrypt.CheckPassword(user.Password, userFromDatabase.Password))
                 return BadRequest("Provided password is wrong");
 
-            if(latest > 0 && _configuration["ApiSafeList"].Contains(_accessor.ActionContext.HttpContext.Connection.RemoteIpAddress.ToString()))
-                Latest.GetInstance().Update(latest);
-
             var claims = new List<Claim>
             {
                 new (ClaimTypes.Name, userFromDatabase.Username),
@@ -58,15 +55,15 @@ namespace MiniTwitApi.Server.Controllers
 
             var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
-            var authProperties = new AuthenticationProperties()
-            {
-                IsPersistent = true
-            };
+            var authProperties = new AuthenticationProperties();
 
             await HttpContext.SignInAsync(
                 CookieAuthenticationDefaults.AuthenticationScheme, 
                 new ClaimsPrincipal(claimsIdentity), 
                 authProperties);
+            
+            if(latest > 0 && _configuration["ApiSafeList"].Contains(_accessor.ActionContext.HttpContext.Connection.RemoteIpAddress.ToString()))
+                Latest.GetInstance().Update(latest);
 
             return NoContent();
         }

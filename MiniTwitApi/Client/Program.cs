@@ -36,6 +36,7 @@ namespace MiniTwitApi.Client
             builder.Services.AddTransient<IMessageModel, MessageModel>();
             builder.Services.AddTransient<IFollowModel, FollowModel>();
             
+            //Add and Register for Authorization
             builder.Services.AddOptions();
             builder.Services.AddAuthorizationCore();
             builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();

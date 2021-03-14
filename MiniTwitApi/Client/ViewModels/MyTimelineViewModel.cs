@@ -1,6 +1,5 @@
 using System;
 using System.Threading.Tasks;
-using MiniTwitApi.Client.Models;
 using MiniTwitApi.Client.Models.Abstract;
 using MiniTwitApi.Client.ViewModels.Abstract;
 using MiniTwitApi.Shared.Models;

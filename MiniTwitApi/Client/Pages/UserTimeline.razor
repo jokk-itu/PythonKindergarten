@@ -1,6 +1,4 @@
 @page "/timeline/user_timeline/{username}"
-@using MiniTwitApi.Shared.Models.UserModels
-@using System.Text.Json;
 @using MiniTwitApi.Client.ViewModels.Abstract
 
 @inject HttpClient HttpClient;
@@ -31,7 +29,7 @@
             }
             @if (UserTimelineViewModel.FollowIsDone || UserTimelineViewModel.UnFollowIsDone)
             {
-                HandleAction();
+                JSRuntime.InvokeVoidAsync("redirect", $"timeline/user_timeline/{Username}");
             }
         </div>
     </Authorized>
@@ -52,13 +50,5 @@
         UserTimelineViewModel.Username = Username;
         UserTimelineViewModel.Path = $"msgs/{Username}";
         await UserTimelineViewModel.IsUserFollowed();
-    }
-
-    private async Task HandleAction()
-    {
-        var action = UserTimelineViewModel.FollowIsDone ? "followed" : "unfollowed";
-        await JSRuntime.InvokeVoidAsync("successMessage", $"{Username} is now {action}");
-        UserTimelineViewModel.IsUnfollowed = UserTimelineViewModel.IsUnfollowed;
-        UserTimelineViewModel.IsFollowed = UserTimelineViewModel.IsFollowed;
     }
 }

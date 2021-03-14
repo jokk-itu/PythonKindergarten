@@ -29,11 +29,5 @@
 
 @if (LoginViewModel.LoggedInUser is not null)
 {
-    /**
-    var json = JsonConvert.SerializeObject(LoginViewModel.LoggedInUser);
-    JSRuntime.InvokeVoidAsync("login", json);
-    
-    JSRuntime.InvokeVoidAsync("successMessage", "You have logged in");**/
-    
-    NavManager.NavigateTo("/");
+    JSRuntime.InvokeVoidAsync("redirect", "/");
 }

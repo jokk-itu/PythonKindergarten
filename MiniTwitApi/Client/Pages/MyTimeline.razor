@@ -27,7 +27,7 @@
 
         @if (MyTimelineViewModel.IsMessageSent)
         {
-            JSRuntime.InvokeVoidAsync("successMessage", "Message is sent!");
+            JSRuntime.InvokeVoidAsync("redirect", $"timeline/my_timeline");
         }
         
         @if (!string.IsNullOrEmpty(MyTimelineViewModel.Path))
@@ -42,7 +42,6 @@
     protected override async Task OnInitializedAsync()
     {
         MyTimelineViewModel.LoggedInUser = await MyTimelineViewModel.GetLoggedInUser();
-        Console.WriteLine($"{MyTimelineViewModel.LoggedInUser.Username} is logged in");
         MyTimelineViewModel.Path = $"msgs/{MyTimelineViewModel.LoggedInUser.Username}";
     }
 }

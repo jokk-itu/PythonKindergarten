@@ -8,11 +8,7 @@
 
 <h2>Register</h2>
 
-@if (RegisterViewModel.Error is not null)
-{
-    JSRuntime.InvokeVoidAsync("errorMessage", RegisterViewModel.Error);
-    RegisterViewModel.Error = null;
-}
+<Error ViewModel="@RegisterViewModel"/>
 
 <EditForm Model="@RegisterViewModel.User" OnValidSubmit="@RegisterViewModel.RegisterUser">
     <DataAnnotationsValidator />
@@ -38,6 +34,5 @@
 
 @if (RegisterViewModel.IsRegistered)
 {
-    JSRuntime.InvokeVoidAsync("successMessage", "You have been successfully registered!");
-    NavManager.NavigateTo("/login");
+    JSRuntime.InvokeVoidAsync("redirect", $"login");
 }

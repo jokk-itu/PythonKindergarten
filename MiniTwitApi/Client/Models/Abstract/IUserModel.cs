@@ -9,5 +9,7 @@ namespace MiniTwitApi.Client.Models.Abstract
     {
         public Task<bool> RegisterUser(CreateUserDTO user);
         public Task<bool> LoginUser(LoginUserDTO user);
+
+        public Task<UserDTO> GetLoggedInUser();
     }
 }

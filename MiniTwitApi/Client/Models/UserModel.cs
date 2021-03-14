@@ -3,9 +3,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MiniTwitApi.Client.Models.Abstract;
 using MiniTwitApi.Shared.Models.UserModels;
-using MiniTwitApi.Shared;
 using System.Text.Json;
-using System;
 
 namespace MiniTwitApi.Client.Models
 {
@@ -34,6 +32,13 @@ namespace MiniTwitApi.Client.Models
             var response = await Client.PostAsync($"/login", data);
             HttpFailureHelper.HandleStatusCode(response);
             return response.IsSuccessStatusCode;
+        }
+
+        public async Task<UserDTO> GetLoggedInUser()
+        {
+            var response = await Client.GetAsync("user");
+            HttpFailureHelper.HandleStatusCode(response);
+            return JsonSerializer.Deserialize<UserDTO>(await response.Content.ReadAsStringAsync());
         }
     }
 }

@@ -1,65 +1,47 @@
 @page "/timeline/my_timeline"
-@using MiniTwitApi.Shared.Models.UserModels
 @using MiniTwitApi.Client.ViewModels.Abstract
 
 @inject HttpClient HttpClient;
 @inject IJSRuntime JSRuntime;
 @inject IMyTimelineViewModel MyTimelineViewModel;
 
-@if (MyTimelineViewModel.LoggedInUser is null)
-{
-    <h3>You need to be logged in</h3>
-}
-else
-{
-    <h3>MyTimeline</h3>
-    
-    @if (MyTimelineViewModel.Error is not null)
-    {
-        JSRuntime.InvokeVoidAsync("errorMessage", MyTimelineViewModel.Error);
-        MyTimelineViewModel.Error = null;
-    }
+<AuthorizeView Context="authContext">
+    <NotAuthorized>
+        <h3>You need to be logged in</h3>
+    </NotAuthorized>
+    <Authorized>
+        <h3>MyTimeLine</h3>
+        <Error ViewModel="@MyTimelineViewModel"/>
+        <div class=twitbox>
+            <h3>What's on your mind @authContext.User.Identity?.Name?</h3>
+            <EditForm Model="MyTimelineViewModel.Message" OnValidSubmit="MyTimelineViewModel.PostMessage" Context="formContext">
+                <DataAnnotationsValidator/>
+                <ValidationSummary/>
+                <div class="form-group">
+                    <label for="Confirm">Message</label>
+                    <input @bind="MyTimelineViewModel.Message.Content" class="form-control" id="Message" placeholder="Share a message" type="text"/>
+                </div>
+                <button type="submit" class="btn btn-primary">Share</button>
+            </EditForm>
+        </div>
 
-    <div class=twitbox>
-        <h3>What's on your mind @MyTimelineViewModel.LoggedInUser.Username?</h3>
-        <EditForm Model="MyTimelineViewModel.Message" OnValidSubmit="MyTimelineViewModel.PostMessage">
-            <DataAnnotationsValidator />
-            <ValidationSummary />
-            <div class="form-group">
-                <label for="Confirm">Message</label>
-                <input @bind="MyTimelineViewModel.Message.Content" class="form-control" id="Message" placeholder="Share a message" type="text" />
-            </div>
-            <button type="submit" class="btn btn-primary">Share</button>
-        </EditForm>
-    </div>
-    
-    @if (MyTimelineViewModel.IsMessageSent)
-    {
-        JSRuntime.InvokeVoidAsync("successMessage", "Message is sent!");
-    }
+        @if (MyTimelineViewModel.IsMessageSent)
+        {
+            JSRuntime.InvokeVoidAsync("redirect", $"timeline/my_timeline");
+        }
+        
+        @if (!string.IsNullOrEmpty(MyTimelineViewModel.Path))
+        {
+            <Messages path="@MyTimelineViewModel.Path"/>
+        }
+    </Authorized>
+</AuthorizeView>
 
-    <Messages path="@MyTimelineViewModel.Path" />
-}
-
-@code 
+@code
 {
     protected override async Task OnInitializedAsync()
     {
-        if (await IsLoggedIn())
-        {
-            MyTimelineViewModel.LoggedInUser = await GetUser();
-            MyTimelineViewModel.Path = $"msgs/{MyTimelineViewModel.LoggedInUser.Username}";
-        }
-    }
-
-    private async Task<UserDTO> GetUser()
-    {
-        var user = await JSRuntime.InvokeAsync<string>("getUser");
-        return System.Text.Json.JsonSerializer.Deserialize<UserDTO>(user);
-    }
-
-    private async Task<bool> IsLoggedIn()
-    {
-        return await JSRuntime.InvokeAsync<bool>("isUserLoggedIn");
+        MyTimelineViewModel.LoggedInUser = await MyTimelineViewModel.GetLoggedInUser();
+        MyTimelineViewModel.Path = $"msgs/{MyTimelineViewModel.LoggedInUser.Username}";
     }
 }

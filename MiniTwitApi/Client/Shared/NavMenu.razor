@@ -1,25 +1,23 @@
 ﻿@using MiniTwitApi.Shared.Models.UserModels
 @using System.Text.Json
 
-@inject IJSRuntime JSRuntime;
+@inject IJSRuntime JSRuntime
 
 <nav class="navbar navbar-expand-sm navbar-light" style="background: #6ECCC4">
     <div class="navbar-nav">
-            @if (IsUserLoggedIn)
-            {
+        <AuthorizeView>
+            <Authorized>
                 <li class="nav-item">
                     <a class="nav-link" href="timeline/my_timeline">my timeline</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="timeline/public">public timeline</a>
                 </li>
-                <!---
                 <li class="nav-item">
-                    <a class="nav-link" href="signout">sign out</a>
-                </li>--->
-            }
-            else
-            {
+                    <a class="nav-link" href="logout">logout</a>
+                </li>
+            </Authorized>
+            <NotAuthorized>
                 <li class="nav-item">
                     <a class="nav-link" href="timeline/public">public timeline</a>
                 </li>
@@ -29,27 +27,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="login">sign in</a>
                 </li>
-            }
+            </NotAuthorized>
+        </AuthorizeView>
     </div>
 </nav>
-
-@code
-{
-    private bool IsUserLoggedIn { get; set; }
-    
-    protected override async Task OnInitializedAsync()
-    {
-        IsUserLoggedIn = await IsLoggedIn();
-    }
-
-    private async Task<UserDTO> GetUser()
-    {
-        var user = await JSRuntime.InvokeAsync<string>("getUser");
-        return JsonSerializer.Deserialize<UserDTO>(user);
-    }
-    
-    private async Task<bool> IsLoggedIn()
-    {
-        return await JSRuntime.InvokeAsync<bool>("isUserLoggedIn");
-    }
-}

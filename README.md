@@ -4,6 +4,7 @@
 ![current release](https://img.shields.io/github/v/release/jokk-itu/pythonkindergarten)
 ![issues](https://img.shields.io/github/issues/jokk-itu/pythonkindergarten)
 ![total-lines](https://img.shields.io/tokei/lines/github/jokk-itu/pythonkindergarten)
+[![Coverage Status](https://coveralls.io/repos/github/badges/shields/badge.svg?branch=master)](https://coveralls.io/github/badges/shields?branch=master)
 
 ## Table of contents
 * [General info](#general-info)

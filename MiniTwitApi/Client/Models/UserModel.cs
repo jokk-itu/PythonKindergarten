@@ -35,5 +35,13 @@ namespace MiniTwitApi.Client.Models
             HttpFailureHelper.HandleStatusCode(response);
             return response.IsSuccessStatusCode;
         }
+
+        public async Task<UserDTO> GetLoggedInUser()
+        {
+            var response = await Client.GetAsync("user");
+            HttpFailureHelper.HandleStatusCode(response);
+            Console.WriteLine(await response.Content.ReadAsStringAsync());
+            return JsonSerializer.Deserialize<UserDTO>(await response.Content.ReadAsStringAsync());
+        }
     }
 }

@@ -6,7 +6,6 @@ namespace MiniTwitApi.Client.ViewModels.Abstract
     public interface IUserTimelineViewModel : IViewModel
     {
         public string Username { get; set; }
-        public UserDTO LoggedInUser { get; set; }
         public string Path { get; set; }
         public new string Error { get; set; }
         public bool IsFollowed { get; set; }
@@ -14,9 +13,9 @@ namespace MiniTwitApi.Client.ViewModels.Abstract
         public bool FollowIsDone { get; set; }
         public bool UnFollowIsDone { get; set; }
 
-        public Task UnfollowUser();
-        public Task FollowUser();
+        public Task UnfollowUser(string whoUsername);
+        public Task FollowUser(string whoUsername);
 
-        public Task CheckIfUserIsFollowed();
+        public Task IsUserFollowed();
     }
 }

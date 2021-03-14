@@ -21,6 +21,7 @@ namespace MiniTwitApi.Client.Models
 
         public async Task<ICollection<MessageDTO>> GetMessages(string path)
         {
+            Console.WriteLine(path);
             var messagesFromApi = await _client.GetStringAsync(path);
             var messages = JsonSerializer.Deserialize<List<MessageDTO>>(messagesFromApi);
             if (messages is null)

@@ -1,21 +1,20 @@
 @page "/timeline/my_timeline"
-@using MiniTwitApi.Shared.Models.UserModels
 @using MiniTwitApi.Client.ViewModels.Abstract
 
 @inject HttpClient HttpClient;
 @inject IJSRuntime JSRuntime;
 @inject IMyTimelineViewModel MyTimelineViewModel;
 
-<AuthorizeView>
+<AuthorizeView Context="authContext">
     <NotAuthorized>
         <h3>You need to be logged in</h3>
     </NotAuthorized>
     <Authorized>
-        <h3>MyTimeline</h3>
+        <h3>MyTimeLine</h3>
         <Error ViewModel="@MyTimelineViewModel"/>
         <div class=twitbox>
-            <!--<h3>What's on your mind @context.User.Identity?.Name?</h3>
-            <EditForm Model="MyTimelineViewModel.Message" OnValidSubmit="MyTimelineViewModel.PostMessage">
+            <h3>What's on your mind @authContext.User.Identity?.Name?</h3>
+            <EditForm Model="MyTimelineViewModel.Message" OnValidSubmit="MyTimelineViewModel.PostMessage" Context="formContext">
                 <DataAnnotationsValidator/>
                 <ValidationSummary/>
                 <div class="form-group">
@@ -23,15 +22,18 @@
                     <input @bind="MyTimelineViewModel.Message.Content" class="form-control" id="Message" placeholder="Share a message" type="text"/>
                 </div>
                 <button type="submit" class="btn btn-primary">Share</button>
-            </EditForm>-->
+            </EditForm>
         </div>
-
 
         @if (MyTimelineViewModel.IsMessageSent)
         {
             JSRuntime.InvokeVoidAsync("successMessage", "Message is sent!");
         }
-        <Messages path="@MyTimelineViewModel.Path"/>
+        
+        @if (!string.IsNullOrEmpty(MyTimelineViewModel.Path))
+        {
+            <Messages path="@MyTimelineViewModel.Path"/>
+        }
     </Authorized>
 </AuthorizeView>
 
@@ -39,21 +41,8 @@
 {
     protected override async Task OnInitializedAsync()
     {
-        if (await IsLoggedIn())
-        {
-            MyTimelineViewModel.LoggedInUser = await GetUser();
-            MyTimelineViewModel.Path = $"msgs/{MyTimelineViewModel.LoggedInUser.Username}";
-        }
-    }
-
-    private async Task<UserDTO> GetUser()
-    {
-        var user = await JSRuntime.InvokeAsync<string>("getUser");
-        return System.Text.Json.JsonSerializer.Deserialize<UserDTO>(user);
-    }
-
-    private async Task<bool> IsLoggedIn()
-    {
-        return await JSRuntime.InvokeAsync<bool>("isUserLoggedIn");
+        MyTimelineViewModel.LoggedInUser = await MyTimelineViewModel.GetLoggedInUser();
+        Console.WriteLine($"{MyTimelineViewModel.LoggedInUser.Username} is logged in");
+        MyTimelineViewModel.Path = $"msgs/{MyTimelineViewModel.LoggedInUser.Username}";
     }
 }

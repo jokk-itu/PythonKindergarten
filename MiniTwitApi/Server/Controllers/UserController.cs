@@ -82,7 +82,7 @@ namespace MiniTwitApi.Server.Controllers
         public async Task<ActionResult> GetLoggedInUser()
         {
             if (HttpContext.User.Identity is null || !HttpContext.User.Identity.IsAuthenticated)
-                return BadRequest("You are not authenticated");
+                return BadRequest("User is not authenticated");
             
             var username = HttpContext.User.Identity.Name;
             var email = HttpContext.User.Claims.

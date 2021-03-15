@@ -129,8 +129,13 @@ div.error {
     padding-right:0px;
 }
 
-.card-title{
+.card-title a{
     color: #344966;
+    font-weight:500;
+}
+
+.card-title a:hover{
+    color: #7693B9;
     font-weight:500;
 }
 
@@ -149,10 +154,12 @@ div.error {
 
 /* Register/login */
 h2{
+    color: #344966;
     font-weight:500;
 }
 
 label{
+    color: #344966;
     font-weight:500;
 }
 
@@ -164,6 +171,7 @@ label{
 /* My timeline */
 
 h3{
+    color: #344966;
     font-weight:500;
 }
 

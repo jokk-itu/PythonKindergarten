@@ -28,9 +28,9 @@
         <a href="" class="reload">Reload</a>
         <a class="dismiss">🗙</a>
     </div>
-    <script src="_framework/blazor.webassembly.js"></script>
-    <script src="js/UiKit/uikit.js"></script>
     
+    <script src="_framework/blazor.webassembly.js"></script>
+
     <!-- Bootstrap scripts -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -40,23 +40,28 @@
               
         function successMessage(message) 
         {
-            UIkit.notification(message, 'success');
+            displayMessage(document.getElementById("successmessage"), message);
         }
         function infoMessage(message) 
         {
-            UIkit.notification(message, 'primary');
+            displayMessage(document.getElementById("infomessage"), message);
         }
         function warningMessage(message) 
         {
-            UIkit.notification(message, 'warning');
+            displayMessage(document.getElementById("warningmessage"), message);
         }
         function errorMessage(message) 
         {
-            UIkit.notification(message, 'danger');
+            displayMessage(document.getElementById("errormessage"), message);
         }
         function redirect(url) 
         {
             window.location.replace(url);
+        }
+        function displayMessage(elementfromhtml, message)
+        {
+            elementfromhtml.style.display = "block";
+            elementfromhtml.innerHTML = message + "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>";
         }
     </script>
 </body>

@@ -72,7 +72,7 @@ namespace MiniTwitApi.Server.Controllers
         public async Task<ActionResult> GetLogout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return new RedirectToRouteResult("/");
+            return NoContent();
         }
 
         [HttpGet("user")]

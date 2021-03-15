@@ -2,13 +2,14 @@
 @using System.Text.Json
 
 @inject IJSRuntime JSRuntime
+@inject HttpClient Client
 
 <nav>
     <AuthorizeView>
         <Authorized>
             <a href="timeline/my_timeline">My Timeline</a>
             <a href="timeline/public">Public Timeline</a>
-            <a href="logout">Logout</a>
+            <a style="color: white;" @onclick="RedirectToIndex">Logout</a>
         </Authorized>
         <NotAuthorized>
             <a href="timeline/public">Public Timeline</a>
@@ -17,3 +18,12 @@
         </NotAuthorized>
     </AuthorizeView>
 </nav>
+
+@code 
+{
+    private async Task RedirectToIndex()
+    {
+        await Client.GetAsync("logout");
+        await JSRuntime.InvokeVoidAsync("redirect", "/");
+    }
+}

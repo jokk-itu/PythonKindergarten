@@ -24,10 +24,9 @@
                             <h6 class="card-subtitle mb-2 text-muted"> @DateTimeOffset.FromUnixTimeSeconds(message.PublishDate).DateTime.ToString(new CultureInfo("de-De"))</h6>
                         </div>
                     </div>
-                </div>
                 <p class="card-text">@message.Text</p>
+                </div>
             </div>
-        </div>
     }
     <button class="btn btn-primary" @onclick="@(() => AddMessages(20))">Load more messages</button>
 }

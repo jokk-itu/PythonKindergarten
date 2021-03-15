@@ -11,7 +11,6 @@
 
 @if (_messages.Count > 0)
 {
-
         @foreach (var message in _messages)
         {
             <div class="card">
@@ -25,12 +24,12 @@
                             <h6 class="card-subtitle mb-2 text-muted"> @DateTimeOffset.FromUnixTimeSeconds(message.PublishDate).DateTime.ToString(new CultureInfo("de-De"))</h6>
                         </div>
                     </div>
-                    <p class="card-text">@message.Text</p>
                 </div>
+                <p class="card-text">@message.Text</p>
             </div>
-        }
-        <button class="btn btn-primary" @onclick="@(() => AddMessages(20))">Load more messages</button>
-
+        </div>
+    }
+    <button class="btn btn-primary" @onclick="@(() => AddMessages(20))">Load more messages</button>
 }
 else
 {
@@ -41,7 +40,7 @@ else
     </div>
 }
 
-@code 
+@code
 {
     [Parameter]
     public string Path { get; set; }
@@ -49,7 +48,7 @@ else
     private ICollection<MessageDTO> _messages = new List<MessageDTO>();
 
     private int Skip { get; set; }
-    
+
     protected override async Task OnInitializedAsync()
     {
         Skip = 0;

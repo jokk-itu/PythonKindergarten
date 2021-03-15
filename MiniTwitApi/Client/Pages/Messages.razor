@@ -11,7 +11,6 @@
 
 @if (_messages.Count > 0)
 {
-
         @foreach (var message in _messages)
         {
             <div class="card">
@@ -22,15 +21,14 @@
                         </div>
                         <div class="col-md-auto">
                             <h5 class="card-title"><a href="timeline/user_timeline/@message.AuthorUsername">@message.AuthorUsername</a></h5>
-                            <h6 class="card-subtitle mb-2 text-muted">@MessageViewModel.GenerateDateTime(message.PublishDate).ToString("dd.MM.yyyy - HH.mm", CultureInfo.InvariantCulture)</h6>
+                            <h6 class="card-subtitle mb-2 text-muted"> @DateTimeOffset.FromUnixTimeSeconds(message.PublishDate).DateTime.ToString(new CultureInfo("de-De"))</h6>
                         </div>
                     </div>
-                    <p class="card-text">@message.Text</p>
+                <p class="card-text">@message.Text</p>
                 </div>
             </div>
-        }
-        <button class="btn btn-primary" @onclick="@(() => AddMessages(20))">Load more messages</button>
-
+    }
+    <button class="btn btn-primary" @onclick="@(() => AddMessages(20))">Load more messages</button>
 }
 else
 {
@@ -41,7 +39,7 @@ else
     </div>
 }
 
-@code 
+@code
 {
     [Parameter]
     public string Path { get; set; }
@@ -49,7 +47,7 @@ else
     private ICollection<MessageDTO> _messages = new List<MessageDTO>();
 
     private int Skip { get; set; }
-    
+
     protected override async Task OnInitializedAsync()
     {
         Skip = 0;

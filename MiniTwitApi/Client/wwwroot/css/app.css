@@ -4,11 +4,18 @@ html{
     font-family: 'Roboto', sans-serif;
     background: #F1F2EE;
     width:100%;
-    height: 100%;
 }
 
 body {
-    min-height: 100%;
+    min-height: 100vh;
+    background: #F1F2EE;
+}
+
+#app{
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 #blazor-error-ui {
@@ -31,11 +38,12 @@ body {
 }
 
 main {
-    background: white;
+    background: #F1F2EE;
     width: 80%;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 20px;
+    flex: 1;
 }
 
 header {
@@ -79,6 +87,8 @@ footer{
     padding-bottom: 10px;
     padding-top: 10px;
     font-weight:500;
+    width: 100%;
+    align
 }
 
 div.error {
@@ -129,8 +139,13 @@ div.error {
     padding-right:0px;
 }
 
-.card-title{
+.card-title a{
     color: #344966;
+    font-weight:500;
+}
+
+.card-title a:hover{
+    color: #7693B9;
     font-weight:500;
 }
 
@@ -149,10 +164,12 @@ div.error {
 
 /* Register/login */
 h2{
+    color: #344966;
     font-weight:500;
 }
 
 label{
+    color: #344966;
     font-weight:500;
 }
 
@@ -164,10 +181,26 @@ label{
 /* My timeline */
 
 h3{
+    color: #344966;
     font-weight:500;
 }
 
 /* User timeline */
 .usertimelineinforow{
     margin-bottom: 15px;
+}
+
+/* Alert */
+.alert{
+    display: none;
+}
+
+
+
+.alertarea{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
 }

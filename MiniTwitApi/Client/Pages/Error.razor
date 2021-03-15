@@ -4,7 +4,7 @@
 
 @if (ViewModel.Error is not null)
 {
-    @JSRuntime.InvokeVoidAsync("errorMessage", ViewModel.Error);
+    JSRuntime.InvokeVoidAsync("errorMessage", ViewModel.Error);
     ViewModel.Error = null;
 }
 

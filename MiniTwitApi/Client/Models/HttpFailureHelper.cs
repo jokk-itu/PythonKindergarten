@@ -13,9 +13,9 @@ namespace MiniTwitApi.Client.Models
                 case HttpStatusCode.Forbidden:
                     throw new UnauthorizedAccessException("You are not authorized");
                 case HttpStatusCode.BadRequest:
-                    throw new Exception(response.ReasonPhrase);
+                    throw new Exception($"You have provided wrong information: {response.ReasonPhrase}");
                 case HttpStatusCode.NotFound:
-                    throw new Exception(response.ReasonPhrase);
+                    throw new Exception("The resource is not found");
                 case HttpStatusCode.Unauthorized:
                     throw new UnauthorizedAccessException("You are not authorized");
                 case HttpStatusCode.MethodNotAllowed:

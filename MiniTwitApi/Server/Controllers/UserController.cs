@@ -72,14 +72,14 @@ namespace MiniTwitApi.Server.Controllers
         public async Task<ActionResult> GetLogout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return NoContent();
+            return new RedirectToRouteResult("/");
         }
 
         [HttpGet("user")]
         public async Task<ActionResult> GetLoggedInUser()
         {
             if (HttpContext.User.Identity is null || !HttpContext.User.Identity.IsAuthenticated)
-                return BadRequest("User is not authenticated");
+                return new StatusCodeResult((int)HttpStatusCode.Forbidden);
             
             var username = HttpContext.User.Identity.Name;
             var email = HttpContext.User.Claims.

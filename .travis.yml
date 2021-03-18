@@ -24,6 +24,7 @@ jobs:
   include:
   - stage: codecheck
     name: sonnarscanner
+    if: branch = master
     install: skip
     script:
       - echo "INSTALL SONNARSCANNER"
@@ -53,3 +54,11 @@ jobs:
       docker-compose pull && \
       docker-compose up -d && \
       docker pull $DOCKER_USERNAME/pythonkindergartenimage:latest"
+  deploy:
+    provider: releases
+    api_key:
+      secure: ssh_keys/do_ssh_key -d
+    file: "FILE TO UPLOAD"
+    skip_cleanup: true
+    on:
+      tags: true

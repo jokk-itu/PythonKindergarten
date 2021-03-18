@@ -1,6 +1,8 @@
 os: linux
 dist: bionic
 language: csharp
+mono: none
+dotnet: 5.0.4
 solution: MiniTwitApi/MiniTwitApi.sln
 services:
 - docker
@@ -18,6 +20,8 @@ stages:
 - deploy
 jobs:
   include:
+  - dotnet: 5.0.4
+    mono: none
   - stage: start_code_scan
     name: start of sonnarscanner code scanner
     install: skip

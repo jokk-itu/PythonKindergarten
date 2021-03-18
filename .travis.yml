@@ -21,6 +21,11 @@ stages:
 - GitHub Release
 before_script:
   - export PATH=$PATH:/home/travis/.dotnet/tools
+before_deploy:
+  - git config --local user.name "bjornarjatten"
+  - git config --local user.email "bjornjaat@hotmail.com"
+  - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
+  - git tag $TRAVIS_TAG
 jobs:
   include:
   - stage: codecheck

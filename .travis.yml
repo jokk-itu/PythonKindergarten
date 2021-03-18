@@ -18,7 +18,7 @@ stages:
 - codecheck
 - docker_build
 - deploy
-- release
+- GitHub Release
 before_script:
   - export PATH=$PATH:/home/travis/.dotnet/tools
 jobs:
@@ -55,11 +55,11 @@ jobs:
       docker-compose pull && \
       docker-compose up -d && \
       docker pull $DOCKER_USERNAME/pythonkindergartenimage:latest"
-    - stage: GitHub Release
-      script: echo "Deploying to GitHub releases ..."
-      deploy:
-        provider: releases
-        api_key: $GITHUB_OAUTH_TOKEN
-        skip_cleanup: true
-        on:
-          tags: true
+  - stage: GitHub Release
+    script: echo "Deploying to GitHub releases ..."
+    deploy:
+      provider: releases
+      api_key: $GITHUB_OAUTH_TOKEN
+      skip_cleanup: true
+      on:
+        tags: true

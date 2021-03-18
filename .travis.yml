@@ -38,6 +38,7 @@ jobs:
     script:
     - echo "LOGIN"
     - echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+    - cd pythonkindergartenapi
     - echo "BUILD"
     - docker build -t $DOCKER_USERNAME/pythonkindergartenimage:latest . -f Dockerfile
     - echo "PUSH"

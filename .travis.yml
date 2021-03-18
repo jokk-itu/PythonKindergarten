@@ -28,7 +28,7 @@ jobs:
     if: branch = master
     install: skip
     script:
-      - echo "INSTALL SONNARSCANNER"
+      - echo "INSTALL SONNARSCANNER "
       - cd MiniTwitApi
       - dotnet tool install --global dotnet-sonarscanner
       - echo "START SONNARSCANNER"

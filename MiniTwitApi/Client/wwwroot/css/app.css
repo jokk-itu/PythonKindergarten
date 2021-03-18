@@ -1,5 +1,3 @@
-@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
-
 html{
     font-family: 'Roboto', sans-serif;
     background: #F1F2EE;
@@ -88,7 +86,6 @@ footer{
     padding-top: 10px;
     font-weight:500;
     width: 100%;
-    align
 }
 
 div.error {

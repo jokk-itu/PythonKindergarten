@@ -18,6 +18,7 @@ stages:
 - codecheck
 - docker_build
 - deploy
+- release
 before_script:
   - export PATH=$PATH:/home/travis/.dotnet/tools
 jobs:
@@ -54,10 +55,11 @@ jobs:
       docker-compose pull && \
       docker-compose up -d && \
       docker pull $DOCKER_USERNAME/pythonkindergartenimage:latest"
-  deploy:
+  - stage: release
+    name: release on github
     provider: releases
     api_key:
-      secure: ssh_keys/do_ssh_key -d
+      secure: ssh_keys/do_ssh_key
     file: "FILE TO UPLOAD"
     skip_cleanup: true
     on:

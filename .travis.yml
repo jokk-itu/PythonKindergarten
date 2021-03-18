@@ -25,6 +25,7 @@ jobs:
   - stage: codecheck
     name: sonnarscanner
     install: skip
+    solution: MiniTwitApi/MiniTwitApi.sln
     script:
       - echo "INSTALL SONNARSCANNER"
       - dotnet tool install --global dotnet-sonarscanner

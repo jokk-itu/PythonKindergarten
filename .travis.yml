@@ -47,7 +47,7 @@ jobs:
       - echo "DOTNET BUILD"
       - dotnet build
       - echo "END SONNARSCCANNER"
-      - dotnet sonarscanner end /d:sonar.login="63bbcd71f1a489fd37c1db16f512fc0c347760e3
+      - dotnet sonarscanner end /d:sonar.login="63bbcd71f1a489fd37c1db16f512fc0c347760e3"
   - stage: deploy
     name: deploy new version
     if: branch = master

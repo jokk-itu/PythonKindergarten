@@ -25,6 +25,7 @@ jobs:
   include:
   - stage: start_code_scan
     name: start of sonnarscanner code scanner
+    if: branch = master
     install: skip
     script:
       - echo "INSTALL SONNARSCANNER"
@@ -44,6 +45,8 @@ jobs:
     name: end of sonnarscanner code scanner
     install: skip
     scrip:
+      - echo "INSTALL SONNARSCANNER"
+      - dotnet tool install --global dotnet-sonarscanner
       - echo "DOTNET BUILD"
       - dotnet build
       - echo "END SONNARSCCANNER"

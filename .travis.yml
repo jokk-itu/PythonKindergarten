@@ -19,12 +19,12 @@ stages:
 - test
 - deploy
 jobs:
-  include:
-  - dotnet: 5.0
-    mono: none
   - stage: start_code_scan
     name: start of sonnarscanner code scanner
     install: skip
+    include:
+    - dotnet: 5.0
+      mono: none
     script:
       - echo "INSTALL SONNARSCANNER"
       - dotnet tool install --global dotnet-sonarscanner
@@ -32,6 +32,9 @@ jobs:
       - dotnet sonarscanner begin /k:jokk-itu_PythonKindergarten /d:sonar.login="63bbcd71f1a489fd37c1db16f512fc0c347760e3" /d:sonar.host.url="https://sonarcloud.io/" /o:jokk-itu
   - stage: docker_build
     name: build and push docker
+    include:
+    - dotnet: 5.0
+      mono: none
     script:
     - echo "LOGIN"
     - echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
@@ -42,6 +45,9 @@ jobs:
   - stage: end_code_scan
     name: end of sonnarscanner code scanner
     install: skip
+    include:
+    - dotnet: 5.0
+      mono: none
     scrip:
       - echo "DOTNET BUILD"
       - dotnet build

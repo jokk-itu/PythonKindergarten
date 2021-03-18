@@ -55,13 +55,11 @@ jobs:
       docker-compose pull && \
       docker-compose up -d && \
       docker pull $DOCKER_USERNAME/pythonkindergartenimage:latest"
-  - stage: release
-    name: release on github
-    deploy:
-      provider: releases
-      api_key:
-        secure: ssh_keys/do_ssh_key
-      file: "FILE TO UPLOAD"
-      skip_cleanup: true
-      on:
-        tags: true
+    - stage: GitHub Release
+      script: echo "Deploying to GitHub releases ..."
+      deploy:
+        provider: releases
+        api_key: $GITHUB_OAUTH_TOKEN
+        skip_cleanup: true
+        on:
+          tags: true

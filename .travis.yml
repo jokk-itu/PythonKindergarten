@@ -25,7 +25,6 @@ jobs:
   include:
   - stage: start_code_scan
     name: start of sonnarscanner code scanner
-    if: branch = master
     install: skip
     script:
       - echo "INSTALL SONNARSCANNER"

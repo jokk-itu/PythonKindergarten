@@ -57,10 +57,11 @@ jobs:
       docker pull $DOCKER_USERNAME/pythonkindergartenimage:latest"
   - stage: release
     name: release on github
-    provider: releases
-    api_key:
-      secure: ssh_keys/do_ssh_key
-    file: "FILE TO UPLOAD"
-    skip_cleanup: true
-    on:
-      tags: true
+    deploy:
+      provider: releases
+      api_key:
+        secure: ssh_keys/do_ssh_key
+      file: "FILE TO UPLOAD"
+      skip_cleanup: true
+      on:
+        tags: true

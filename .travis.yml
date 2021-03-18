@@ -1,8 +1,9 @@
 os: linux
 dist: bionic
-language: python
-python:
-- 3.7
+language: csharp
+mono: none
+dotnet: 5.0
+solution: /MiniTwitApi/Server/MiniTwitApi.Server.csproj
 services:
 - docker
 before_install:
@@ -14,11 +15,32 @@ before_install:
 install:
 - docker --version
 stages:
+- codecheck
 - docker_build
-- test
 - deploy
+- release
+before_script:
+  - export PATH=$PATH:/home/travis/.dotnet/tools
+before_deploy:
+  - git config --local user.name "bjornarjatten"
+  - git config --local user.email "bjornjaat@hotmail.com"
+  - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
+  - git tag $TRAVIS_TAG
 jobs:
   include:
+  - stage: codecheck
+    name: sonnarscanner
+    if: branch = master
+    install: skip
+    script:
+      - echo "INSTALL SONNARSCANNER "
+      - cd MiniTwitApi
+      - dotnet tool install --global dotnet-sonarscanner
+      - echo "START SONNARSCANNER"
+      - dotnet sonarscanner begin /k:jokk-itu_PythonKindergarten /d:sonar.login="63bbcd71f1a489fd37c1db16f512fc0c347760e3" /d:sonar.host.url="https://sonarcloud.io/" /o:jokk-itu
+      - dotnet build
+      - echo "END SONNARSCCANNER"
+      - dotnet sonarscanner end /d:sonar.login="63bbcd71f1a489fd37c1db16f512fc0c347760e3"
   - stage: docker_build
     name: build and push docker
     script:
@@ -38,3 +60,11 @@ jobs:
       docker-compose pull && \
       docker-compose up -d && \
       docker pull $DOCKER_USERNAME/pythonkindergartenimage:latest"
+  - stage: release
+    name: Github
+    if: branch = master
+    script: echo "Deploying to GitHub releases ..."
+    deploy:
+      provider: releases
+      api_key: $GITHUB_OAUTH_TOKEN
+      skip_cleanup: true

@@ -42,7 +42,6 @@ jobs:
       - dotnet add package Roslynator.Analyzers --version 3.1.0 ./Client
       - dotnet add package Roslynator.Analyzers --version 3.1.0 ./Shared
       - echo "STARTING ROSLYNATOR"
-      - "start"
       - roslynator analyze MiniTwitApi.sln
       - "DONE ANALYZING"
   - stage: sonarscanner_code_check

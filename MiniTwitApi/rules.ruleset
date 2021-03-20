@@ -3,22 +3,22 @@
   !-- Specify default action that should be applied to all analyzers except those explicitly specified. --
   <IncludeAll Action="Info" />
   <Rules AnalyzerId="Roslynator.CSharp.Analyzers" RuleNamespace="Roslynator.CSharp.Analyzers">
-	  <Rule Id="RCS1012" Action="None" />
+	  <Rule Id="RCS1012" Action="Warning" />
 	  <Rule Id="RCS1010" Action="Warning" />
 	  <Rule Id="RCS1003" Action="Warning" />
 	  <Rule Id="RCS1001" Action="Warning" />
-	  <Rule Id="RCS1032" Action="Hidden" />
-	  <Rule Id="RCS1037" Action="Hidden" />
-	  <Rule Id="RCS1045" Action="Hidden" />
-	  <Rule Id="RCS1046" Action="Hidden" />
-	  <Rule Id="RCS1047" Action="Hidden" />
-	  <Rule Id="RCS1049" Action="Hidden" />
+	  <Rule Id="RCS1032" Action="Warning" />
+	  <Rule Id="RCS1037" Action="Warning" />
+	  <Rule Id="RCS1045" Action="Warning" />
+	  <Rule Id="RCS1046" Action="Warning" />
+	  <Rule Id="RCS1047" Action="Warning" />
+	  <Rule Id="RCS1049" Action="Warning" />
 	  <Rule Id="RCS1077" Action="Warning" />
 	  <Rule Id="RCS1104" Action="Warning" />
 	  <Rule Id="RCS1113" Action="Warning" />
 	  <Rule Id="RCS1169" Action="Warning" />
 	  <Rule Id="RCS1177" Action="Warning" />
 	  <Rule Id="RCS1229" Action="Warning" />
-	  <Rule Id="RCS1248a" Action="Hidden" />
+	  <Rule Id="RCS1248a" Action="Warning" />
   </Rules>
 </RuleSet>

@@ -53,10 +53,10 @@ jobs:
       - cd MiniTwitApi
       - dotnet tool install --global dotnet-sonarscanner
       - echo "START SONNARSCANNER"
-      - dotnet sonarscanner begin /k:jokk-itu_PythonKindergarten /d:sonar.login="63bbcd71f1a489fd37c1db16f512fc0c347760e3" /d:sonar.host.url="https://sonarcloud.io/" /o:jokk-itu
+      - dotnet sonarscanner begin /k:jokk-itu_PythonKindergarten /d:sonar.login="$SONAR_LOGIN" /d:sonar.host.url="https://sonarcloud.io/" /o:jokk-itu
       - dotnet build
       - echo "END SONNARSCCANNER"
-      - dotnet sonarscanner end /d:sonar.login="63bbcd71f1a489fd37c1db16f512fc0c347760e3"
+      - dotnet sonarscanner end /d:sonar.login="$SONAR_LOGIN"
   - stage: docker_build
     name: build and push docker
     script:

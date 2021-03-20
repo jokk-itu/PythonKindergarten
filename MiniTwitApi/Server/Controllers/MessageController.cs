@@ -19,6 +19,8 @@ namespace MiniTwitApi.Server.Controllers
         private readonly IConfiguration _configuration;
         private readonly IActionContextAccessor _accessor;
 
+        private ProfanityFilter filter = new ProfanityFilter();
+
         public MessageController(IMessageRepository messagesRepository, IUserRepository userRepository, 
             IConfiguration configuration, IActionContextAccessor accessor)
         {
@@ -76,7 +78,7 @@ namespace MiniTwitApi.Server.Controllers
                 AuthorUsername = username,
                 Text = createMessage.Content,
                 PublishDate = (int) EpochConverter.ToEpoch(DateTime.Now),
-                Flagged = 0 // Flag if profanity is detected
+                Flagged = filter.checkString(createMessage.Content)
             });
 
             if(latest > 0 && _configuration["ApiSafeList"].Contains(_accessor.ActionContext.HttpContext.Connection.RemoteIpAddress.ToString()))

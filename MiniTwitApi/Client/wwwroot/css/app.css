@@ -201,3 +201,13 @@ h3{
     margin-left: auto;
     margin-right: auto;
 }
+
+.inappropriateWarning
+{
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    color: #a94442;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    padding: 10px;
+}

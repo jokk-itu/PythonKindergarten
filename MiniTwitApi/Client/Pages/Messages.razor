@@ -25,6 +25,10 @@
                         </div>
                     </div>
                 <p class="card-text">@message.Text</p>
+                @if(message.Flagged == 1)
+                {
+                    <p class="inappropriateWarning">This tweet might be inappropriate for some users.</p>
+                }
                 </div>
             </div>
     }

@@ -1,4 +1,4 @@
-﻿#! /bin/bash
+﻿#!/bin/bash
 
 if [[ -z $1 ]]
 then
@@ -13,9 +13,9 @@ average="average.sh"
 max=$2
 
 echo "AVERAGE RUNNING TIME FOR API ENDPOINTS ON MINITWIT APPLICATION" > $output
-echo "####################################" > $output
-echo "####################################" > $output
-echo "####################################" > $output
+echo "####################################" >> $output
+echo "" >> $output
+echo "" >> $output
 
 #USER ENDPOINTS
 

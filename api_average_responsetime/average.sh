@@ -1,4 +1,4 @@
-﻿#! /bin/bash
+﻿#!/bin/bash
 
 #Setting up averages for time calculations
 realavg=0

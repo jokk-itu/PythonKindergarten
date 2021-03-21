@@ -211,3 +211,16 @@ h3{
     border-radius: 4px;
     padding: 10px;
 }
+
+.followstatus
+{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 2px red solid;
+}
+
+.profilename
+{
+    border: 2px red solid;
+    padding-top: 2.5px;
+}

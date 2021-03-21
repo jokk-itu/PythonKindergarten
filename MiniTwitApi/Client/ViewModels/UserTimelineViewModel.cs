@@ -18,6 +18,7 @@ namespace MiniTwitApi.Client.ViewModels
         public bool FollowIsDone { get; set; }
         
         public bool UnFollowIsDone { get; set; }
+        public int FollowsCount { get; set; }
 
         private readonly IFollowModel _followModel;
         private readonly IUserModel _userModel;
@@ -63,6 +64,18 @@ namespace MiniTwitApi.Client.ViewModels
             {
                 FollowIsDone = false;
                 UnFollowIsDone = await _followModel.UnfollowUser(whoUsername, Username);
+            }
+            catch (Exception e)
+            {
+                Error = e.Message;
+            }
+        }
+
+        public async Task RequestFollowsCount()
+        {
+            try
+            {
+                FollowsCount = await _followModel.FollowerCount(Username);
             }
             catch (Exception e)
             {

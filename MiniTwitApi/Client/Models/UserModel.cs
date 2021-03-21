@@ -40,5 +40,7 @@ namespace MiniTwitApi.Client.Models
             HttpFailureHelper.HandleStatusCode(response);
             return JsonSerializer.Deserialize<UserDTO>(await response.Content.ReadAsStringAsync());
         }
+
+        
     }
 }

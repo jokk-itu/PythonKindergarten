@@ -8,5 +8,7 @@ namespace MiniTwitApi.Client.Models.Abstract
         public Task<bool> UnfollowUser(string myUsername, string followerUsername);
 
         public Task<bool> IsFollowed(string whoUsername, string whomUsername);
+
+        public Task<int> FollowerCount(string username);
     }
 }

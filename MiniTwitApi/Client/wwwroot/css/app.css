@@ -254,3 +254,8 @@ h3{
     background-color: #F1F2EE;
     color: #344966;
 }
+
+@media all and (max-width:480px) {
+    .followButton { width: 100%; display:block; }
+    .messageButton { width: 100%; display:block; }
+ }   

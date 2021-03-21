@@ -16,10 +16,10 @@
             <div class="card">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-md-auto profilepicture">
+                        <div class="col-sm-auto profilepicture">
                             <img class="img-thumbnail" width="48" src="https://www.gravatar.com/avatar/@message.HashedAuthorEmail?d=identicon&s=48" alt="UserPicture">
                         </div>
-                        <div class="col-md-auto">
+                        <div class="col-sm-auto">
                             <h5 class="card-title"><a href="timeline/user_timeline/@message.AuthorUsername">@message.AuthorUsername</a></h5>
                             <h6 class="card-subtitle mb-2 text-muted"> @DateTimeOffset.FromUnixTimeSeconds(message.PublishDate).DateTime.ToString(new CultureInfo("de-De"))</h6>
                         </div>

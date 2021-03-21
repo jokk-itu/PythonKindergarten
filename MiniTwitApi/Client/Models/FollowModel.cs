@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Json;
@@ -50,6 +51,15 @@ namespace MiniTwitApi.Client.Models
             HttpFailureHelper.HandleStatusCode(response);
             var relation = JsonSerializer.Deserialize<FollowerDTO>(await response.Content.ReadAsStringAsync());
             return relation is not null && relation.WhoId != -1 && relation.WhomId != -1;
+        }
+
+        public async Task<int> FollowerCount(string username)
+        {
+            var followersFromApi = await _client.GetStringAsync($"/fllws/{username}");
+            var followers = JsonSerializer.Deserialize<List<FollowerDTO>>(followersFromApi);
+            if (followers is null)
+                throw new Exception("No messages available");
+            return followers.Count;
         }
     }
 }

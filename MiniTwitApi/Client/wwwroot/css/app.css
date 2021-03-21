@@ -212,15 +212,45 @@ h3{
     padding: 10px;
 }
 
+.profilename
+{
+    padding-top: 2.5px;
+}
+
 .followstatus
 {
     margin-top: 10px;
     margin-bottom: 10px;
-    border: 2px red solid;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #344966;
+    border-radius: 4px;
+    background-color: #344966;
+    color: #F1F2EE;
 }
 
-.profilename
+.followsCount
 {
-    border: 2px red solid;
-    padding-top: 2.5px;
+    margin-top: 14px;
+    font-weight:500;
+}
+
+.followButton
+{
+    margin-top: 7px;
+    margin-bottom: 7px;
+
+    background-color: #F1F2EE;
+    color: #344966;
+}
+
+.messageButton
+{
+    margin-top: 7px;
+    margin-bottom: 7px;
+
+    background-color: #F1F2EE;
+    color: #344966;
 }

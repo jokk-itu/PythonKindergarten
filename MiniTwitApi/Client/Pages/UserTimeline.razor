@@ -9,16 +9,16 @@
 <Error ViewModel="@UserTimelineViewModel"/>
 <div class="usertimelineinforow">
     <div class="row">
-        <div class="col-md-auto profilepicture">
+        <div class="col-sm-auto profilepicture">
             <img class="img-thumbnail" width="48" src="https://www.gravatar.com/avatar/" alt="UserPicture">
         </div>
-        <div class="col-md-auto profilename">
+        <div class="col-sm-auto profilename">
             <h3>@Username's Timeline</h3>
         </div>
     </div>
     <div class="row followstatus">
-        <div class="col-md-auto">
-            <p class="followsCount">This user follows @UserTimelineViewModel.FollowsCount users</p>
+        <div class="col-sm-auto">
+            <p class="followsCount">Follows: @UserTimelineViewModel.FollowsCount users</p>
         </div>
         <AuthorizeView>
             <Authorized>
@@ -28,23 +28,26 @@
                     }
                     else if (UserTimelineViewModel.IsFollowed && !UserTimelineViewModel.IsUnfollowed)
                     {
-                        <div class="col-md-auto">
-                            <button class="btn btn-secondary" @onclick="@(() => UserTimelineViewModel.UnfollowUser(@context.User.Identity.Name))">Unfollow User</button>
+                        <div class="col-sm-auto">
+                            <button class="btn btn-secondary followButton" @onclick="@(() => UserTimelineViewModel.UnfollowUser(@context.User.Identity.Name))">Unfollow User</button>
                         </div>
                     }
                     else
                     {
-                        <div class="col-md-auto">
-                            <button class="btn btn-secondary" @onclick="@(() => UserTimelineViewModel.FollowUser(@context.User.Identity.Name))">Follow User</button>
+                        <div class="col-sm-auto">
+                            <button class="btn btn-secondary followButton" @onclick="@(() => UserTimelineViewModel.FollowUser(@context.User.Identity.Name))">Follow User</button>
                         </div>
                     }
                     @if (UserTimelineViewModel.FollowIsDone || UserTimelineViewModel.UnFollowIsDone)
                     {
                         JSRuntime.InvokeVoidAsync("redirect", $"timeline/user_timeline/{Username}");
                     }
+                    <div class="col-sm-auto">
+                        <button class="btn btn-secondary messageButton">Message</button>
+                    </div>
             </Authorized>
         </AuthorizeView>
-        </div>
+    </div>
 </div>
 
 @if (!string.IsNullOrEmpty(UserTimelineViewModel.Path))

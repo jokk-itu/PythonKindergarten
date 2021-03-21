@@ -15,7 +15,8 @@ before_install:
 install:
 - docker --version
 stages:
-- codecheck
+- roslynator_code_check
+- sonarscanner_code_check
 - docker_build
 - deploy
 - release
@@ -28,7 +29,22 @@ before_deploy:
   - git tag $TRAVIS_TAG
 jobs:
   include:
-  - stage: codecheck
+  - stage: roslynator_code_check
+    name: roslynator
+    if: branch = master
+    install: skip
+    script:
+      - echo "INSTALLING ROSLYNATOR"
+      - cd MiniTwitAPi
+      - dotnet tool install --global Roslynator.DotNet.Cli --version 0.1.1
+      - echo "INSTALLING ANALYZERS"
+      - dotnet add package Roslynator.Analyzers --version 3.1.0 ./Server
+      - dotnet add package Roslynator.Analyzers --version 3.1.0 ./Client
+      - dotnet add package Roslynator.Analyzers --version 3.1.0 ./Shared
+      - echo "STARTING ROSLYNATOR"
+      - roslynator analyze MiniTwitApi.sln
+      - "DONE ANALYZING"
+  - stage: sonarscanner_code_check
     name: sonnarscanner
     if: branch = master
     install: skip
@@ -37,10 +53,10 @@ jobs:
       - cd MiniTwitApi
       - dotnet tool install --global dotnet-sonarscanner
       - echo "START SONNARSCANNER"
-      - dotnet sonarscanner begin /k:jokk-itu_PythonKindergarten /d:sonar.login="63bbcd71f1a489fd37c1db16f512fc0c347760e3" /d:sonar.host.url="https://sonarcloud.io/" /o:jokk-itu
+      - dotnet sonarscanner begin /k:jokk-itu_PythonKindergarten /d:sonar.login="$SONAR_LOGIN" /d:sonar.host.url="https://sonarcloud.io/" /o:jokk-itu
       - dotnet build
       - echo "END SONNARSCCANNER"
-      - dotnet sonarscanner end /d:sonar.login="63bbcd71f1a489fd37c1db16f512fc0c347760e3"
+      - dotnet sonarscanner end /d:sonar.login="$SONAR_LOGIN"
   - stage: docker_build
     name: build and push docker
     script:

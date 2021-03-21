@@ -32,16 +32,16 @@ namespace MiniTwitApi.Tests.Repositories
 
             Assert.Equal(expected, actual);
         }
-        
+
         public async Task Delete_Given_Follower()
         {
             await Prepare();
-            var follower = new FollowerDTO(){WhoId = 0, WhomId = 1};
+            var follower = new FollowerDTO() {WhoId = 0, WhomId = 1};
             var expected = follower.WhoId;
             var actual = await _followerRepository.DeleteAsync(follower);
             Assert.Equal(expected, actual);
         }
-        
+
         public async Task Create_Given_Follower()
         {
             await Prepare();
@@ -57,12 +57,12 @@ namespace MiniTwitApi.Tests.Repositories
             {
                 await _userRepository.CreateAsync(new CreateUserDTO()
                 {
-                    Username = $"TestUser{i}",
+                    Username = $"TestUserFollow{i}",
                     Email = $"Test{i}@itu.dk",
                     Password = $"Test{i}"
                 });
             }
-            for (var j = 0; j < 4; ++j)
+            for (var j = 1; j < 4; ++j)
             {
                 await _followerRepository.CreateAsync(new FollowerDTO()
                 {

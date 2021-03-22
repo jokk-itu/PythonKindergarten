@@ -1,0 +1,88 @@
+@using MiniTwitApi.Shared.Models
+@using MiniTwitApi.Shared.Models.UserModels
+@using System.Globalization
+@using System.Text
+@using MiniTwitApi.Client.ViewModels.Abstract
+@using MiniTwitApi.Shared
+@using MiniTwitChatClient
+@using MiniTwitChatClient.Abstractions
+@using MiniTwitChatClient.Misc
+@using MiniTwitChatClient.Models
+
+@inject IChatViewModel ChatViewModel; 
+@inject IJSRuntime JSRuntime;
+
+<Error ViewModel="@ChatViewModel"/>
+
+@if (_messages.Count > 0)
+{
+        @foreach (var message in _messages)
+        {
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-auto profilepicture">
+                            <img class="img-thumbnail" width="48" src="https://www.gravatar.com/avatar/@message.Sender?d=identicon&s=48" alt="UserPicture">
+                        </div>
+                        <div class="col-sm-auto">
+                            <h5 class="card-title"><a href="timeline/user_timeline/@message.Sender">@message.Sender</a></h5>
+                            <h6 class="card-subtitle mb-2 text-muted"> @message.Timestamp.ToString(new CultureInfo("de-De"))</h6>
+                        </div>
+                    </div>
+                <p class="card-text">@message.Content</p>
+                </div>
+            </div>
+    }
+    <div class="form-group">
+        <label for="Username">Username</label>
+        <input @bind="Message" type="text" class="form-control" id="Message" placeholder="Write your message here" />
+    </div>
+    <button class="btn btn-primary" @onclick="@(SendMessage)">Send Message</button>
+}
+else
+{
+    <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+            <span class="visually-hidden"></span>
+        </div>
+    </div>
+}
+
+@code
+{
+    [Parameter] public string SenderUsername { get; set; }
+    [Parameter] public string TargetUsername { get; set; }
+    
+    [Parameter]
+    public string Message { get; set; }
+
+    private string _threadId;
+    private IMiniChatClient _chatClient;
+    private ICollection<ChatMessage> _messages = new List<ChatMessage>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        _threadId = Convertions.GetThreadId(new List<string>() {SenderUsername, TargetUsername});
+        _chatClient = new MiniChatClient(new ChatConfiguration("161.35.215.154", 5672, "minitwit",
+            "minitwit", new List<string>() { _threadId }));
+        _chatClient.ReceivedMessage += message => _messages.Add(message);
+    }
+
+    private void SendMessage()
+    {
+        // Do something with the written message
+        var message = new ChatMessage()
+        {
+            Sender = SenderUsername,
+            Content = Message,
+            ThreadId = _threadId,
+            Timestamp = DateTime.Now
+        };
+        
+        _messages.Add(message);
+        _chatClient.PublishMessage(message);
+        
+        // Clear field
+        Message = "";
+    }
+}

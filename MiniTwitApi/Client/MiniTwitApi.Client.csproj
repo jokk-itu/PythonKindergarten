@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MiniTwitChatClient\MiniTwitChatClient.csproj" />
     <ProjectReference Include="..\Shared\MiniTwitApi.Shared.csproj" />
   </ItemGroup>
 

@@ -1,0 +1,60 @@
+@using MiniTwitApi.Shared.Models.UserModels
+@using System.Text.Json
+
+@inject IJSRuntime JSRuntime
+@inject HttpClient Client
+
+<div class="input-group mb-3">
+  <input @bind="_input" @oninput="FetchUsers" type="text" class="form-control" placeholder="Search for users" aria-label="Search" aria-describedby="search">
+  <div class="input-group-prepend">
+      <span class="input-group-text" id="search">
+          <img src="../wwwroot/search.svg" alt="Search Users" width="32px" height="32px" />
+      </span>
+    </div>
+</div>
+<div class="dropdown">
+    <button id="usersdropdown" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" hidden />
+  <div class="dropdown-menu" aria-labelledby="usersdropdown">
+    @if (_users?.Count < 1)
+    {
+        <div class="d-flex justify-content-center">
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden"></span>
+            </div>
+        </div>
+    }
+    else
+    {
+        foreach (var user in _users)
+        {
+            <a class="dropdown-item" href="timeline/user_timeline/@user.Username">@user.Username</a>
+        }
+    }
+  </div>
+</div>
+
+@code 
+{
+    private ICollection<UserDTO> _users;
+    private string _input;
+    
+    protected override Task OnInitializedAsync()
+    {
+        return Task.CompletedTask;
+    }
+
+    private async Task FetchUsers()
+    {
+        _users = null;
+        if(string.IsNullOrEmpty(_input))
+        {
+            await JSRuntime.InvokeVoidAsync("closeDropdown", "usersdropdown");
+        }
+        else
+        {
+            await JSRuntime.InvokeVoidAsync("openDropdown", "usersdropdown");
+        }
+        var response = await Client.GetAsync($"user/input/?input={_input}");
+        _users = JsonSerializer.Deserialize<ICollection<UserDTO>>(response.Content.ToString()!);
+    }
+}

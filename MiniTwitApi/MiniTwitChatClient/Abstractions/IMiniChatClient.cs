@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using MiniTwitChatClient.Models;
 
 namespace MiniTwitChatClient.Abstractions
@@ -6,6 +8,8 @@ namespace MiniTwitChatClient.Abstractions
     public interface IMiniChatClient
     {
         Action<ChatMessage> ReceivedMessage { get; set; }
-        void PublishMessage(ChatMessage message);
+        Task PublishMessageAsync(ChatMessage message);
+        Task SubscribeAsync(List<string> chatThreads);
+        Task InitializeAsync();
     }
 }

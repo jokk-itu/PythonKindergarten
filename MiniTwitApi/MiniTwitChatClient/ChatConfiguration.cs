@@ -9,15 +9,13 @@ namespace MiniTwitChatClient
         public int BrokerPort { get; }
         public string BrokerUser { get; }
         public string BrokerPassword { get; }
-        public List<string> ChatThreads { get; set; }
 
-        public ChatConfiguration(string host, int port, string user, string password, List<string> chatThreads)
+        public ChatConfiguration(string host, int port, string user, string password)
         {
             BrokerHost = host;
             BrokerPort = port;
             BrokerUser = user;
             BrokerPassword = password;
-            ChatThreads = chatThreads;
         }
     }
 }

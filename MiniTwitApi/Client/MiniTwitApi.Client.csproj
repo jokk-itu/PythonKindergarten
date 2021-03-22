@@ -32,6 +32,8 @@
   <ItemGroup>
     <_ContentIncludedByDefault Remove="wwwroot\uikit-3.6.17\css\uikit-rtl.css" />
     <_ContentIncludedByDefault Remove="wwwroot\uikit-3.6.17\css\uikit.css" />
+    <_ContentIncludedByDefault Remove="wwwroot\scripts\paho-mqtt-interop.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\scripts\paho-mqtt.min.js" />
   </ItemGroup>
 
 </Project>

@@ -8,11 +8,12 @@ using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using MiniTwitApi.Client.Models;
 using MiniTwitApi.Client.Models.Abstract;
 using MiniTwitApi.Client.ViewModels;
 using MiniTwitApi.Client.ViewModels.Abstract;
+using MiniTwitChatClient;
+using MiniTwitChatClient.Abstractions;
 
 namespace MiniTwitApi.Client
 {
@@ -23,6 +24,7 @@ namespace MiniTwitApi.Client
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("#app");
 
+            builder.Services.AddScoped<IMiniChatClient, MiniChatMQTTClient>();
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
             builder.Services.AddBlazoredModal();
 

@@ -11,6 +11,7 @@
 
 @inject IChatViewModel ChatViewModel; 
 @inject IJSRuntime JSRuntime;
+@inject IMiniChatClient ChatClient;
 
 <Error ViewModel="@ChatViewModel"/>
 
@@ -57,18 +58,45 @@ else
     public string Message { get; set; }
 
     private string _threadId;
-    private IMiniChatClient _chatClient;
-    private ICollection<ChatMessage> _messages = new List<ChatMessage>();
+
+    private ICollection<ChatMessage> _messages = new List<ChatMessage>()
+    {
+        new ChatMessage() {Content = "test", Sender = "some user"}
+    };
 
     protected override async Task OnInitializedAsync()
     {
+        if(ChatClient == null)
+            Console.WriteLine("Nuhfgsdfdsfhk");
+        
         _threadId = Convertions.GetThreadId(new List<string>() {SenderUsername, TargetUsername});
-        _chatClient = new MiniChatClient(new ChatConfiguration("161.35.215.154", 5672, "minitwit",
-            "minitwit", new List<string>() { _threadId }));
-        _chatClient.ReceivedMessage += message => _messages.Add(message);
+        Task.Run(ConnectChatbot);
     }
 
-    private void SendMessage()
+    private async Task ConnectChatbot()
+    {
+        await ChatClient.InitializeAsync();
+        Message = "kik";
+        await SendMessageAsync();
+
+        await Task.Delay(9000);
+        Message = "kik";
+        await SendMessageAsync();
+        await ChatClient.SubscribeAsync(new List<string>() { _threadId, "thread1" });
+        ChatClient.ReceivedMessage += message =>
+        {
+            Console.WriteLine($"Got message");
+            _messages.Add(message);
+            StateHasChanged();
+        };
+        
+        Console.WriteLine($"Chat initialized with thread {_threadId}");
+    }
+
+    private async void SendMessage()
+        => await SendMessageAsync();
+    
+    private async Task SendMessageAsync()
     {
         // Do something with the written message
         var message = new ChatMessage()
@@ -79,8 +107,8 @@ else
             Timestamp = DateTime.Now
         };
         
-        _messages.Add(message);
-        _chatClient.PublishMessage(message);
+        await ChatClient.PublishMessageAsync(message);
+        Console.WriteLine($"Sent message with threadid {_threadId}");
         
         // Clear field
         Message = "";

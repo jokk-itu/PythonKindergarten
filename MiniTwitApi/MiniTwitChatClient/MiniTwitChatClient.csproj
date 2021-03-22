@@ -5,6 +5,8 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="Microsoft.JSInterop" Version="5.0.4" />
+      <PackageReference Include="MQTTnet.Extensions.ManagedClient" Version="3.0.15" />
       <PackageReference Include="RabbitMQ.Client" Version="6.2.1" />
     </ItemGroup>
 

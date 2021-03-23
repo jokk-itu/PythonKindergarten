@@ -42,10 +42,6 @@
     protected override Task OnInitializedAsync()
     {
         Users = new List<UserDTO>();
-        SearchUsersViewModel.OnInput = new EventCallback<ChangeEventArgs>
-        {
-            
-        };
         return Task.CompletedTask;
     }
 
@@ -62,10 +58,8 @@
             await JSRuntime.InvokeVoidAsync("openDropdown", "#usersdropdownbutton", "#usersdropdown");
             await foreach (var user in SearchUsersViewModel.GetUsers())
             {
-                Console.WriteLine(user);
                 Users.Add(user);
             }
-            Console.WriteLine($"Size: {Users.Count}");
         }
     }
 }

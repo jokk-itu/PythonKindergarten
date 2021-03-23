@@ -10,7 +10,6 @@ namespace MiniTwitApi.Client.ViewModels
     public class SearchUsersViewModel : ISearchUsersViewModel
     {
         public string Input { get; set; }
-        public EventCallback<ChangeEventArgs> OnInput { get; set; }
         public string Error { get; set; }
 
         private IUserModel _model { get; set; }

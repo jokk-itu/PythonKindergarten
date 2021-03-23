@@ -4,6 +4,7 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 using MiniTwitChatClient.Abstractions;
 using MiniTwitChatClient.Models;
 using RabbitMQ.Client;
@@ -28,28 +29,24 @@ namespace MiniTwitChatClient
             }
         }
 
-        private readonly IModel _rabbitClient;
-        private readonly ChatConfiguration _configuration;
+        private readonly ILogger<MiniChatClient> _logger;
+        private readonly IChatConfiguration _configuration;
+        private IModel _rabbitClient;
         private Action<ChatMessage> _receivedMessage;
         private EventingBasicConsumer _rabbitConsumer;
 
-        public MiniChatClient(ChatConfiguration configuration)
+        public MiniChatClient(ILogger<MiniChatClient> logger, IChatConfiguration configuration)
         {
+            _logger = logger;
             _configuration = configuration;
-            var factory = new ConnectionFactory()
-            {
-                HostName = configuration.BrokerHost, 
-                Port = configuration.BrokerPort,
-                UserName = configuration.BrokerUser, 
-                Password = configuration.BrokerPassword
-            };
-            _rabbitClient = factory.CreateConnection().CreateModel();
         }
 
         public Task PublishMessageAsync(ChatMessage message)
         {
             var body = Encoding.UTF8.GetBytes(JsonSerializer.Serialize(message));
             _rabbitClient.BasicPublish("", message.ThreadId, null, body);
+            
+            _logger.LogInformation("Sent message to topic: {0}", message.ThreadId);
             return Task.FromResult(0);
         }
 
@@ -61,12 +58,23 @@ namespace MiniTwitChatClient
                 _rabbitClient.BasicConsume(thread, true, _rabbitConsumer);   
             }
 
+            _logger.LogInformation("Subscribed to {0} chat threads", chatThreads.Count);
             return Task.FromResult(0);
         }
 
-        public Task InitializeAsync()
+        public Task ConnectAsync()
         {
-            throw new NotImplementedException();
+            var factory = new ConnectionFactory()
+            {
+                HostName = _configuration.BrokerHost, 
+                Port = _configuration.BrokerPort,
+                UserName = _configuration.BrokerUser, 
+                Password = _configuration.BrokerPassword
+            };
+            _rabbitClient = factory.CreateConnection().CreateModel();
+
+            _logger.LogInformation("Chat client was connected to the MQTT Broker");
+            return Task.FromResult(0);
         }
 
         private void HandleReceivedJob(object obj, BasicDeliverEventArgs eventArgs)

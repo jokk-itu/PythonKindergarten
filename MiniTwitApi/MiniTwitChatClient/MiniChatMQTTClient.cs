@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 using Microsoft.JSInterop;
 using MiniTwitChatClient;
 using MiniTwitChatClient.Abstractions;
@@ -21,26 +22,29 @@ namespace MiniTwitChatClient
             set => _receivedMessage = value;
         }
         private Action<ChatMessage> _receivedMessage;
-        private readonly ChatConfiguration _configuration = new ("pythonkindergarten.tech", 15676,  "minitwit", "minitwit");
-        private List<string> _subscribedThreads = new List<string>();
+
+        private readonly ILogger<MiniChatMQTTClient> _logger;
+        private readonly IChatConfiguration _configuration; 
+        private List<string> _subscribedThreads = new ();
         private IManagedMqttClient _mqttClient;
 
-        public MiniChatMQTTClient(ChatConfiguration configuration = null)
+        public MiniChatMQTTClient(ILogger<MiniChatMQTTClient> logger, IChatConfiguration configuration)
         {
+            _logger = logger;
             if (configuration != null)
                 _configuration = configuration;
         }
         
         public async Task PublishMessageAsync(ChatMessage message)
         {
-            Console.WriteLine($"Sending message {JsonSerializer.Serialize(message)}");
             var result = await _mqttClient.PublishAsync(new MqttApplicationMessageBuilder()
-                .WithTopic($"messages.{message.ThreadId}")
+                .WithTopic($"threads.{message.ThreadId}")
                 .WithPayload(JsonSerializer.Serialize(message))
                 .WithQualityOfServiceLevel((MQTTnet.Protocol.MqttQualityOfServiceLevel)1)
                 .WithRetainFlag(false)
                 .Build());
-            Console.WriteLine($"Sent message with topic: messages.{message.ThreadId} {result.ReasonCode}");
+            
+            _logger.LogInformation("Sent message to topic: {0}, with result: {1}", message.ThreadId, result.ReasonCode);
         }
 
         public async Task SubscribeAsync(List<string> chatThreads)
@@ -49,25 +53,27 @@ namespace MiniTwitChatClient
 
             foreach (var thread in _subscribedThreads)
                 await _mqttClient.SubscribeAsync(new TopicFilterBuilder()
-                    .WithTopic($"messages.{thread}")
+                    .WithTopic($"threads.{thread}")
                     .WithQualityOfServiceLevel((MQTTnet.Protocol.MqttQualityOfServiceLevel)1)
                     .Build());
+            
+            _logger.LogInformation("Subscribed to {0} chat threads", chatThreads.Count);
         }
         
-        public async Task InitializeAsync()
+        public async Task ConnectAsync()
         {
             var messageBuilder = new MqttClientOptionsBuilder()
                 .WithCredentials(_configuration.BrokerUser, _configuration.BrokerPassword)
                 .WithWebSocketServer($"{_configuration.BrokerHost}:{_configuration.BrokerPort}/ws");
 
-            var options = messageBuilder.WithTls().Build();
             var managedOptions = new ManagedMqttClientOptionsBuilder()
                 .WithAutoReconnectDelay(TimeSpan.FromSeconds(5))
-                .WithClientOptions(options)
+                .WithClientOptions(messageBuilder.WithTls().Build())
                 .Build();
             _mqttClient = new MqttFactory().CreateManagedMqttClient();
 
             await _mqttClient.StartAsync(managedOptions);
+            
             _mqttClient.UseApplicationMessageReceivedHandler(e =>
             {
                 try
@@ -75,16 +81,17 @@ namespace MiniTwitChatClient
                     _receivedMessage?.Invoke(
                         JsonSerializer.Deserialize<ChatMessage>(Encoding.UTF8.GetString(e.ApplicationMessage.Payload)));
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine($"{ex.Message}: {ex.StackTrace}");
+                    _logger.LogWarning("Failed to serialize incoming message...");
                 }
             });
+
+            _mqttClient.UseConnectedHandler(
+                e => _logger.LogInformation("Chat client was connected to the MQTT Brokwer"));
             
             _mqttClient.UseDisconnectedHandler(e =>
-            {
-                Console.WriteLine($"Disconnected from MQTT Brokers pythonkindergarten.tech:15676/ws. {e.Exception.Message} : {e.Exception.InnerException}");
-            });
+                    _logger.LogCritical("Chat client was disconnected from the MQTT Broker. {0}: {1}", e.Exception.Message, e.Exception.StackTrace));
         }
     }
 }

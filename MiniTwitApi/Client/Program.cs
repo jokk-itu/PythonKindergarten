@@ -24,7 +24,10 @@ namespace MiniTwitApi.Client
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("#app");
 
-            builder.Services.AddScoped<IMiniChatClient, MiniChatMQTTClient>();
+            // Chat client
+            builder.Services.AddSingleton<IChatConfiguration>(new ChatConfiguration("pythonkindergarten.tech", 15676,  "minitwit", "minitwit"));
+            builder.Services.AddSingleton<IMiniChatClient, MiniChatMQTTClient>();
+            
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
             builder.Services.AddBlazoredModal();
 
@@ -35,7 +38,7 @@ namespace MiniTwitApi.Client
             builder.Services.AddTransient<IUserTimelineViewModel, UserTimelineViewModel>();
             builder.Services.AddTransient<IMessageViewModel, MessageViewModel>();
             builder.Services.AddTransient<IChatViewModel, ChatViewModel>();
-
+            
             //Register Models for the ViewModels to use them
             builder.Services.AddTransient<IUserModel, UserModel>();
             builder.Services.AddTransient<IMessageModel, MessageModel>();

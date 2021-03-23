@@ -10,6 +10,6 @@ namespace MiniTwitChatClient.Abstractions
         Action<ChatMessage> ReceivedMessage { get; set; }
         Task PublishMessageAsync(ChatMessage message);
         Task SubscribeAsync(List<string> chatThreads);
-        Task InitializeAsync();
+        Task ConnectAsync();
     }
 }

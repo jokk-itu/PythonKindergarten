@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using MiniTwitChatClient.Abstractions;
 
 namespace MiniTwitChatClient
 {
-    public class ChatConfiguration
+    public class ChatConfiguration : IChatConfiguration
     {
         public string BrokerHost { get; }
         public int BrokerPort { get; }

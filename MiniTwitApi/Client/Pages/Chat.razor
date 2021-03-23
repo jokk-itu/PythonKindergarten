@@ -61,27 +61,14 @@ else
 
     private ICollection<ChatMessage> _messages = new List<ChatMessage>()
     {
-        new ChatMessage() {Content = "test", Sender = "some user"}
+        new () {Content = "test", Sender = "some user"}
     };
 
     protected override async Task OnInitializedAsync()
     {
-        if(ChatClient == null)
-            Console.WriteLine("Nuhfgsdfdsfhk");
-        
         _threadId = Convertions.GetThreadId(new List<string>() {SenderUsername, TargetUsername});
-        Task.Run(ConnectChatbot);
-    }
-
-    private async Task ConnectChatbot()
-    {
-        await ChatClient.InitializeAsync();
-        Message = "kik";
-        await SendMessageAsync();
-
-        await Task.Delay(9000);
-        Message = "kik";
-        await SendMessageAsync();
+        
+        await ChatClient.ConnectAsync();
         await ChatClient.SubscribeAsync(new List<string>() { _threadId, "thread1" });
         ChatClient.ReceivedMessage += message =>
         {
@@ -89,8 +76,6 @@ else
             _messages.Add(message);
             StateHasChanged();
         };
-        
-        Console.WriteLine($"Chat initialized with thread {_threadId}");
     }
 
     private async void SendMessage()
@@ -98,17 +83,13 @@ else
     
     private async Task SendMessageAsync()
     {
-        // Do something with the written message
-        var message = new ChatMessage()
+        await ChatClient.PublishMessageAsync(new ChatMessage()
         {
             Sender = SenderUsername,
             Content = Message,
             ThreadId = _threadId,
             Timestamp = DateTime.Now
-        };
-        
-        await ChatClient.PublishMessageAsync(message);
-        Console.WriteLine($"Sent message with threadid {_threadId}");
+        });
         
         // Clear field
         Message = "";

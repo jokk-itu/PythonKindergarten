@@ -1,0 +1,199 @@
+
+wMiniTwitApi.Server.ClientIpCheckActionFilter.OnActionExecuting(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext)^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/ClientIpCheckActionFilter.cs (."0*û
+0^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/ClientIpCheckActionFilter.cs (+Ž
+‹
+^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/ClientIpCheckActionFilter.cs (.+
+%0%Microsoft.AspNetCore.Http.HttpContext"6Microsoft.AspNetCore.Mvc.ActionContext.HttpContext.get*D
+B
+context7Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContextø
+õ
+^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/ClientIpCheckActionFilter.cs (9.
+%1(Microsoft.AspNetCore.Http.ConnectionInfo"4Microsoft.AspNetCore.Http.HttpContext.Connection.get*-
++
+%0%Microsoft.AspNetCore.Http.HttpContextï
+ì
+^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/ClientIpCheckActionFilter.cs (I
+%2System.Net.IPAddress"<Microsoft.AspNetCore.Http.ConnectionInfo.RemoteIpAddress.get*0
+.
+%1(Microsoft.AspNetCore.Http.ConnectionInfo©
+¦
+^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/ClientIpCheckActionFilter.cs (I 
+remoteIpSystem.Net.IPAddress"__id*
+
+%2System.Net.IPAddressú
+÷
+^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/ClientIpCheckActionFilter.cs (*
+%3$Microsoft.Extensions.Logging.ILogger"__id*c*a.
+,MiniTwitApi.Server.ClientIpCheckActionFilter"/
+_logger$Microsoft.Extensions.Logging.ILogger
+Š
+^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/ClientIpCheckActionFilter.cs (F
+
+%4void"uMicrosoft.Extensions.Logging.LoggerExtensions.LogDebug(Microsoft.Extensions.Logging.ILogger, string, params object[])*1"/
+-Microsoft.Extensions.Logging.LoggerExtensions*,
+*
+%3$Microsoft.Extensions.Logging.ILogger* 
+Remote IpAddress: {RemoteIp}*"
+ 
+remoteIpSystem.Net.IPAddressÀ
+½
+^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/ClientIpCheckActionFilter.cs (
+%5string"__id*G*E.
+,MiniTwitApi.Server.ClientIpCheckActionFilter"
+	_safeliststringÁ
+¾
+^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/ClientIpCheckActionFilter.cs ()
+%6string[]"-string.Split(char, System.StringSplitOptions)*
+
+%5string*
+;*
+""‹
+ˆ
+^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/ClientIpCheckActionFilter.cs ()
+ipstring[]"__id*
+
+%6string[]
+}
+^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/ClientIpCheckActionFilter.cs (
+badIpbool"__id*
+""À
+½
+^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/ClientIpCheckActionFilter.cs (+
+
+%7bool"+System.Net.IPAddress.IsIPv4MappedToIPv6.get*"
+ 
+remoteIpSystem.Net.IPAddress*
+1
+2*Ü
+1^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/ClientIpCheckActionFilter.cs (/Å
+Â
+^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/ClientIpCheckActionFilter.cs (/
+%8System.Net.IPAddress" System.Net.IPAddress.MapToIPv4()*"
+ 
+remoteIpSystem.Net.IPAddress©
+¦
+^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/ClientIpCheckActionFilter.cs (/ 
+remoteIpSystem.Net.IPAddress"__id*
+
+%8System.Net.IPAddress*
+2*h
+2^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/ClientIpCheckActionFilter.cs!$ !(&*
+3*k
+3^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/ClientIpCheckActionFilter.cs4	 4(	*
+4
+5*Ú
+4^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/ClientIpCheckActionFilter.cs# %(*Ò
+Ï
+^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/ClientIpCheckActionFilter.cs# #(5
+%9System.Net.IPAddress""System.Net.IPAddress.Parse(string)*"
+System.Net.IPAddress*
+
+addressstring§
+¤
+^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/ClientIpCheckActionFilter.cs# #(5
+testIpSystem.Net.IPAddress"__id*
+
+%9System.Net.IPAddressíê
+^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/ClientIpCheckActionFilter.cs% %(+
+%10bool"$System.Net.IPAddress.Equals(object?)* 
+
+testIpSystem.Net.IPAddress*"
+ 
+remoteIpSystem.Net.IPAddress2Equals(object?)*
+6
+3*é
+6^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/ClientIpCheckActionFilter.cs' '(!
+}
+^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/ClientIpCheckActionFilter.cs' '(!
+badIpbool"__id*
+""*
+5*k
+5^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/ClientIpCheckActionFilter.cs, ,(*
+7
+8*ô
+7^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/ClientIpCheckActionFilter.cs. /(Tû
+ø
+^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/ClientIpCheckActionFilter.cs. .(+
+%11$Microsoft.Extensions.Logging.ILogger"__id*c*a.
+,MiniTwitApi.Server.ClientIpCheckActionFilter"/
+_logger$Microsoft.Extensions.Logging.ILoggerš
+—
+^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/ClientIpCheckActionFilter.cs. .(U
+%12void"wMicrosoft.Extensions.Logging.LoggerExtensions.LogWarning(Microsoft.Extensions.Logging.ILogger, string, params object[])*1"/
+-Microsoft.Extensions.Logging.LoggerExtensions*-
++
+%11$Microsoft.Extensions.Logging.ILogger*)'
+%Forbidden Request from IP: {RemoteIp}*"
+ 
+remoteIpSystem.Net.IPAddressw
+u
+^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/ClientIpCheckActionFilter.cs/6 /(T
+%13"__id*
+""À½
+^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/ClientIpCheckActionFilter.cs/! /(U0
+%14)Microsoft.AspNetCore.Mvc.StatusCodeResult")Microsoft.AspNetCore.Mvc.StatusCodeResultî
+ë
+^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/ClientIpCheckActionFilter.cs/% /(5
+%15void"?Microsoft.AspNetCore.Mvc.StatusCodeResult.StatusCodeResult(int)*2
+0
+%14)Microsoft.AspNetCore.Mvc.StatusCodeResult*
+
+%13ÜÙ
+^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/ClientIpCheckActionFilter.cs/ /(U-
+%16&Microsoft.AspNetCore.Mvc.IActionResult"BMicrosoft.AspNetCore.Mvc.Filters.ActionExecutingContext.Result.set*D
+B
+context7Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext*2
+0
+%14)Microsoft.AspNetCore.Mvc.StatusCodeResult2
+Result.set"h
+^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/ClientIpCheckActionFilter.cs0 0(
+""*£
+8^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/ClientIpCheckActionFilter.cs3 3(*¸µ
+^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/ClientIpCheckActionFilter.cs3 3(+
+%17void"Microsoft.AspNetCore.Mvc.Filters.ActionFilterAttribute.OnActionExecuting(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext)*0.
+,MiniTwitApi.Server.ClientIpCheckActionFilter*D
+B
+context7Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext2JOnActionExecuting(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext)*
+9*Ú
+9^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/ClientIpCheckActionFilter.cs4	 4(	"u
+^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/ClientIpCheckActionFilter.cs4 4(	
+implicit return:B
+context7Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContextB0.
+,MiniTwitApi.Server.ClientIpCheckActionFilter

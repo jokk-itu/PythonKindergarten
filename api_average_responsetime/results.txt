@@ -1,0 +1,95 @@
+AVERAGE RUNNING TIME FOR API ENDPOINTS ON MINITWIT APPLICATION
+####################################
+
+
+AVERAGE TIME RESULTS FOR POST -d '{username:testingscript, pwd:testingscript}' -H 'Content-Type: application/json' https://pythonkindergarten.tech/login
+#################################
+Real 0.008 seconds
+User 0.008 seconds
+Sys 00 seconds
+#################################
+
+AVERAGE TIME RESULTS FOR GET https://pythonkindergarten.tech/user/1
+#################################
+Real 0.196 seconds
+User 0.015 seconds
+Sys 0.005 seconds
+#################################
+
+AVERAGE TIME RESULTS FOR GET https://pythonkindergarten.tech/latest
+#################################
+Real 0.174 seconds
+User 0.012 seconds
+Sys 0.011 seconds
+#################################
+
+AVERAGE TIME RESULTS FOR POST -d '{content:thisisatestingmessage}' -H 'Content-Type: application/json' https://pythonkindergarten.tech/msgs/testingscript
+#################################
+Real 0.192 seconds
+User 0.025 seconds
+Sys 0.014 seconds
+#################################
+
+AVERAGE TIME RESULTS FOR GET https://pythonkindergarten.tech/msgs/testingscript?no=20
+#################################
+Real 0.275 seconds
+User 0.021 seconds
+Sys 0.004 seconds
+#################################
+
+AVERAGE TIME RESULTS FOR GET https://pythonkindergarten.tech/msgs?no=100
+#################################
+Real 0.421 seconds
+User 0.022 seconds
+Sys 0.021 seconds
+#################################
+
+AVERAGE TIME RESULTS FOR GET https://pythonkindergarten.tech/msgs?no=1000
+#################################
+Real 0.834 seconds
+User 0.028 seconds
+Sys 0.014 seconds
+#################################
+
+AVERAGE TIME RESULTS FOR GET https://pythonkindergarten.tech/msgs?no=10000
+#################################
+Real 02.349 seconds
+User 0.089 seconds
+Sys 0.056 seconds
+#################################
+
+AVERAGE TIME RESULTS FOR GET https://pythonkindergarten.tech/msgs?no=20
+#################################
+Real 0.370 seconds
+User 0.024 seconds
+Sys 0.004 seconds
+#################################
+
+AVERAGE TIME RESULTS FOR POST -d '{follow:jokk}' -H 'Content-Type: application/json' https://pythonkindergarten.tech/fllws/testingscript
+#################################
+Real 0.194 seconds
+User 0.020 seconds
+Sys 0.005 seconds
+#################################
+
+AVERAGE TIME RESULTS FOR GET https://pythonkindergarten.tech/fllws/testingscript
+#################################
+Real 0.185 seconds
+User 0.023 seconds
+Sys 0.009 seconds
+#################################
+
+AVERAGE TIME RESULTS FOR POST -d '{unfollow:jokk}' -H 'Content-Type: application/json' https://pythonkindergarten.tech/fllws/testingscript
+#################################
+Real 0.552 seconds
+User 0.027 seconds
+Sys 0.018 seconds
+#################################
+
+AVERAGE TIME RESULTS FOR GET https://pythonkindergarten.tech/fllws/testingscript?whoUserName=testingscript&whomUserName=jokk
+#################################
+Real 0.196 seconds
+User 0.023 seconds
+Sys 0.004 seconds
+#################################
+

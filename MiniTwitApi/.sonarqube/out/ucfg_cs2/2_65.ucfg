@@ -1,0 +1,106 @@
+
+iMiniTwitApi.Server.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)L
+B/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Startup.cs! !(%"0*å-
+0L
+B/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Startup.cs# 1(+¬
+©
+L
+B/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Startup.cs# #('A
+%0;Microsoft.Extensions.DependencyInjection.IServiceCollection"ˆPrometheus.SystemMetrics.ServiceCollectionExtensions.AddSystemMetrics(Microsoft.Extensions.DependencyInjection.IServiceCollection, bool)*8"6
+4Prometheus.SystemMetrics.ServiceCollectionExtensions*I
+G
+services;Microsoft.Extensions.DependencyInjection.IServiceCollection*
+""Ä
+Á
+L
+B/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Startup.cs$ $(.:
+%14Microsoft.Extensions.DependencyInjection.IMvcBuilder"œMicrosoft.Extensions.DependencyInjection.MvcServiceCollectionExtensions.AddControllersWithViews(Microsoft.Extensions.DependencyInjection.IServiceCollection)*K"I
+GMicrosoft.Extensions.DependencyInjection.MvcServiceCollectionExtensions*I
+G
+services;Microsoft.Extensions.DependencyInjection.IServiceCollectionº
+·
+L
+B/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Startup.cs% %($:
+%24Microsoft.Extensions.DependencyInjection.IMvcBuilder"’Microsoft.Extensions.DependencyInjection.MvcServiceCollectionExtensions.AddRazorPages(Microsoft.Extensions.DependencyInjection.IServiceCollection)*K"I
+GMicrosoft.Extensions.DependencyInjection.MvcServiceCollectionExtensions*I
+G
+services;Microsoft.Extensions.DependencyInjection.IServiceCollectionà
+Ý
+L
+B/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Startup.cs& &(3A
+%3;Microsoft.Extensions.DependencyInjection.IServiceCollection"­Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddScoped<TService, TImplementation>(Microsoft.Extensions.DependencyInjection.IServiceCollection)*O"M
+KMicrosoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions*I
+G
+services;Microsoft.Extensions.DependencyInjection.IServiceCollectionà
+Ý
+L
+B/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Startup.cs' '(AA
+%4;Microsoft.Extensions.DependencyInjection.IServiceCollection"­Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddScoped<TService, TImplementation>(Microsoft.Extensions.DependencyInjection.IServiceCollection)*O"M
+KMicrosoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions*I
+G
+services;Microsoft.Extensions.DependencyInjection.IServiceCollectionà
+Ý
+L
+B/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Startup.cs( ((IA
+%5;Microsoft.Extensions.DependencyInjection.IServiceCollection"­Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddScoped<TService, TImplementation>(Microsoft.Extensions.DependencyInjection.IServiceCollection)*O"M
+KMicrosoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions*I
+G
+services;Microsoft.Extensions.DependencyInjection.IServiceCollectionà
+Ý
+L
+B/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Startup.cs) )(GA
+%6;Microsoft.Extensions.DependencyInjection.IServiceCollection"­Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddScoped<TService, TImplementation>(Microsoft.Extensions.DependencyInjection.IServiceCollection)*O"M
+KMicrosoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions*I
+G
+services;Microsoft.Extensions.DependencyInjection.IServiceCollection›
+˜
+L
+B/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Startup.cs* *($A
+%7;Microsoft.Extensions.DependencyInjection.IServiceCollection"ÝMicrosoft.Extensions.DependencyInjection.SwaggerGenServiceCollectionExtensions.AddSwaggerGen(Microsoft.Extensions.DependencyInjection.IServiceCollection, System.Action<Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenOptions>)*R"P
+NMicrosoft.Extensions.DependencyInjection.SwaggerGenServiceCollectionExtensions*I
+G
+services;Microsoft.Extensions.DependencyInjection.IServiceCollection*
+""ã
+à
+L
+B/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Startup.cs- -(RA
+%8;Microsoft.Extensions.DependencyInjection.IServiceCollection"°Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<TService, TImplementation>(Microsoft.Extensions.DependencyInjection.IServiceCollection)*O"M
+KMicrosoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions*I
+G
+services;Microsoft.Extensions.DependencyInjection.IServiceCollectiond
+b
+L
+B/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Startup.cs0' 0(X
+%9"__id*
+""ê
+ç
+L
+B/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Startup.cs0 0(Y@
+%109Microsoft.AspNetCore.Authentication.AuthenticationBuilder"©Microsoft.Extensions.DependencyInjection.AuthenticationServiceCollectionExtensions.AddAuthentication(Microsoft.Extensions.DependencyInjection.IServiceCollection, string)*V"T
+RMicrosoft.Extensions.DependencyInjection.AuthenticationServiceCollectionExtensions*I
+G
+services;Microsoft.Extensions.DependencyInjection.IServiceCollection*
+
+%9–
+“
+L
+B/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Startup.cs0 0(e@
+%119Microsoft.AspNetCore.Authentication.AuthenticationBuilder"~Microsoft.Extensions.DependencyInjection.CookieExtensions.AddCookie(Microsoft.AspNetCore.Authentication.AuthenticationBuilder)*=";
+9Microsoft.Extensions.DependencyInjection.CookieExtensions*B
+@
+%109Microsoft.AspNetCore.Authentication.AuthenticationBuilderÝ
+Ú
+L
+B/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Startup.cs1 1(+B
+%12;Microsoft.Extensions.DependencyInjection.IServiceCollection"£Microsoft.Extensions.DependencyInjection.AuthorizationServiceCollectionExtensions.AddAuthorizationCore(Microsoft.Extensions.DependencyInjection.IServiceCollection)*U"S
+QMicrosoft.Extensions.DependencyInjection.AuthorizationServiceCollectionExtensions*I
+G
+services;Microsoft.Extensions.DependencyInjection.IServiceCollection*
+1*¶
+1L
+B/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Startup.cs2	 2(	"c
+L
+B/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Startup.cs2 2(	
+implicit return:G
+services;Microsoft.Extensions.DependencyInjection.IServiceCollectionB
+MiniTwitApi.Server.Startup

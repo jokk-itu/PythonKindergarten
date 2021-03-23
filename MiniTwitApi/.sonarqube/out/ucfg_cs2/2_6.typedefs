@@ -1,0 +1,6 @@
+Ð
+0MiniTwitApi.Server.Controllers.MessageController'Microsoft.AspNetCore.Mvc.ControllerBaseobject­
+ûMessageController(MiniTwitApi.Server.Repositories.Abstract.IMessageRepository, MiniTwitApi.Server.Repositories.Abstract.IUserRepository, Microsoft.Extensions.Configuration.IConfiguration, Microsoft.AspNetCore.Mvc.Infrastructure.IActionContextAccessor)¬MiniTwitApi.Server.Controllers.MessageController.MessageController(MiniTwitApi.Server.Repositories.Abstract.IMessageRepository, MiniTwitApi.Server.Repositories.Abstract.IUserRepository, Microsoft.Extensions.Configuration.IConfiguration, Microsoft.AspNetCore.Mvc.Infrastructure.IActionContextAccessor)c
+GetMsgs(int, int, long)HMiniTwitApi.Server.Controllers.MessageController.GetMsgs(int, int, long)‡
+)GetMsgsByUsername(string, int, int, long)ZMiniTwitApi.Server.Controllers.MessageController.GetMsgsByUsername(string, int, int, long)Ë
+KPostMessageByUsername(string, MiniTwitApi.Shared.Models.CreateMessage, int)|MiniTwitApi.Server.Controllers.MessageController.PostMessageByUsername(string, MiniTwitApi.Shared.Models.CreateMessage, int)

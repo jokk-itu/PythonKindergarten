@@ -1,0 +1,6 @@
+é
+/MiniTwitApi.Server.Controllers.FollowController'Microsoft.AspNetCore.Mvc.ControllerBaseobject¬
+ûFollowController(MiniTwitApi.Server.Repositories.Abstract.IFollowerRepository, MiniTwitApi.Server.Repositories.Abstract.IUserRepository, Microsoft.Extensions.Configuration.IConfiguration, Microsoft.AspNetCore.Mvc.Infrastructure.IActionContextAccessor)«MiniTwitApi.Server.Controllers.FollowController.FollowController(MiniTwitApi.Server.Repositories.Abstract.IFollowerRepository, MiniTwitApi.Server.Repositories.Abstract.IUserRepository, Microsoft.Extensions.Configuration.IConfiguration, Microsoft.AspNetCore.Mvc.Infrastructure.IActionContextAccessor)š
+3GetFollowRelationByWhoAndWhom(string, string, long)cMiniTwitApi.Server.Controllers.FollowController.GetFollowRelationByWhoAndWhom(string, string, long)x
+"GetFollowsByUsername(string, long)RMiniTwitApi.Server.Controllers.FollowController.GetFollowsByUsername(string, long)¾
+EPostFollowsByUsername(string, MiniTwitApi.Shared.Models.Follow, long)uMiniTwitApi.Server.Controllers.FollowController.PostFollowsByUsername(string, MiniTwitApi.Shared.Models.Follow, long)

@@ -135,7 +135,7 @@ namespace MiniTwitApi.Server.Controllers
             return Ok(user);
         }
 
-        [HttpGet("user/input")]
+        [HttpGet("user/search")]
         public async Task<ActionResult<ICollection<UserDTO>>> GetUsersByInput([FromQuery] string input)
         {
             var users = await _repository.ReadSomeAsync(input);

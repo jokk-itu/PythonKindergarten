@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using MiniTwitApi.Shared.Models;
@@ -11,5 +12,6 @@ namespace MiniTwitApi.Client.Models.Abstract
         public Task<bool> LoginUser(LoginUserDTO user);
 
         public Task<UserDTO> GetLoggedInUser();
+        public Task<ICollection<UserDTO>> GetUsers(string input);
     }
 }

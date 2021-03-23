@@ -1,0 +1,17 @@
+Á
+ MiniTwitApi.Server.Entities.Userobject1
+User()'MiniTwitApi.Server.Entities.User.User()9
+
+UserId.get+MiniTwitApi.Server.Entities.User.UserId.get9
+
+UserId.set+MiniTwitApi.Server.Entities.User.UserId.set=
+Username.get-MiniTwitApi.Server.Entities.User.Username.get=
+Username.set-MiniTwitApi.Server.Entities.User.Username.set7
+	Email.get*MiniTwitApi.Server.Entities.User.Email.get7
+	Email.set*MiniTwitApi.Server.Entities.User.Email.set=
+Password.get-MiniTwitApi.Server.Entities.User.Password.get=
+Password.set-MiniTwitApi.Server.Entities.User.Password.set?
+Followers.get.MiniTwitApi.Server.Entities.User.Followers.get?
+Followers.set.MiniTwitApi.Server.Entities.User.Followers.set=
+Messages.get-MiniTwitApi.Server.Entities.User.Messages.get=
+Messages.set-MiniTwitApi.Server.Entities.User.Messages.set

@@ -1,0 +1,97 @@
+
+eMiniTwitApi.Server.Repositories.FollowerRepository.CreateAsync(MiniTwitApi.Shared.Models.FollowerDTO)d
+Z/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/FollowerRepository.csB B(*"0*Ù
+0d
+Z/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/FollowerRepository.csD M(»¸
+d
+Z/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/FollowerRepository.csD H(*
+%0$MiniTwitApi.Server.Entities.Follower"$MiniTwitApi.Server.Entities.FollowerÔ
+Ñ
+d
+Z/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/FollowerRepository.csD D(%
+
+%1void"/MiniTwitApi.Server.Entities.Follower.Follower()*,
+*
+%0$MiniTwitApi.Server.Entities.FollowerÚ
+×
+d
+Z/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/FollowerRepository.csF F(&	
+%2int"/MiniTwitApi.Shared.Models.FollowerDTO.WhoId.get*3
+1
+follower%MiniTwitApi.Shared.Models.FollowerDTOß
+Ü
+d
+Z/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/FollowerRepository.csF F(&	
+%3int".MiniTwitApi.Server.Entities.Follower.WhoId.set*,
+*
+%0$MiniTwitApi.Server.Entities.Follower*
+	
+%2intÛ
+Ø
+d
+Z/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/FollowerRepository.csG G((	
+%4int"0MiniTwitApi.Shared.Models.FollowerDTO.WhomId.get*3
+1
+follower%MiniTwitApi.Shared.Models.FollowerDTOà
+Ý
+d
+Z/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/FollowerRepository.csG G((	
+%5int"/MiniTwitApi.Server.Entities.Follower.WhomId.set*,
+*
+%0$MiniTwitApi.Server.Entities.Follower*
+	
+%4intÍ
+Ê
+d
+Z/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/FollowerRepository.csD H(.
+entity$MiniTwitApi.Server.Entities.Follower"__id*,
+*
+%0$MiniTwitApi.Server.Entities.FollowerŽ
+‹
+d
+Z/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/FollowerRepository.csJ J(*
+%6$MiniTwitApi.Server.Entities.IContext"?MiniTwitApi.Server.Repositories.FollowerRepository._context.get*64
+2MiniTwitApi.Server.Repositories.FollowerRepositoryŽ‹
+d
+Z/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/FollowerRepository.csJ J($2
+%7,Microsoft.EntityFrameworkCore.DbSet<TEntity>"2MiniTwitApi.Server.Entities.IContext.Followers.get*,
+*
+%6$MiniTwitApi.Server.Entities.IContext2Followers.get¥¢
+d
+Z/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/FollowerRepository.csJ J(5/
+%8)System.Threading.Tasks.ValueTask<TResult>"bMicrosoft.EntityFrameworkCore.DbSet<TEntity>.AddAsync(TEntity, System.Threading.CancellationToken)*4
+2
+%7,Microsoft.EntityFrameworkCore.DbSet<TEntity>*0
+.
+entity$MiniTwitApi.Server.Entities.Follower*
+""25AddAsync(TEntity, System.Threading.CancellationToken)Ž
+‹
+d
+Z/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/FollowerRepository.csK K(*
+%9$MiniTwitApi.Server.Entities.IContext"?MiniTwitApi.Server.Repositories.FollowerRepository._context.get*64
+2MiniTwitApi.Server.Repositories.FollowerRepositoryÝÚ
+d
+Z/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/FollowerRepository.csK K(-+
+%10$System.Threading.Tasks.Task<TResult>"YMiniTwitApi.Server.Entities.IContext.SaveChangesAsync(System.Threading.CancellationToken)*,
+*
+%9$MiniTwitApi.Server.Entities.IContext*
+""24SaveChangesAsync(System.Threading.CancellationToken)×
+Ô
+d
+Z/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/FollowerRepository.csM M(
+
+%11int".MiniTwitApi.Server.Entities.Follower.WhoId.get*0
+.
+entity$MiniTwitApi.Server.Entities.Follower"t
+d
+Z/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/FollowerRepository.csM M( 
+
+
+%11int*æ
+1d
+Z/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/FollowerRepository.csN	 N(	"{
+d
+Z/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/FollowerRepository.csN N(	
+implicit return:1
+follower%MiniTwitApi.Shared.Models.FollowerDTOB64
+2MiniTwitApi.Server.Repositories.FollowerRepository

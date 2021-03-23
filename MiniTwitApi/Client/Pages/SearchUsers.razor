@@ -1,60 +1,71 @@
 @using MiniTwitApi.Shared.Models.UserModels
 @using System.Text.Json
+@using MiniTwitApi.Client.ViewModels.Abstract
 
 @inject IJSRuntime JSRuntime
-@inject HttpClient Client
+@inject ISearchUsersViewModel SearchUsersViewModel
 
-<div class="input-group mb-3">
-  <input @bind="_input" @oninput="FetchUsers" type="text" class="form-control" placeholder="Search for users" aria-label="Search" aria-describedby="search">
-  <div class="input-group-prepend">
-      <span class="input-group-text" id="search">
-          <img src="../wwwroot/search.svg" alt="Search Users" width="32px" height="32px" />
-      </span>
+<div class="input-group mb-3 input-group-lg">
+    <input @bind-value="@SearchUsersViewModel.Input" @bind-value:event="oninput" @onkeydown="(FetchUsers)" @onclick="(FetchUsers)" type="text" class="form-control" placeholder="Search for users" aria-label="Search" aria-describedby="search">
+    <div class="input-group-prepend">
+        <span class="input-group-text" id="search">
+            <img src="search.svg" alt="Search Users" />
+        </span>
     </div>
 </div>
 <div class="dropdown">
-    <button id="usersdropdown" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" hidden />
-  <div class="dropdown-menu" aria-labelledby="usersdropdown">
-    @if (_users?.Count < 1)
-    {
-        <div class="d-flex justify-content-center">
-            <div class="spinner-border" role="status">
-                <span class="visually-hidden"></span>
-            </div>
+        <button class="dropdown-toggle" id="usersdropdownbutton" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" hidden></button>
+        <div id="usersdropdown" class="dropdown-menu" aria-labelledby="usersdropdown">
+            <Error ViewModel="SearchUsersViewModel"/>
+            @if (!Users.Any())
+            {
+                <div class="d-flex justify-content-center">
+                    <div class="spinner-border" role="status">
+                        <span class="visually-hidden"></span>
+                    </div>
+                </div>
+            }
+            else
+            {
+                foreach (var user in Users)
+                {
+                    <a class="dropdown-item" href="timeline/user_timeline/@user.Username">@user.Username</a>
+                }
+            }
         </div>
-    }
-    else
-    {
-        foreach (var user in _users)
-        {
-            <a class="dropdown-item" href="timeline/user_timeline/@user.Username">@user.Username</a>
-        }
-    }
-  </div>
-</div>
+    </div>
 
 @code 
 {
-    private ICollection<UserDTO> _users;
-    private string _input;
-    
+    private ICollection<UserDTO> Users { get; set; }
+
     protected override Task OnInitializedAsync()
     {
+        Users = new List<UserDTO>();
+        SearchUsersViewModel.OnInput = new EventCallback<ChangeEventArgs>
+        {
+            
+        };
         return Task.CompletedTask;
     }
 
     private async Task FetchUsers()
     {
-        _users = null;
-        if(string.IsNullOrEmpty(_input))
+        Console.WriteLine($"The input is: {SearchUsersViewModel.Input}");
+        Users = new List<UserDTO>();
+        if(string.IsNullOrEmpty(SearchUsersViewModel.Input))
         {
-            await JSRuntime.InvokeVoidAsync("closeDropdown", "usersdropdown");
+            await JSRuntime.InvokeVoidAsync("closeDropdown", "#usersdropdownbutton", "#usersdropdown");
         }
         else
         {
-            await JSRuntime.InvokeVoidAsync("openDropdown", "usersdropdown");
+            await JSRuntime.InvokeVoidAsync("openDropdown", "#usersdropdownbutton", "#usersdropdown");
+            await foreach (var user in SearchUsersViewModel.GetUsers())
+            {
+                Console.WriteLine(user);
+                Users.Add(user);
+            }
+            Console.WriteLine($"Size: {Users.Count}");
         }
-        var response = await Client.GetAsync($"user/input/?input={_input}");
-        _users = JsonSerializer.Deserialize<ICollection<UserDTO>>(response.Content.ToString()!);
     }
 }

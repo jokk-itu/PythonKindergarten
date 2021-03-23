@@ -1,0 +1,22 @@
+
+GMiniTwitApi.Server.Repositories.FollowerRepository.ReadAllAsync(string)d
+Z/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/FollowerRepository.cs'4 '(@"0*ä
+0d
+Z/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/FollowerRepository.cs) /(ˆ
+…
+d
+Z/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/FollowerRepository.cs) /( *
+%0$System.Threading.Tasks.Task<TResult>"šMicrosoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync<TSource>(System.Linq.IQueryable<TSource>, System.Threading.CancellationToken)*D"B
+@Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions*
+""*
+"""n
+d
+Z/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/FollowerRepository.cs) /(!
+""*æ
+1d
+Z/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/FollowerRepository.cs0	 0(	"{
+d
+Z/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/FollowerRepository.cs0 0(	
+implicit return:
+usernamestringB64
+2MiniTwitApi.Server.Repositories.FollowerRepository

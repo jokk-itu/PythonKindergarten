@@ -1,0 +1,63 @@
+
+FMiniTwitApi.Client.ViewModels.UserTimelineViewModel.FollowUser(string)e
+[/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/UserTimelineViewModel.cs/ /($"0*ó
+0e
+[/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/UserTimelineViewModel.cs3 4(Rÿ
+ü
+e
+[/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/UserTimelineViewModel.cs3 3(&
+
+%0bool"FMiniTwitApi.Client.ViewModels.UserTimelineViewModel.UnFollowIsDone.set*75
+3MiniTwitApi.Client.ViewModels.UserTimelineViewModel*
+""£
+ 
+e
+[/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/UserTimelineViewModel.cs4% 4(15
+%1/MiniTwitApi.Client.Models.Abstract.IFollowModel"__id*z*x5
+3MiniTwitApi.Client.ViewModels.UserTimelineViewModel"?
+_followModel/MiniTwitApi.Client.Models.Abstract.IFollowModeló
+ð
+e
+[/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/UserTimelineViewModel.cs4J 4(R
+%2string"@MiniTwitApi.Client.ViewModels.UserTimelineViewModel.Username.get*75
+3MiniTwitApi.Client.ViewModels.UserTimelineViewModelàÝ
+e
+[/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/UserTimelineViewModel.cs4% 4(S*
+%3$System.Threading.Tasks.Task<TResult>"JMiniTwitApi.Client.Models.Abstract.IFollowModel.FollowUser(string, string)*7
+5
+%1/MiniTwitApi.Client.Models.Abstract.IFollowModel*
+
+whoUsernamestring*
+
+%2string2FollowUser(string, string)ý
+ú
+e
+[/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/UserTimelineViewModel.cs4 4(S
+
+%4bool"DMiniTwitApi.Client.ViewModels.UserTimelineViewModel.FollowIsDone.set*75
+3MiniTwitApi.Client.ViewModels.UserTimelineViewModel*
+""*
+1
+2*±
+1e
+[/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/UserTimelineViewModel.cs8 8(!¼¹
+e
+[/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/UserTimelineViewModel.cs8 8(!
+%5string"System.Exception.Message.get*
+
+eSystem.Exception2Message.get€
+ý
+e
+[/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/UserTimelineViewModel.cs8 8(!
+%6string"=MiniTwitApi.Client.ViewModels.UserTimelineViewModel.Error.set*75
+3MiniTwitApi.Client.ViewModels.UserTimelineViewModel*
+
+%5string*
+2*è
+2e
+[/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/UserTimelineViewModel.cs:	 :(	"|
+e
+[/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/UserTimelineViewModel.cs: :(	
+implicit return:
+whoUsernamestringB75
+3MiniTwitApi.Client.ViewModels.UserTimelineViewModel

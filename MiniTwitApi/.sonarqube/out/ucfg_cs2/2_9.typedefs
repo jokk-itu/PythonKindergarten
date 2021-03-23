@@ -1,0 +1,8 @@
+‰
+#MiniTwitApi.Server.Pages.ErrorModel-Microsoft.AspNetCore.Mvc.RazorPages.PageModelobjectÒ
+UErrorModel(Microsoft.Extensions.Logging.ILogger<MiniTwitApi.Server.Pages.ErrorModel>)yMiniTwitApi.Server.Pages.ErrorModel.ErrorModel(Microsoft.Extensions.Logging.ILogger<MiniTwitApi.Server.Pages.ErrorModel>)6
+OnGet()+MiniTwitApi.Server.Pages.ErrorModel.OnGet()B
+RequestId.get1MiniTwitApi.Server.Pages.ErrorModel.RequestId.getB
+RequestId.set1MiniTwitApi.Server.Pages.ErrorModel.RequestId.setJ
+ShowRequestId.get5MiniTwitApi.Server.Pages.ErrorModel.ShowRequestId.getJ
+ShowRequestId.set5MiniTwitApi.Server.Pages.ErrorModel.ShowRequestId.set

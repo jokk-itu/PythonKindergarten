@@ -8,7 +8,7 @@ namespace MiniTwitApi.Client.ViewModels.Abstract
 {
     public interface IChatViewModel : IViewModel
     {
+        public string Message { get; set; }
         public new string Error { get; set; }
-
     }
 }

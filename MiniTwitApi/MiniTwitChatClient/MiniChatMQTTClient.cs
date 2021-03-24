@@ -88,7 +88,7 @@ namespace MiniTwitChatClient
             });
 
             _mqttClient.UseConnectedHandler(
-                e => _logger.LogInformation("Chat client was connected to the MQTT Brokwer"));
+                e => _logger.LogInformation("Chat client was connected to the MQTT Broker"));
             
             _mqttClient.UseDisconnectedHandler(e =>
                     _logger.LogCritical("Chat client was disconnected from the MQTT Broker. {0}: {1}", e.Exception.Message, e.Exception.StackTrace));

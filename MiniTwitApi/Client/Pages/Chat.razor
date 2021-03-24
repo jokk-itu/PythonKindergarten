@@ -2,6 +2,7 @@
 @using MiniTwitApi.Shared.Models.UserModels
 @using System.Globalization
 @using System.Text
+@using MiniTwitApi.Client.ViewModels
 @using MiniTwitApi.Client.ViewModels.Abstract
 @using MiniTwitApi.Shared
 @using MiniTwitChatClient
@@ -15,39 +16,25 @@
 
 <Error ViewModel="@ChatViewModel"/>
 
-@if (_messages.Count > 0)
-{
+<div class="chat-window">
+    <div id="scrollbox">
         @foreach (var message in _messages)
         {
-            <div class="card">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-sm-auto profilepicture">
-                            <img class="img-thumbnail" width="48" src="https://www.gravatar.com/avatar/@message.Sender?d=identicon&s=48" alt="UserPicture">
-                        </div>
-                        <div class="col-sm-auto">
-                            <h5 class="card-title"><a href="timeline/user_timeline/@message.Sender">@message.Sender</a></h5>
-                            <h6 class="card-subtitle mb-2 text-muted"> @message.Timestamp.ToString(new CultureInfo("de-De"))</h6>
-                        </div>
-                    </div>
-                <p class="card-text">@message.Content</p>
-                </div>
+            <div class="@message.CSS">
+                <div class="user">@message.Sender</div>
+                <div class="msg">@message.Content</div>
             </div>
-    }
+        }
+    </div>
+    
+</div>
+<form @onsubmit="@SendMessage">
     <div class="form-group">
-        <label for="Username">Username</label>
-        <input @bind="Message" type="text" class="form-control" id="Message" placeholder="Write your message here" />
+        <input @bind="Message" type="text" class="form-control" id="Message" placeholder="Write your message here"/>
     </div>
-    <button class="btn btn-primary" @onclick="@(SendMessage)">Send Message</button>
-}
-else
-{
-    <div class="d-flex justify-content-center">
-        <div class="spinner-border" role="status">
-            <span class="visually-hidden"></span>
-        </div>
-    </div>
-}
+    <button class="btn btn-primary">Send Message</button>
+</form>
+
 
 @code
 {
@@ -59,22 +46,25 @@ else
 
     private string _threadId;
 
-    private ICollection<ChatMessage> _messages = new List<ChatMessage>()
-    {
-        new () {Content = "test", Sender = "some user"}
-    };
+    private ICollection<ChatMessage> _messages = new List<ChatMessage>();
 
     protected override async Task OnInitializedAsync()
     {
-        _threadId = Convertions.GetThreadId(new List<string>() {SenderUsername, TargetUsername});
+        _threadId = "testing";//Convertions.GetThreadId(new List<string>() {SenderUsername, TargetUsername});
         
         await ChatClient.ConnectAsync();
-        await ChatClient.SubscribeAsync(new List<string>() { _threadId, "thread1" });
+        await ChatClient.SubscribeAsync(new List<string>() { _threadId });
         ChatClient.ReceivedMessage += message =>
         {
             Console.WriteLine($"Got message");
-            _messages.Add(message);
-            StateHasChanged();
+            
+            // Check if we sent this message ourselves
+            if (message.Sender != SenderUsername)
+            {
+                message.Mine = false;
+                _messages.Add(message);
+                StateHasChanged();   
+            }
         };
     }
 
@@ -83,13 +73,17 @@ else
     
     private async Task SendMessageAsync()
     {
-        await ChatClient.PublishMessageAsync(new ChatMessage()
+        var message = new ChatMessage()
         {
             Sender = SenderUsername,
             Content = Message,
             ThreadId = _threadId,
-            Timestamp = DateTime.Now
-        });
+            Mine = true
+        };
+        _messages.Add(message);
+        
+        await ChatClient.ConnectAsync();
+        await ChatClient.PublishMessageAsync(message);
         
         // Clear field
         Message = "";

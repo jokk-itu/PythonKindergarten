@@ -10,6 +10,7 @@ namespace MiniTwitApi.Client.ViewModels
 {
     public class ChatViewModel : IChatViewModel
     {
+        public string Message { get; set; }
         public string Error { get; set; }
 
         public ChatViewModel()

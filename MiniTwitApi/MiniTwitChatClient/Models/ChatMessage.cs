@@ -8,6 +8,9 @@ namespace MiniTwitChatClient.Models
         [JsonPropertyName("threadId")] public string ThreadId { get; set; }
         [JsonPropertyName("sender")] public string Sender { get; set; }
         [JsonPropertyName("content")] public string Content { get; set; }
-        [JsonPropertyName("timestamp")] public DateTime Timestamp { get; set; }
+        [JsonPropertyName("timestamp")] public DateTime Timestamp { get; set; } = DateTime.Now;
+        
+        [JsonIgnore] public bool Mine { get; set; }
+        [JsonIgnore] public string CSS => Mine ? "sent" : "received";
     }
 }

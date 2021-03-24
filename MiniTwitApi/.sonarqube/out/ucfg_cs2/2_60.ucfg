@@ -1,0 +1,55 @@
+
+&MiniTwitApi.Server.Latest.Update(long)K
+A/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Latest.cs
+ 
+("0*ò
+0K
+A/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Latest.cs (š
+—
+K
+A/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Latest.cs (
+%0object"__id*4*2
+MiniTwitApi.Server.Latest"
+	_fileLockobject*
+1*«
+1K
+A/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Latest.cs (†ƒ
+K
+A/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Latest.cs# (A
+%1System.IO.StreamWriter"System.IO.StreamWriter¹
+¶
+K
+A/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Latest.cs' (3
+
+%2void"+System.IO.StreamWriter.StreamWriter(string)*
+
+%1System.IO.StreamWriter*
+
+latest.txt˜
+•
+K
+A/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Latest.cs (A 
+writerSystem.IO.StreamWriter"__id*
+
+%1System.IO.StreamWriterÇÄ
+K
+A/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Latest.cs (-
+
+%3void")System.IO.StreamWriter.WriteLine(string?)*"
+ 
+writerSystem.IO.StreamWriter*
+""2WriteLine(string?)©¦
+K
+A/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Latest.cs (
+
+%4void"System.IO.StreamWriter.Close()*"
+ 
+writerSystem.IO.StreamWriter2Close()*
+2*´
+2K
+A/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Latest.cs	 (	"b
+K
+A/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Latest.cs (	
+implicit return:
+latestlongB
+MiniTwitApi.Server.Latest

@@ -1,0 +1,131 @@
+
+HMiniTwitApi.Server.Controllers.MessageController.GetMsgs(int, int, long)b
+X/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/MessageController.cs A  (H"5*¶
+0b
+X/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/MessageController.cs# %(¾
+»
+b
+X/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/MessageController.cs#! #(4A
+%0;MiniTwitApi.Server.Repositories.Abstract.IMessageRepository"__id*‹*ˆ2
+0MiniTwitApi.Server.Controllers.MessageController"R
+_messagesRepository;MiniTwitApi.Server.Repositories.Abstract.IMessageRepositoryÔÑ
+b
+X/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/MessageController.cs#! #(K*
+%1$System.Threading.Tasks.Task<TResult>"RMiniTwitApi.Server.Repositories.Abstract.IMessageRepository.ReadAllAsync(int, int)*C
+A
+%0;MiniTwitApi.Server.Repositories.Abstract.IMessageRepository*
+""*
+""2ReadAllAsync(int, int)¬
+©
+b
+X/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/MessageController.cs# #(K5
+messages)System.Collections.Generic.ICollection<T>"__id*
+""*
+1
+2*œ
+1c
+X/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/MessageController.cs% %(£
+ 
+b
+X/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/MessageController.cs% %(+7
+%21Microsoft.Extensions.Configuration.IConfiguration"__id*{*y2
+0MiniTwitApi.Server.Controllers.MessageController"C
+_configuration1Microsoft.Extensions.Configuration.IConfiguration—”
+b
+X/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/MessageController.cs% %(:
+%3string"BMicrosoft.Extensions.Configuration.IConfiguration.this[string].get*9
+7
+%21Microsoft.Extensions.Configuration.IConfiguration*
+ApiSafeList2this[string].getº
+·
+b
+X/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/MessageController.cs%D %(MD
+%4>Microsoft.AspNetCore.Mvc.Infrastructure.IActionContextAccessor"__id*„*2
+0MiniTwitApi.Server.Controllers.MessageController"K
+	_accessor>Microsoft.AspNetCore.Mvc.Infrastructure.IActionContextAccessorÂ¿
+b
+X/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/MessageController.cs%D %([,
+%5&Microsoft.AspNetCore.Mvc.ActionContext"PMicrosoft.AspNetCore.Mvc.Infrastructure.IActionContextAccessor.ActionContext.get*F
+D
+%4>Microsoft.AspNetCore.Mvc.Infrastructure.IActionContextAccessor2ActionContext.getü
+ù
+b
+X/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/MessageController.cs%D %(g+
+%6%Microsoft.AspNetCore.Http.HttpContext"6Microsoft.AspNetCore.Mvc.ActionContext.HttpContext.get*.
+,
+%5&Microsoft.AspNetCore.Mvc.ActionContextü
+ù
+b
+X/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/MessageController.cs%D %(r.
+%7(Microsoft.AspNetCore.Http.ConnectionInfo"4Microsoft.AspNetCore.Http.HttpContext.Connection.get*-
++
+%6%Microsoft.AspNetCore.Http.HttpContextô
+ñ
+c
+X/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/MessageController.cs%D %(‚
+%8System.Net.IPAddress"<Microsoft.AspNetCore.Http.ConnectionInfo.RemoteIpAddress.get*0
+.
+%7(Microsoft.AspNetCore.Http.ConnectionInfoÁ¾
+c
+X/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/MessageController.cs%D %(
+%9string"System.Net.IPAddress.ToString()*
+
+%8System.Net.IPAddress2
+ToString()®
+«
+c
+X/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/MessageController.cs% %(Ž
+%10bool"string.Contains(string)*
+
+%3string*
+
+%9string*
+3
+2*‹
+3b
+X/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/MessageController.cs& &(2Ñ
+Î
+b
+X/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/MessageController.cs& &($ 
+%11MiniTwitApi.Server.Latest"'MiniTwitApi.Server.Latest.GetInstance()*"
+MiniTwitApi.Server.LatestÈ
+Å
+b
+X/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/MessageController.cs& &(3
+%12void"&MiniTwitApi.Server.Latest.Update(long)*"
+ 
+%11MiniTwitApi.Server.Latest*
+""*
+2*À
+2b
+X/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/MessageController.cs) )(½º
+b
+X/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/MessageController.cs) )(.
+%13'Microsoft.AspNetCore.Mvc.OkObjectResult"2Microsoft.AspNetCore.Mvc.ControllerBase.Ok(object)*+)
+'Microsoft.AspNetCore.Mvc.ControllerBase*7
+5
+messages)System.Collections.Generic.ICollection<T>2
+Ok(object)"–
+b
+X/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/MessageController.cs) )( 0
+.
+%13'Microsoft.AspNetCore.Mvc.OkObjectResult*â
+4b
+X/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/MessageController.cs*	 *(	"y
+b
+X/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/MessageController.cs* *(	
+implicit return*…
+5d
+X/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/MessageController.cs ‹  (‹”
+‘
+b
+X/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/MessageController.cs A  (H
+%14"__entrypoint*
+""*
+""*
+""*
+0:	
+noint:
+skipint:
+latestlongB42
+0MiniTwitApi.Server.Controllers.MessageController

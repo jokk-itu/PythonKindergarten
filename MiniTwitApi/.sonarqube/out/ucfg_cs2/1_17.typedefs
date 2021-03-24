@@ -1,0 +1,11 @@
+÷
+#MiniTwitApi.Client.Pages.MyTimeline-Microsoft.AspNetCore.Components.ComponentBaseobjectÀ
+LBuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)pMiniTwitApi.Client.Pages.MyTimeline.BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)P
+OnInitializedAsync()8MiniTwitApi.Client.Pages.MyTimeline.OnInitializedAsync()@
+MyTimeline()0MiniTwitApi.Client.Pages.MyTimeline.MyTimeline()V
+MyTimelineViewModel.get;MiniTwitApi.Client.Pages.MyTimeline.MyTimelineViewModel.getV
+MyTimelineViewModel.set;MiniTwitApi.Client.Pages.MyTimeline.MyTimelineViewModel.setB
+JSRuntime.get1MiniTwitApi.Client.Pages.MyTimeline.JSRuntime.getB
+JSRuntime.set1MiniTwitApi.Client.Pages.MyTimeline.JSRuntime.setD
+HttpClient.get2MiniTwitApi.Client.Pages.MyTimeline.HttpClient.getD
+HttpClient.set2MiniTwitApi.Client.Pages.MyTimeline.HttpClient.set

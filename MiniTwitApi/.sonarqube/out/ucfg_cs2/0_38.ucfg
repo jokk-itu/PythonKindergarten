@@ -1,0 +1,47 @@
+
+<MiniTwitApi.Shared.EpochConverter.ToMsEpoch(System.DateTime)S
+I/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/EpochConverter.cs ($"0*
+0S
+I/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/EpochConverter.cs (=}
+S
+I/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/EpochConverter.cs& (>
+%0System.DateTime"System.DateTime¹
+¶
+S
+I/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/EpochConverter.cs* (2
+
+%1void"'System.DateTime.DateTime(int, int, int)*
+
+%0System.DateTime*2²*2*2ú
+÷
+S
+I/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/EpochConverter.cs (>
+%2System.TimeSpan"<System.DateTime.operator -(System.DateTime, System.DateTime)*"
+System.DateTime*
+
+dateTimeSystem.DateTime*
+
+%0System.DateTime¦
+£
+S
+I/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/EpochConverter.cs (Q
+%3double"%System.TimeSpan.TotalMilliseconds.get*
+
+%2System.TimeSpans
+q
+S
+I/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/EpochConverter.cs (Q
+%4"__id*
+
+%3double"]
+S
+I/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/EpochConverter.cs (R
+
+%4*Ä
+1S
+I/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/EpochConverter.cs	 (	"j
+S
+I/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/EpochConverter.cs (	
+implicit return:
+dateTimeSystem.DateTimeB%"#
+!MiniTwitApi.Shared.EpochConverter

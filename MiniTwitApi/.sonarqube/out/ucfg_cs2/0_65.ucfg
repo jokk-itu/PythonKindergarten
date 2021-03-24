@@ -1,0 +1,93 @@
+
+OMiniTwitApi.Shared.Models.UserModels.UserDTO.GenerateProfilePictureLink(string)^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/Models/UserModels/UserDTO.cs (7"0*È
+0^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/Models/UserModels/UserDTO.cs "(ì
+ê
+^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/Models/UserModels/UserDTO.cs ()
+%0string"string.Trim()*
+
+emailstringì
+ê
+^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/Models/UserModels/UserDTO.cs (3
+%1string"string.ToLower()*
+
+%0stringè
+å
+^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/Models/UserModels/UserDTO.cs (3
+
+fixedEmailstring"__id*
+
+%1stringõ
+ò
+^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/Models/UserModels/UserDTO.cs (M
+%2string"__concat*
+""*
+
+
+fixedEmailstring∂
+≥
+^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/Models/UserModels/UserDTO.cs (N
+
+%3void"!System.Console.WriteLine(string?)*"
+System.Console*
+
+%2string˘
+ˆ
+^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/Models/UserModels/UserDTO.cs (*
+%4string"<MiniTwitApi.Shared.Models.UserModels.UserDTO.MD5Hash(string)*0".
+,MiniTwitApi.Shared.Models.UserModels.UserDTO*
+
+
+fixedEmailstringâ
+Ü
+^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/Models/UserModels/UserDTO.cs (*
+hashstring"__id*
+
+%4stringï
+í
+^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/Models/UserModels/UserDTO.cs   (P
+%5string"__concat*
+""*
+
+hashstringì
+ê
+^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/Models/UserModels/UserDTO.cs   (P
+%6string"__concat*
+
+%5string*
+""â
+Ü
+^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/Models/UserModels/UserDTO.cs   (P
+linkstring"__id*
+
+%6string∏
+µ
+^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/Models/UserModels/UserDTO.cs! !(#
+
+%7void"!System.Console.WriteLine(string?)*"
+System.Console*
+
+linkstring"r
+^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/Models/UserModels/UserDTO.cs" "(
+
+linkstring*⁄
+1^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/Models/UserModels/UserDTO.cs#	 #(	"u
+^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/Models/UserModels/UserDTO.cs# #(	
+implicit return:
+emailstringB0".
+,MiniTwitApi.Shared.Models.UserModels.UserDTO

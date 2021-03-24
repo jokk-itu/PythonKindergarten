@@ -77,6 +77,12 @@ namespace MiniTwitApi.Server.Repositories
             };
         }
 
-
+        public async Task<ICollection<UserDTO>> ReadSomeAsync(string input)
+        {
+            return await _context.Users.
+                Where(u => u.Username.Contains(input))
+                .Take(5).Select(u => new UserDTO() {Username = u.Username})
+                .ToListAsync();
+        }
     }
 }

@@ -1,0 +1,11 @@
+‡
+!MiniTwitApi.Client.Pages.Register-Microsoft.AspNetCore.Components.ComponentBaseobject¾
+LBuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)nMiniTwitApi.Client.Pages.Register.BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder):
+
+Register(),MiniTwitApi.Client.Pages.Register.Register()B
+NavManager.get0MiniTwitApi.Client.Pages.Register.NavManager.getB
+NavManager.set0MiniTwitApi.Client.Pages.Register.NavManager.set@
+JSRuntime.get/MiniTwitApi.Client.Pages.Register.JSRuntime.get@
+JSRuntime.set/MiniTwitApi.Client.Pages.Register.JSRuntime.setP
+RegisterViewModel.get7MiniTwitApi.Client.Pages.Register.RegisterViewModel.getP
+RegisterViewModel.set7MiniTwitApi.Client.Pages.Register.RegisterViewModel.set

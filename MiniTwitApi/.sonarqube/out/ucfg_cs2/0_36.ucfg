@@ -1,0 +1,39 @@
+
+CMiniTwitApi.Shared.Models.GetLatestResponse.GetLatestResponse(long)]
+S/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/Models/GetLatestResponse.cs	 	( "1*g
+1]
+S/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/Models/GetLatestResponse.cs
+ 
+(*
+0*³
+0]
+S/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/Models/GetLatestResponse.cs
+ 
+(ß
+Ü
+]
+S/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/Models/GetLatestResponse.cs
+ 
+(
+
+%0long"6MiniTwitApi.Shared.Models.GetLatestResponse.Latest.set*/-
++MiniTwitApi.Shared.Models.GetLatestResponse*
+"""m
+]
+S/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/Models/GetLatestResponse.cs
+ 
+(
+
+
+%0long*Ø
+2]
+S/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/Models/GetLatestResponse.cs
+ 
+("t
+]
+S/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/Models/GetLatestResponse.cs
+ 
+(
+implicit return:
+latestlongB/-
++MiniTwitApi.Shared.Models.GetLatestResponse

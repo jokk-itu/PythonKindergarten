@@ -1,0 +1,11 @@
+N
+E/home/joachim/git/PythonKindergarten/MiniTwitApi.Tests/BCryptTests.csutf-8N
+E/home/joachim/git/PythonKindergarten/MiniTwitApi.Tests/LatestTests.csutf-8V
+M/home/joachim/git/PythonKindergarten/MiniTwitApi.Tests/Repositories/DbTest.csutf-8g
+^/home/joachim/git/PythonKindergarten/MiniTwitApi.Tests/Repositories/FollowerRepositoryTests.csutf-8f
+]/home/joachim/git/PythonKindergarten/MiniTwitApi.Tests/Repositories/MessageRepositoryTests.csutf-8a
+X/home/joachim/git/PythonKindergarten/MiniTwitApi.Tests/Repositories/TestDataGenerator.csutf-8c
+Z/home/joachim/git/PythonKindergarten/MiniTwitApi.Tests/Repositories/UserRepositoryTests.csutf-8|
+q/home/joachim/.nuget/packages/microsoft.net.test.sdk/16.7.1/build/netcoreapp2.1/Microsoft.NET.Test.Sdk.Program.csutf-8Å
+v/home/joachim/git/PythonKindergarten/MiniTwitApi.Tests/obj/Debug/net5.0/.NETCoreApp,Version=v5.0.AssemblyAttributes.csutf-8t
+i/home/joachim/git/PythonKindergarten/MiniTwitApi.Tests/obj/Debug/net5.0/MiniTwitApi.Tests.AssemblyInfo.csutf-8

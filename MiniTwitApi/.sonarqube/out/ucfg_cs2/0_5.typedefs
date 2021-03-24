@@ -1,0 +1,9 @@
+ñ
+%MiniTwitApi.Shared.Models.FollowerDTOobjectD
+FollowerDTO()3MiniTwitApi.Shared.Models.FollowerDTO.FollowerDTO()<
+	WhoId.get/MiniTwitApi.Shared.Models.FollowerDTO.WhoId.get<
+	WhoId.set/MiniTwitApi.Shared.Models.FollowerDTO.WhoId.set>
+
+WhomId.get0MiniTwitApi.Shared.Models.FollowerDTO.WhomId.get>
+
+WhomId.set0MiniTwitApi.Shared.Models.FollowerDTO.WhomId.set

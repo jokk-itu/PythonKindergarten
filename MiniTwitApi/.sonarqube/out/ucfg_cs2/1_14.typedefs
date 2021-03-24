@@ -1,0 +1,16 @@
+­
+
+1MiniTwitApi.Client.ViewModels.MyTimelineViewModelobjectŸ
+tMyTimelineViewModel(MiniTwitApi.Client.Models.Abstract.IMessageModel, MiniTwitApi.Client.Models.Abstract.IUserModel)¦MiniTwitApi.Client.ViewModels.MyTimelineViewModel.MyTimelineViewModel(MiniTwitApi.Client.Models.Abstract.IMessageModel, MiniTwitApi.Client.Models.Abstract.IUserModel)P
+PostMessage()?MiniTwitApi.Client.ViewModels.MyTimelineViewModel.PostMessage()X
+GetLoggedInUser()CMiniTwitApi.Client.ViewModels.MyTimelineViewModel.GetLoggedInUser()L
+Message.get=MiniTwitApi.Client.ViewModels.MyTimelineViewModel.Message.getL
+Message.set=MiniTwitApi.Client.ViewModels.MyTimelineViewModel.Message.setV
+LoggedInUser.getBMiniTwitApi.Client.ViewModels.MyTimelineViewModel.LoggedInUser.getV
+LoggedInUser.setBMiniTwitApi.Client.ViewModels.MyTimelineViewModel.LoggedInUser.setH
+	Error.get;MiniTwitApi.Client.ViewModels.MyTimelineViewModel.Error.getH
+	Error.set;MiniTwitApi.Client.ViewModels.MyTimelineViewModel.Error.setX
+IsMessageSent.getCMiniTwitApi.Client.ViewModels.MyTimelineViewModel.IsMessageSent.getX
+IsMessageSent.setCMiniTwitApi.Client.ViewModels.MyTimelineViewModel.IsMessageSent.setF
+Path.get:MiniTwitApi.Client.ViewModels.MyTimelineViewModel.Path.getF
+Path.set:MiniTwitApi.Client.ViewModels.MyTimelineViewModel.Path.set

@@ -1,0 +1,10 @@
+·
+#MiniTwitApi.Client.Models.UserModelobjectr
+%UserModel(System.Net.Http.HttpClient)IMiniTwitApi.Client.Models.UserModel.UserModel(System.Net.Http.HttpClient)¨
+@RegisterUser(MiniTwitApi.Shared.Models.UserModels.CreateUserDTO)dMiniTwitApi.Client.Models.UserModel.RegisterUser(MiniTwitApi.Shared.Models.UserModels.CreateUserDTO) 
+<LoginUser(MiniTwitApi.Shared.Models.UserModels.LoginUserDTO)`MiniTwitApi.Client.Models.UserModel.LoginUser(MiniTwitApi.Shared.Models.UserModels.LoginUserDTO)J
+GetLoggedInUser()5MiniTwitApi.Client.Models.UserModel.GetLoggedInUser()<
+
+Client.get.MiniTwitApi.Client.Models.UserModel.Client.get<
+
+Client.set.MiniTwitApi.Client.Models.UserModel.Client.set

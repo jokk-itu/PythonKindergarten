@@ -1,0 +1,18 @@
+
+1MiniTwitApi.Server.Entities.Context.Followers.setU
+K/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Entities/Context.cs0 (3"0*š
+0U
+K/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Entities/Context.cs4 (4ý
+ú
+U
+K/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Entities/Context.cs0 (4b%
+#MiniTwitApi.Server.Entities.Context"9
+	Followers,Microsoft.EntityFrameworkCore.DbSet<TEntity>"__id*7
+5
+value,Microsoft.EntityFrameworkCore.DbSet<TEntity>"½
+U
+K/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Entities/Context.cs0 (4d*b%
+#MiniTwitApi.Server.Entities.Context"9
+	Followers,Microsoft.EntityFrameworkCore.DbSet<TEntity>:5
+value,Microsoft.EntityFrameworkCore.DbSet<TEntity>B'%
+#MiniTwitApi.Server.Entities.Context

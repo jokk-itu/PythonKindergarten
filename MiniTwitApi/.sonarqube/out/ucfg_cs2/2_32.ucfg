@@ -1,0 +1,63 @@
+
+¬MiniTwitApi.Server.Controllers.MessageController.MessageController(MiniTwitApi.Server.Repositories.Abstract.IMessageRepository, MiniTwitApi.Server.Repositories.Abstract.IUserRepository, Microsoft.Extensions.Configuration.IConfiguration, Microsoft.AspNetCore.Mvc.Infrastructure.IActionContextAccessor)b
+X/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/MessageController.cs ( "3*ã
+1b
+X/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/MessageController.cs	 (	u
+s
+
+%0void"8Microsoft.AspNetCore.Mvc.ControllerBase.ControllerBase()*+)
+'Microsoft.AspNetCore.Mvc.ControllerBase*
+0*ñ
+
+0b
+X/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/MessageController.cs ( Í
+Ê
+b
+X/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/MessageController.cs (4ˆ2
+0MiniTwitApi.Server.Controllers.MessageController"R
+_messagesRepository;MiniTwitApi.Server.Repositories.Abstract.IMessageRepository"__id*S
+Q
+messagesRepository;MiniTwitApi.Server.Repositories.Abstract.IMessageRepository¿
+¼
+b
+X/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/MessageController.cs (,2
+0MiniTwitApi.Server.Controllers.MessageController"K
+_userRepository8MiniTwitApi.Server.Repositories.Abstract.IUserRepository"__id*L
+J
+userRepository8MiniTwitApi.Server.Repositories.Abstract.IUserRepository®
+«
+b
+X/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/MessageController.cs (*y2
+0MiniTwitApi.Server.Controllers.MessageController"C
+_configuration1Microsoft.Extensions.Configuration.IConfiguration"__id*D
+B
+configuration1Microsoft.Extensions.Configuration.IConfiguration¿
+¼
+b
+X/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/MessageController.cs ( 2
+0MiniTwitApi.Server.Controllers.MessageController"K
+	_accessor>Microsoft.AspNetCore.Mvc.Infrastructure.IActionContextAccessor"__id*L
+J
+accessor>Microsoft.AspNetCore.Mvc.Infrastructure.IActionContextAccessor*
+2*â
+2b
+X/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/MessageController.cs	 (	"y
+b
+X/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/MessageController.cs (	
+implicit return*þ
+3b
+X/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/MessageController.csJ (J
+Œ
+b
+X/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/MessageController.cs ( 
+%1"__entrypoint*D
+B
+configuration1Microsoft.Extensions.Configuration.IConfiguration*L
+J
+accessor>Microsoft.AspNetCore.Mvc.Infrastructure.IActionContextAccessor*
+1:Q
+messagesRepository;MiniTwitApi.Server.Repositories.Abstract.IMessageRepository:J
+userRepository8MiniTwitApi.Server.Repositories.Abstract.IUserRepository:B
+configuration1Microsoft.Extensions.Configuration.IConfiguration:J
+accessor>Microsoft.AspNetCore.Mvc.Infrastructure.IActionContextAccessorB42
+0MiniTwitApi.Server.Controllers.MessageController

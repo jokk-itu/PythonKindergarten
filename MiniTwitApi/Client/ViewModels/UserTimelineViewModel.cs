@@ -10,13 +10,9 @@ namespace MiniTwitApi.Client.ViewModels
         public string Username { get; set; }
         public string Path { get; set; }
         public string Error { get; set; }
-        
         public bool IsFollowed { get; set; }
-
         public bool IsUnfollowed { get; set; }
-        
         public bool FollowIsDone { get; set; }
-        
         public bool UnFollowIsDone { get; set; }
         public int FollowsCount { get; set; }
 

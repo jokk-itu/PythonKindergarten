@@ -1,0 +1,106 @@
+
+eMiniTwitApi.Server.Repositories.FollowerRepository.DeleteAsync(MiniTwitApi.Shared.Models.FollowerDTO)d
+Z/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/FollowerRepository.cs2 2(*"0*Õ
+0d
+Z/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/FollowerRepository.cs4 6( é
+ã
+d
+Z/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/FollowerRepository.cs4" 4(**
+%0$MiniTwitApi.Server.Entities.IContext"?MiniTwitApi.Server.Repositories.FollowerRepository._context.get*64
+2MiniTwitApi.Server.Repositories.FollowerRepositoryéã
+d
+Z/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/FollowerRepository.cs4" 4(42
+%1,Microsoft.EntityFrameworkCore.DbSet<TEntity>"2MiniTwitApi.Server.Entities.IContext.Followers.get*,
+*
+%0$MiniTwitApi.Server.Entities.IContext2Followers.get⁄
+◊
+d
+Z/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/FollowerRepository.cs4? 4(M	
+%2int"/MiniTwitApi.Shared.Models.FollowerDTO.WhoId.get*3
+1
+follower%MiniTwitApi.Shared.Models.FollowerDTO€
+ÿ
+d
+Z/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/FollowerRepository.cs4O 4(^	
+%3int"0MiniTwitApi.Shared.Models.FollowerDTO.WhomId.get*3
+1
+follower%MiniTwitApi.Shared.Models.FollowerDTOœÃ
+d
+Z/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/FollowerRepository.cs4" 4(_/
+%4)System.Threading.Tasks.ValueTask<TResult>"GMicrosoft.EntityFrameworkCore.DbSet<TEntity>.FindAsync(params object[])*4
+2
+%1,Microsoft.EntityFrameworkCore.DbSet<TEntity>*
+	
+%2int*
+	
+%3int2FindAsync(params object[])™
+ß
+d
+Z/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/FollowerRepository.cs4 4(_1
+	_follower$MiniTwitApi.Server.Entities.Follower"__id*
+""*
+1
+2*Î
+1d
+Z/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/FollowerRepository.cs8 8(d£†
+d
+Z/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/FollowerRepository.cs8 8(e
+%5System.ArgumentException"System.ArgumentException‘
+—
+d
+Z/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/FollowerRepository.cs8 8(+
+
+%6void"3System.ArgumentException.ArgumentException(string?)* 
+
+%5System.ArgumentException*
+""*
+3*¬
+2d
+Z/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/FollowerRepository.cs; >("é
+ã
+d
+Z/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/FollowerRepository.cs; ;(*
+%7$MiniTwitApi.Server.Entities.IContext"?MiniTwitApi.Server.Repositories.FollowerRepository._context.get*64
+2MiniTwitApi.Server.Repositories.FollowerRepositoryéã
+d
+Z/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/FollowerRepository.cs; ;(2
+%8,Microsoft.EntityFrameworkCore.DbSet<TEntity>"2MiniTwitApi.Server.Entities.IContext.Followers.get*,
+*
+%7$MiniTwitApi.Server.Entities.IContext2Followers.getÏÈ
+d
+Z/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/FollowerRepository.cs; ;(0G
+%9AMicrosoft.EntityFrameworkCore.ChangeTracking.EntityEntry<TEntity>"<Microsoft.EntityFrameworkCore.DbSet<TEntity>.Remove(TEntity)*4
+2
+%8,Microsoft.EntityFrameworkCore.DbSet<TEntity>*3
+1
+	_follower$MiniTwitApi.Server.Entities.Follower2Remove(TEntity)è
+å
+d
+Z/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/FollowerRepository.cs= =(+
+%10$MiniTwitApi.Server.Entities.IContext"?MiniTwitApi.Server.Repositories.FollowerRepository._context.get*64
+2MiniTwitApi.Server.Repositories.FollowerRepositoryﬁ€
+d
+Z/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/FollowerRepository.cs= =(-+
+%11$System.Threading.Tasks.Task<TResult>"YMiniTwitApi.Server.Entities.IContext.SaveChangesAsync(System.Threading.CancellationToken)*-
++
+%10$MiniTwitApi.Server.Entities.IContext*
+""24SaveChangesAsync(System.Threading.CancellationToken)‹
+Ÿ
+d
+Z/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/FollowerRepository.cs> >("
+
+%12int"0MiniTwitApi.Shared.Models.FollowerDTO.WhomId.get*3
+1
+follower%MiniTwitApi.Shared.Models.FollowerDTO"t
+d
+Z/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/FollowerRepository.cs> >(#
+
+
+%12int*Ê
+3d
+Z/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/FollowerRepository.cs?	 ?(	"{
+d
+Z/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/FollowerRepository.cs? ?(	
+implicit return:1
+follower%MiniTwitApi.Shared.Models.FollowerDTOB64
+2MiniTwitApi.Server.Repositories.FollowerRepository

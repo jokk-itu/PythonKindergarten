@@ -1,0 +1,27 @@
+Product projects
+---------------------------------------
+/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/MiniTwitApi.Shared.csproj
+/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/MiniTwitApi.Client.csproj
+/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/MiniTwitApi.Server.csproj
+
+
+Test projects
+---------------------------------------
+/home/joachim/git/PythonKindergarten/MiniTwitApi.Tests/MiniTwitApi.Tests.csproj
+
+
+Invalid projects
+---------------------------------------
+{none}
+
+
+Skipped projects
+---------------------------------------
+{none}
+
+
+Excluded projects
+---------------------------------------
+{none}
+
+

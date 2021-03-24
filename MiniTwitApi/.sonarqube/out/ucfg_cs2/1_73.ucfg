@@ -1,0 +1,28 @@
+
+DMiniTwitApi.Client.ViewModels.MessageViewModel.GenerateDateTime(int)`
+V/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/MessageViewModel.cs (("0*‚
+0`
+V/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/MessageViewModel.cs (?Û
+Ø
+`
+V/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/MessageViewModel.cs (@
+%0System.DateTimeOffset"4System.DateTimeOffset.FromUnixTimeMilliseconds(long)*"
+System.DateTimeOffset*
+""¿
+¼
+`
+V/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/MessageViewModel.cs (I
+%1System.DateTime""System.DateTimeOffset.DateTime.get*
+
+%0System.DateTimeOffset"{
+`
+V/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/MessageViewModel.cs (J
+
+%1System.DateTime*Þ
+1`
+V/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/MessageViewModel.cs 	  (	"w
+`
+V/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/MessageViewModel.cs   (	
+implicit return:
+dateintB20
+.MiniTwitApi.Client.ViewModels.MessageViewModel

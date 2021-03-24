@@ -1,0 +1,7 @@
+Â
+.MiniTwitApi.Client.ViewModels.MessageViewModelobject·
+BMessageViewModel(MiniTwitApi.Client.Models.Abstract.IMessageModel)qMiniTwitApi.Client.ViewModels.MessageViewModel.MessageViewModel(MiniTwitApi.Client.Models.Abstract.IMessageModel)a
+RequestMessages(string)FMiniTwitApi.Client.ViewModels.MessageViewModel.RequestMessages(string)]
+GenerateDateTime(int)DMiniTwitApi.Client.ViewModels.MessageViewModel.GenerateDateTime(int)E
+	Error.get8MiniTwitApi.Client.ViewModels.MessageViewModel.Error.getE
+	Error.set8MiniTwitApi.Client.ViewModels.MessageViewModel.Error.set

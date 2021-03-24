@@ -1,0 +1,67 @@
+
++MiniTwitApi.Server.Pages.ErrorModel.OnGet()W
+M/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Pages/Error.cshtml.cs ("0*°
+0W
+M/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Pages/Error.cshtml.cs ((É
+Æ
+W
+M/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Pages/Error.cshtml.cs ((!
+%0System.Diagnostics.Activity"'System.Diagnostics.Activity.Current.get*"
+System.Diagnostics.Activity*
+1
+2*—
+2W
+M/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Pages/Error.cshtml.cs) (,³
+°
+W
+M/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Pages/Error.cshtml.cs* (,
+%1string""System.Diagnostics.Activity.Id.get*#
+!
+%0System.Diagnostics.Activity*
+1*d
+1W
+M/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Pages/Error.cshtml.cs	 (	*
+3
+4*¸
+3W
+M/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Pages/Error.cshtml.cs0 (Kû
+ø
+W
+M/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Pages/Error.cshtml.cs0 (;+
+%5%Microsoft.AspNetCore.Http.HttpContext"=Microsoft.AspNetCore.Mvc.RazorPages.PageModel.HttpContext.get*1/
+-Microsoft.AspNetCore.Mvc.RazorPages.PageModelÔ
+Ñ
+W
+M/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Pages/Error.cshtml.cs0 (K
+%6string"9Microsoft.AspNetCore.Http.HttpContext.TraceIdentifier.get*-
++
+%5%Microsoft.AspNetCore.Http.HttpContext
+}
+W
+M/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Pages/Error.cshtml.cs0 (K
+%4string"__id*
+
+%6string
+}
+W
+M/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Pages/Error.cshtml.cs0 (K
+%2string"__id*
+
+%4string*
+4*º
+4W
+M/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Pages/Error.cshtml.cs (KÖ
+Ó
+W
+M/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Pages/Error.cshtml.cs (K
+%7string"1MiniTwitApi.Server.Pages.ErrorModel.RequestId.set*'%
+#MiniTwitApi.Server.Pages.ErrorModel*
+
+%2string*
+5*Ì
+5W
+M/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Pages/Error.cshtml.cs	 (	"n
+W
+M/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Pages/Error.cshtml.cs (	
+implicit returnB'%
+#MiniTwitApi.Server.Pages.ErrorModel

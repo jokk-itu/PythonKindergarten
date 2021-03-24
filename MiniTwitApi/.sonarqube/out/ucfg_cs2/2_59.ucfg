@@ -1,0 +1,29 @@
+
+€MiniTwitApi.Server.Entities.Context.Context(Microsoft.EntityFrameworkCore.DbContextOptions<MiniTwitApi.Server.Entities.Context>)U
+K/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Entities/Context.cs ("1*_
+1U
+K/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Entities/Context.cs
+ (
+*
+0*¦
+0U
+K/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Entities/Context.csA (VÄ
+Á
+U
+K/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Entities/Context.csA (W
+
+%0void"aMicrosoft.EntityFrameworkCore.DbContext.DbContext(Microsoft.EntityFrameworkCore.DbContextOptions)*+)
+'Microsoft.EntityFrameworkCore.DbContext*L
+J
+contextOptions8Microsoft.EntityFrameworkCore.DbContextOptions<TContext>*
+2*È
+2U
+K/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Entities/Context.cs
+ (
+"l
+U
+K/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Entities/Context.cs	 (
+
+implicit return:J
+contextOptions8Microsoft.EntityFrameworkCore.DbContextOptions<TContext>B'%
+#MiniTwitApi.Server.Entities.Context

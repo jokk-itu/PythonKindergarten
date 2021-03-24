@@ -1,0 +1,66 @@
+
+:MiniTwitApi.Client.Models.MessageModel.GetMessages(string)X
+N/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/MessageModel.cs3 (>"0*Â	
+0X
+N/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/MessageModel.cs ( ß
+Ü
+X
+N/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/MessageModel.cs( (/ 
+%0System.Net.Http.HttpClient"2MiniTwitApi.Client.Models.MessageModel._client.get**(
+&MiniTwitApi.Client.Models.MessageModeló
+ð
+X
+N/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/MessageModel.cs( (D*
+%1$System.Threading.Tasks.Task<TResult>"2System.Net.Http.HttpClient.GetStringAsync(string?)*"
+ 
+%0System.Net.Http.HttpClient*
+
+pathstring†
+ƒ
+X
+N/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/MessageModel.cs (D
+messagesFromApistring"__id*
+""·
+´
+X
+N/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/MessageModel.cs (X(
+%2"System.Collections.Generic.List<T>"dSystem.Text.Json.JsonSerializer.Deserialize<TValue>(string, System.Text.Json.JsonSerializerOptions?)*#"!
+System.Text.Json.JsonSerializer*
+
+messagesFromApistring*
+""¿
+¼
+X
+N/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/MessageModel.cs (X.
+messages"System.Collections.Generic.List<T>"__id**
+(
+%2"System.Collections.Generic.List<T>*
+1
+2*²
+1X
+N/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/MessageModel.cs (;‡„
+X
+N/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/MessageModel.cs (<
+%3System.Exception"System.ExceptionÃ
+À
+X
+N/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/MessageModel.cs (#
+
+%4void"#System.Exception.Exception(string?)*
+
+%3System.Exception*
+No messages available*
+3*ì
+2X
+N/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/MessageModel.cs ("Œ
+X
+N/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/MessageModel.cs (0
+.
+messages"System.Collections.Generic.List<T>*Î
+3X
+N/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/MessageModel.cs	 (	"o
+X
+N/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/MessageModel.cs (	
+implicit return:
+pathstringB*(
+&MiniTwitApi.Client.Models.MessageModel

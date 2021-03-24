@@ -1,0 +1,33 @@
+
+)MiniTwitApi.Server.Program.Main(string[])L
+B/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Program.cs ("0*ì
+0L
+B/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Program.cs ("î
+ë
+L
+B/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Program.cs (#/
+%0)Microsoft.Extensions.Hosting.IHostBuilder"6MiniTwitApi.Server.Program.CreateHostBuilder(string[])*"
+MiniTwitApi.Server.Program*
+
+argsstring[]êç
+L
+B/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Program.cs (+(
+%1"Microsoft.Extensions.Hosting.IHost"1Microsoft.Extensions.Hosting.IHostBuilder.Build()*1
+/
+%0)Microsoft.Extensions.Hosting.IHostBuilder2Build()µ
+²
+L
+B/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Program.cs (1
+
+%2void"fMicrosoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Run(Microsoft.Extensions.Hosting.IHost)*B"@
+>Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions**
+(
+%1"Microsoft.Extensions.Hosting.IHost*
+1*¶
+1L
+B/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Program.cs	 (	"c
+L
+B/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Program.cs (	
+implicit return:
+argsstring[]B"
+MiniTwitApi.Server.Program

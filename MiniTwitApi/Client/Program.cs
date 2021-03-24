@@ -30,6 +30,7 @@ namespace MiniTwitApi.Client
             builder.Services.AddTransient<IMyTimelineViewModel, MyTimelineViewModel>();
             builder.Services.AddTransient<IUserTimelineViewModel, UserTimelineViewModel>();
             builder.Services.AddTransient<IMessageViewModel, MessageViewModel>();
+            builder.Services.AddTransient<ISearchUsersViewModel, SearchUsersViewModel>();
 
             //Register Models for the ViewModels to use them
             builder.Services.AddTransient<IUserModel, UserModel>();

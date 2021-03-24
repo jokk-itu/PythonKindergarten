@@ -134,5 +134,16 @@ namespace MiniTwitApi.Server.Controllers
             
             return Ok(user);
         }
+
+        [HttpGet("user/search")]
+        public async Task<ActionResult<ICollection<UserDTO>>> GetUsersByInput([FromQuery] string input)
+        {
+            var users = await _repository.ReadSomeAsync(input);
+
+            if (users?.Any() != true)
+                return BadRequest("No users exist from the given input");
+            
+            return Ok(users);
+        }
     }
 }

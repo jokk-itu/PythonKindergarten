@@ -1,0 +1,118 @@
+
+BMiniTwitApi.Client.Models.FollowModel.UnfollowUser(string, string)W
+M/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/FollowModel.cs#  #(,"0*À
+0W
+M/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/FollowModel.cs% ,(/¶£
+W
+M/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/FollowModel.cs%0 ((&
+%0 MiniTwitApi.Shared.Models.Follow" MiniTwitApi.Shared.Models.FollowΩ
+∫
+W
+M/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/FollowModel.cs%4 %(:
+
+%1void")MiniTwitApi.Shared.Models.Follow.Follow()*(
+&
+%0 MiniTwitApi.Shared.Models.Follow„
+‡
+W
+M/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/FollowModel.cs' '(-
+%2string"/MiniTwitApi.Shared.Models.Follow.ToUnfollow.set*(
+&
+%0 MiniTwitApi.Shared.Models.Follow*
+
+followerUsernamestring•
+¢
+W
+M/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/FollowModel.cs% ((
+%3string"bSystem.Text.Json.JsonSerializer.Serialize<TValue>(TValue, System.Text.Json.JsonSerializerOptions?)*#"!
+System.Text.Json.JsonSerializer*(
+&
+%0 MiniTwitApi.Shared.Models.Follow*
+""Å
+
+W
+M/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/FollowModel.cs% ((
+jsonstring"__id*
+
+%3string±
+Æ
+W
+M/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/FollowModel.cs)/ )(<
+%4System.Text.Encoding"System.Text.Encoding.UTF8.get*"
+System.Text.Encoding†ù
+W
+M/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/FollowModel.cs) )(Q#
+%5System.Net.Http.StringContent"System.Net.Http.StringContent™
+ß
+W
+M/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/FollowModel.cs) )((
+
+%6void"SSystem.Net.Http.StringContent.StringContent(string, System.Text.Encoding?, string?)*%
+#
+%5System.Net.Http.StringContent*
+
+jsonstring*
+
+%4System.Text.Encoding*
+application/json∞
+≠
+W
+M/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/FollowModel.cs) )(Q%
+dataSystem.Net.Http.StringContent"__id*%
+#
+%5System.Net.Http.StringContentÿ
+’
+W
+M/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/FollowModel.cs*! *(( 
+%7System.Net.Http.HttpClient"__id*R*P'
+%MiniTwitApi.Client.Models.FollowModel"%
+_clientSystem.Net.Http.HttpClientî
+ë
+W
+M/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/FollowModel.cs*3 *(I
+%8string"__concat*
+""*
+
+
+myUsernamestring±
+Æ
+W
+M/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/FollowModel.cs*! *(P*
+%9$System.Threading.Tasks.Task<TResult>"JSystem.Net.Http.HttpClient.PostAsync(string?, System.Net.Http.HttpContent)*"
+ 
+%7System.Net.Http.HttpClient*
+
+%8string*'
+%
+dataSystem.Net.Http.StringContentõ
+ò
+W
+M/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/FollowModel.cs* *(P/
+response#System.Net.Http.HttpResponseMessage"__id*
+""∞
+≠
+W
+M/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/FollowModel.cs+ +(8
+%10void"aMiniTwitApi.Client.Models.HttpFailureHelper.HandleStatusCode(System.Net.Http.HttpResponseMessage)*/"-
++MiniTwitApi.Client.Models.HttpFailureHelper*1
+/
+response#System.Net.Http.HttpResponseMessageŸ
+÷
+W
+M/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/FollowModel.cs, ,(/
+%11bool";System.Net.Http.HttpResponseMessage.IsSuccessStatusCode.get*1
+/
+response#System.Net.Http.HttpResponseMessage"h
+W
+M/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/FollowModel.cs, ,(0
+
+%11bool*Ã
+1W
+M/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/FollowModel.cs-	 -(	"n
+W
+M/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/FollowModel.cs- -(	
+implicit return:
+
+myUsernamestring:
+followerUsernamestringB)'
+%MiniTwitApi.Client.Models.FollowModel

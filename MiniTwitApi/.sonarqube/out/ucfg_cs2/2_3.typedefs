@@ -1,0 +1,14 @@
+Í
+$MiniTwitApi.Server.Entities.Followerobject=
+
+Follower()/MiniTwitApi.Server.Entities.Follower.Follower();
+	WhoId.get.MiniTwitApi.Server.Entities.Follower.WhoId.get;
+	WhoId.set.MiniTwitApi.Server.Entities.Follower.WhoId.set7
+Who.get,MiniTwitApi.Server.Entities.Follower.Who.get7
+Who.set,MiniTwitApi.Server.Entities.Follower.Who.set=
+
+WhomId.get/MiniTwitApi.Server.Entities.Follower.WhomId.get=
+
+WhomId.set/MiniTwitApi.Server.Entities.Follower.WhomId.set9
+Whom.get-MiniTwitApi.Server.Entities.Follower.Whom.get9
+Whom.set-MiniTwitApi.Server.Entities.Follower.Whom.set

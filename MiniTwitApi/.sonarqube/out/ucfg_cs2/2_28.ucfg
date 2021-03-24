@@ -1,0 +1,56 @@
+
+éMiniTwitApi.Server.Controllers.UserController.UserController(MiniTwitApi.Server.Repositories.Abstract.IUserRepository, Microsoft.Extensions.Configuration.IConfiguration, Microsoft.AspNetCore.Mvc.Infrastructure.IActionContextAccessor)_
+U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.cs   ("3*à
+1_
+U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.cs%	 %(	u
+s
+
+%0void"8Microsoft.AspNetCore.Mvc.ControllerBase.ControllerBase()*+)
+'Microsoft.AspNetCore.Mvc.ControllerBase*
+0*‚
+0_
+U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.cs" $( °
+­
+_
+U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.cs" "($z/
+-MiniTwitApi.Server.Controllers.UserController"G
+_repository8MiniTwitApi.Server.Repositories.Abstract.IUserRepository"__id*H
+F
+
+repository8MiniTwitApi.Server.Repositories.Abstract.IUserRepository¨
+¥
+_
+U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.cs# #(*v/
+-MiniTwitApi.Server.Controllers.UserController"C
+_configuration1Microsoft.Extensions.Configuration.IConfiguration"__id*D
+B
+configuration1Microsoft.Extensions.Configuration.IConfiguration¸
+µ
+_
+U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.cs$ $( ~/
+-MiniTwitApi.Server.Controllers.UserController"K
+	_accessor>Microsoft.AspNetCore.Mvc.Infrastructure.IActionContextAccessor"__id*L
+J
+accessor>Microsoft.AspNetCore.Mvc.Infrastructure.IActionContextAccessor*
+2*Ü
+2_
+U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.cs%	 %(	"v
+_
+U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.cs% %(	
+implicit return*ø
+3_
+U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.cs x  (xŒ
+‰
+_
+U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.cs   (
+%1"__entrypoint*D
+B
+configuration1Microsoft.Extensions.Configuration.IConfiguration*L
+J
+accessor>Microsoft.AspNetCore.Mvc.Infrastructure.IActionContextAccessor*
+1:F
+
+repository8MiniTwitApi.Server.Repositories.Abstract.IUserRepository:B
+configuration1Microsoft.Extensions.Configuration.IConfiguration:J
+accessor>Microsoft.AspNetCore.Mvc.Infrastructure.IActionContextAccessorB1/
+-MiniTwitApi.Server.Controllers.UserController

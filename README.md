@@ -1,5 +1,5 @@
 # MiniTwit by PythonKindergarten
-**DevOps project for the elective "DevOps" at the IT University of Copenhagen, spring semester 2021**
+**DevOps project for the elective "DevOps, Software Evolution and Software Maintenance" at the IT University of Copenhagen, spring semester 2021**
 
 ![current release](https://img.shields.io/github/v/release/jokk-itu/pythonkindergarten)
 ![issues](https://img.shields.io/github/issues/jokk-itu/pythonkindergarten)
@@ -25,3 +25,4 @@ Our implemenatation of "MiniTwit" can be accesed [here](https://pythonkindergart
 
 ## Screenshots
 *To be added*
+ 

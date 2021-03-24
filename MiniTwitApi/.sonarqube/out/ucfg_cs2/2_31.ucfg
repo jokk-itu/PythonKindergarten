@@ -1,0 +1,65 @@
+
+«MiniTwitApi.Server.Controllers.FollowController.FollowController(MiniTwitApi.Server.Repositories.Abstract.IFollowerRepository, MiniTwitApi.Server.Repositories.Abstract.IUserRepository, Microsoft.Extensions.Configuration.IConfiguration, Microsoft.AspNetCore.Mvc.Infrastructure.IActionContextAccessor)a
+W/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/FollowController.cs ("3*â
+1a
+W/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/FollowController.cs	 (	u
+s
+
+%0void"8Microsoft.AspNetCore.Mvc.ControllerBase.ControllerBase()*+)
+'Microsoft.AspNetCore.Mvc.ControllerBase*
+0*â
+
+0a
+W/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/FollowController.cs ( ½
+º
+a
+W/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/FollowController.cs (,€1
+/MiniTwitApi.Server.Controllers.FollowController"K
+_userRepository8MiniTwitApi.Server.Repositories.Abstract.IUserRepository"__id*L
+J
+userRepository8MiniTwitApi.Server.Repositories.Abstract.IUserRepositoryÅ
+Â
+a
+W/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/FollowController.cs (,ˆ1
+/MiniTwitApi.Server.Controllers.FollowController"S
+_followerRepository<MiniTwitApi.Server.Repositories.Abstract.IFollowerRepository"__id*L
+J
+
+repository<MiniTwitApi.Server.Repositories.Abstract.IFollowerRepository¬
+©
+a
+W/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/FollowController.cs (*x1
+/MiniTwitApi.Server.Controllers.FollowController"C
+_configuration1Microsoft.Extensions.Configuration.IConfiguration"__id*D
+B
+configuration1Microsoft.Extensions.Configuration.IConfiguration½
+º
+a
+W/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/FollowController.cs ( €1
+/MiniTwitApi.Server.Controllers.FollowController"K
+	_accessor>Microsoft.AspNetCore.Mvc.Infrastructure.IActionContextAccessor"__id*L
+J
+accessor>Microsoft.AspNetCore.Mvc.Infrastructure.IActionContextAccessor*
+2*à
+2a
+W/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/FollowController.cs	 (	"x
+a
+W/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/FollowController.cs (	
+implicit return*ü
+3a
+W/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/FollowController.csJ (JŽ
+‹
+a
+W/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/FollowController.cs (
+%1"__entrypoint*D
+B
+configuration1Microsoft.Extensions.Configuration.IConfiguration*L
+J
+accessor>Microsoft.AspNetCore.Mvc.Infrastructure.IActionContextAccessor*
+1:J
+
+repository<MiniTwitApi.Server.Repositories.Abstract.IFollowerRepository:J
+userRepository8MiniTwitApi.Server.Repositories.Abstract.IUserRepository:B
+configuration1Microsoft.Extensions.Configuration.IConfiguration:J
+accessor>Microsoft.AspNetCore.Mvc.Infrastructure.IActionContextAccessorB31
+/MiniTwitApi.Server.Controllers.FollowController

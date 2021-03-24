@@ -1,0 +1,46 @@
+
+9MiniTwitApi.Server.Controllers.UserController.GetLogout()_
+U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csH( H(1"2*à
+
+0_
+U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csJ K(˜
+Ù
+_
+U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csJ J(+
+%0%Microsoft.AspNetCore.Http.HttpContext"7Microsoft.AspNetCore.Mvc.ControllerBase.HttpContext.get*+)
+'Microsoft.AspNetCore.Mvc.ControllerBasew
+u
+_
+U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csJ+ J(\
+%1"__id*
+""í
+è
+_
+U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csJ J(]!
+%2System.Threading.Tasks.Task"ÑMicrosoft.AspNetCore.Authentication.AuthenticationHttpContextExtensions.SignOutAsync(Microsoft.AspNetCore.Http.HttpContext, string?)*K"I
+GMicrosoft.AspNetCore.Authentication.AuthenticationHttpContextExtensions*-
++
+%0%Microsoft.AspNetCore.Http.HttpContext*
+
+%1ÉÄ
+_
+U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csK K(.
+%3(Microsoft.AspNetCore.Mvc.NoContentResult"3Microsoft.AspNetCore.Mvc.ControllerBase.NoContent()*+)
+'Microsoft.AspNetCore.Mvc.ControllerBase2NoContent()"ì
+_
+U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csK K(0
+.
+%3(Microsoft.AspNetCore.Mvc.NoContentResult*‹
+1_
+U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csL	 L(	"v
+_
+U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csL L(	
+implicit return*‚
+2_
+U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csH3 H(3w
+u
+_
+U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csH( H(1
+%4"__entrypoint*
+0B1/
+-MiniTwitApi.Server.Controllers.UserController

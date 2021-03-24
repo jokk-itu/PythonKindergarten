@@ -1,0 +1,52 @@
+
+BMiniTwitApi.Client.ViewModels.RegisterViewModel.ValidatePassword()a
+W/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/RegisterViewModel.cs( ((%"0*ë
+0a
+W/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/RegisterViewModel.cs* *(4è
+å
+a
+W/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/RegisterViewModel.cs* *(8
+%02MiniTwitApi.Shared.Models.UserModels.CreateUserDTO"8MiniTwitApi.Client.ViewModels.RegisterViewModel.User.get*31
+/MiniTwitApi.Client.ViewModels.RegisterViewModelÒ
+Ó
+a
+W/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/RegisterViewModel.cs* *(
+%1string"?MiniTwitApi.Shared.Models.UserModels.CreateUserDTO.Password.get*:
+8
+%02MiniTwitApi.Shared.Models.UserModels.CreateUserDTOÌ
+Í
+a
+W/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/RegisterViewModel.cs*& *(4
+%2string"BMiniTwitApi.Client.ViewModels.RegisterViewModel.RepeatPassword.get*31
+/MiniTwitApi.Client.ViewModels.RegisterViewModel™
+ß
+a
+W/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/RegisterViewModel.cs* *(5
+
+%3bool"string.Equals(string?)*
+
+%1string*
+
+%2string*
+1
+2*Œ
+1a
+W/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/RegisterViewModel.cs+ +(<êç
+a
+W/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/RegisterViewModel.cs+ +(=
+%4System.Exception"System.ExceptionÕ
+ 
+a
+W/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/RegisterViewModel.cs+ +(#
+
+%5void"#System.Exception.Exception(string?)*
+
+%4System.Exception*
+Passwords do not match*
+2*‡
+2a
+W/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/RegisterViewModel.cs,	 ,(	"x
+a
+W/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/RegisterViewModel.cs, ,(	
+implicit returnB31
+/MiniTwitApi.Client.ViewModels.RegisterViewModel

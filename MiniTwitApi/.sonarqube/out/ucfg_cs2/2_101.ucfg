@@ -1,0 +1,136 @@
+
+cMiniTwitApi.Server.Repositories.MessageRepository.CreateAsync(MiniTwitApi.Shared.Models.MessageDTO)c
+Y/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/MessageRepository.cs (%"0*É%
+0c
+Y/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/MessageRepository.cs "(-∏µ
+c
+Y/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/MessageRepository.cs ()
+%0#MiniTwitApi.Server.Entities.Message"#MiniTwitApi.Server.Entities.Message–
+Õ
+c
+Y/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/MessageRepository.cs (
+
+%1void"-MiniTwitApi.Server.Entities.Message.Message()*+
+)
+%0#MiniTwitApi.Server.Entities.Message◊
+‘
+c
+Y/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/MessageRepository.cs ()	
+%2int"/MiniTwitApi.Shared.Models.MessageDTO.Author.get*1
+/
+message$MiniTwitApi.Shared.Models.MessageDTOﬂ
+‹
+c
+Y/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/MessageRepository.cs ()	
+%3int"0MiniTwitApi.Server.Entities.Message.AuthorId.set*+
+)
+%0#MiniTwitApi.Server.Entities.Message*
+	
+%2int‚
+ﬂ
+c
+Y/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/MessageRepository.cs! (7
+%4string"7MiniTwitApi.Shared.Models.MessageDTO.AuthorUsername.get*1
+/
+message$MiniTwitApi.Shared.Models.MessageDTOÎ
+Ë
+c
+Y/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/MessageRepository.cs (7
+%5string"6MiniTwitApi.Server.Entities.Message.AuthorUsername.set*+
+)
+%0#MiniTwitApi.Server.Entities.Message*
+
+%4stringÿ
+’
+c
+Y/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/MessageRepository.cs (#
+%6string"-MiniTwitApi.Shared.Models.MessageDTO.Text.get*1
+/
+message$MiniTwitApi.Shared.Models.MessageDTO·
+ﬁ
+c
+Y/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/MessageRepository.cs (#
+%7string",MiniTwitApi.Server.Entities.Message.Text.set*+
+)
+%0#MiniTwitApi.Server.Entities.Message*
+
+%6string‹
+Ÿ
+c
+Y/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/MessageRepository.cs (-	
+%8int"4MiniTwitApi.Shared.Models.MessageDTO.PublishDate.get*1
+/
+message$MiniTwitApi.Shared.Models.MessageDTOﬁ
+€
+c
+Y/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/MessageRepository.cs (-	
+%9int"/MiniTwitApi.Server.Entities.Message.PubDate.set*+
+)
+%0#MiniTwitApi.Server.Entities.Message*
+	
+%8intŸ
+÷
+c
+Y/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/MessageRepository.cs ()
+
+%10int"0MiniTwitApi.Shared.Models.MessageDTO.Flagged.get*1
+/
+message$MiniTwitApi.Shared.Models.MessageDTO‡
+›
+c
+Y/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/MessageRepository.cs ()
+
+%11int"/MiniTwitApi.Server.Entities.Message.Flagged.set*+
+)
+%0#MiniTwitApi.Server.Entities.Message*
+
+
+%10int≈
+¬
+c
+Y/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/MessageRepository.cs ((
+m#MiniTwitApi.Server.Entities.Message"__id*+
+)
+%0#MiniTwitApi.Server.Entities.Messageå
+â
+c
+Y/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/MessageRepository.cs! !(#+
+%12$MiniTwitApi.Server.Entities.IContext">MiniTwitApi.Server.Repositories.MessageRepository._context.get*53
+1MiniTwitApi.Server.Repositories.MessageRepositoryçä
+c
+Y/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/MessageRepository.cs! !(,3
+%13,Microsoft.EntityFrameworkCore.DbSet<TEntity>"1MiniTwitApi.Server.Entities.IContext.Messages.get*-
++
+%12$MiniTwitApi.Server.Entities.IContext2Messages.get†ù
+c
+Y/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/MessageRepository.cs! !(80
+%14)System.Threading.Tasks.ValueTask<TResult>"bMicrosoft.EntityFrameworkCore.DbSet<TEntity>.AddAsync(TEntity, System.Threading.CancellationToken)*5
+3
+%13,Microsoft.EntityFrameworkCore.DbSet<TEntity>**
+(
+m#MiniTwitApi.Server.Entities.Message*
+""25AddAsync(TEntity, System.Threading.CancellationToken)ø
+º
+c
+Y/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/MessageRepository.cs! !(8G
+idAMicrosoft.EntityFrameworkCore.ChangeTracking.EntityEntry<TEntity>"__id*
+""å
+â
+c
+Y/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/MessageRepository.cs" "(+
+%15$MiniTwitApi.Server.Entities.IContext">MiniTwitApi.Server.Repositories.MessageRepository._context.get*53
+1MiniTwitApi.Server.Repositories.MessageRepository›⁄
+c
+Y/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/MessageRepository.cs" "(-+
+%16$System.Threading.Tasks.Task<TResult>"YMiniTwitApi.Server.Entities.IContext.SaveChangesAsync(System.Threading.CancellationToken)*-
++
+%15$MiniTwitApi.Server.Entities.IContext*
+""24SaveChangesAsync(System.Threading.CancellationToken)*
+1*‰
+1c
+Y/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/MessageRepository.cs#	 #(	"z
+c
+Y/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/MessageRepository.cs# #(	
+implicit return:/
+message$MiniTwitApi.Shared.Models.MessageDTOB53
+1MiniTwitApi.Server.Repositories.MessageRepository

@@ -1,0 +1,41 @@
+
+jMiniTwitApi.Client.ViewModels.LoginViewModel.LoginViewModel(MiniTwitApi.Client.Models.Abstract.IUserModel)^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/LoginViewModel.cs ("1*h
+1^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/LoginViewModel.cs	 (	*
+0*…	
+0^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/LoginViewModel.cs (%–
+“
+^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/LoginViewModel.cs ("m.
+,MiniTwitApi.Client.ViewModels.LoginViewModel";
+
+_userModel-MiniTwitApi.Client.Models.Abstract.IUserModel"__id*<
+:
+	userModel-MiniTwitApi.Client.Models.Abstract.IUserModelÏÌ
+^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/LoginViewModel.cs (%7
+%01MiniTwitApi.Shared.Models.UserModels.LoginUserDTO"1MiniTwitApi.Shared.Models.UserModels.LoginUserDTOì
+é
+^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/LoginViewModel.cs (#
+
+%1void"@MiniTwitApi.Shared.Models.UserModels.LoginUserDTO.LoginUserDTO()*9
+7
+%01MiniTwitApi.Shared.Models.UserModels.LoginUserDTOÀ
+½
+^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/LoginViewModel.cs (%7
+%21MiniTwitApi.Shared.Models.UserModels.LoginUserDTO"5MiniTwitApi.Client.ViewModels.LoginViewModel.User.set*0.
+,MiniTwitApi.Client.ViewModels.LoginViewModel*9
+7
+%01MiniTwitApi.Shared.Models.UserModels.LoginUserDTO*
+2*Ú
+2^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/LoginViewModel.cs	 (	"u
+^
+T/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/LoginViewModel.cs (	
+implicit return::
+	userModel-MiniTwitApi.Client.Models.Abstract.IUserModelB0.
+,MiniTwitApi.Client.ViewModels.LoginViewModel

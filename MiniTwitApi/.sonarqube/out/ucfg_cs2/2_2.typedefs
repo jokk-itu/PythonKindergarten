@@ -1,0 +1,4 @@
+Î
+-MiniTwitApi.Server.Controllers.MiscController'Microsoft.AspNetCore.Mvc.ControllerBaseobject∂
+ÅMiscController(Microsoft.Extensions.Configuration.IConfiguration, Microsoft.AspNetCore.Mvc.Infrastructure.IActionContextAccessor)ØMiniTwitApi.Server.Controllers.MiscController.MiscController(Microsoft.Extensions.Configuration.IConfiguration, Microsoft.AspNetCore.Mvc.Infrastructure.IActionContextAccessor)P
+GetLatest(long)=MiniTwitApi.Server.Controllers.MiscController.GetLatest(long)

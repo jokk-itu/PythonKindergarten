@@ -1,0 +1,49 @@
+
+¶MiniTwitApi.Client.ViewModels.MyTimelineViewModel.MyTimelineViewModel(MiniTwitApi.Client.Models.Abstract.IMessageModel, MiniTwitApi.Client.Models.Abstract.IUserModel)c
+Y/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/MyTimelineViewModel.cs (""1*m
+1c
+Y/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/MyTimelineViewModel.cs	 (	*
+0*§
+0c
+Y/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/MyTimelineViewModel.cs ("¿Ω
+c
+Y/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/MyTimelineViewModel.cs ()-
+%0'MiniTwitApi.Shared.Models.CreateMessage"'MiniTwitApi.Shared.Models.CreateMessageﬁ
+€
+c
+Y/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/MyTimelineViewModel.cs ('
+
+%1void"7MiniTwitApi.Shared.Models.CreateMessage.CreateMessage()*/
+-
+%0'MiniTwitApi.Shared.Models.CreateMessageæ
+ª
+c
+Y/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/MyTimelineViewModel.cs ()-
+%2'MiniTwitApi.Shared.Models.CreateMessage"=MiniTwitApi.Client.ViewModels.MyTimelineViewModel.Message.set*53
+1MiniTwitApi.Client.ViewModels.MyTimelineViewModel*/
+-
+%0'MiniTwitApi.Shared.Models.CreateMessage¨
+©
+c
+Y/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/MyTimelineViewModel.cs ((x3
+1MiniTwitApi.Client.ViewModels.MyTimelineViewModel"A
+_messageModel0MiniTwitApi.Client.Models.Abstract.IMessageModel"__id*B
+@
+messageModel0MiniTwitApi.Client.Models.Abstract.IMessageModel†
+ù
+c
+Y/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/MyTimelineViewModel.cs ("r3
+1MiniTwitApi.Client.ViewModels.MyTimelineViewModel";
+
+_userModel-MiniTwitApi.Client.Models.Abstract.IUserModel"__id*<
+:
+	userModel-MiniTwitApi.Client.Models.Abstract.IUserModel*
+2*‰
+2c
+Y/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/MyTimelineViewModel.cs	 (	"z
+c
+Y/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/MyTimelineViewModel.cs (	
+implicit return:@
+messageModel0MiniTwitApi.Client.Models.Abstract.IMessageModel::
+	userModel-MiniTwitApi.Client.Models.Abstract.IUserModelB53
+1MiniTwitApi.Client.ViewModels.MyTimelineViewModel

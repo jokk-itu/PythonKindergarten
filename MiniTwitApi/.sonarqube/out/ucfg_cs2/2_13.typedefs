@@ -1,0 +1,9 @@
+ê
+2MiniTwitApi.Server.Repositories.FollowerRepositoryobjectß
+8FollowerRepository(MiniTwitApi.Server.Entities.IContext)kMiniTwitApi.Server.Repositories.FollowerRepository.FollowerRepository(MiniTwitApi.Server.Entities.IContext)i
+ReadAsync(string, string)LMiniTwitApi.Server.Repositories.FollowerRepository.ReadAsync(string, string)_
+ReadAllAsync(string)GMiniTwitApi.Server.Repositories.FollowerRepository.ReadAllAsync(string)õ
+2DeleteAsync(MiniTwitApi.Shared.Models.FollowerDTO)eMiniTwitApi.Server.Repositories.FollowerRepository.DeleteAsync(MiniTwitApi.Shared.Models.FollowerDTO)õ
+2CreateAsync(MiniTwitApi.Shared.Models.FollowerDTO)eMiniTwitApi.Server.Repositories.FollowerRepository.CreateAsync(MiniTwitApi.Shared.Models.FollowerDTO)O
+_context.get?MiniTwitApi.Server.Repositories.FollowerRepository._context.getO
+_context.set?MiniTwitApi.Server.Repositories.FollowerRepository._context.set

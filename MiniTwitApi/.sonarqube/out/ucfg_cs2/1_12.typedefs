@@ -1,0 +1,8 @@
+Ä
+MiniTwitApi.Client.Pages.Error-Microsoft.AspNetCore.Components.ComponentBaseobject»
+LBuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)kMiniTwitApi.Client.Pages.Error.BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)1
+Error()&MiniTwitApi.Client.Pages.Error.Error()=
+ViewModel.get,MiniTwitApi.Client.Pages.Error.ViewModel.get=
+ViewModel.set,MiniTwitApi.Client.Pages.Error.ViewModel.set=
+JSRuntime.get,MiniTwitApi.Client.Pages.Error.JSRuntime.get=
+JSRuntime.set,MiniTwitApi.Client.Pages.Error.JSRuntime.set

@@ -1,0 +1,65 @@
+@using MiniTwitApi.Shared.Models.UserModels
+@using System.Text.Json
+@using MiniTwitApi.Client.ViewModels.Abstract
+
+@inject IJSRuntime JSRuntime
+@inject ISearchUsersViewModel SearchUsersViewModel
+
+<div class="input-group mb-3 input-group-lg">
+    <input @bind-value="@SearchUsersViewModel.Input" @bind-value:event="oninput" @onkeydown="(FetchUsers)" @onclick="(FetchUsers)" type="text" class="form-control" placeholder="Search for users" aria-label="Search" aria-describedby="search">
+    <div class="input-group-prepend">
+        <span class="input-group-text" id="search">
+            <img src="search.svg" alt="Search Users" />
+        </span>
+    </div>
+</div>
+<div class="dropdown">
+        <button class="dropdown-toggle" id="usersdropdownbutton" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" hidden></button>
+        <div id="usersdropdown" class="dropdown-menu" aria-labelledby="usersdropdown">
+            <Error ViewModel="SearchUsersViewModel"/>
+            @if (!Users.Any())
+            {
+                <div class="d-flex justify-content-center">
+                    <div class="spinner-border" role="status">
+                        <span class="visually-hidden"></span>
+                    </div>
+                </div>
+            }
+            else
+            {
+                foreach (var user in Users)
+                {
+                    <a class="dropdown-item" href="timeline/user_timeline/@user.Username">@user.Username</a>
+                }
+            }
+        </div>
+    </div>
+
+@code 
+{
+    private ICollection<UserDTO> Users { get; set; }
+
+    protected override Task OnInitializedAsync()
+    {
+        Users = new List<UserDTO>();
+        return Task.CompletedTask;
+    }
+
+    private async Task FetchUsers()
+    {
+        Console.WriteLine($"The input is: {SearchUsersViewModel.Input}");
+        Users = new List<UserDTO>();
+        if(string.IsNullOrEmpty(SearchUsersViewModel.Input))
+        {
+            await JSRuntime.InvokeVoidAsync("closeDropdown", "#usersdropdownbutton", "#usersdropdown");
+        }
+        else
+        {
+            await JSRuntime.InvokeVoidAsync("openDropdown", "#usersdropdownbutton", "#usersdropdown");
+            await foreach (var user in SearchUsersViewModel.GetUsers())
+            {
+                Users.Add(user);
+            }
+        }
+    }
+}

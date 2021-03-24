@@ -12,6 +12,7 @@ namespace MiniTwitApi.Server.Repositories.Abstract
         Task CreateAsync(CreateUserDTO user);
         Task<UserDTO> ReadAsync(int userid);
         Task<UserDTO> ReadAsync(string username);
-        
+        Task<ICollection<UserDTO>> ReadSomeAsync(string input);
+
     }
 }

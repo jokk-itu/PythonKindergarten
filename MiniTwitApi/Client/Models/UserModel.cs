@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -41,6 +42,11 @@ namespace MiniTwitApi.Client.Models
             return JsonSerializer.Deserialize<UserDTO>(await response.Content.ReadAsStringAsync());
         }
 
-        
+        public async Task<ICollection<UserDTO>> GetUsers(string input)
+        {
+            var response = await Client.GetAsync($"user/search/?input={input}");
+            HttpFailureHelper.HandleStatusCode(response);
+            return JsonSerializer.Deserialize<ICollection<UserDTO>>(await response.Content.ReadAsStringAsync());
+        }
     }
 }

@@ -1,0 +1,172 @@
+
+RMiniTwitApi.Server.Controllers.FollowController.GetFollowsByUsername(string, long)a
+W/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/FollowController.cs0< 0(P"7*û
+0a
+W/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/FollowController.cs2 2(>²
+¯
+a
+W/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/FollowController.cs2 2(%>
+%08MiniTwitApi.Server.Repositories.Abstract.IUserRepository"__id*ƒ*€1
+/MiniTwitApi.Server.Controllers.FollowController"K
+_userRepository8MiniTwitApi.Server.Repositories.Abstract.IUserRepositoryÕÒ
+a
+W/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/FollowController.cs2 2(?*
+%1$System.Threading.Tasks.Task<TResult>"PMiniTwitApi.Server.Repositories.Abstract.IUserRepository.UserExistsAsync(string)*@
+>
+%08MiniTwitApi.Server.Repositories.Abstract.IUserRepository*
+
+usernamestring2UserExistsAsync(string)*
+1
+2*‚
+1a
+W/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/FollowController.cs3 3(!‚ÿ
+a
+W/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/FollowController.cs3 3(!-
+%2'Microsoft.AspNetCore.Mvc.NotFoundResult"2Microsoft.AspNetCore.Mvc.ControllerBase.NotFound()*+)
+'Microsoft.AspNetCore.Mvc.ControllerBase2
+NotFound()"”
+a
+W/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/FollowController.cs3 3("/
+-
+%2'Microsoft.AspNetCore.Mvc.NotFoundResult*¶
+2a
+W/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/FollowController.cs6 8(¾
+»
+a
+W/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/FollowController.cs6  6(3B
+%3<MiniTwitApi.Server.Repositories.Abstract.IFollowerRepository"__id*‹*ˆ1
+/MiniTwitApi.Server.Controllers.FollowController"S
+_followerRepository<MiniTwitApi.Server.Repositories.Abstract.IFollowerRepository×Ô
+a
+W/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/FollowController.cs6  6(J*
+%4$System.Threading.Tasks.Task<TResult>"QMiniTwitApi.Server.Repositories.Abstract.IFollowerRepository.ReadAllAsync(string)*D
+B
+%3<MiniTwitApi.Server.Repositories.Abstract.IFollowerRepository*
+
+usernamestring2ReadAllAsync(string)ª
+§
+a
+W/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/FollowController.cs6 6(J4
+follows)System.Collections.Generic.ICollection<T>"__id*
+""*
+3
+4*–
+3b
+W/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/FollowController.cs8 8(¡
+ž
+a
+W/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/FollowController.cs8 8(+7
+%51Microsoft.Extensions.Configuration.IConfiguration"__id*z*x1
+/MiniTwitApi.Server.Controllers.FollowController"C
+_configuration1Microsoft.Extensions.Configuration.IConfiguration–“
+a
+W/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/FollowController.cs8 8(:
+%6string"BMicrosoft.Extensions.Configuration.IConfiguration.this[string].get*9
+7
+%51Microsoft.Extensions.Configuration.IConfiguration*
+ApiSafeList2this[string].get¸
+µ
+a
+W/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/FollowController.cs8D 8(MD
+%7>Microsoft.AspNetCore.Mvc.Infrastructure.IActionContextAccessor"__id*ƒ*€1
+/MiniTwitApi.Server.Controllers.FollowController"K
+	_accessor>Microsoft.AspNetCore.Mvc.Infrastructure.IActionContextAccessorÁ¾
+a
+W/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/FollowController.cs8D 8([,
+%8&Microsoft.AspNetCore.Mvc.ActionContext"PMicrosoft.AspNetCore.Mvc.Infrastructure.IActionContextAccessor.ActionContext.get*F
+D
+%7>Microsoft.AspNetCore.Mvc.Infrastructure.IActionContextAccessor2ActionContext.getû
+ø
+a
+W/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/FollowController.cs8D 8(g+
+%9%Microsoft.AspNetCore.Http.HttpContext"6Microsoft.AspNetCore.Mvc.ActionContext.HttpContext.get*.
+,
+%8&Microsoft.AspNetCore.Mvc.ActionContextü
+ù
+a
+W/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/FollowController.cs8D 8(r/
+%10(Microsoft.AspNetCore.Http.ConnectionInfo"4Microsoft.AspNetCore.Http.HttpContext.Connection.get*-
++
+%9%Microsoft.AspNetCore.Http.HttpContextõ
+ò
+b
+W/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/FollowController.cs8D 8(‚
+%11System.Net.IPAddress"<Microsoft.AspNetCore.Http.ConnectionInfo.RemoteIpAddress.get*1
+/
+%10(Microsoft.AspNetCore.Http.ConnectionInfoÂ¿
+b
+W/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/FollowController.cs8D 8(
+%12string"System.Net.IPAddress.ToString()*
+
+%11System.Net.IPAddress2
+ToString()®
+«
+b
+W/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/FollowController.cs8 8(Ž
+%13bool"string.Contains(string)*
+
+%6string*
+
+%12string*
+5
+4*ˆ
+5a
+W/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/FollowController.cs9 9(2Ð
+Í
+a
+W/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/FollowController.cs9 9($ 
+%14MiniTwitApi.Server.Latest"'MiniTwitApi.Server.Latest.GetInstance()*"
+MiniTwitApi.Server.LatestÇ
+Ä
+a
+W/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/FollowController.cs9 9(3
+%15void"&MiniTwitApi.Server.Latest.Update(long)*"
+ 
+%14MiniTwitApi.Server.Latest*
+""*
+4*¼
+4a
+W/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/FollowController.cs; ;(»¸
+a
+W/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/FollowController.cs; ;(.
+%16'Microsoft.AspNetCore.Mvc.OkObjectResult"2Microsoft.AspNetCore.Mvc.ControllerBase.Ok(object)*+)
+'Microsoft.AspNetCore.Mvc.ControllerBase*6
+4
+follows)System.Collections.Generic.ICollection<T>2
+Ok(object)"•
+a
+W/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/FollowController.cs; ;(0
+.
+%16'Microsoft.AspNetCore.Mvc.OkObjectResult*à
+6a
+W/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/FollowController.cs<	 <(	"x
+a
+W/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/FollowController.cs< <(	
+implicit return*õ
+7a
+W/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/FollowController.cs0z 0(z™
+–
+a
+W/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/FollowController.cs0< 0(P
+%17"__entrypoint*
+
+usernamestring*
+""×
+Ô
+a
+W/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/FollowController.cs/	 /($
+%18"
+__annotate*FD
+BMicrosoft.AspNetCore.Mvc.HttpGetAttribute.HttpGetAttribute(string)*
+
+usernamestring‘
+Ž
+a
+W/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/FollowController.cs0Q 0(`
+usernamestring"__annotation*
+
+%18*
+0:
+usernamestring:
+latestlongB31
+/MiniTwitApi.Server.Controllers.FollowController

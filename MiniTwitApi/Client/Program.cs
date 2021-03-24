@@ -1,12 +1,9 @@
 using System;
 using System.Net.Http;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Text;
 using Blazored.Modal;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MiniTwitApi.Client.Models;
 using MiniTwitApi.Client.Models.Abstract;
@@ -38,7 +35,8 @@ namespace MiniTwitApi.Client
             builder.Services.AddTransient<IUserTimelineViewModel, UserTimelineViewModel>();
             builder.Services.AddTransient<IMessageViewModel, MessageViewModel>();
             builder.Services.AddTransient<IChatViewModel, ChatViewModel>();
-            
+            builder.Services.AddTransient<ISearchUsersViewModel, SearchUsersViewModel>();
+
             //Register Models for the ViewModels to use them
             builder.Services.AddTransient<IUserModel, UserModel>();
             builder.Services.AddTransient<IMessageModel, MessageModel>();

@@ -7,20 +7,21 @@
 @inject NavigationManager NavManager; 
 
 <Error ViewModel="@UserTimelineViewModel"/>
-<div class="usertimelineinforow">
-    <div class="row">
-        <div class="col-sm-auto profilepicture">
-            <img class="img-thumbnail" width="48" src="https://www.gravatar.com/avatar/" alt="UserPicture">
-        </div>
+<div class="row userinfo">
+    <div class="col-xs-auto profilepicture">
+        <img class="img-thumbnail userinfoprofilepicture" src="https://www.gravatar.com/avatar/" alt="UserPicture">
+    </div>
+    <div class="innerUserinfo">
         <div class="col-sm-auto profilename">
             <h3>@Username's Timeline</h3>
         </div>
-    </div>
-    <div class="row followstatus">
-        <div class="col-sm-auto">
-            <p class="followsCount">Follows: @UserTimelineViewModel.FollowsCount users</p>
+        <div class="followsCount col-sm-auto">
+            <p><span class="customBold">@UserTimelineViewModel.FollowsCount </span> Following</p>
         </div>
-        <AuthorizeView>
+    </div>
+</div>
+<div class="row buttonRow">
+    <AuthorizeView>
             <Authorized>
                     @if (@context.User.Identity.Name.Equals(Username))
                     {
@@ -46,9 +47,9 @@
                         <button @onclick="@(() => ShowChat(context.User.Identity.Name, Username))" class="btn btn-secondary messageButton">Message</button>
                     </div>
             </Authorized>
-        </AuthorizeView>
-    </div>
+    </AuthorizeView>
 </div>
+
 
 @if (!string.IsNullOrEmpty(UserTimelineViewModel.Path))
 {

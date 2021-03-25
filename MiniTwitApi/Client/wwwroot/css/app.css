@@ -192,8 +192,6 @@ h3{
     display: none;
 }
 
-
-
 .alertarea{
     padding-top: 10px;
     padding-bottom: 10px;
@@ -212,50 +210,29 @@ h3{
     padding: 10px;
 }
 
-.profilename
-{
-    padding-top: 2.5px;
-}
-
-.followstatus
-{
-    margin-top: 10px;
-    margin-bottom: 10px;
-    padding-top: 0px;
-    padding-bottom: 0px;
+.userinfo{
     margin-left: auto;
     margin-right: auto;
-    border: 1px solid #344966;
-    border-radius: 4px;
-    background-color: #344966;
-    color: #F1F2EE;
 }
 
-.followsCount
+.userinfoprofilepicture
 {
-    margin-top: 14px;
+    width: 60px;
+}
+
+.buttonRow
+{
+    margin-bottom: 10px;
+}
+
+.customBold
+{
     font-weight:500;
 }
 
-.followButton
-{
-    margin-top: 7px;
-    margin-bottom: 7px;
-
-    background-color: #F1F2EE;
-    color: #344966;
-}
-
-.messageButton
-{
-    margin-top: 7px;
-    margin-bottom: 7px;
-
-    background-color: #F1F2EE;
-    color: #344966;
-}
-
 @media all and (max-width:480px) {
-    .followButton { width: 100%; display:block; }
-    .messageButton { width: 100%; display:block; }
+    h3{font-size: 1.17em}
+    .userinfoprofilepicture{width:38px;}
+    .followButton { width: 100%; display:block; margin-bottom: 5px;}
+    .messageButton { width: 100%; display:block; margin-bottom: 5px;}
  }   

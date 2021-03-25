@@ -10,10 +10,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiniTwitApi.Shared", "Share
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniTwitApi.Tests", "..\MiniTwitApi.Tests\MiniTwitApi.Tests.csproj", "{5AAABEBF-F980-4ABC-9BF8-34A5BAC0BA9E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{59CBBBCB-F3AB-48CA-B5F9-66A540F11ED8}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniTwitChatClient", "MiniTwitChatClient\MiniTwitChatClient.csproj", "{9E808458-A6F2-4A65-801A-3263AF0A8E25}"
 EndProject
+
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

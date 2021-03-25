@@ -1,0 +1,23 @@
+version: '3.3'
+
+networks:
+  main:
+
+services:
+
+	elasticsearch:
+	    image: "docker.elastic.co/elasticsearch/elasticsearch:7.2.0"
+	    environment:
+	        - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
+	        - "discovery.type=single-node"
+	    volumes:
+	        - elk_elasticsearch_data:/usr/share/elasticsearch/data
+	    networks:
+	        - elk
+
+	kibana:
+	    image: "docker.elastic.co/kibana/kibana:7.2.0"
+	    environment:
+	        elasticsearch.hosts: '["http://elasticsearch:9200"]'
+	    networks:
+	        - elk

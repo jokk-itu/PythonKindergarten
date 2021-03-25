@@ -13,7 +13,7 @@
 
 <Error ViewModel="@LoginViewModel"/>
 
-<EditForm Model="@LoginViewModel.User" OnValidSubmit="@LoginViewModel.LoginUser">
+<EditForm Model="@LoginViewModel.User" OnValidSubmit="@LoginViewModel.LoginUserAsync">
     <DataAnnotationsValidator />
     <ValidationSummary />
     <div class="form-group">

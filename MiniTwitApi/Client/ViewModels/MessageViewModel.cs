@@ -18,14 +18,13 @@ namespace MiniTwitApi.Client.ViewModels
             _messageModel = messageModel;
         }
 
-        public async IAsyncEnumerable<MessageDTO> RequestMessages(string path)
+        public async IAsyncEnumerable<MessageDTO> RequestMessagesAsync(string path)
         {
             foreach (var m in await _messageModel.GetMessages(path))
             {
                 yield return m;
             }
         }
-        
         public DateTime GenerateDateTime(int date)
         {
             return DateTimeOffset.FromUnixTimeMilliseconds(date).DateTime;

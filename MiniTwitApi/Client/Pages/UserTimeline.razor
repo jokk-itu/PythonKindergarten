@@ -29,13 +29,13 @@
                     else if (UserTimelineViewModel.IsFollowed && !UserTimelineViewModel.IsUnfollowed)
                     {
                         <div class="col-sm-auto">
-                            <button class="btn btn-secondary followButton" @onclick="@(() => UserTimelineViewModel.UnfollowUser(@context.User.Identity.Name))">Unfollow User</button>
+                            <button class="btn btn-secondary followButton" @onclick="@(() => UserTimelineViewModel.UnfollowUserAsync(@context.User.Identity.Name))">Unfollow User</button>
                         </div>
                     }
                     else
                     {
                         <div class="col-sm-auto">
-                            <button class="btn btn-secondary followButton" @onclick="@(() => UserTimelineViewModel.FollowUser(@context.User.Identity.Name))">Follow User</button>
+                            <button class="btn btn-secondary followButton" @onclick="@(() => UserTimelineViewModel.FollowUserAsync(@context.User.Identity.Name))">Follow User</button>
                         </div>
                     }
                     @if (UserTimelineViewModel.FollowIsDone || UserTimelineViewModel.UnFollowIsDone)
@@ -65,8 +65,8 @@
     {
         UserTimelineViewModel.Username = Username;
         UserTimelineViewModel.Path = $"msgs/{Username}";
-        await UserTimelineViewModel.IsUserFollowed();
-        await UserTimelineViewModel.RequestFollowsCount();
+        await UserTimelineViewModel.IsUserFollowedAsync();
+        await UserTimelineViewModel.RequestFollowsCountAsync();
     }
     
     void ShowChat(string sender, string target)

@@ -10,7 +10,6 @@ namespace MiniTwitApi.Client.ViewModels
     {
         public LoginUserDTO User { get; set; }
         public UserDTO LoggedInUser { get; set; }
-        
         private readonly IUserModel _userModel;
         public string Error { get; set; }
 
@@ -20,16 +19,18 @@ namespace MiniTwitApi.Client.ViewModels
             User = new LoginUserDTO();
         }
 
-        public async Task LoginUser()
+        public async Task LoginUserAsync()
         {
             try
             {
                 if (await _userModel.LoginUser(User))
+                {
                     LoggedInUser = new UserDTO()
                     {
                         Username = User.Username,
                         Email = User.Email
                     };
+                }
             }
             catch (Exception e)
             {

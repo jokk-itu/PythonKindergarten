@@ -235,4 +235,15 @@ h3{
     .userinfoprofilepicture{width:38px;}
     .followButton { width: 100%; display:block; margin-bottom: 5px;}
     .messageButton { width: 100%; display:block; margin-bottom: 5px;}
- }   
+ }
+ 
+ /* Chat area */
+ .topDMInfo
+{
+    width: 100%;
+    border: 2px red solid;
+    maring-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+  

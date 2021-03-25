@@ -44,7 +44,8 @@
                         JSRuntime.InvokeVoidAsync("redirect", $"timeline/user_timeline/{Username}");
                     }
                     <div class="col-sm-auto">
-                        <button @onclick="@(() => ShowChat(context.User.Identity.Name, Username))" class="btn btn-secondary messageButton">Message</button>
+                        <button @onclick='@(() => NavManager.NavigateTo("/directmessage/{Username}"))' class="btn btn-secondary messageButton">Message</button>
+                        @*<button @onclick="@(() => ShowChat(context.User.Identity.Name, Username))" class="btn btn-secondary messageButton">Message</button>*@
                     </div>
             </Authorized>
     </AuthorizeView>

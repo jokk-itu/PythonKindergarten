@@ -1,0 +1,20 @@
+@page "/directmessage/{target}"
+@using MiniTwitApi.Client.ViewModels.Abstract
+
+@inject HttpClient HttpClient;
+@inject IJSRuntime JSRuntime;
+
+<div class="topDMInfo row">
+    <div class="col-sm-auto">
+        <a href="timeline/user_timeline/@Target">Go Back</a>
+    </div>
+    <div class="col-sm-auto">
+        <p> Direct messages with @Target </p>
+    </div>
+</div>
+
+@code
+{
+    [Parameter]
+    public string Target { get; set; }
+}

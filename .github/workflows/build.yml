@@ -1,0 +1,21 @@
+name: Build
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    types: [opened, synchronize, reopened]
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build
+        run: dotnet build ./MiniTwitApi/Server/
+      - name: Run Infer#      
+        uses: microsoft/infersharpaction@v1.0
+        id: runinfersharp
+        with:
+          binary-path: './MinitWitApi/Server/bin/Debug/net5.0/'
+      - name: Infer# analysis results
+        run: echo "${{ steps.runinfersharp.outputs.results }}"       

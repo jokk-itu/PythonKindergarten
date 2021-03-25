@@ -35,13 +35,13 @@ namespace MiniTwitApi.Server
             services.AddSystemMetrics();
             services.AddControllersWithViews();
             services.AddRazorPages();
+            
             services.AddScoped<IContext, Context>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IFollowerRepository, FollowerRepository>();
             services.AddScoped<IMessageRepository, MessageRepository>();
             services.AddSwaggerGen();
-
-
+            
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
             
             //Authentication and Authorization using Cookies

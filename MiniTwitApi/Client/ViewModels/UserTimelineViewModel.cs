@@ -24,24 +24,23 @@ namespace MiniTwitApi.Client.ViewModels
             _followModel = followModel;
             _userModel = userModel;
         }
-        
-        public async Task IsUserFollowed()
+        public async Task IsUserFollowedAsync()
         {
             try
             {
-                //Get loggedinuser and their username
                 var user = await _userModel.GetLoggedInUser();
-                var _isFollowed =  await _followModel.IsFollowed(user.Username, Username);
-                IsFollowed = _isFollowed;
-                IsUnfollowed = !_isFollowed;
+                var isFollowed = await _followModel.IsFollowed(user.Username, Username);
+                IsFollowed = isFollowed;
+                IsUnfollowed = !isFollowed;
             }
+            catch (UnauthorizedAccessException e){ /* do nothing */ }
             catch (Exception e)
             {
                 Error = e.Message;
             }
         }
 
-        public async Task FollowUser(string whoUsername)
+        public async Task FollowUserAsync(string whoUsername)
         {
             try
             {
@@ -54,7 +53,7 @@ namespace MiniTwitApi.Client.ViewModels
             }
         }
 
-        public async Task UnfollowUser(string whoUsername)
+        public async Task UnfollowUserAsync(string whoUsername)
         {
             try
             {
@@ -67,7 +66,7 @@ namespace MiniTwitApi.Client.ViewModels
             }
         }
 
-        public async Task RequestFollowsCount()
+        public async Task RequestFollowsCountAsync()
         {
             try
             {

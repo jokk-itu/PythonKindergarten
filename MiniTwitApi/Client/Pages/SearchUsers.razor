@@ -56,7 +56,7 @@
         else
         {
             await JSRuntime.InvokeVoidAsync("openDropdown", "#usersdropdownbutton", "#usersdropdown");
-            await foreach (var user in SearchUsersViewModel.GetUsers())
+            await foreach (var user in SearchUsersViewModel.GetUsersAsync())
             {
                 Users.Add(user);
             }

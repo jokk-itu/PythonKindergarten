@@ -9,6 +9,6 @@ namespace MiniTwitApi.Client.ViewModels.Abstract
         public UserDTO LoggedInUser { get; set; }
         
         public new string Error { get; set; }
-        public Task LoginUser();
+        public Task LoginUserAsync();
     }
 }

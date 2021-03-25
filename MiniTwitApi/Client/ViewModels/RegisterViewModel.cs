@@ -10,12 +10,9 @@ namespace MiniTwitApi.Client.ViewModels
     public class RegisterViewModel : IRegisterViewModel
     {
         public CreateUserDTO User { get; set; }
-        
         public string Error { get; set; }
-        
         public bool IsRegistered { get; set; }
         public string RepeatPassword { get; set; }
-        
         private readonly IUserModel _userModel;
 
         public RegisterViewModel(IUserModel userModel)
@@ -24,7 +21,7 @@ namespace MiniTwitApi.Client.ViewModels
             User = new CreateUserDTO();
         }
 
-        public async Task RegisterUser()
+        public async Task RegisterUserAsync()
         {
             try
             {

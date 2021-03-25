@@ -10,6 +10,6 @@ namespace MiniTwitApi.Client.ViewModels.Abstract
         public new string Error { get; set; }
         public bool IsRegistered { get; set; }
         
-        public Task RegisterUser();
+        public Task RegisterUserAsync();
     }
 }

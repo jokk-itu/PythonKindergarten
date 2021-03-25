@@ -19,7 +19,7 @@ namespace MiniTwitApi.Client.ViewModels
             _model = model;
         }
 
-        public async IAsyncEnumerable<UserDTO> GetUsers()
+        public async IAsyncEnumerable<UserDTO> GetUsersAsync()
         {
             ICollection<UserDTO> users = new List<UserDTO>();
             try

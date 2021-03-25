@@ -14,11 +14,11 @@ namespace MiniTwitApi.Client.ViewModels.Abstract
         public int FollowsCount { get; set; }
         public bool UnFollowIsDone { get; set; }
 
-        public Task UnfollowUser(string whoUsername);
-        public Task FollowUser(string whoUsername);
+        public Task UnfollowUserAsync(string whoUsername);
+        public Task FollowUserAsync(string whoUsername);
 
-        public Task IsUserFollowed();
+        public Task IsUserFollowedAsync();
 
-        public Task RequestFollowsCount();
+        public Task RequestFollowsCountAsync();
     }
 }

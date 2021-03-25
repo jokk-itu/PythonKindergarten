@@ -10,7 +10,7 @@
 
 <Error ViewModel="@RegisterViewModel"/>
 
-<EditForm Model="@RegisterViewModel.User" OnValidSubmit="@RegisterViewModel.RegisterUser">
+<EditForm Model="@RegisterViewModel.User" OnValidSubmit="@RegisterViewModel.RegisterUserAsync">
     <DataAnnotationsValidator />
     <ValidationSummary />
     <div class="form-group">

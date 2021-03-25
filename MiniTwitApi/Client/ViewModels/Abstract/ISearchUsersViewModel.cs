@@ -9,6 +9,6 @@ namespace MiniTwitApi.Client.ViewModels.Abstract
         public string Input { get; set; }
         public new string Error { get; set; }
 
-        public IAsyncEnumerable<UserDTO> GetUsers();
+        public IAsyncEnumerable<UserDTO> GetUsersAsync();
     }
 }

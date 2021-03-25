@@ -16,6 +16,5 @@ namespace MiniTwitApi.Client.ViewModels
         public ChatViewModel()
         {
         }
-
     }
 }

@@ -16,7 +16,7 @@
         <Error ViewModel="@MyTimelineViewModel"/>
         <div class=twitbox>
             <p>What's on your mind @authContext.User.Identity?.Name?</p>
-            <EditForm Model="MyTimelineViewModel.Message" OnValidSubmit="MyTimelineViewModel.PostMessage" Context="formContext">
+            <EditForm Model="MyTimelineViewModel.Message" OnValidSubmit="MyTimelineViewModel.PostMessageAsync" Context="formContext">
                 <DataAnnotationsValidator/>
                 <ValidationSummary/>
                 <div class="form-group">
@@ -43,7 +43,7 @@
 {
     protected override async Task OnInitializedAsync()
     {
-        MyTimelineViewModel.LoggedInUser = await MyTimelineViewModel.GetLoggedInUser();
+        MyTimelineViewModel.LoggedInUser = await MyTimelineViewModel.GetLoggedInUserAsync();
         MyTimelineViewModel.Path = $"msgs/{MyTimelineViewModel.LoggedInUser.Username}";
     }
 }

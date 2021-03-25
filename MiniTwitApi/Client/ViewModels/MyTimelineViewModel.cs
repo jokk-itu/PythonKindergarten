@@ -25,7 +25,7 @@ namespace MiniTwitApi.Client.ViewModels
             _userModel = userModel;
         }
 
-        public async Task PostMessage()
+        public async Task PostMessageAsync()
         {
             try
             {
@@ -37,7 +37,7 @@ namespace MiniTwitApi.Client.ViewModels
             }
         }
 
-        public async Task<UserDTO> GetLoggedInUser()
+        public async Task<UserDTO> GetLoggedInUserAsync()
         {
             return await _userModel.GetLoggedInUser();
         }

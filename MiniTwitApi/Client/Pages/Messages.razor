@@ -60,7 +60,7 @@ else
 
     private async Task AddMessages(int no)
     {
-        await foreach (var m in MessageViewModel.RequestMessages($"{Path}?no={no}&skip={Skip}"))
+        await foreach (var m in MessageViewModel.RequestMessagesAsync($"{Path}?no={no}&skip={Skip}"))
         {
             _messages.Add(m);
             StateHasChanged();

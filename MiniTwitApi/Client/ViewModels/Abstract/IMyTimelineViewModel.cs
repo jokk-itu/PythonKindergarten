@@ -14,7 +14,7 @@ namespace MiniTwitApi.Client.ViewModels.Abstract
         public string Path { get; set; }
         public new string Error { get; set; }
 
-        public Task PostMessage();
-        public Task<UserDTO> GetLoggedInUser();
+        public Task PostMessageAsync();
+        public Task<UserDTO> GetLoggedInUserAsync();
     }
 }

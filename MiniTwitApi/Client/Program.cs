@@ -1,17 +1,16 @@
 using System;
 using System.Net.Http;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Text;
+using Blazored.Modal;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using MiniTwitApi.Client.Models;
 using MiniTwitApi.Client.Models.Abstract;
 using MiniTwitApi.Client.ViewModels;
 using MiniTwitApi.Client.ViewModels.Abstract;
+using MiniTwitChatClient;
+using MiniTwitChatClient.Abstractions;
 
 namespace MiniTwitApi.Client
 {
@@ -22,7 +21,12 @@ namespace MiniTwitApi.Client
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("#app");
 
+            // Chat client
+            builder.Services.AddSingleton<IChatConfiguration>(new ChatConfiguration("pythonkindergarten.tech", 15676,  "minitwit", "minitwit"));
+            builder.Services.AddScoped<IMiniChatClient, MiniChatMQTTClient>();
+            
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+            builder.Services.AddBlazoredModal();
 
             //Register the ViewModels for the Views to use them
             builder.Services.AddTransient<IRegisterViewModel, RegisterViewModel>();
@@ -30,6 +34,7 @@ namespace MiniTwitApi.Client
             builder.Services.AddTransient<IMyTimelineViewModel, MyTimelineViewModel>();
             builder.Services.AddTransient<IUserTimelineViewModel, UserTimelineViewModel>();
             builder.Services.AddTransient<IMessageViewModel, MessageViewModel>();
+            builder.Services.AddTransient<IChatViewModel, ChatViewModel>();
             builder.Services.AddTransient<ISearchUsersViewModel, SearchUsersViewModel>();
 
             //Register Models for the ViewModels to use them

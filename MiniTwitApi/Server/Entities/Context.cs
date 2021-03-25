@@ -21,7 +21,6 @@ namespace MiniTwitApi.Server.Entities
                 //Add connection string to DB
                 optionsBuilder.UseNpgsql("Server=161.35.215.154;Database=pythonkindergarten;User Id=postgres;Password=postgres;Port=5432");
             }
-            
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

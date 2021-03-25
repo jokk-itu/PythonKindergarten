@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Blazored.Modal" Version="6.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="5.0.4" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="5.0.4" />
@@ -20,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MiniTwitChatClient\MiniTwitChatClient.csproj" />
     <ProjectReference Include="..\Shared\MiniTwitApi.Shared.csproj" />
   </ItemGroup>
 
@@ -30,6 +32,8 @@
   <ItemGroup>
     <_ContentIncludedByDefault Remove="wwwroot\uikit-3.6.17\css\uikit-rtl.css" />
     <_ContentIncludedByDefault Remove="wwwroot\uikit-3.6.17\css\uikit.css" />
+    <_ContentIncludedByDefault Remove="wwwroot\scripts\paho-mqtt-interop.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\scripts\paho-mqtt.min.js" />
   </ItemGroup>
 
 </Project>

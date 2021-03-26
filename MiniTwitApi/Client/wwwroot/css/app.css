@@ -238,12 +238,54 @@ h3{
  }
  
  /* Chat area */
- .topDMInfo
-{
-    width: 100%;
+ .chatInfo{
     border: 2px red solid;
-    maring-top: 0px;
-    margin-left: 0px;
-    margin-right: 0px;
+    margin-top: -30px;
+    background-color: #7693B9;
+    border: 2px solid #7693B9;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    margin-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 10px;
 }
-  
+
+.backToUserArea{
+    align-self: flex-start;
+}
+
+.backToUserArea a{
+    color: #344966;
+    font-weight:500;
+}
+
+.backToUserArea a:hover{
+    color: white;
+    font-weight:500;
+}
+
+.userChatNameArea{
+    align-self: flex-send;
+    color: white;
+    font-weight:500;
+}
+
+ .chatArea{
+    border: 2px green solid;
+    width: 100%;
+    min-height: 100%;
+}
+
+.postMessageArea{
+    border: 2px orange solid;
+}
+
+.chatClient{
+    display: flex;
+    flex-direction: column;
+    border: 2px red solid;
+}

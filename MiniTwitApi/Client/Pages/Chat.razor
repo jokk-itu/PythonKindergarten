@@ -10,36 +10,50 @@
 @using MiniTwitChatClient.Misc
 @using MiniTwitChatClient.Models
 
+@page "/chat/{SenderUsername}/{TargetUsername}"
+
 @inject IChatViewModel ChatViewModel; 
 @inject IJSRuntime JSRuntime;
 @inject IMiniChatClient ChatClient;
 
 <Error ViewModel="@ChatViewModel"/>
 
-<div class="chat-window">
-    <div id="scrollbox">
-        @foreach (var message in _messages)
-        {
-            <div class="@message.CSS">
-                <div class="user">@message.Sender</div>
-                <div class="msg">@message.Content</div>
-            </div>
-        }
+    <div class="chatInfo">
+        <div class="backToUserArea">
+            <a href="/timeline/user_timeline/@TargetUsername">Go back</a> @* Refer to target user page*@
+        </div>
+        <div class="userChatNameArea">
+            <p>@TargetUsername</p>
+        </div>
     </div>
-    
-</div>
-<form @onsubmit="@SendMessage">
-    <div class="form-group">
-        <input @bind="Message" type="text" class="form-control" id="Message" placeholder="Write your message here"/>
-    </div>
-    <button class="btn btn-primary">Send Message</button>
-</form>
 
+    <div class="chatClient">
+        <div class="chatArea">
+            @foreach (var message in _messages)
+            {
+                <div>
+                    <div>@message.Sender</div>
+                    <div>@message.Content</div>
+                </div>
+            }
+        </div>
+
+        <div class="postMessageArea">
+            <form @onsubmit="@SendMessage">
+                <div class="form-group">
+                    <input @bind="Message" type="text" class="form-control" id="Message" placeholder="Write your message here"/>
+                </div>
+                <button class="btn btn-primary">Send Message</button>
+            </form>
+        </div>
+    </div>
 
 @code
 {
-    [Parameter] public string SenderUsername { get; set; }
-    [Parameter] public string TargetUsername { get; set; }
+    [Parameter] 
+    public string SenderUsername { get; set; } 
+    [Parameter] 
+    public string TargetUsername { get; set; }
     
     [Parameter]
     public string Message { get; set; }

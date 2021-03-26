@@ -29,16 +29,19 @@
 
     <div class="chatClient">
         <div class="chatArea">
-            @foreach (var message in _messages)
-            {
-                <div>
-                    <div>@message.Sender</div>
-                    <div>@message.Content</div>
-                </div>
-            }
+            <div class="innerChatArea">
+                @foreach (var message in _messages)
+                {
+                    <div>
+                        <div>@message.Content</div>
+                        <div>@message.Sender</div>
+                    </div>
+                }
+            </div>
         </div>
 
         <div class="postMessageArea">
+            <span class="customBold">Write a message</span>
             <form @onsubmit="@SendMessage">
                 <div class="form-group">
                     <input @bind="Message" type="text" class="form-control" id="Message" placeholder="Write your message here"/>

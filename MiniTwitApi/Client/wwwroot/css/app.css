@@ -42,6 +42,8 @@ main {
     margin-right: auto;
     margin-bottom: 20px;
     flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 header {
@@ -268,24 +270,25 @@ h3{
     font-weight:500;
 }
 
+.chatClient{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
 .userChatNameArea{
     align-self: flex-send;
     color: white;
     font-weight:500;
+    height: 100%;
 }
 
  .chatArea{
-    border: 2px green solid;
     width: 100%;
     min-height: 100%;
+    flex: 1;
 }
 
 .postMessageArea{
-    border: 2px orange solid;
-}
 
-.chatClient{
-    display: flex;
-    flex-direction: column;
-    border: 2px red solid;
 }

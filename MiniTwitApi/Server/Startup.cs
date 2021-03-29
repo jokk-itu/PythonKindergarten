@@ -16,6 +16,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Prometheus;
 using Prometheus.SystemMetrics;
+using Serilog;
 
 namespace MiniTwitApi.Server
 {
@@ -79,6 +80,8 @@ namespace MiniTwitApi.Server
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
+
+            app.UseSerilogRequestLogging();
 
             app.UseRouting();
             

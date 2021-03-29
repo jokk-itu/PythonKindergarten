@@ -32,9 +32,20 @@
             <div class="innerChatArea">
                 @foreach (var message in _messages)
                 {
-                    <div>
-                        <div>@message.Content</div>
-                        <div>@message.Sender</div>
+                    <div class="@message.CSS">
+                        <div class="chatContent">@message.Content</div>
+                        <div class="chatdetails">
+                            @if(message.Mine == true)
+                            {
+                                <p class="chatTime">@message.Timestamp</p>
+                                <p class="chatSender">@message.Sender</p>
+                            }
+                            else
+                            {
+                                <p class="chatSender">@message.Sender</p>
+                                <p class="chatTime">@message.Timestamp</p>
+                            }
+                        </div>
                     </div>
                 }
             </div>

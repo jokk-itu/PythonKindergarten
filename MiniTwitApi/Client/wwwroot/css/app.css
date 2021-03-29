@@ -213,8 +213,8 @@ h3{
 }
 
 .userinfo{
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 1px;
+    margin-right: 1px;
 }
 
 .userinfoprofilepicture
@@ -270,25 +270,68 @@ h3{
     font-weight:500;
 }
 
+.userChatNameArea{
+    color: white;
+    font-weight:500;
+}
+
 .chatClient{
     display: flex;
     flex-direction: column;
     flex: 1;
 }
 
-.userChatNameArea{
-    align-self: flex-send;
+.received .chatContent{
+    text-align: right;
+    background-color: white;
     color: white;
+    border: 2px solid #344966;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.received .chatSender{
+    text-align: left;
     font-weight:500;
-    height: 100%;
 }
 
- .chatArea{
-    width: 100%;
-    min-height: 100%;
-    flex: 1;
+.sent .chatContent{
+    text-align: right;
+    background-color: #344966;
+    color: white;
+    border: 2px solid #344966;
+    border-radius: 5px;
+    padding: 10px;
 }
 
-.postMessageArea{
+.sent .chatSender{
+    text-align: right;
+    font-weight:500;
+}
 
+.chatTime{
+    color: #344966;
+}
+
+
+.received{
+    text-align: left;
+    font-weight:500;
+}
+
+.sent .chatTime{
+    margin-right: 5px;
+}
+
+.received .chatTime{
+    margin-left: 5px;
+}
+
+.chatdetails{
+    display: flex;
+    flex-direction: row;
+}
+
+.sent .chatdetails{
+    justify-content: flex-end;
 }

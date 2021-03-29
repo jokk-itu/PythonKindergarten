@@ -42,6 +42,8 @@ main {
     margin-right: auto;
     margin-bottom: 20px;
     flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 header {
@@ -192,8 +194,6 @@ h3{
     display: none;
 }
 
-
-
 .alertarea{
     padding-top: 10px;
     padding-bottom: 10px;
@@ -212,50 +212,126 @@ h3{
     padding: 10px;
 }
 
-.profilename
-{
-    padding-top: 2.5px;
+.userinfo{
+    margin-left: 1px;
+    margin-right: 1px;
 }
 
-.followstatus
+.userinfoprofilepicture
 {
-    margin-top: 10px;
+    width: 60px;
+}
+
+.buttonRow
+{
     margin-bottom: 10px;
-    padding-top: 0px;
-    padding-bottom: 0px;
-    margin-left: auto;
-    margin-right: auto;
-    border: 1px solid #344966;
-    border-radius: 4px;
-    background-color: #344966;
-    color: #F1F2EE;
 }
 
-.followsCount
+.customBold
 {
-    margin-top: 14px;
     font-weight:500;
 }
 
-.followButton
-{
-    margin-top: 7px;
-    margin-bottom: 7px;
-
-    background-color: #F1F2EE;
-    color: #344966;
-}
-
-.messageButton
-{
-    margin-top: 7px;
-    margin-bottom: 7px;
-
-    background-color: #F1F2EE;
-    color: #344966;
-}
-
 @media all and (max-width:480px) {
-    .followButton { width: 100%; display:block; }
-    .messageButton { width: 100%; display:block; }
- }   
+    h3{font-size: 1.17em}
+    .userinfoprofilepicture{width:38px;}
+    .followButton { width: 100%; display:block; margin-bottom: 5px;}
+    .messageButton { width: 100%; display:block; margin-bottom: 5px;}
+ }
+ 
+ /* Chat area */
+ .chatInfo{
+    border: 2px red solid;
+    margin-top: -30px;
+    background-color: #7693B9;
+    border: 2px solid #7693B9;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    margin-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 10px;
+}
+
+.backToUserArea{
+    align-self: flex-start;
+}
+
+.backToUserArea a{
+    color: #344966;
+    font-weight:500;
+}
+
+.backToUserArea a:hover{
+    color: white;
+    font-weight:500;
+}
+
+.userChatNameArea{
+    color: white;
+    font-weight:500;
+}
+
+.chatClient{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.received .chatContent{
+    text-align: right;
+    background-color: white;
+    color: white;
+    border: 2px solid #344966;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.received .chatSender{
+    text-align: left;
+    font-weight:500;
+}
+
+.sent .chatContent{
+    text-align: right;
+    background-color: #344966;
+    color: white;
+    border: 2px solid #344966;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.sent .chatSender{
+    text-align: right;
+    font-weight:500;
+}
+
+.chatTime{
+    color: #344966;
+}
+
+
+.received{
+    text-align: left;
+    font-weight:500;
+}
+
+.sent .chatTime{
+    margin-right: 5px;
+}
+
+.received .chatTime{
+    margin-left: 5px;
+}
+
+.chatdetails{
+    display: flex;
+    flex-direction: row;
+}
+
+.sent .chatdetails{
+    justify-content: flex-end;
+}

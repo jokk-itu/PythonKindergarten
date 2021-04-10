@@ -54,7 +54,6 @@ jobs:
   #    - "DONE ANALYZING"
   - stage: sonarscanner_code_check
     name: sonnarscanner
-    if: branch = master
     install: skip
     script:
       - echo "INSTALL SONNARSCANNER "
@@ -63,6 +62,9 @@ jobs:
       - echo "START SONNARSCANNER"
       - dotnet sonarscanner begin /k:jokk-itu_PythonKindergarten /d:sonar.login="$SONAR_LOGIN" /d:sonar.host.url="https://sonarcloud.io/" /o:jokk-itu
       - dotnet build
+      - cd ..
+      - cd MiniTwitApi.Tests
+      - dotnet test
       - echo "END SONNARSCCANNER"
       - dotnet sonarscanner end /d:sonar.login="$SONAR_LOGIN"
   - stage: docker_build

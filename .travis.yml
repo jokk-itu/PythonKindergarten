@@ -64,15 +64,13 @@ jobs:
     name: sonnarscanner
     install: skip
     script:
-      - cd MiniTwitApi.Tests
-      - dotnet test
       - echo "INSTALL SONNARSCANNER "
-      - cd ..
       - cd MiniTwitApi
       - dotnet tool install --global dotnet-sonarscanner
       - echo "START SONNARSCANNER"
       - dotnet sonarscanner begin /k:jokk-itu_PythonKindergarten /d:sonar.login="$SONAR_LOGIN" /d:sonar.host.url="https://sonarcloud.io/" /o:jokk-itu
-      - dotnet build
+      - dotnet build MiniTwitApi/Server/MiniTwitAPi.Server.csproj
+      - dotnet test MiniTwitApi.Tests/MiniTwitApi.Tests.csproj
       - echo "END SONNARSCCANNER"
       - dotnet sonarscanner end /d:sonar.login="$SONAR_LOGIN"
   - stage: docker_build

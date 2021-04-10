@@ -43,7 +43,6 @@ jobs:
     if: branch != master
     install: skip
     script:
-      - cd ..
       - cd MiniTwitApi.Tests
       - dotnet test
   #- stage: roslynator_code_check
@@ -65,10 +64,10 @@ jobs:
     name: sonnarscanner
     install: skip
     script:
-      - cd ..
       - cd MiniTwitApi.Tests
       - dotnet test
       - echo "INSTALL SONNARSCANNER "
+      - cd ..
       - cd MiniTwitApi
       - dotnet tool install --global dotnet-sonarscanner
       - echo "START SONNARSCANNER"

@@ -68,7 +68,6 @@ jobs:
     install: skip
     script:
       - echo "INSTALL SONNARSCANNER "
-      - cd MiniTwitApi
       - dotnet tool install --global dotnet-sonarscanner
       - echo "START SONNARSCANNER"
       - dotnet sonarscanner begin /k:jokk-itu_PythonKindergarten /d:sonar.login="$SONAR_LOGIN" /d:sonar.host.url="https://sonarcloud.io/" /o:jokk-itu

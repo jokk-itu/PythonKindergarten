@@ -16,6 +16,7 @@ install:
 - docker --version
 stages:
 - build
+- test
 ##- roslynator_code_check
 - sonarscanner_code_check
 - docker_build
@@ -37,6 +38,14 @@ jobs:
     script:
       - cd MiniTwitApi
       - dotnet build
+  - stage: test
+    name: test
+    if: branch != master
+    install: skip
+    script:
+      - cd ..
+      - cd MiniTwitApi.Tests
+      - dotnet test
   #- stage: roslynator_code_check
   #  name: roslynator
   #  if: branch = master
@@ -56,15 +65,15 @@ jobs:
     name: sonnarscanner
     install: skip
     script:
+      - cd ..
+      - cd MiniTwitApi.Tests
+      - dotnet test
       - echo "INSTALL SONNARSCANNER "
       - cd MiniTwitApi
       - dotnet tool install --global dotnet-sonarscanner
       - echo "START SONNARSCANNER"
       - dotnet sonarscanner begin /k:jokk-itu_PythonKindergarten /d:sonar.login="$SONAR_LOGIN" /d:sonar.host.url="https://sonarcloud.io/" /o:jokk-itu
       - dotnet build
-      - cd ..
-      - cd MiniTwitApi.Tests
-      - dotnet test
       - echo "END SONNARSCCANNER"
       - dotnet sonarscanner end /d:sonar.login="$SONAR_LOGIN"
   - stage: docker_build

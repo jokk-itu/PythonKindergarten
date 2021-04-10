@@ -14,6 +14,9 @@ before_install:
 - DISPLAY=":0.0" SSH_ASKPASS="/tmp/askpass" setsid ssh-add ssh_keys/do_ssh_key </dev/null
 install:
 - docker --version
+- dotnet tool install --global dotnet-sonarscanner
+- dotnet restore MiniTwitApi/Server/MiniTwitAPi.Server.csproj
+- dotnet restore MiniTwitApi.Tests/MiniTwitApi.Tests.csproj
 stages:
 - build
 - test
@@ -23,7 +26,7 @@ stages:
 - deploy
 - release
 before_script:
-  - export PATH=$PATH:/home/travis/.dotnet/tools
+  - export PATH="$PATH:$HOME/.dotnet/tools"
 before_deploy:
   - git config --local user.name "bjornarjatten"
   - git config --local user.email "bjornjaat@hotmail.com"

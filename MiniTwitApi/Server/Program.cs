@@ -16,6 +16,8 @@ using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using MiniTwitApi.Shared;
+using Serilog;
+using Serilog.Events;
 
 namespace MiniTwitApi.Server
 {
@@ -23,15 +25,39 @@ namespace MiniTwitApi.Server
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
-            //Hello
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
+                .Enrich.FromLogContext()
+                .WriteTo.Async(c => c.Console())
+                .WriteTo.Async(c => c.Elasticsearch(new Serilog.Sinks.Elasticsearch.ElasticsearchSinkOptions(new Uri("http://161.35.215.154:9200")){
+                    AutoRegisterTemplate = true,
+                    AutoRegisterTemplateVersion = Serilog.Sinks.Elasticsearch.AutoRegisterTemplateVersion.ESv6,
+                    IndexFormat = $"{Assembly.GetExecutingAssembly().GetName().Name.ToLower()}-{DateTime.UtcNow:yyyy-MM}"
+                }))
+                .CreateLogger();
+
+            try
+            {
+                Log.Information("Starting MiniTwitApi");
+                CreateHostBuilder(args).Build().Run(); 
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "Host terminated unexpectedly, {0}: {1}", ex.Message, ex.StackTrace);
+            }
+            finally
+            {
+                Log.CloseAndFlush();
+            }
+        
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .UseSerilog()
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>()
+                    webBuilder.UseStartup<Startup>()                        
                         .UseKestrel(options =>
                         {
                             options.Listen(IPAddress.Any, 5001, listenOptions =>

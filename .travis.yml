@@ -48,6 +48,7 @@ jobs:
     script:
       - cd MiniTwitApi.Tests
       - dotnet test
+      - cd ..
   #- stage: roslynator_code_check
   #  name: roslynator
   #  if: branch = master
@@ -71,8 +72,8 @@ jobs:
       - dotnet tool install --global dotnet-sonarscanner
       - echo "START SONNARSCANNER"
       - dotnet sonarscanner begin /k:jokk-itu_PythonKindergarten /d:sonar.login="$SONAR_LOGIN" /d:sonar.host.url="https://sonarcloud.io/" /o:jokk-itu
-      - dotnet build MiniTwitApi/Server/MiniTwitAPi.Server.csproj
-      - dotnet test MiniTwitApi.Tests/MiniTwitApi.Tests.csproj
+      - dotnet build MiniTwitApi/Server/MiniTwitAPi.Server.csproj -c Release
+      - dotnet test -c Release --no-build --no-restore MiniTwitApi.Tests/MiniTwitApi.Tests.csproj /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
       - echo "END SONNARSCCANNER"
       - dotnet sonarscanner end /d:sonar.login="$SONAR_LOGIN"
   - stage: docker_build

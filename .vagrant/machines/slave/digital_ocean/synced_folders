@@ -1,0 +1,1 @@
+{"rsync":{"/vagrant":{"type":"rsync","guestpath":"/vagrant","hostpath":"C:/Users/isabe/OneDrive/Skrivebord/PythonKindergarten/remote_files","disabled":false,"__vagrantfile":true,"owner":"root","group":"root"}}}

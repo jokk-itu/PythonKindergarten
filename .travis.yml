@@ -71,7 +71,7 @@ jobs:
       - echo "INSTALL SONNARSCANNER "
       - dotnet tool install --global dotnet-sonarscanner
       - echo "START SONNARSCANNER"
-      - dotnet sonarscanner begin /k:jokk-itu_PythonKindergarten /d:sonar.login="$SONAR_LOGIN" /d:sonar.host.url="https://sonarcloud.io/" /o:jokk-itu /d:sonar.cs.vscoveragexml.reportsPaths= MiniTwitApi.Tests/testResults/results.xml
+      - dotnet sonarscanner begin /k:jokk-itu_PythonKindergarten /d:sonar.login="$SONAR_LOGIN" /d:sonar.host.url="https://sonarcloud.io/" /o:jokk-itu /d:sonar.cs.vscoveragexml.reportsPaths=MiniTwitApi.Tests/coverage.opencover.xml
       - dotnet build MiniTwitApi
       - dotnet test MiniTwitApi.Tests/MiniTwitApi.Tests.csproj --logger "junit;LogFilePath=testResults/results.xml" /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
       - echo "END SONNARSCCANNER"

@@ -62,3 +62,6 @@ vagrant/
 # Visual Studio 2015
 .vs/
 ssh_keys/do_ssh_key
+
+.fake
+.ionide

@@ -5,7 +5,7 @@ using MiniTwitApi.Server.Repositories;
 using MiniTwitApi.Shared.Models;
 using Xunit;
 
-namespace MiniTwitApi.Tests.Repositories
+namespace MiniTwitApi.Tests
 {
     public class MessageRepositoryTests : DbTest
     {

@@ -3,7 +3,7 @@ using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using MiniTwitApi.Server.Entities;
 
-namespace MiniTwitApi.Tests.Repositories
+namespace MiniTwitApi.Tests
 {
     public class DbTest
     {

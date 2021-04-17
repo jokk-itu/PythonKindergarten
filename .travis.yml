@@ -14,15 +14,19 @@ before_install:
 - DISPLAY=":0.0" SSH_ASKPASS="/tmp/askpass" setsid ssh-add ssh_keys/do_ssh_key </dev/null
 install:
 - docker --version
+- dotnet tool install --global dotnet-sonarscanner
+- dotnet restore MiniTwitApi/Server/MiniTwitAPi.Server.csproj
+- dotnet restore MiniTwitApi.Tests/MiniTwitApi.Tests.csproj
 stages:
 - build
+- test
 ##- roslynator_code_check
 - sonarscanner_code_check
 - docker_build
 - deploy
 - release
 before_script:
-  - export PATH=$PATH:/home/travis/.dotnet/tools
+  - export PATH="$PATH:$HOME/.dotnet/tools"
 before_deploy:
   - git config --local user.name "bjornarjatten"
   - git config --local user.email "bjornjaat@hotmail.com"
@@ -37,6 +41,14 @@ jobs:
     script:
       - cd MiniTwitApi
       - dotnet build
+  - stage: test
+    name: test
+    if: branch != master
+    install: skip
+    script:
+      - cd MiniTwitApi.Tests
+      - dotnet test
+      - cd ..
   #- stage: roslynator_code_check
   #  name: roslynator
   #  if: branch = master
@@ -58,11 +70,11 @@ jobs:
     install: skip
     script:
       - echo "INSTALL SONNARSCANNER "
-      - cd MiniTwitApi
       - dotnet tool install --global dotnet-sonarscanner
       - echo "START SONNARSCANNER"
-      - dotnet sonarscanner begin /k:jokk-itu_PythonKindergarten /d:sonar.login="$SONAR_LOGIN" /d:sonar.host.url="https://sonarcloud.io/" /o:jokk-itu
-      - dotnet build
+      - dotnet sonarscanner begin /k:jokk-itu_PythonKindergarten /d:sonar.login="$SONAR_LOGIN" /d:sonar.host.url="https://sonarcloud.io/" /o:jokk-itu /d:sonar.cs.opencover.reportsPaths=MiniTwitApi.Tests/coverage.opencover.xml
+      - dotnet build MiniTwitApi
+      - dotnet test MiniTwitApi.Tests/MiniTwitApi.Tests.csproj --logger "junit;LogFilePath=testResults/results.xml" /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
       - echo "END SONNARSCCANNER"
       - dotnet sonarscanner end /d:sonar.login="$SONAR_LOGIN"
   - stage: docker_build

@@ -6,7 +6,7 @@ using MiniTwitApi.Shared.Models;
 using MiniTwitApi.Shared.Models.UserModels;
 using Xunit;
 
-namespace MiniTwitApi.Tests.Repositories
+namespace MiniTwitApi.Tests
 {
     public class FollowerRepositoryTests : DbTest
     {
@@ -18,6 +18,7 @@ namespace MiniTwitApi.Tests.Repositories
             _followerRepository = new FollowerRepository(_context);
             _userRepository = new UserRepository(_context);
         }
+
 
         public async Task ReadAll_Given_Username()
         {

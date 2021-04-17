@@ -6,7 +6,7 @@ using MiniTwitApi.Shared.Models;
 using MiniTwitApi.Shared.Models.UserModels;
 using Xunit;
 
-namespace MiniTwitApi.Tests.Repositories
+namespace MiniTwitApi.Tests
 {
     public class UserRepositoryTests : DbTest
     {
@@ -71,36 +71,12 @@ namespace MiniTwitApi.Tests.Repositories
         }
 
         [Fact]
-        public async Task Test_If_Read_Returns_Correct_By_Userid()
-        {
-    
-            var actual = await _repository.ReadAsync(1);
-
-            var expected = new UserDTO{Id = 1, Username = "TestUser1", Email="test@test.com", Password = "TestPassword1234"};
-
-            // Assert
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
         public async Task Test_If_Read_Returns_Null_When_False_By_Userid()
         {
     
             var actual = await _repository.ReadAsync(10000);
 
             UserDTO expected = null;
-
-            // Assert
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
-        public async Task Test_If_Read_Returns_Correct_By_Username()
-        {
-    
-            var actual = await _repository.ReadAsync("TestUser1");
-
-            var expected = new UserDTO{Id = 1, Username = "TestUser1", Email="test@test.com", Password = "TestPassword1234"};
 
             // Assert
             Assert.Equal(expected, actual);

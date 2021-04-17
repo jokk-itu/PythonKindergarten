@@ -1,6 +1,6 @@
 using MiniTwitApi.Server.Entities;
 
-namespace MiniTwitApi.Tests.Repositories
+namespace MiniTwitApi.Tests
 {
     public static class TestDataGenerator
     {

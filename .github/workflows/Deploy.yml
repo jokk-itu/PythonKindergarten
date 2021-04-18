@@ -22,10 +22,10 @@ jobs:
     steps:
     # Checks-out our repository under $GITHUB_WORKSPACE, so our job can access it
       - uses: actions/checkout@v2
-      - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
+      - name: Setup .NET Core SDK
         uses: actions/setup-dotnet@v1.7.2
         with:
-          dotnet-version: 5.0.0
+          dotnet-version: 5.0.5
       - name: Install dependencies
         run: dotnet restore
       - name: Build
@@ -40,7 +40,7 @@ jobs:
       - name: Setup .NET Core SDK
         uses: actions/setup-dotnet@v1.7.2
         with:
-          dotnet-version: 5.0.0
+          dotnet-version: 5.0.5
       - name: Install dependencies
         run: dotnet restore
       - name: Test
@@ -55,7 +55,7 @@ jobs:
       - name: Setup .NET Core SDK
         uses: actions/setup-dotnet@v1.7.2
         with:
-          dotnet-version: 5.0.0
+          dotnet-version: 5.0.5
       - name: Install dependencies
         run: dotnet restore
       - name: Install SonnarScanner
@@ -78,7 +78,7 @@ jobs:
       - name: Setup .NET Core SDK
         uses: actions/setup-dotnet@v1.7.2
         with:
-          dotnet-version: 5.0.0
+          dotnet-version: 5.0.5
       - name: Install dependencies
         run: dotnet restore
       - name: Login to Docker
@@ -97,7 +97,7 @@ jobs:
       - name: Setup .NET Core SDK
         uses: actions/setup-dotnet@v1.7.2
         with:
-          dotnet-version: 5.0.0
+          dotnet-version: 5.0.5
       - name: Install dependencies
         run: dotnet restore
       - name: Deploy

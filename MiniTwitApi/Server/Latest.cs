@@ -1,4 +1,5 @@
 using System.IO;
+using System.Collections.Generic;
 
 namespace MiniTwitApi.Server
 {
@@ -10,22 +11,13 @@ namespace MiniTwitApi.Server
         public void Update(long latest)
         {
             lock (_fileLock)
-            {
-                using var writer = new StreamWriter("latest.txt"); 
-                writer.WriteLine($"{latest}");
-                writer.Close();
-            }
+                File.WriteAllText("latest.txt", latest.ToString());
         }
 
         public long Read()
         {
             lock (_fileLock)
-            {
-                using var reader = new StreamReader("latest.txt");
-                var latest = long.Parse(reader.ReadLine());
-                reader.Close();
-                return latest;
-            }
+                return long.Parse(File.ReadAllText("latest.txt"));
         }
 
         public static Latest GetInstance()

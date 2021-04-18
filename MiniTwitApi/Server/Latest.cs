@@ -13,14 +13,13 @@ namespace MiniTwitApi.Server
         {
             Log.Information($"Latest was updated with {latest}");
             lock (_fileLock)
-                File.WriteAllText($"{AppDomain.CurrentDomain.BaseDirectory}latest.txt", latest.ToString());
+                File.WriteAllText($"latest.txt", latest.ToString());
         }
 
         public long Read()
         {
-            
             lock (_fileLock){
-                var latest = long.Parse(File.ReadAllText($"{AppDomain.CurrentDomain.BaseDirectory}latest.txt"));
+                var latest = long.Parse(File.ReadAllText($"latest.txt"));
                 Log.Information($"Latest was read ({latest})");
                 return latest;
                 }

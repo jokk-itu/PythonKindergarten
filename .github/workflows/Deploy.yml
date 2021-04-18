@@ -27,7 +27,7 @@ jobs:
         with:
           dotnet-version: '5.0.100'
       - name: Install dependencies
-        run: dotnet restore
+        run: dotnet restore MiniTwitApi
       - name: Build
         run: dotnet build MiniTwitApi --no-restore
   #----------------------------TEST-------------------------------------
@@ -42,7 +42,7 @@ jobs:
         with:
           dotnet-version: '5.0.100'
       - name: Install dependencies
-        run: dotnet restore
+        run: dotnet restore MiniTwitApi
       - name: Test
         run: dotnet test MiniTwitApi.Tests/MiniTwitApi.Tests.csproj
   #----------------------------SONNARSCANNER----------------------------
@@ -57,7 +57,7 @@ jobs:
         with:
           dotnet-version: '5.0.100'
       - name: Install dependencies
-        run: dotnet restore
+        run: dotnet restore MiniTwitApi
       - name: Install SonnarScanner
         run: dotnet tool install --global dotnet-sonarscanner
       - name: Start SonnarScanner
@@ -80,7 +80,7 @@ jobs:
         with:
           dotnet-version: '5.0.100'
       - name: Install dependencies
-        run: dotnet restore
+        run: dotnet restore MiniTwitApi
       - name: Login to Docker
         run: echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
       - name: Docker build
@@ -99,7 +99,7 @@ jobs:
         with:
           dotnet-version: '5.0.100'
       - name: Install dependencies
-        run: dotnet restore
+        run: dotnet restore MiniTwitApi
       - name: Deploy
         run: ssh -o "StrictHostKeyChecking no" ${MT_USER}@${MT_SERVER} \ "cd /vagrant/production && \ docker-compose pull && \ docker-compose up -d && \ docker pull $DOCKER_USERNAME/pythonkindergartenimage:latest
   release:

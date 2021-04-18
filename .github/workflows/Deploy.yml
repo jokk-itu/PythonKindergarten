@@ -25,7 +25,7 @@ jobs:
       - name: Setup .NET Core SDK
         uses: actions/setup-dotnet@v1.7.2
         with:
-          dotnet-version: 5.0.5
+          dotnet-version: '5.0.100'
       - name: Install dependencies
         run: dotnet restore
       - name: Build
@@ -40,7 +40,7 @@ jobs:
       - name: Setup .NET Core SDK
         uses: actions/setup-dotnet@v1.7.2
         with:
-          dotnet-version: 5.0.5
+          dotnet-version: '5.0.100'
       - name: Install dependencies
         run: dotnet restore
       - name: Test
@@ -55,7 +55,7 @@ jobs:
       - name: Setup .NET Core SDK
         uses: actions/setup-dotnet@v1.7.2
         with:
-          dotnet-version: 5.0.5
+          dotnet-version: '5.0.100'
       - name: Install dependencies
         run: dotnet restore
       - name: Install SonnarScanner
@@ -78,7 +78,7 @@ jobs:
       - name: Setup .NET Core SDK
         uses: actions/setup-dotnet@v1.7.2
         with:
-          dotnet-version: 5.0.5
+          dotnet-version: '5.0.100'
       - name: Install dependencies
         run: dotnet restore
       - name: Login to Docker
@@ -97,7 +97,7 @@ jobs:
       - name: Setup .NET Core SDK
         uses: actions/setup-dotnet@v1.7.2
         with:
-          dotnet-version: 5.0.5
+          dotnet-version: '5.0.100'
       - name: Install dependencies
         run: dotnet restore
       - name: Deploy

@@ -4,6 +4,7 @@
 ![current release](https://img.shields.io/github/v/release/jokk-itu/pythonkindergarten)
 ![issues](https://img.shields.io/github/issues/jokk-itu/pythonkindergarten)
 ![total-lines](https://img.shields.io/tokei/lines/github/jokk-itu/pythonkindergarten)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=jokk-itu_PythonKindergarten&metric=alert_status)](https://sonarcloud.io/dashboard?id=jokk-itu_PythonKindergarten)
 
 ## Table of contents
 * [General info](#general-info)

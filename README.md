@@ -13,7 +13,7 @@
 * [Screenshots](#screenshots)
 
 ## General info
-This project is a refactored version of "MiniTwit", a mock of a old social media. Our task has been to develop and refactor this "old social media", which have resulted into this project. The application is refactored into C#, and uses Blazor for front-end. 
+This project is a refactored version of "MiniTwit", a mock of an old social media. Our task has been to develop and refactor this "old social media", which has resulted into this project. The application is refactored into C#, and uses Blazor for front-end. 
 
 
 ## Access our MiniTwit implementation

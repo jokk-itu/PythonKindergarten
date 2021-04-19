@@ -61,7 +61,7 @@ jobs:
       - name: Install SonnarScanner
         run: dotnet tool install --global dotnet-sonarscanner
       - name: Start SonnarScanner
-        run: dotnet sonarscanner begin /k:jokk-itu_PythonKindergarten /d:sonar.login="$SONAR_LOGIN" /d:sonar.host.url="https://sonarcloud.io/" /o:jokk-itu /d:sonar.cs.opencover.reportsPaths=MiniTwitApi.Tests/coverage.opencover.xml
+        run: dotnet sonarscanner begin /k:jokk-itu_PythonKindergarten /d:sonar.login="${{ secrets.SONAR_LOGIN }}" /d:sonar.host.url="https://sonarcloud.io/" /o:jokk-itu /d:sonar.cs.opencover.reportsPaths=MiniTwitApi.Tests/coverage.opencover.xml
       - name: Build and test MiniTwit to generate report
         run: |
           dotnet build MiniTwitApi
@@ -82,11 +82,11 @@ jobs:
       - name: Install dependencies
         run: dotnet restore MiniTwitApi
       - name: Login to Docker
-        run: echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+        run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
       - name: Docker build
-        run: docker build -t $DOCKER_USERNAME/pythonkindergartenimage:latest . -f Dockerfile
+        run: docker build -t ${{ secrets.DOCKER_USERNAME }}E/pythonkindergartenimage:latest . -f Dockerfile
       - name: Docker push
-        run: docker push $DOCKER_USERNAME/pythonkindergartenimage:latest
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/pythonkindergartenimage:latest
   #----------------------------DEPLOY------------------------------------
   deploy:
     # The type of runner that the job will run on
@@ -101,7 +101,7 @@ jobs:
       - name: Install dependencies
         run: dotnet restore MiniTwitApi
       - name: Deploy
-        run: ssh -o "StrictHostKeyChecking no" ${MT_USER}@${MT_SERVER} \ "cd /vagrant/production && \ docker-compose pull && \ docker-compose up -d && \ docker pull $DOCKER_USERNAME/pythonkindergartenimage:latest
+        run: ssh -o "StrictHostKeyChecking no" ${{ secrets.MT_USER }}@${{ secrets.MT_SERVER }} \ "cd /vagrant/production && \ docker-compose pull && \ docker-compose up -d && \ docker pull ${{ secrets.DOCKER_USERNAME }}/pythonkindergartenimage:latest
   release:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest

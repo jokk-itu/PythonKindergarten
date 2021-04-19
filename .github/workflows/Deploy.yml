@@ -61,7 +61,9 @@ jobs:
       - name: Install SonnarScanner
         run: dotnet tool install --global dotnet-sonarscanner
       - name: Start SonnarScanner
-        run: dotnet sonarscanner begin /k:jokk-itu_PythonKindergarten /d:sonar.login="${{ secrets.SONAR_LOGIN }}" /d:sonar.host.url="https://sonarcloud.io/" /o:jokk-itu /d:sonar.cs.opencover.reportsPaths=MiniTwitApi.Tests/coverage.opencover.xml
+        env: # Or as an environment variable
+          super_secret: ${{ secrets.SONAR_LOGIN }}
+        run: dotnet sonarscanner begin /k:jokk-itu_PythonKindergarten /d:sonar.login="$SONAR_LOGIN" /d:sonar.host.url="https://sonarcloud.io/" /o:jokk-itu /d:sonar.cs.opencover.reportsPaths=MiniTwitApi.Tests/coverage.opencover.xml
       - name: Build and test MiniTwit to generate report
         run: |
           dotnet build MiniTwitApi

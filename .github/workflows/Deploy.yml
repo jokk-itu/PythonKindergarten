@@ -63,7 +63,7 @@ jobs:
       - name: Start SonnarScanner
         env: # Or as an environment variable
           SONAR_LOGIN: ${{ secrets.SONAR_LOGIN }}
-        run: dotnet sonarscanner begin /k:jokk-itu_PythonKindergarten /d:sonar.login="$SONAR_LOGIN" /d:sonar.host.url="https://sonarcloud.io/" /o:jokk-itu /d:sonar.cs.opencover.reportsPaths=MiniTwitApi.Tests/coverage.opencover.xml
+        run: dotnet sonarscanner begin /k:"jokk-itu_PythonKindergarten" /d:sonar.login="$SONAR_LOGIN" /d:sonar.host.url="https://sonarcloud.io/" /o:jokk-itu /d:sonar.cs.opencover.reportsPaths=MiniTwitApi.Tests/coverage.opencover.xml
       - name: Build and test MiniTwit to generate report
         run: |
           dotnet build MiniTwitApi

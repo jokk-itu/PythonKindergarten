@@ -71,9 +71,9 @@ jobs:
           dotnet build MiniTwitApi
           dotnet test MiniTwitApi.Tests/MiniTwitApi.Tests.csproj --logger "junit;LogFilePath=testResults/results.xml" /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
       - name: End SonnarScanner
-        run: |
-          echo "$SONAR_LOGIN"
-          dotnet sonarscanner end /d:sonar.login="$SONAR_LOGIN"
+        env: # Or as an environment variable
+            SONAR_LOGIN: ${{ secrets.SONAR_LOGIN }}
+        run: dotnet sonarscanner end /d:sonar.login="$SONAR_LOGIN"
   #----------------------------DOCKERBUILD------------------------------
   docker_build:
     # The type of runner that the job will run on
@@ -113,7 +113,7 @@ jobs:
           MT_USER: ${{ secrets.MT_USER }}
           MT_SERVER: ${{ secrets.MT_SERVER }}
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-        run: ssh -o "StrictHostKeyChecking no" $MT_USER@$MT_SERVER \ "cd /vagrant/production && \ docker-compose pull && \ docker-compose up -d && \ docker pull $DOCKER_USERNAME/pythonkindergartenimage:latest
+        run: ssh -o "StrictHostKeyChecking no" $MT_USER@$MT_SERVER \ "cd /vagrant/production && \ docker-compose pull && \ docker-compose up -d && \ docker pull $DOCKER_USERNAME/pythonkindergartenimage:latest"
   release:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest

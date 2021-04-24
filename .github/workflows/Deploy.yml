@@ -89,12 +89,12 @@ jobs:
         run: dotnet restore MiniTwitApi
       - name: Login to Docker
         env: # Or as an environment variable
-          DOCKER_PASSWORD: ${{ 'secrets.DOCKER_PASSWORD' }}
-          DOCKER_USERNAME: ${{ 'secrets.DOCKER_USERNAME' }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         run: | 
-          cat ${{ 'secrets.DOCKER_PASSWORD' }} | docker login -u ${{ 'secrets.DOCKER_USERNAME' }} --password-stdin
-          docker build -t ${{ 'secrets.DOCKER_USERNAME' }}E/pythonkindergartenimage:latest . -f Dockerfile
-          docker push ${{ 'secrets.DOCKER_USERNAME' }}/pythonkindergartenimage:latest
+          cat $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+          docker build -t $DOCKER_USERNAME/pythonkindergartenimage:latest . -f Dockerfile
+          docker push $DOCKER_USERNAME/pythonkindergartenimage:latest
   #----------------------------DEPLOY------------------------------------
   deploy:
     # The type of runner that the job will run on
@@ -110,10 +110,10 @@ jobs:
         run: dotnet restore MiniTwitApi
       - name: Deploy
         env: # Or as an environment variable
-          MT_USER: ${{ 'secrets.MT_USER' }}
-          MT_SERVER: ${{ 'secrets.MT_SERVER' }}
-          DOCKER_USERNAME: ${{ 'secrets.DOCKER_USERNAME' }}
-        run: ssh -o "StrictHostKeyChecking no" ${{ secrets.MT_USER }}@${{ secrets.MT_SERVER }} \ "cd /vagrant/production && \ docker-compose pull && \ docker-compose up -d && \ docker pull ${{ secrets.DOCKER_USERNAME }}/pythonkindergartenimage:latest
+          MT_USER: ${{ secrets.MT_USER }}
+          MT_SERVER: ${{ secrets.MT_SERVER }}
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        run: ssh -o "StrictHostKeyChecking no" $MT_USER@$MT_SERVER \ "cd /vagrant/production && \ docker-compose pull && \ docker-compose up -d && \ docker pull $DOCKER_USERNAME/pythonkindergartenimage:latest
   release:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest

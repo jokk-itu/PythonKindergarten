@@ -92,7 +92,7 @@ jobs:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         run: | 
-          $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+          echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
           docker build -t $DOCKER_USERNAME/pythonkindergartenimage:latest . -f Dockerfile
           docker push $DOCKER_USERNAME/pythonkindergartenimage:latest
   #----------------------------DEPLOY------------------------------------

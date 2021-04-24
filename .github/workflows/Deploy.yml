@@ -73,6 +73,7 @@ jobs:
       - name: End SonnarScanner
         env: # Or as an environment variable
             SONAR_LOGIN: ${{ secrets.SONAR_LOGIN }}
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: dotnet sonarscanner end /d:sonar.login="$SONAR_LOGIN"
   #----------------------------DOCKERBUILD------------------------------
   docker_build:

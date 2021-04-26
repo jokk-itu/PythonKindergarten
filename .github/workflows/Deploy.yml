@@ -128,7 +128,24 @@ jobs:
           
           ssh -o "StrictHostKeyChecking no" $MT_USER@$MT_SERVER "docker pull $DOCKER_USERNAME/pythonkindergartenimage:latest && docker service update --image $DOCKER_USERNAME/pythonkindergartenimage:latest pythonservice_minitwitimage"
   release:
-    # The type of runner that the job will run on
+    # Retrieved from here: https://birtony.medium.com/setting-up-automated-release-workflow-with-github-actions-628dbca2446e
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Needs to be implemented"
+      - name: Changelog
+        uses: scottbrenner/generate-changelog-action@master
+        id: Changelog
+        env:
+          REPO: ${{ github.repository }}
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body: |
+            ${{ steps.Changelog.outputs.changelog }}
+          draft: false
+          prerelease: false
+      

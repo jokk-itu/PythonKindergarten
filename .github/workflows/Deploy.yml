@@ -33,7 +33,7 @@ jobs:
         run: dotnet build MiniTwitApi --no-restore
   #----------------------------TEST-------------------------------------
   test:
-    # The type of runner that the job will run on
+    needs: [build]
     runs-on: ubuntu-latest
     steps:
     # Checks-out our repository under $GITHUB_WORKSPACE, so our job can access it
@@ -48,7 +48,7 @@ jobs:
         run: dotnet test MiniTwitApi.Tests/MiniTwitApi.Tests.csproj
   #----------------------------SONNARSCANNER----------------------------
   sonarscanner_code_check:
-    # The type of runner that the job will run on
+    needs: [build, test]
     runs-on: ubuntu-latest
     steps:
     # Checks-out our repository under $GITHUB_WORKSPACE, so our job can access it
@@ -77,7 +77,7 @@ jobs:
         run: dotnet sonarscanner end /d:sonar.login="$SONAR_LOGIN"
   #----------------------------DOCKERBUILD------------------------------
   docker_build:
-    # The type of runner that the job will run on
+    needs: [build, test, sonarscanner_code_check]
     runs-on: ubuntu-latest
     steps:
     # Checks-out our repository under $GITHUB_WORKSPACE, so our job can access it
@@ -101,7 +101,7 @@ jobs:
   #----------------------------DEPLOY------------------------------------
   deploy:
     # The type of runner that the job will run on
-    needs: [docker_build]
+    needs: [build, test, sonarscanner_code_check, docker_build]
     runs-on: ubuntu-latest
     steps:
     # Checks-out our repository under $GITHUB_WORKSPACE, so our job can access it
@@ -128,22 +128,24 @@ jobs:
           
           ssh -o "StrictHostKeyChecking no" $MT_USER@$MT_SERVER "docker pull $DOCKER_USERNAME/pythonkindergartenimage:latest && docker service update --image $DOCKER_USERNAME/pythonkindergartenimage:latest pythonservice_minitwitimage"
   release:
-    # Retrieved from here: https://birtony.medium.com/setting-up-automated-release-workflow-with-github-actions-628dbca2446e
+    needs: [build, test, sonarscanner_code_check, docker_build, deploy]
+    # Inspired by https://birtony.medium.com/setting-up-automated-release-workflow-with-github-actions-628dbca2446e
     runs-on: ubuntu-latest
     steps:
-      - name: Changelog
-        uses: scottbrenner/generate-changelog-action@master
-        id: Changelog
-        env:
-          REPO: ${{ github.repository }}
+      - name: Get current time
+        uses: 1466587594/get-current-time@v2
+        id: current-time
+        with:
+          format: YYYYMMDD-HH:MM:SS
+          utcOffset: "+02:00"
       - name: Create Release
         id: create_release
         uses: actions/create-release@latest
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
+          tag_name: "${{ steps.current-time.outputs.formattedTime }}"
+          release_name: "${{ steps.current-time.outputs.formattedTime }}"
           body: |
             ${{ steps.Changelog.outputs.changelog }}
           draft: false

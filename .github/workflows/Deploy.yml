@@ -121,7 +121,7 @@ jobs:
     steps:
       - name: Get current time
         uses: 1466587594/get-current-time@v2
-        id: current-time
+        id: currentTime
         with:
           format: YYYYMMDD-HH:MM:SS
           utcOffset: "+02:00"
@@ -130,10 +130,9 @@ jobs:
         uses: actions/create-release@latest
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          F_TIME: "${{ steps.current-time.outputs.formattedTime }}"
         with:
-          tag_name: $F_TIME
-          release_name: $F_TIME
+          tag_name: ${{ steps.currentTime.outputs.formattedTime }}
+          release_name: ${{ steps.currentTime.outputs.formattedTime }}
           body: |
             ${{ steps.Changelog.outputs.changelog }}
           draft: false

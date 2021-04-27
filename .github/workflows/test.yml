@@ -19,7 +19,7 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - id: release
-        uses: rymndhng/release-on-push-action@0.18.0
+        uses: rymndhng/release-on-push-action@v0.18.0
         with:
           bump_version_scheme: major
           tag_prefix: v

@@ -19,19 +19,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Get current time
-        uses: 1466587594/get-current-time@v2
-        id: currentTime
-        with:
-          format: YYYYMMDD-HH:MM:SS
-          utcOffset: "+02:00"
+        uses: gerred/actions/current-time@master
+        id: current-time
       - name: Use current time
         env:
           TIME: "${{ steps.current-time.outputs.time }}"
-          R_TIME: "${{ steps.current-time.outputs.readableTime }}"
-          F_TIME: "${{ steps.current-time.outputs.formattedTime }}"
-          YEAR: "${{ steps.current-time.outputs.year }}"
-          DAY: "${{ steps.current-time.outputs.day }}"
-        run: echo $TIME $R_TIME $F_TIME $YEAR $DAY
+        run: echo $TIME
       - name: Create Release
         id: create_release
         uses: actions/create-release@latest

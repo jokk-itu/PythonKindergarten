@@ -8,10 +8,8 @@ on:
   pull_request:
     branches: [ master ]
 
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   #----------------------------BUILD----------------------------------
   build_and_test:
@@ -21,7 +19,6 @@ jobs:
       run:
         shell: bash
     steps:
-    # Checks-out our repository under $GITHUB_WORKSPACE, so our job can access it
       - uses: actions/checkout@v2
       - name: Setup .NET Core SDK
         uses: actions/setup-dotnet@v1.7.2
@@ -38,7 +35,6 @@ jobs:
     needs: [build_and_test]
     runs-on: ubuntu-latest
     steps:
-    # Checks-out our repository under $GITHUB_WORKSPACE, so our job can access it
       - uses: actions/checkout@v2
       - name: Setup .NET Core SDK
         uses: actions/setup-dotnet@v1.7.2
@@ -49,7 +45,7 @@ jobs:
       - name: Install SonnarScanner
         run: dotnet tool install --global dotnet-sonarscanner
       - name: Start SonnarScanner
-        env: # Or as an environment variable
+        env:
           SONAR_LOGIN: ${{ secrets.SONAR_LOGIN }}
           SONAR_DIRECTORY: ${{ secrets.SONAR_DIRECTORY }}
         run: dotnet sonarscanner begin /k:jokk-itu_PythonKindergarten /d:sonar.login="$SONAR_LOGIN" /d:sonar.host.url="https://sonarcloud.io/" /o:jokk-itu /d:sonar.cs.opencover.reportsPaths=MiniTwitApi.Tests/coverage.opencover.xml
@@ -58,7 +54,7 @@ jobs:
           dotnet build MiniTwitApi
           dotnet test MiniTwitApi.Tests/MiniTwitApi.Tests.csproj --logger "junit;LogFilePath=testResults/results.xml" /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
       - name: End SonnarScanner
-        env: # Or as an environment variable
+        env:
             SONAR_LOGIN: ${{ secrets.SONAR_LOGIN }}
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: dotnet sonarscanner end /d:sonar.login="$SONAR_LOGIN"
@@ -67,7 +63,6 @@ jobs:
     needs: [build_and_test, sonarscanner_code_check]
     runs-on: ubuntu-latest
     steps:
-    # Checks-out our repository under $GITHUB_WORKSPACE, so our job can access it
       - uses: actions/checkout@v2
       - name: Setup .NET Core SDK
         uses: actions/setup-dotnet@v1.7.2
@@ -87,11 +82,9 @@ jobs:
           docker push $DOCKER_USERNAME/pythonkindergartenimage:latest
   #----------------------------DEPLOY------------------------------------
   deploy:
-    # The type of runner that the job will run on
     needs: [build_and_test, sonarscanner_code_check, docker_build]
     runs-on: ubuntu-latest
     steps:
-    # Checks-out our repository under $GITHUB_WORKSPACE, so our job can access it
       - uses: actions/checkout@v2
       - name: Setup .NET Core SDK
         uses: actions/setup-dotnet@v1.7.2
@@ -114,27 +107,12 @@ jobs:
           ssh-add /home/runner/.ssh/github_actions
           
           ssh -o "StrictHostKeyChecking no" $MT_USER@$MT_SERVER "docker pull $DOCKER_USERNAME/pythonkindergartenimage:latest && docker service update --image $DOCKER_USERNAME/pythonkindergartenimage:latest pythonservice_minitwitimage"
-  release:
-    needs: [build_and_test, sonarscanner_code_check, docker_build, deploy]
-    # Inspired by https://birtony.medium.com/setting-up-automated-release-workflow-with-github-actions-628dbca2446e
+  release-on-push:
     runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - name: Get current time
-        uses: 1466587594/get-current-time@v2
-        id: currentTime
+      - uses: rymndhng/release-on-push-action@v0.18.0
         with:
-          format: YYYYMMDD-HH:MM:SS
-          utcOffset: "+02:00"
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@latest
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: "${{ steps.currentTime.outputs.formattedTime }}"
-          release_name: "${{ steps.currentTime.outputs.formattedTime }}"
-          body: |
-            ${{ steps.Changelog.outputs.changelog }}
-          draft: false
-          prerelease: false
+          bump_version_scheme: major
       

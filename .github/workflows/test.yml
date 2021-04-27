@@ -31,8 +31,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: "${{ steps.currentTime.outputs.formattedTime }}"
-          release_name: "${{ steps.currentTime.outputs.formattedTime }}"
+          tag_name: "${{ steps.current-time.outputs.time }}"
+          release_name: "${{ steps.current-time.outputs.time }}"
           body: |
             ${{ steps.Changelog.outputs.changelog }}
           draft: false

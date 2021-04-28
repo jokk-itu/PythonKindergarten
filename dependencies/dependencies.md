@@ -32,6 +32,7 @@
 <h3>Pipelines (CI/CD)</h3>
 <ul>
     <li>Travis</li>
+    <li>Github Actions</li>
 </ul>
 
 <h3>Deployment Services</h3>
@@ -43,12 +44,11 @@
 <ul>
     <li>Grafana</li>
     <li>Prometheus</li>
+
 </ul>
 
 <h3>Static Codecheck Tools</h3>
 <ul>
-    <li>Roslynator Analyzers</li>
-    <li>Roslynator Refactorings</li>
     <li>SonarScanner</li>
 </ul>
 
@@ -86,3 +86,8 @@
 <ul>
     <li>Vagrant</li>
 </ul>
+
+<h3>Logging</h3>
+<ul>
+    <li>Kibana</li>
+    <li>ElasticSearch</li>

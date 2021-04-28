@@ -6,16 +6,37 @@
 @inject HttpClient Client
 
 <nav>
-    <AuthorizeView>
+    <!--<AuthorizeView>
         <Authorized>
-            <a href="timeline/my_timeline">My Timeline</a>
-            <a href="timeline/public">Public Timeline</a>
-            <a style="color: white;" @onclick="RedirectToIndex">Logout</a>
+            <a href="timeline/my_timeline">My Timeline</a> |
+            <a href="timeline/public">Public Timeline</a> |
+            <a style="color: white;" @onclick="RedirectToIndex">Logout</a> 
         </Authorized>
         <NotAuthorized>
-            <a href="timeline/public">Public Timeline</a>
-            <a href="register">Sign Up</a>
+            <a href="timeline/public">Public Timeline</a> |
+            <a href="register">Sign Up</a> |
             <a href="login">Sign In</a>
+        </NotAuthorized>
+    </AuthorizeView>-->
+
+    <AuthorizeView>
+        <Authorized>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <NavLink class="nav-link" href="timeline/my_timeline" Match="NavLinkMatch.All">My Timeline</NavLink>
+            </li> |
+            <li class="nav-item">
+                <NavLink class="nav-link" href="timeline/public" Match="NavLinkMatch.All">Public Timeline</NavLink>
+            </li> | 
+            <li class="nav-item">
+                <NavLink style="color: white;" class="nav-link" @onclick="RedirectToIndex" Match="NavLinkMatch.All">Logout</NavLink>
+            </li>
+        </ul>
+        </Authorized>
+        <NotAuthorized>
+        <NavLink class="nav-link" href="timeline/public" Match="NavLinkMatch.All">Public Timeline</NavLink>
+        <NavLink class="nav-link" href="register" Match="NavLinkMatch.All">Sign Up</NavLink>
+        <NavLink class="nav-link" href="login" Match="NavLinkMatch.All">Sign In</NavLink>
         </NotAuthorized>
     </AuthorizeView>
 </nav>
@@ -27,4 +48,20 @@
         await Client.GetAsync("logout");
         await JSRuntime.InvokeVoidAsync("redirect", "/");
     }
+    
+    [Inject]
+    NavigationManager NavigationManager { get; set; }
+
+    protected override void OnInitialized() => NavigationManager.LocationChanged += (s, e) => StateHasChanged();
+
+    bool IsActive(string href, NavLinkMatch navLinkMatch = NavLinkMatch.Prefix)
+    {
+        var relativePath = NavigationManager.ToBaseRelativePath(NavigationManager.Uri).ToLower();
+        return navLinkMatch == NavLinkMatch.All ? relativePath == href.ToLower() : relativePath.StartsWith(href.ToLower());
+    }
+
+    string GetActive(string href, NavLinkMatch navLinkMatch = NavLinkMatch.Prefix) => IsActive(href, navLinkMatch) ? "active" : "";
 }
+
+
+

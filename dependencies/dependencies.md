@@ -31,7 +31,7 @@
 
 <h3>Pipelines (CI/CD)</h3>
 <ul>
-    <li>Travis</li>
+    <li><s>Travis</s></li>
     <li>Github Actions</li>
 </ul>
 
@@ -50,6 +50,7 @@
 <h3>Static Codecheck Tools</h3>
 <ul>
     <li>SonarScanner</li>
+    <li>SonarCloud</li>
 </ul>
 
 <h3>Code placement and version controlling</h3>

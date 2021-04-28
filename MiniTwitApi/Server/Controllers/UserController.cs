@@ -47,13 +47,13 @@ namespace MiniTwitApi.Server.Controllers
             if(!BCrypt.CheckPassword(user.Password, userFromDatabase.Password))
                 return BadRequest("Provided password is wrong");
 
-            var claims = new List<Claim>
+            
+
+            var claimsIdentity = new ClaimsIdentity(new List<Claim>
             {
                 new (ClaimTypes.Name, userFromDatabase.Username),
                 new (ClaimTypes.Email, userFromDatabase.Email)
-            };
-
-            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+            }, CookieAuthenticationDefaults.AuthenticationScheme);
 
             var authProperties = new AuthenticationProperties();
 
@@ -86,12 +86,12 @@ namespace MiniTwitApi.Server.Controllers
                             Where(c => c.Type.Equals(ClaimTypes.Email))
                             .Select(c => c)
                             .First().Value;
-            var user = new UserDTO()
+            
+            return Ok(new UserDTO()
             {
                 Username = username,
                 Email = email
-            };
-            return Ok(user);
+            });
         }
         
         [HttpPost("register")]
@@ -126,13 +126,11 @@ namespace MiniTwitApi.Server.Controllers
         
         [HttpGet("user/{userid}")]
         public async Task<ActionResult<UserDTO>> GetUserByUserId(int userid, [FromQuery] long latest)
-        {
-            var user = await _repository.ReadAsync(userid);
-            
+        {   
             if(latest > 0 && _configuration["ApiSafeList"].Contains(_accessor.ActionContext.HttpContext.Connection.RemoteIpAddress.ToString()))
                 Latest.GetInstance().Update(latest);
             
-            return Ok(user);
+            return Ok(await _repository.ReadAsync(userid));
         }
 
         [HttpGet("user/search")]

@@ -43,7 +43,7 @@ jobs:
     - name: Install dependencies
       run: dotnet restore MiniTwitApi
     - name: Build
-      run: dotnet build MiniTwitApi --no-restore
+      run: dotnet build MiniTwitApi/Server --no-restore
     - name: Run Infer#    
       uses: microsoft/infersharpaction@v1.0
       id: runinfersharp

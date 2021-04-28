@@ -39,7 +39,7 @@ jobs:
       uses: microsoft/infersharpaction@v1.0
       id: runinfersharp
       with:
-        binary-path: 'MiniTwitApi/Server/bin/Debug/net5.0'
+        binary-path: '{{ GITHUB_WORKSPACE}}/PATH_TO_BINARIES'
     - name: Infer# analysis results
       run: echo "${{ steps.runinfersharp.outputs.results }}"
   #----------------------------SONNARSCANNER----------------------------
@@ -94,7 +94,7 @@ jobs:
           docker push $DOCKER_USERNAME/pythonkindergartenimage:latest
   #----------------------------DEPLOY------------------------------------
   deploy:
-    needs: [build_and_test, sonarscanner_code_check, docker_build]
+    needs: [build_and_test, infersharp_code_check, sonarscanner_code_check, docker_build]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

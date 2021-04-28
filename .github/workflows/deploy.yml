@@ -36,14 +36,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Run Infer#      
+    - name: Run Infer#    
+      env:
+        OUR_PATH: ${{ github.workspace }}/.$GITHUB_WORKSPACE/MiniTwitApi/Server/bin/Debug/net5.0
       uses: microsoft/infersharpaction@v1.0
       id: runinfersharp
       with:
-        binary-path: '{{ GITHUB.WORKSPACE }}/MiniTwitApi/Server/bin/Debug/net5.0'
+        binary-path: $OUR_PATH
     - name: Infer# analysis results
+      env:
+        OUR_PATH: ${{ github.workspace }}/.$GITHUB_WORKSPACE/MiniTwitApi/Server/bin/Debug/net5.0
       run: |
-        echo " {{ GITHUB.WORKSPACE }}"
+        echo " $OUR_PATH"
         echo "${{ steps.runinfersharp.outputs.results }}"
   #----------------------------SONNARSCANNER----------------------------
   sonarscanner_code_check:

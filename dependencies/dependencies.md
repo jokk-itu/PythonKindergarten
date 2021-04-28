@@ -51,6 +51,7 @@
 <ul>
     <li>SonarScanner</li>
     <li>SonarCloud</li>
+    <li>Infersharp</li>
 </ul>
 
 <h3>Code placement and version controlling</h3>
@@ -92,3 +93,4 @@
 <ul>
     <li>Kibana</li>
     <li>ElasticSearch</li>
+</ul>

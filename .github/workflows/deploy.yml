@@ -48,10 +48,10 @@ jobs:
       uses: microsoft/infersharpaction@v1.0
       id: runinfersharp
       with:
-        binary-path: ${{ github.workspace }}/MiniTwitApi/Server/bin/Debug/net5.0
+        binary-path: '${{ github.workspace }}/MiniTwitApi/Server/bin/'
     - name: Infer# analysis results
       run: |
-        echo " $OUR_PATH"
+        echo "${{ github.workspace }}"
         echo "${{ steps.runinfersharp.outputs.results }}"
   #----------------------------SONNARSCANNER----------------------------
   sonarscanner_code_check:

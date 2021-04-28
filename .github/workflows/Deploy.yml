@@ -30,6 +30,18 @@ jobs:
         run: dotnet build MiniTwitApi --no-restore
       - name: Test
         run: dotnet test MiniTwitApi.Tests/MiniTwitApi.Tests.csproj
+  #----------------------------INFERSHARP-------------------------------
+  infersharp_code_check:
+    needs: [build_and_test]
+    runs-on: ubuntu-latest
+    steps:
+    - name: Run Infer#      
+      uses: microsoft/infersharpaction@v1.0
+      id: runinfersharp
+      with:
+        binary-path: 'bin/Release/net5.0'
+    - name: Infer# analysis results
+      run: echo "${{ steps.runinfersharp.outputs.results }}"
   #----------------------------SONNARSCANNER----------------------------
   sonarscanner_code_check:
     needs: [build_and_test]
@@ -107,6 +119,7 @@ jobs:
           ssh-add /home/runner/.ssh/github_actions
           
           ssh -o "StrictHostKeyChecking no" $MT_USER@$MT_SERVER "docker pull $DOCKER_USERNAME/pythonkindergartenimage:latest && docker service update --image $DOCKER_USERNAME/pythonkindergartenimage:latest pythonservice_minitwitimage"
+  #----------------------------RELEASE------------------------------------
   release-on-push:
     needs: [build_and_test, sonarscanner_code_check, docker_build, deploy]
     runs-on: ubuntu-latest

@@ -39,7 +39,7 @@ jobs:
       uses: microsoft/infersharpaction@v1.0
       id: runinfersharp
       with:
-        binary-path: 'bin/Release/net5.0'
+        binary-path: 'MiniTwitApi/Server/bin/Debug/net5.0'
     - name: Infer# analysis results
       run: echo "${{ steps.runinfersharp.outputs.results }}"
   #----------------------------SONNARSCANNER----------------------------
@@ -72,7 +72,7 @@ jobs:
         run: dotnet sonarscanner end /d:sonar.login="$SONAR_LOGIN"
   #----------------------------DOCKERBUILD------------------------------
   docker_build:
-    needs: [build_and_test, sonarscanner_code_check]
+    needs: [build_and_test, infersharp_code_check, sonarscanner_code_check]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -121,7 +121,7 @@ jobs:
           ssh -o "StrictHostKeyChecking no" $MT_USER@$MT_SERVER "docker pull $DOCKER_USERNAME/pythonkindergartenimage:latest && docker service update --image $DOCKER_USERNAME/pythonkindergartenimage:latest pythonservice_minitwitimage"
   #----------------------------RELEASE------------------------------------
   release-on-push:
-    needs: [build_and_test, sonarscanner_code_check, docker_build, deploy]
+    needs: [build_and_test, infersharp_code_check, sonarscanner_code_check, docker_build, deploy]
     runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

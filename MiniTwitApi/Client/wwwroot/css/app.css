@@ -346,7 +346,3 @@ h3{
  .li {
     float: left;
   }
-
-  .active a{
-    text-decoration: underline;
-}

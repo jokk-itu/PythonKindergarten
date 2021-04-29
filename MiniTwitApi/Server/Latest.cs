@@ -1,5 +1,7 @@
 using System.IO;
-
+using System.Collections.Generic;
+using System;
+using Serilog;
 namespace MiniTwitApi.Server
 {
     public class Latest
@@ -9,23 +11,18 @@ namespace MiniTwitApi.Server
         
         public void Update(long latest)
         {
+            Log.Information($"Latest was updated with {latest}");
             lock (_fileLock)
-            {
-                using var writer = new StreamWriter("latest.txt"); 
-                writer.WriteLine($"{latest}");
-                writer.Close();
-            }
+                File.WriteAllText($"latest.txt", latest.ToString());
         }
 
         public long Read()
         {
-            lock (_fileLock)
-            {
-                using var reader = new StreamReader("latest.txt");
-                var latest = long.Parse(reader.ReadLine());
-                reader.Close();
+            lock (_fileLock){
+                var latest = long.Parse(File.ReadAllText($"latest.txt"));
+                Log.Information($"Latest was read ({latest})");
                 return latest;
-            }
+                }
         }
 
         public static Latest GetInstance()

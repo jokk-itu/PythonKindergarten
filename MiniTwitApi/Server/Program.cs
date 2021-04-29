@@ -62,9 +62,12 @@ namespace MiniTwitApi.Server
                         {
                             options.Listen(IPAddress.Any, 5001, listenOptions =>
                             {
-                                if(args.Any() && args[0]=="mac"){
+
+                                if(args.Any() && args[0]=="mac")
+                                {
                                     Console.WriteLine("Mac isn't running");
-                                }else
+                                }
+                                else
                                 {
                                     var serverCertificate = LoadCertificate();
                                     listenOptions.UseHttps(serverCertificate); // <- Configures SSL

@@ -7,6 +7,7 @@ using MiniTwitApi.Shared.Models;
 using MiniTwitApi.Server.Repositories.Abstract;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.Extensions.Configuration;
+using Serilog;
 
 namespace MiniTwitApi.Server.Controllers
 {
@@ -26,8 +27,11 @@ namespace MiniTwitApi.Server.Controllers
         [HttpGet("latest")]
         public async Task<ActionResult<GetLatestResponse>> GetLatest([FromQuery] long latest)
         {
+            Log.Information($"Received latest request from IP: {_accessor.ActionContext.HttpContext.Connection.RemoteIpAddress.ToString()}");
+
             if(latest > 0 && _configuration["ApiSafeList"].Contains(_accessor.ActionContext.HttpContext.Connection.RemoteIpAddress.ToString()))
                 Latest.GetInstance().Update(latest);
+                
             return Ok(new GetLatestResponse(Latest.GetInstance().Read()));
         }
         

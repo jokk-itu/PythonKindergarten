@@ -1,35 +1,0 @@
-
-tMiniTwitApi.Server.ClientIpCheckActionFilter.ClientIpCheckActionFilter(string, Microsoft.Extensions.Logging.ILogger)^
-T/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/ClientIpCheckActionFilter.cs (("1*†
-1^
-T/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/ClientIpCheckActionFilter.cs	 (	›
-˜
-
-%0void"NMicrosoft.AspNetCore.Mvc.Filters.ActionFilterAttribute.ActionFilterAttribute()*:8
-6Microsoft.AspNetCore.Mvc.Filters.ActionFilterAttribute*
-0*²
-0^
-T/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/ClientIpCheckActionFilter.cs (Æ
-Ã
-^
-T/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/ClientIpCheckActionFilter.cs ( E.
-,MiniTwitApi.Server.ClientIpCheckActionFilter"
-	_safeliststring"__id*
-
-safeliststringþ
-û
-^
-T/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/ClientIpCheckActionFilter.cs (a.
-,MiniTwitApi.Server.ClientIpCheckActionFilter"/
-_logger$Microsoft.Extensions.Logging.ILogger"__id*0
-.
-logger$Microsoft.Extensions.Logging.ILogger*
-2*Ú
-2^
-T/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/ClientIpCheckActionFilter.cs	 (	"u
-^
-T/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/ClientIpCheckActionFilter.cs (	
-implicit return:
-safeliststring:.
-logger$Microsoft.Extensions.Logging.ILoggerB0.
-,MiniTwitApi.Server.ClientIpCheckActionFilter

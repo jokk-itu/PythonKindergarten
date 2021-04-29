@@ -1,8 +1,0 @@
-«
-MiniTwitApi.Shared.BCryptobjectH
-Encipher(uint[], int)/MiniTwitApi.Shared.BCrypt.Encipher(uint[], int)0
-	InitKey()#MiniTwitApi.Shared.BCrypt.InitKey()4
-Key(byte[])%MiniTwitApi.Shared.BCrypt.Key(byte[])J
-EksKey(byte[], byte[])0MiniTwitApi.Shared.BCrypt.EksKey(byte[], byte[])X
-CryptRaw(byte[], byte[], int)7MiniTwitApi.Shared.BCrypt.CryptRaw(byte[], byte[], int).
-BCrypt()"MiniTwitApi.Shared.BCrypt.BCrypt()

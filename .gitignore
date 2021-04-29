@@ -30,11 +30,9 @@ _UpgradeReport_Files/
 Thumbs.db
 Desktop.ini
 .DS_Store
-
 *.swp
 *.*~
 project.lock.json
-.DS_Store
 *.pyc
 
 # Visual Studio Code
@@ -61,7 +59,13 @@ msbuild.wrn
 vagrant/
 # Visual Studio 2015
 .vs/
-ssh_keys/do_ssh_key
 
+# Random stuff
+ssh_keys/do_ssh_key
 .fake
 .ionide
+.sonarqube
+mono_crash.*.json
+.idea
+docker_token
+

@@ -1,23 +1,0 @@
-
-UMiniTwitApi.Server.Startup.Startup(Microsoft.Extensions.Configuration.IConfiguration)L
-B/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Startup.cs ("1*V
-1L
-B/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Startup.cs	 (	*
-0*÷
-0L
-B/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Startup.cs ()ž
-›
-L
-B/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Startup.cs ()7
-%01Microsoft.Extensions.Configuration.IConfiguration",MiniTwitApi.Server.Startup.Configuration.set*
-MiniTwitApi.Server.Startup*D
-B
-configuration1Microsoft.Extensions.Configuration.IConfiguration*
-2*¶
-2L
-B/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Startup.cs	 (	"c
-L
-B/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Startup.cs (	
-implicit return:B
-configuration1Microsoft.Extensions.Configuration.IConfigurationB
-MiniTwitApi.Server.Startup

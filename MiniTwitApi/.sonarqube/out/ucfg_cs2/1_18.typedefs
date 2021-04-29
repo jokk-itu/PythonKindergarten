@@ -1,20 +1,0 @@
-ù
-3MiniTwitApi.Client.ViewModels.UserTimelineViewModelobject£
-uUserTimelineViewModel(MiniTwitApi.Client.Models.Abstract.IFollowModel, MiniTwitApi.Client.Models.Abstract.IUserModel)©MiniTwitApi.Client.ViewModels.UserTimelineViewModel.UserTimelineViewModel(MiniTwitApi.Client.Models.Abstract.IFollowModel, MiniTwitApi.Client.Models.Abstract.IUserModel)X
-IsUserFollowed()DMiniTwitApi.Client.ViewModels.UserTimelineViewModel.IsUserFollowed()\
-FollowUser(string)FMiniTwitApi.Client.ViewModels.UserTimelineViewModel.FollowUser(string)`
-UnfollowUser(string)HMiniTwitApi.Client.ViewModels.UserTimelineViewModel.UnfollowUser(string)P
-Username.get@MiniTwitApi.Client.ViewModels.UserTimelineViewModel.Username.getP
-Username.set@MiniTwitApi.Client.ViewModels.UserTimelineViewModel.Username.setH
-Path.get<MiniTwitApi.Client.ViewModels.UserTimelineViewModel.Path.getH
-Path.set<MiniTwitApi.Client.ViewModels.UserTimelineViewModel.Path.setJ
-	Error.get=MiniTwitApi.Client.ViewModels.UserTimelineViewModel.Error.getJ
-	Error.set=MiniTwitApi.Client.ViewModels.UserTimelineViewModel.Error.setT
-IsFollowed.getBMiniTwitApi.Client.ViewModels.UserTimelineViewModel.IsFollowed.getT
-IsFollowed.setBMiniTwitApi.Client.ViewModels.UserTimelineViewModel.IsFollowed.setX
-IsUnfollowed.getDMiniTwitApi.Client.ViewModels.UserTimelineViewModel.IsUnfollowed.getX
-IsUnfollowed.setDMiniTwitApi.Client.ViewModels.UserTimelineViewModel.IsUnfollowed.setX
-FollowIsDone.getDMiniTwitApi.Client.ViewModels.UserTimelineViewModel.FollowIsDone.getX
-FollowIsDone.setDMiniTwitApi.Client.ViewModels.UserTimelineViewModel.FollowIsDone.set\
-UnFollowIsDone.getFMiniTwitApi.Client.ViewModels.UserTimelineViewModel.UnFollowIsDone.get\
-UnFollowIsDone.setFMiniTwitApi.Client.ViewModels.UserTimelineViewModel.UnFollowIsDone.set

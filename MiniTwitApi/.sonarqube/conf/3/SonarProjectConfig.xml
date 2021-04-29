@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<SonarProjectConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sonarsource.com/msbuild/analyzer/2021/1">
-  <AnalysisConfigPath>/home/joachim/git/PythonKindergarten/MiniTwitApi/.sonarqube/conf/SonarQubeAnalysisConfig.xml</AnalysisConfigPath>
-  <ProjectPath>/home/joachim/git/PythonKindergarten/MiniTwitApi.Tests/MiniTwitApi.Tests.csproj</ProjectPath>
-  <FilesToAnalyzePath>/home/joachim/git/PythonKindergarten/MiniTwitApi/.sonarqube/conf/3/FilesToAnalyze.txt</FilesToAnalyzePath>
-  <OutPath>/home/joachim/git/PythonKindergarten/MiniTwitApi/.sonarqube/out/3</OutPath>
-  <ProjectType>Test</ProjectType>
-  <TargetFramework>net5.0</TargetFramework>
-</SonarProjectConfig>

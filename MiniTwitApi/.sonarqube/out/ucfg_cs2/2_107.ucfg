@@ -1,93 +1,0 @@
-
-dMiniTwitApi.Server.Migrations.intitial.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)g
-]/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Migrations/20210303175047_intitial.cs  (""0*ð&
-0g
-]/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Migrations/20210303175047_intitial.cs	 a(ÿü
-g
-]/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Migrations/20210303175047_intitial.cs	 (_
-%0YMicrosoft.EntityFrameworkCore.Migrations.Operations.Builders.CreateTableBuilder<TColumns>"µMicrosoft.EntityFrameworkCore.Migrations.MigrationBuilder.CreateTable<TColumns>(string, System.Func<Microsoft.EntityFrameworkCore.Migrations.Operations.Builders.ColumnsBuilder, TColumns>, string, System.Action<Microsoft.EntityFrameworkCore.Migrations.Operations.Builders.CreateTableBuilder<TColumns>>, string)*O
-M
-migrationBuilder9Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder*	
-Users*
-""*
-""*
-""*
-""2ûCreateTable<TColumns>(string, System.Func<Microsoft.EntityFrameworkCore.Migrations.Operations.Builders.ColumnsBuilder, TColumns>, string, System.Action<Microsoft.EntityFrameworkCore.Migrations.Operations.Builders.CreateTableBuilder<TColumns>>, string)ƒ€
-g
-]/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Migrations/20210303175047_intitial.cs .(_
-%1YMicrosoft.EntityFrameworkCore.Migrations.Operations.Builders.CreateTableBuilder<TColumns>"µMicrosoft.EntityFrameworkCore.Migrations.MigrationBuilder.CreateTable<TColumns>(string, System.Func<Microsoft.EntityFrameworkCore.Migrations.Operations.Builders.ColumnsBuilder, TColumns>, string, System.Action<Microsoft.EntityFrameworkCore.Migrations.Operations.Builders.CreateTableBuilder<TColumns>>, string)*O
-M
-migrationBuilder9Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder*
-	Followers*
-""*
-""*
-""*
-""2ûCreateTable<TColumns>(string, System.Func<Microsoft.EntityFrameworkCore.Migrations.Operations.Builders.ColumnsBuilder, TColumns>, string, System.Action<Microsoft.EntityFrameworkCore.Migrations.Operations.Builders.CreateTableBuilder<TColumns>>, string)‚ÿ
-g
-]/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Migrations/20210303175047_intitial.cs0 L(_
-%2YMicrosoft.EntityFrameworkCore.Migrations.Operations.Builders.CreateTableBuilder<TColumns>"µMicrosoft.EntityFrameworkCore.Migrations.MigrationBuilder.CreateTable<TColumns>(string, System.Func<Microsoft.EntityFrameworkCore.Migrations.Operations.Builders.ColumnsBuilder, TColumns>, string, System.Action<Microsoft.EntityFrameworkCore.Migrations.Operations.Builders.CreateTableBuilder<TColumns>>, string)*O
-M
-migrationBuilder9Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder*
-
-Messages*
-""*
-""*
-""*
-""2ûCreateTable<TColumns>(string, System.Func<Microsoft.EntityFrameworkCore.Migrations.Operations.Builders.ColumnsBuilder, TColumns>, string, System.Action<Microsoft.EntityFrameworkCore.Migrations.Operations.Builders.CreateTableBuilder<TColumns>>, string)š—
-g
-]/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Migrations/20210303175047_intitial.csN Q(!_
-%3YMicrosoft.EntityFrameworkCore.Migrations.Operations.Builders.OperationBuilder<TOperation>"sMicrosoft.EntityFrameworkCore.Migrations.MigrationBuilder.CreateIndex(string, string, string, string, bool, string)*O
-M
-migrationBuilder9Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder*
-IX_Followers_WhomId*
-	Followers*
-
-WhomId*
-""*
-""*
-""29CreateIndex(string, string, string, string, bool, string)œ™
-g
-]/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Migrations/20210303175047_intitial.csS V(#_
-%4YMicrosoft.EntityFrameworkCore.Migrations.Operations.Builders.OperationBuilder<TOperation>"sMicrosoft.EntityFrameworkCore.Migrations.MigrationBuilder.CreateIndex(string, string, string, string, bool, string)*O
-M
-migrationBuilder9Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder*
-IX_Messages_AuthorId*
-
-Messages*
-
-AuthorId*
-""*
-""*
-""29CreateIndex(string, string, string, string, bool, string)š—
-g
-]/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Migrations/20210303175047_intitial.csX [("_
-%5YMicrosoft.EntityFrameworkCore.Migrations.Operations.Builders.OperationBuilder<TOperation>"sMicrosoft.EntityFrameworkCore.Migrations.MigrationBuilder.CreateIndex(string, string, string, string, bool, string)*O
-M
-migrationBuilder9Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder*
-IX_Messages_UserId1*
-
-Messages*	
-UserId1*
-""*
-""*
-""29CreateIndex(string, string, string, string, bool, string)–“
-g
-]/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Migrations/20210303175047_intitial.cs] a(_
-%6YMicrosoft.EntityFrameworkCore.Migrations.Operations.Builders.OperationBuilder<TOperation>"sMicrosoft.EntityFrameworkCore.Migrations.MigrationBuilder.CreateIndex(string, string, string, string, bool, string)*O
-M
-migrationBuilder9Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder*
-IX_Users_Username*	
-Users*
-
-Username*
-""*
-""*
-""29CreateIndex(string, string, string, string, bool, string)*
-1*ì
-1g
-]/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Migrations/20210303175047_intitial.csb	 b(	"~
-g
-]/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Migrations/20210303175047_intitial.csb b(	
-implicit return:M
-migrationBuilder9Microsoft.EntityFrameworkCore.Migrations.MigrationBuilderB*(
-&MiniTwitApi.Server.Migrations.intitial

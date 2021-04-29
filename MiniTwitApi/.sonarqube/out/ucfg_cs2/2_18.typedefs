@@ -1,8 +1,0 @@
-ç	
--MiniTwitApi.Server.Controllers.UserController'Microsoft.AspNetCore.Mvc.ControllerBaseobject™
-ªUserController(MiniTwitApi.Server.Repositories.Abstract.IUserRepository, Microsoft.Extensions.Configuration.IConfiguration, Microsoft.AspNetCore.Mvc.Infrastructure.IActionContextAccessor)ÈMiniTwitApi.Server.Controllers.UserController.UserController(MiniTwitApi.Server.Repositories.Abstract.IUserRepository, Microsoft.Extensions.Configuration.IConfiguration, Microsoft.AspNetCore.Mvc.Infrastructure.IActionContextAccessor)¥
-AGetLogin(MiniTwitApi.Shared.Models.UserModels.LoginUserDTO, long)oMiniTwitApi.Server.Controllers.UserController.GetLogin(MiniTwitApi.Shared.Models.UserModels.LoginUserDTO, long)H
-GetLogout()9MiniTwitApi.Server.Controllers.UserController.GetLogout()T
-GetLoggedInUser()?MiniTwitApi.Server.Controllers.UserController.GetLoggedInUser()æ
-FPostRegister(MiniTwitApi.Shared.Models.UserModels.CreateUserDTO, long)tMiniTwitApi.Server.Controllers.UserController.PostRegister(MiniTwitApi.Shared.Models.UserModels.CreateUserDTO, long)f
-GetUserByUserId(int, long)HMiniTwitApi.Server.Controllers.UserController.GetUserByUserId(int, long)

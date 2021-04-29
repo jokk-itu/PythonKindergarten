@@ -1,93 +1,0 @@
-
-_MiniTwitApi.Server.Entities.Context.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)U
-K/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Entities/Context.cs  (/"0*è0
-0U
-K/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Entities/Context.cs /(6»¸
-U
-K/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Entities/Context.cs (*P
-%0JMicrosoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<TEntity>"<Microsoft.EntityFrameworkCore.ModelBuilder.Entity<TEntity>()*<
-:
-modelBuilder*Microsoft.EntityFrameworkCore.ModelBuilder2Entity<TEntity>()±®
-U
-K/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Entities/Context.cs (*i
-%1cMicrosoft.EntityFrameworkCore.Metadata.Builders.ReferenceNavigationBuilder<TEntity, TRelatedEntity>"«Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<TEntity>.HasOne<TRelatedEntity>(System.Linq.Expressions.Expression<System.Func<TEntity, TRelatedEntity>>)*R
-P
-%0JMicrosoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<TEntity>*
-""2`HasOne<TRelatedEntity>(System.Linq.Expressions.Expression<System.Func<TEntity, TRelatedEntity>>)ÍÊ
-U
-K/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Entities/Context.cs  (t
-%2nMicrosoft.EntityFrameworkCore.Metadata.Builders.ReferenceCollectionBuilder<TPrincipalEntity, TDependentEntity>"tMicrosoft.EntityFrameworkCore.Metadata.Builders.ReferenceNavigationBuilder<TEntity, TRelatedEntity>.WithMany(string)*k
-i
-%1cMicrosoft.EntityFrameworkCore.Metadata.Builders.ReferenceNavigationBuilder<TEntity, TRelatedEntity>*
-""2WithMany(string)ôñ
-U
-K/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Entities/Context.cs !(/t
-%3nMicrosoft.EntityFrameworkCore.Metadata.Builders.ReferenceCollectionBuilder<TPrincipalEntity, TDependentEntity>"ÇMicrosoft.EntityFrameworkCore.Metadata.Builders.ReferenceCollectionBuilder<TPrincipalEntity, TDependentEntity>.HasForeignKey(System.Linq.Expressions.Expression<System.Func<TDependentEntity, object>>)*v
-t
-%2nMicrosoft.EntityFrameworkCore.Metadata.Builders.ReferenceCollectionBuilder<TPrincipalEntity, TDependentEntity>*
-""2XHasForeignKey(System.Linq.Expressions.Expression<System.Func<TDependentEntity, object>>)»¸
-U
-K/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Entities/Context.cs$ $(+P
-%4JMicrosoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<TEntity>"<Microsoft.EntityFrameworkCore.ModelBuilder.Entity<TEntity>()*<
-:
-modelBuilder*Microsoft.EntityFrameworkCore.ModelBuilder2Entity<TEntity>()ØÕ
-U
-K/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Entities/Context.cs$ $(P@
-%5:Microsoft.EntityFrameworkCore.Metadata.Builders.KeyBuilder"“Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<TEntity>.HasKey(System.Linq.Expressions.Expression<System.Func<TEntity, object>>)*R
-P
-%4JMicrosoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<TEntity>*
-""2HHasKey(System.Linq.Expressions.Expression<System.Func<TEntity, object>>)»¸
-U
-K/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Entities/Context.cs' '('P
-%6JMicrosoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<TEntity>"<Microsoft.EntityFrameworkCore.ModelBuilder.Entity<TEntity>()*<
-:
-modelBuilder*Microsoft.EntityFrameworkCore.ModelBuilder2Entity<TEntity>()áÞ
-U
-K/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Entities/Context.cs' ((*E
-%7?Microsoft.EntityFrameworkCore.Metadata.Builders.IndexBuilder<T>"•Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<TEntity>.HasIndex(System.Linq.Expressions.Expression<System.Func<TEntity, object>>)*R
-P
-%6JMicrosoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<TEntity>*
-""2JHasIndex(System.Linq.Expressions.Expression<System.Func<TEntity, object>>)ÒÏ
-U
-K/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Entities/Context.cs' )(E
-%8?Microsoft.EntityFrameworkCore.Metadata.Builders.IndexBuilder<T>"NMicrosoft.EntityFrameworkCore.Metadata.Builders.IndexBuilder<T>.IsUnique(bool)*G
-E
-%7?Microsoft.EntityFrameworkCore.Metadata.Builders.IndexBuilder<T>*
-""2IsUnique(bool)»¸
-U
-K/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Entities/Context.cs, ,(+P
-%9JMicrosoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<TEntity>"<Microsoft.EntityFrameworkCore.ModelBuilder.Entity<TEntity>()*<
-:
-modelBuilder*Microsoft.EntityFrameworkCore.ModelBuilder2Entity<TEntity>()²¯
-U
-K/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Entities/Context.cs, -()j
-%10cMicrosoft.EntityFrameworkCore.Metadata.Builders.ReferenceNavigationBuilder<TEntity, TRelatedEntity>"«Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<TEntity>.HasOne<TRelatedEntity>(System.Linq.Expressions.Expression<System.Func<TEntity, TRelatedEntity>>)*R
-P
-%9JMicrosoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<TEntity>*
-""2`HasOne<TRelatedEntity>(System.Linq.Expressions.Expression<System.Func<TEntity, TRelatedEntity>>)¤¡
-U
-K/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Entities/Context.cs, .(+u
-%11nMicrosoft.EntityFrameworkCore.Metadata.Builders.ReferenceCollectionBuilder<TPrincipalEntity, TDependentEntity>"ÞMicrosoft.EntityFrameworkCore.Metadata.Builders.ReferenceNavigationBuilder<TEntity, TRelatedEntity>.WithMany(System.Linq.Expressions.Expression<System.Func<TRelatedEntity, System.Collections.Generic.IEnumerable<TEntity>>>)*l
-j
-%10cMicrosoft.EntityFrameworkCore.Metadata.Builders.ReferenceNavigationBuilder<TEntity, TRelatedEntity>*
-""2zWithMany(System.Linq.Expressions.Expression<System.Func<TRelatedEntity, System.Collections.Generic.IEnumerable<TEntity>>>)n
-l
-U
-K/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Entities/Context.cs/ /(6
-%12"__id*
-""³°
-U
-K/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Entities/Context.cs, /(7u
-%13nMicrosoft.EntityFrameworkCore.Metadata.Builders.ReferenceCollectionBuilder<TPrincipalEntity, TDependentEntity>"¥Microsoft.EntityFrameworkCore.Metadata.Builders.ReferenceCollectionBuilder<TPrincipalEntity, TDependentEntity>.OnDelete(Microsoft.EntityFrameworkCore.DeleteBehavior)*w
-u
-%11nMicrosoft.EntityFrameworkCore.Metadata.Builders.ReferenceCollectionBuilder<TPrincipalEntity, TDependentEntity>*
-
-%1226OnDelete(Microsoft.EntityFrameworkCore.DeleteBehavior)*
-1*È
-1U
-K/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Entities/Context.cs0	 0(	"l
-U
-K/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Entities/Context.cs0 0(	
-implicit return::
-modelBuilder*Microsoft.EntityFrameworkCore.ModelBuilderB'%
-#MiniTwitApi.Server.Entities.Context

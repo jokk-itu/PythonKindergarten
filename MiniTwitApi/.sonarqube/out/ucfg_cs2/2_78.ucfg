@@ -1,146 +1,0 @@
-
-àMiniTwitApi.Server.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder, Microsoft.AspNetCore.Hosting.IWebHostEnvironment)L
-B/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Startup.cs5 5("0*´
-0L
-B/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Startup.cs7 7(#œ
-Ã
-L
-B/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Startup.cs7 7(#
-
-%0bool"vMicrosoft.Extensions.Hosting.HostEnvironmentEnvExtensions.IsDevelopment(Microsoft.Extensions.Hosting.IHostEnvironment)*=";
-9Microsoft.Extensions.Hosting.HostEnvironmentEnvExtensions*9
-7
-env0Microsoft.AspNetCore.Hosting.IWebHostEnvironment*
-1
-2*Ï
-1L
-B/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Startup.cs9 :(-ì
-ê
-L
-B/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Startup.cs9 9(/6
-%10Microsoft.AspNetCore.Builder.IApplicationBuilder"âMicrosoft.AspNetCore.Builder.DeveloperExceptionPageExtensions.UseDeveloperExceptionPage(Microsoft.AspNetCore.Builder.IApplicationBuilder)*A"?
-=Microsoft.AspNetCore.Builder.DeveloperExceptionPageExtensions*9
-7
-app0Microsoft.AspNetCore.Builder.IApplicationBuilder˝
-˙
-L
-B/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Startup.cs: :(-
-
-%2void"ìMicrosoft.AspNetCore.Builder.WebAssemblyNetDebugProxyAppBuilderExtensions.UseWebAssemblyDebugging(Microsoft.AspNetCore.Builder.IApplicationBuilder)*M"K
-IMicrosoft.AspNetCore.Builder.WebAssemblyNetDebugProxyAppBuilderExtensions*9
-7
-app0Microsoft.AspNetCore.Builder.IApplicationBuilder*
-3*€
-2L
-B/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Startup.cs> @(ï
-í
-L
-B/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Startup.cs> >(16
-%30Microsoft.AspNetCore.Builder.IApplicationBuilder"ÖMicrosoft.AspNetCore.Builder.ExceptionHandlerExtensions.UseExceptionHandler(Microsoft.AspNetCore.Builder.IApplicationBuilder, string)*;"9
-7Microsoft.AspNetCore.Builder.ExceptionHandlerExtensions*9
-7
-app0Microsoft.AspNetCore.Builder.IApplicationBuilder*
-
-/ErrorÍ
-Á
-L
-B/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Startup.cs@ @(6
-%40Microsoft.AspNetCore.Builder.IApplicationBuilder"lMicrosoft.AspNetCore.Builder.HstsBuilderExtensions.UseHsts(Microsoft.AspNetCore.Builder.IApplicationBuilder)*6"4
-2Microsoft.AspNetCore.Builder.HstsBuilderExtensions*9
-7
-app0Microsoft.AspNetCore.Builder.IApplicationBuilder*
-3*Ê$
-3L
-B/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Startup.csC ^(°
-û
-L
-B/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Startup.csC C( 6
-%50Microsoft.AspNetCore.Builder.IApplicationBuilder"¢Prometheus.HttpMetricsMiddlewareExtensions.UseHttpMetrics(Microsoft.AspNetCore.Builder.IApplicationBuilder, Prometheus.HttpMetrics.HttpMiddlewareExporterOptions?)*.",
-*Prometheus.HttpMetricsMiddlewareExtensions*9
-7
-app0Microsoft.AspNetCore.Builder.IApplicationBuilder*
-""ù
-ö
-L
-B/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Startup.csD D(!6
-%60Microsoft.AspNetCore.Builder.IApplicationBuilder"ïPrometheus.MetricServerMiddlewareExtensions.UseMetricServer(Microsoft.AspNetCore.Builder.IApplicationBuilder, string?, Prometheus.CollectorRegistry?)*/"-
-+Prometheus.MetricServerMiddlewareExtensions*9
-7
-app0Microsoft.AspNetCore.Builder.IApplicationBuilder*
-""*
-""Ñ
-Å
-L
-B/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Startup.csE E(%6
-%70Microsoft.AspNetCore.Builder.IApplicationBuilder"Microsoft.AspNetCore.Builder.HttpsPolicyBuilderExtensions.UseHttpsRedirection(Microsoft.AspNetCore.Builder.IApplicationBuilder)*=";
-9Microsoft.AspNetCore.Builder.HttpsPolicyBuilderExtensions*9
-7
-app0Microsoft.AspNetCore.Builder.IApplicationBuilder≥
-∞
-L
-B/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Startup.csF F()6
-%80Microsoft.AspNetCore.Builder.IApplicationBuilder"òMicrosoft.AspNetCore.Builder.ComponentsWebAssemblyApplicationBuilderExtensions.UseBlazorFrameworkFiles(Microsoft.AspNetCore.Builder.IApplicationBuilder)*R"P
-NMicrosoft.AspNetCore.Builder.ComponentsWebAssemblyApplicationBuilderExtensions*9
-7
-app0Microsoft.AspNetCore.Builder.IApplicationBuilderÔ
-Ï
-L
-B/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Startup.csG G( 6
-%90Microsoft.AspNetCore.Builder.IApplicationBuilder"rMicrosoft.AspNetCore.Builder.StaticFileExtensions.UseStaticFiles(Microsoft.AspNetCore.Builder.IApplicationBuilder)*5"3
-1Microsoft.AspNetCore.Builder.StaticFileExtensions*9
-7
-app0Microsoft.AspNetCore.Builder.IApplicationBuilderª
-∏
-L
-B/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Startup.csJ J(7
-%100Microsoft.AspNetCore.Builder.IApplicationBuilder"∞Microsoft.AspNetCore.Builder.SwaggerBuilderExtensions.UseSwagger(Microsoft.AspNetCore.Builder.IApplicationBuilder, System.Action<Swashbuckle.AspNetCore.Swagger.SwaggerOptions>)*9"7
-5Microsoft.AspNetCore.Builder.SwaggerBuilderExtensions*9
-7
-app0Microsoft.AspNetCore.Builder.IApplicationBuilder*
-""≈
-¬
-L
-B/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Startup.csN Q(7
-%110Microsoft.AspNetCore.Builder.IApplicationBuilder"∏Microsoft.AspNetCore.Builder.SwaggerUIBuilderExtensions.UseSwaggerUI(Microsoft.AspNetCore.Builder.IApplicationBuilder, System.Action<Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIOptions>)*;"9
-7Microsoft.AspNetCore.Builder.SwaggerUIBuilderExtensions*9
-7
-app0Microsoft.AspNetCore.Builder.IApplicationBuilder*
-""õ
-ò
-L
-B/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Startup.csS S(7
-%120Microsoft.AspNetCore.Builder.IApplicationBuilder"ÖMicrosoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseRouting(Microsoft.AspNetCore.Builder.IApplicationBuilder)*L"J
-HMicrosoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions*9
-7
-app0Microsoft.AspNetCore.Builder.IApplicationBuilder˚
-¯
-L
-B/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Startup.csU U(#7
-%130Microsoft.AspNetCore.Builder.IApplicationBuilder"yMicrosoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication(Microsoft.AspNetCore.Builder.IApplicationBuilder)*9"7
-5Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions*9
-7
-app0Microsoft.AspNetCore.Builder.IApplicationBuilderç
-ä
-L
-B/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Startup.csV V("7
-%140Microsoft.AspNetCore.Builder.IApplicationBuilder"ÅMicrosoft.AspNetCore.Builder.AuthorizationAppBuilderExtensions.UseAuthorization(Microsoft.AspNetCore.Builder.IApplicationBuilder)*B"@
->Microsoft.AspNetCore.Builder.AuthorizationAppBuilderExtensions*9
-7
-app0Microsoft.AspNetCore.Builder.IApplicationBuilderË
-Â
-L
-B/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Startup.csX ^(7
-%150Microsoft.AspNetCore.Builder.IApplicationBuilder" Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseEndpoints(Microsoft.AspNetCore.Builder.IApplicationBuilder, System.Action<Microsoft.AspNetCore.Routing.IEndpointRouteBuilder>)*L"J
-HMicrosoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions*9
-7
-app0Microsoft.AspNetCore.Builder.IApplicationBuilder*
-""*
-4*∂
-4L
-B/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Startup.cs_	 _(	"c
-L
-B/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Startup.cs_ _(	
-implicit return:7
-app0Microsoft.AspNetCore.Builder.IApplicationBuilder:7
-env0Microsoft.AspNetCore.Hosting.IWebHostEnvironmentB
-MiniTwitApi.Server.Startup

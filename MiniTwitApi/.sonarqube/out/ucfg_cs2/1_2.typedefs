@@ -1,6 +1,0 @@
-Í
-%MiniTwitApi.Client.Models.FollowModelobjectx
-'FollowModel(System.Net.Http.HttpClient)MMiniTwitApi.Client.Models.FollowModel.FollowModel(System.Net.Http.HttpClient)^
-FollowUser(string, string)@MiniTwitApi.Client.Models.FollowModel.FollowUser(string, string)b
-UnfollowUser(string, string)BMiniTwitApi.Client.Models.FollowModel.UnfollowUser(string, string)^
-IsFollowed(string, string)@MiniTwitApi.Client.Models.FollowModel.IsFollowed(string, string)

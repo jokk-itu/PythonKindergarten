@@ -1,69 +1,0 @@
-
- MiniTwitApi.Server.Latest.Read()K
-A/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Latest.cs ("0*ò
-0K
-A/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Latest.cs (š
-—
-K
-A/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Latest.cs (
-%0object"__id*4*2
-MiniTwitApi.Server.Latest"
-	_fileLockobject*
-1*ó	
-1K
-A/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Latest.cs (†ƒ
-K
-A/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Latest.cs# (A
-%1System.IO.StreamReader"System.IO.StreamReader¹
-¶
-K
-A/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Latest.cs' (3
-
-%2void"+System.IO.StreamReader.StreamReader(string)*
-
-%1System.IO.StreamReader*
-
-latest.txt˜
-•
-K
-A/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Latest.cs (A 
-readerSystem.IO.StreamReader"__id*
-
-%1System.IO.StreamReader±®
-K
-A/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Latest.cs( (9
-%3string"!System.IO.StreamReader.ReadLine()*"
- 
-readerSystem.IO.StreamReader2
-ReadLine()Š
-‡
-K
-A/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Latest.cs (:
-
-%4long"long.Parse(string)*"
-long*
-
-%3strings
-q
-K
-A/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Latest.cs (:
-latestlong"__id*
-
-
-%4long©¦
-K
-A/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Latest.cs (
-
-%5void"System.IO.StreamReader.Close()*"
- 
-readerSystem.IO.StreamReader2Close()"_
-K
-A/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Latest.cs (
-
-latestlong*´
-2K
-A/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Latest.cs	 (	"b
-K
-A/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Latest.cs (	
-implicit returnB
-MiniTwitApi.Server.Latest

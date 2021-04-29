@@ -1,36 +1,0 @@
-
-fMiniTwitApi.Server.Migrations.intitial.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)g
-]/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Migrations/20210303175047_intitial.csd  d($"0*ä
-
-0g
-]/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Migrations/20210303175047_intitial.csf m(¥¢
-g
-]/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Migrations/20210303175047_intitial.csf g("_
-%0YMicrosoft.EntityFrameworkCore.Migrations.Operations.Builders.OperationBuilder<TOperation>"SMicrosoft.EntityFrameworkCore.Migrations.MigrationBuilder.DropTable(string, string)*O
-M
-migrationBuilder9Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder*
-	Followers*
-""2DropTable(string, string)¤¡
-g
-]/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Migrations/20210303175047_intitial.csi j(!_
-%1YMicrosoft.EntityFrameworkCore.Migrations.Operations.Builders.OperationBuilder<TOperation>"SMicrosoft.EntityFrameworkCore.Migrations.MigrationBuilder.DropTable(string, string)*O
-M
-migrationBuilder9Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder*
-
-Messages*
-""2DropTable(string, string)¡ž
-g
-]/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Migrations/20210303175047_intitial.csl m(_
-%2YMicrosoft.EntityFrameworkCore.Migrations.Operations.Builders.OperationBuilder<TOperation>"SMicrosoft.EntityFrameworkCore.Migrations.MigrationBuilder.DropTable(string, string)*O
-M
-migrationBuilder9Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder*	
-Users*
-""2DropTable(string, string)*
-1*ì
-1g
-]/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Migrations/20210303175047_intitial.csn	 n(	"~
-g
-]/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Migrations/20210303175047_intitial.csn n(	
-implicit return:M
-migrationBuilder9Microsoft.EntityFrameworkCore.Migrations.MigrationBuilderB*(
-&MiniTwitApi.Server.Migrations.intitial

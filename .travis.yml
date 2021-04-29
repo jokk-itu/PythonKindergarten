@@ -15,8 +15,6 @@ before_install:
 install:
 - docker --version
 - dotnet tool install --global dotnet-sonarscanner
-- dotnet restore MiniTwitApi/Server/MiniTwitAPi.Server.csproj
-- dotnet restore MiniTwitApi.Tests/MiniTwitApi.Tests.csproj
 stages:
 - build
 - test

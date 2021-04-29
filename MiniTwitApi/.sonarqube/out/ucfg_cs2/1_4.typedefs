@@ -1,7 +1,0 @@
-¬
-&MiniTwitApi.Client.Models.MessageModelobject{
-(MessageModel(System.Net.Http.HttpClient)OMiniTwitApi.Client.Models.MessageModel.MessageModel(System.Net.Http.HttpClient)Q
-GetMessages(string):MiniTwitApi.Client.Models.MessageModel.GetMessages(string)£
-<PostMessage(MiniTwitApi.Shared.Models.CreateMessage, string)cMiniTwitApi.Client.Models.MessageModel.PostMessage(MiniTwitApi.Shared.Models.CreateMessage, string)A
-_client.get2MiniTwitApi.Client.Models.MessageModel._client.getA
-_client.set2MiniTwitApi.Client.Models.MessageModel._client.set

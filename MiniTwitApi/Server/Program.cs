@@ -62,11 +62,15 @@ namespace MiniTwitApi.Server
                         {
                             options.Listen(IPAddress.Any, 5001, listenOptions =>
                             {
-                                var serverCertificate = LoadCertificate();
-                                listenOptions.UseHttps(serverCertificate); // <- Configures SSL
+                                if(Environment.OSVersion.Platform == PlatformID.MacOSX)
+                                {
+                                    var serverCertificate = LoadCertificate();
+                                    listenOptions.UseHttps(serverCertificate); // <- Configures SSL
+                                }
                             });
                         });
                 });
+
         
         private static X509Certificate2 LoadCertificate()
         {

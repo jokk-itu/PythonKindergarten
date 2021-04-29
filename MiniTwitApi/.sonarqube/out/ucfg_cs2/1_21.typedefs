@@ -1,15 +1,0 @@
-ó
-!MiniTwitApi.Client.Pages.Messages-Microsoft.AspNetCore.Components.ComponentBaseobject¾
-LBuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)nMiniTwitApi.Client.Pages.Messages.BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)N
-OnInitializedAsync()6MiniTwitApi.Client.Pages.Messages.OnInitializedAsync()F
-AddMessages(int)2MiniTwitApi.Client.Pages.Messages.AddMessages(int):
-
-Messages(),MiniTwitApi.Client.Pages.Messages.Messages()6
-Path.get*MiniTwitApi.Client.Pages.Messages.Path.get6
-Path.set*MiniTwitApi.Client.Pages.Messages.Path.set6
-Skip.get*MiniTwitApi.Client.Pages.Messages.Skip.get6
-Skip.set*MiniTwitApi.Client.Pages.Messages.Skip.set@
-JSRuntime.get/MiniTwitApi.Client.Pages.Messages.JSRuntime.get@
-JSRuntime.set/MiniTwitApi.Client.Pages.Messages.JSRuntime.setN
-MessageViewModel.get6MiniTwitApi.Client.Pages.Messages.MessageViewModel.getN
-MessageViewModel.set6MiniTwitApi.Client.Pages.Messages.MessageViewModel.set

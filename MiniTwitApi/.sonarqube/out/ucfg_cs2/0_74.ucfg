@@ -1,40 +1,0 @@
-
-7MiniTwitApi.Shared.BCrypt.CheckPassword(string, string)M
-A/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/BCrypt.csð ð($"0*”
-0M
-A/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/BCrypt.csñ ñ([­
-ª
-M
-A/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/BCrypt.csñ ñ(%
-%0System.StringComparer"!System.StringComparer.Ordinal.get*"
-System.StringComparerâ
-ß
-M
-A/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/BCrypt.csñ6 ñ(U
-%1string"6MiniTwitApi.Shared.BCrypt.HashPassword(string, string)*"
-MiniTwitApi.Shared.BCrypt*
-
-	plaintextstring*
-
-hashedstringÑ
-Î
-M
-A/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/BCrypt.csñ ñ(V	
-%2int"/System.StringComparer.Compare(string?, string?)*
-
-%0System.StringComparer*
-
-hashedstring*
-
-%1string"W
-M
-A/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/BCrypt.csñ ñ(\
-""*¸
-1M
-A/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/BCrypt.csò ò("d
-M
-A/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/BCrypt.csò ò(
-implicit return:
-	plaintextstring:
-hashedstringB"
-MiniTwitApi.Shared.BCrypt

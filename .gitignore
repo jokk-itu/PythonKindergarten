@@ -65,3 +65,7 @@ ssh_keys/do_ssh_key
 
 .fake
 .ionide
+.sonarqube
+mono_crash.*.json
+.idea
+

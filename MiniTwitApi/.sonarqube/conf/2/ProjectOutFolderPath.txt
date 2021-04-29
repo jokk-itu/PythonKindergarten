@@ -1,1 +1,0 @@
-/home/joachim/git/PythonKindergarten/MiniTwitApi/.sonarqube/out/2

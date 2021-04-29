@@ -1,63 +1,0 @@
-
-HMiniTwitApi.Client.ViewModels.UserTimelineViewModel.UnfollowUser(string)e
-[/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/UserTimelineViewModel.cs< <(&"0*÷
-0e
-[/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/UserTimelineViewModel.cs@ A(Vý
-ú
-e
-[/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/UserTimelineViewModel.cs@ @($
-
-%0bool"DMiniTwitApi.Client.ViewModels.UserTimelineViewModel.FollowIsDone.set*75
-3MiniTwitApi.Client.ViewModels.UserTimelineViewModel*
-""£
- 
-e
-[/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/UserTimelineViewModel.csA' A(35
-%1/MiniTwitApi.Client.Models.Abstract.IFollowModel"__id*z*x5
-3MiniTwitApi.Client.ViewModels.UserTimelineViewModel"?
-_followModel/MiniTwitApi.Client.Models.Abstract.IFollowModeló
-ð
-e
-[/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/UserTimelineViewModel.csAN A(V
-%2string"@MiniTwitApi.Client.ViewModels.UserTimelineViewModel.Username.get*75
-3MiniTwitApi.Client.ViewModels.UserTimelineViewModeläá
-e
-[/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/UserTimelineViewModel.csA' A(W*
-%3$System.Threading.Tasks.Task<TResult>"LMiniTwitApi.Client.Models.Abstract.IFollowModel.UnfollowUser(string, string)*7
-5
-%1/MiniTwitApi.Client.Models.Abstract.IFollowModel*
-
-whoUsernamestring*
-
-%2string2UnfollowUser(string, string)ÿ
-ü
-e
-[/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/UserTimelineViewModel.csA A(W
-
-%4bool"FMiniTwitApi.Client.ViewModels.UserTimelineViewModel.UnFollowIsDone.set*75
-3MiniTwitApi.Client.ViewModels.UserTimelineViewModel*
-""*
-1
-2*±
-1e
-[/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/UserTimelineViewModel.csE E(!¼¹
-e
-[/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/UserTimelineViewModel.csE E(!
-%5string"System.Exception.Message.get*
-
-eSystem.Exception2Message.get€
-ý
-e
-[/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/UserTimelineViewModel.csE E(!
-%6string"=MiniTwitApi.Client.ViewModels.UserTimelineViewModel.Error.set*75
-3MiniTwitApi.Client.ViewModels.UserTimelineViewModel*
-
-%5string*
-2*è
-2e
-[/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/UserTimelineViewModel.csG	 G(	"|
-e
-[/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/UserTimelineViewModel.csG G(	
-implicit return:
-whoUsernamestringB75
-3MiniTwitApi.Client.ViewModels.UserTimelineViewModel

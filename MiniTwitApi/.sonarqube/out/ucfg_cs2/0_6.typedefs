@@ -1,9 +1,0 @@
-í
-2MiniTwitApi.Shared.Models.UserModels.CreateUserDTOobjectU
-CreateUserDTO()BMiniTwitApi.Shared.Models.UserModels.CreateUserDTO.CreateUserDTO()O
-Username.get?MiniTwitApi.Shared.Models.UserModels.CreateUserDTO.Username.getO
-Username.set?MiniTwitApi.Shared.Models.UserModels.CreateUserDTO.Username.setO
-Password.get?MiniTwitApi.Shared.Models.UserModels.CreateUserDTO.Password.getO
-Password.set?MiniTwitApi.Shared.Models.UserModels.CreateUserDTO.Password.setI
-	Email.get<MiniTwitApi.Shared.Models.UserModels.CreateUserDTO.Email.getI
-	Email.set<MiniTwitApi.Shared.Models.UserModels.CreateUserDTO.Email.set

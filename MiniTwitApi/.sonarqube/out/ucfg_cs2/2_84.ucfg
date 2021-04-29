@@ -1,296 +1,0 @@
-
-tMiniTwitApi.Server.Controllers.UserController.PostRegister(MiniTwitApi.Shared.Models.UserModels.CreateUserDTO, long)_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csb( b(4"13*Ž
-0_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.cse e(1ñ
-î
-_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.cse$ e(1
-%0string"?MiniTwitApi.Shared.Models.UserModels.CreateUserDTO.Username.get*<
-:
-user2MiniTwitApi.Shared.Models.UserModels.CreateUserDTO«
-¨
-_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.cse e(2
-
-%1bool"string.IsNullOrEmpty(string?)*
-"
-string*
-
-%0string*
-1
-2*¾
-1_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csf f(@º·
-_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csf f(A5
-%2/Microsoft.AspNetCore.Mvc.BadRequestObjectResult":Microsoft.AspNetCore.Mvc.ControllerBase.BadRequest(object)*+)
-'Microsoft.AspNetCore.Mvc.ControllerBase* 
-You have to enter a username2BadRequest(object)"š
-_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csf f(B7
-5
-%2/Microsoft.AspNetCore.Mvc.BadRequestObjectResult*Ž
-2_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csi i(1ñ
-î
-_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csi$ i(1
-%3string"?MiniTwitApi.Shared.Models.UserModels.CreateUserDTO.Password.get*<
-:
-user2MiniTwitApi.Shared.Models.UserModels.CreateUserDTO«
-¨
-_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csi i(2
-
-%4bool"string.IsNullOrEmpty(string?)*
-"
-string*
-
-%3string*
-3
-4*¾
-3_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csj j(@º·
-_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csj j(A5
-%5/Microsoft.AspNetCore.Mvc.BadRequestObjectResult":Microsoft.AspNetCore.Mvc.ControllerBase.BadRequest(object)*+)
-'Microsoft.AspNetCore.Mvc.ControllerBase* 
-You have to enter a password2BadRequest(object)"š
-_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csj j(B7
-5
-%5/Microsoft.AspNetCore.Mvc.BadRequestObjectResult*‹
-4_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csm m(.î
-ë
-_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csm$ m(.
-%6string"<MiniTwitApi.Shared.Models.UserModels.CreateUserDTO.Email.get*<
-:
-user2MiniTwitApi.Shared.Models.UserModels.CreateUserDTO«
-¨
-_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csm m(/
-
-%7bool"string.IsNullOrEmpty(string?)*
-"
-string*
-
-%6string*
-5
-6*É
-5_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csn n(KÅÂ
-_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csn n(L5
-%8/Microsoft.AspNetCore.Mvc.BadRequestObjectResult":Microsoft.AspNetCore.Mvc.ControllerBase.BadRequest(object)*+)
-'Microsoft.AspNetCore.Mvc.ControllerBase*+)
-'You have to enter a valid email address2BadRequest(object)"š
-_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csn n(M7
-5
-%8/Microsoft.AspNetCore.Mvc.BadRequestObjectResult*Þ
-6_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csq q(>¨
-¥
-_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csq q( >
-%98MiniTwitApi.Server.Repositories.Abstract.IUserRepository"__id*|*z/
--MiniTwitApi.Server.Controllers.UserController"G
-_repository8MiniTwitApi.Server.Repositories.Abstract.IUserRepositoryò
-ï
-_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csq1 q(>
-%10string"?MiniTwitApi.Shared.Models.UserModels.CreateUserDTO.Username.get*<
-:
-user2MiniTwitApi.Shared.Models.UserModels.CreateUserDTOÏÌ
-_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csq q(?+
-%11$System.Threading.Tasks.Task<TResult>"PMiniTwitApi.Server.Repositories.Abstract.IUserRepository.UserExistsAsync(string)*@
->
-%98MiniTwitApi.Server.Repositories.Abstract.IUserRepository*
-
-%10string2UserExistsAsync(string)*
-7
-8*Ë
-7_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csr r(KÆÃ
-_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csr r(L6
-%12/Microsoft.AspNetCore.Mvc.BadRequestObjectResult":Microsoft.AspNetCore.Mvc.ControllerBase.BadRequest(object)*+)
-'Microsoft.AspNetCore.Mvc.ControllerBase*+)
-'User already exists with given username2BadRequest(object)"›
-_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csr r(M8
-6
-%12/Microsoft.AspNetCore.Mvc.BadRequestObjectResult*µ
-8_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csu y(ò
-ï
-_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csu5 u(B
-%13string"?MiniTwitApi.Shared.Models.UserModels.CreateUserDTO.Password.get*<
-:
-user2MiniTwitApi.Shared.Models.UserModels.CreateUserDTOÅ
-Â
-_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csuD u([
-%14string"+MiniTwitApi.Shared.BCrypt.GenerateSalt(int)*"
-MiniTwitApi.Shared.BCrypt*2ì
-é
-_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csu! u(\
-%15string"6MiniTwitApi.Shared.BCrypt.HashPassword(string, string)*"
-MiniTwitApi.Shared.BCrypt*
-
-%13string*
-
-%14string•
-’
-_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csu u(\
-hashedPasswordstring"__id*
-
-%15stringŽ
-‹
-_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csv v(*
-%16string"?MiniTwitApi.Shared.Models.UserModels.CreateUserDTO.Password.set*<
-:
-user2MiniTwitApi.Shared.Models.UserModels.CreateUserDTO*
-
-hashedPasswordstring©
-¦
-_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csw w(?
-%178MiniTwitApi.Server.Repositories.Abstract.IUserRepository"__id*|*z/
--MiniTwitApi.Server.Controllers.UserController"G
-_repository8MiniTwitApi.Server.Repositories.Abstract.IUserRepositoryÄÁ
-_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csw w(/"
-%18System.Threading.Tasks.Task"xMiniTwitApi.Server.Repositories.Abstract.IUserRepository.CreateAsync(MiniTwitApi.Shared.Models.UserModels.CreateUserDTO)*A
-?
-%178MiniTwitApi.Server.Repositories.Abstract.IUserRepository*<
-:
-user2MiniTwitApi.Shared.Models.UserModels.CreateUserDTO2?CreateAsync(MiniTwitApi.Shared.Models.UserModels.CreateUserDTO)*
-9
-10*‰
-9`
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csy y(ž
-›
-_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csy y(+8
-%191Microsoft.Extensions.Configuration.IConfiguration"__id*x*v/
--MiniTwitApi.Server.Controllers.UserController"C
-_configuration1Microsoft.Extensions.Configuration.IConfiguration–“
-_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csy y(:
-%20string"BMicrosoft.Extensions.Configuration.IConfiguration.this[string].get*:
-8
-%191Microsoft.Extensions.Configuration.IConfiguration*
-ApiSafeList2this[string].get´
-±
-_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csyD y(ME
-%21>Microsoft.AspNetCore.Mvc.Infrastructure.IActionContextAccessor"__id*€*~/
--MiniTwitApi.Server.Controllers.UserController"K
-	_accessor>Microsoft.AspNetCore.Mvc.Infrastructure.IActionContextAccessorÁ¾
-_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csyD y([-
-%22&Microsoft.AspNetCore.Mvc.ActionContext"PMicrosoft.AspNetCore.Mvc.Infrastructure.IActionContextAccessor.ActionContext.get*G
-E
-%21>Microsoft.AspNetCore.Mvc.Infrastructure.IActionContextAccessor2ActionContext.getû
-ø
-_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csyD y(g,
-%23%Microsoft.AspNetCore.Http.HttpContext"6Microsoft.AspNetCore.Mvc.ActionContext.HttpContext.get*/
--
-%22&Microsoft.AspNetCore.Mvc.ActionContextû
-ø
-_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csyD y(r/
-%24(Microsoft.AspNetCore.Http.ConnectionInfo"4Microsoft.AspNetCore.Http.HttpContext.Connection.get*.
-,
-%23%Microsoft.AspNetCore.Http.HttpContextó
-ð
-`
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csyD y(‚
-%25System.Net.IPAddress"<Microsoft.AspNetCore.Http.ConnectionInfo.RemoteIpAddress.get*1
-/
-%24(Microsoft.AspNetCore.Http.ConnectionInfoÀ½
-`
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csyD y(
-%26string"System.Net.IPAddress.ToString()*
-
-%25System.Net.IPAddress2
-ToString()­
-ª
-`
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csy y(Ž
-%27bool"string.Contains(string)*
-
-%20string*
-
-%26string*
-11
-10*„
-11_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csz z(2Î
-Ë
-_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csz z($ 
-%28MiniTwitApi.Server.Latest"'MiniTwitApi.Server.Latest.GetInstance()*"
-MiniTwitApi.Server.LatestÅ
-Â
-_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csz z(3
-%29void"&MiniTwitApi.Server.Latest.Update(long)*"
- 
-%28MiniTwitApi.Server.Latest*
-""*
-10*ƒ
-10_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.cs| |(„
-_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.cs| |(/
-%30(Microsoft.AspNetCore.Mvc.NoContentResult"3Microsoft.AspNetCore.Mvc.ControllerBase.NoContent()*+)
-'Microsoft.AspNetCore.Mvc.ControllerBase2NoContent()"”
-_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.cs| |(1
-/
-%30(Microsoft.AspNetCore.Mvc.NoContentResult*Ý
-12_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.cs}	 }(	"v
-_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.cs} }(	
-implicit return*¿
-13_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csbl b(lÄ
-Á
-_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csb( b(4P
-:
-user2MiniTwitApi.Shared.Models.UserModels.CreateUserDTO"
-Usernamestring"__entrypointÄ
-Á
-_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csb( b(4P
-:
-user2MiniTwitApi.Shared.Models.UserModels.CreateUserDTO"
-Passwordstring"__entrypointÁ
-¾
-_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csb( b(4M
-:
-user2MiniTwitApi.Shared.Models.UserModels.CreateUserDTO"
-Emailstring"__entrypoint€
-~
-_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/UserController.csb( b(4
-%31"__entrypoint*
-""*
-0::
-user2MiniTwitApi.Shared.Models.UserModels.CreateUserDTO:
-latestlongB1/
--MiniTwitApi.Server.Controllers.UserController

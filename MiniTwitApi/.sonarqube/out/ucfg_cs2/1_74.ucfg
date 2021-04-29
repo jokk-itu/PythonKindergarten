@@ -1,160 +1,0 @@
-
-aMiniTwitApi.Client.Models.HttpFailureHelper.HandleStatusCode(System.Net.Http.HttpResponseMessage)]
-S/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/HttpFailureHelper.cs	 	(+"0*‘
-0]
-S/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/HttpFailureHelper.cs ('Í
-Á
-]
-S/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/HttpFailureHelper.cs ('
-%0System.Net.HttpStatusCode"2System.Net.Http.HttpResponseMessage.StatusCode.get*1
-/
-response#System.Net.Http.HttpResponseMessage*
-1*j
-1]
-S/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/HttpFailureHelper.cs ('*
-2
-3*ú
-2]
-S/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/HttpFailureHelper.cs (R∞≠
-]
-S/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/HttpFailureHelper.cs (S(
-%1"System.UnauthorizedAccessException""System.UnauthorizedAccessExceptionˇ
-¸
-]
-S/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/HttpFailureHelper.cs (9
-
-%2void"GSystem.UnauthorizedAccessException.UnauthorizedAccessException(string?)**
-(
-%1"System.UnauthorizedAccessException*
-You are not authorized*
-4*j
-3]
-S/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/HttpFailureHelper.cs ('*
-5
-6*ß
-5]
-S/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/HttpFailureHelper.cs (eŸ
-÷
-]
-S/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/HttpFailureHelper.csP (e
-%3string"4System.Net.Http.HttpResponseMessage.ReasonPhrase.get*1
-/
-response#System.Net.Http.HttpResponseMessageí
-è
-]
-S/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/HttpFailureHelper.cs( (g
-%4string"__concat*
-""*
-
-%3stringåâ
-]
-S/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/HttpFailureHelper.cs (h
-%5System.Exception"System.ExceptionΩ
-∫
-]
-S/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/HttpFailureHelper.cs ('
-
-%6void"#System.Exception.Exception(string?)*
-
-%5System.Exception*
-
-%4string*
-4*j
-6]
-S/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/HttpFailureHelper.cs ('*
-7
-8*≈
-7]
-S/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/HttpFailureHelper.cs (Cåâ
-]
-S/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/HttpFailureHelper.cs (D
-%7System.Exception"System.ExceptionÃ
-…
-]
-S/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/HttpFailureHelper.cs ('
-
-%8void"#System.Exception.Exception(string?)*
-
-%7System.Exception*
-The resource is not found*
-4*k
-8]
-S/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/HttpFailureHelper.cs ('*
-9
-10*ù
-9]
-S/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/HttpFailureHelper.cs (R∞≠
-]
-S/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/HttpFailureHelper.cs (S(
-%9"System.UnauthorizedAccessException""System.UnauthorizedAccessExceptionÄ
-˝
-]
-S/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/HttpFailureHelper.cs (9
-%10void"GSystem.UnauthorizedAccessException.UnauthorizedAccessException(string?)**
-(
-%9"System.UnauthorizedAccessException*
-You are not authorized*
-4*m
-10]
-S/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/HttpFailureHelper.cs ('*
-11
-12*h
-11]
-S/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/HttpFailureHelper.cs&	 &(	*
-4*m
-12]
-S/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/HttpFailureHelper.cs ('*
-13
-14*h
-13]
-S/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/HttpFailureHelper.cs&	 &(	*
-4*m
-14]
-S/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/HttpFailureHelper.cs ('*
-15
-16*h
-15]
-S/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/HttpFailureHelper.cs&	 &(	*
-4*m
-16]
-S/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/HttpFailureHelper.cs ('*
-17
-18*h
-17]
-S/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/HttpFailureHelper.cs&	 &(	*
-4*m
-18]
-S/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/HttpFailureHelper.cs ('*
-19
-20*h
-19]
-S/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/HttpFailureHelper.cs&	 &(	*
-4*m
-20]
-S/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/HttpFailureHelper.cs ('*
-21
-22*h
-21]
-S/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/HttpFailureHelper.cs&	 &(	*
-4*m
-22]
-S/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/HttpFailureHelper.cs ('*
-23
-24*h
-23]
-S/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/HttpFailureHelper.cs&	 &(	*
-4*l
-24]
-S/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/HttpFailureHelper.cs ('*
-25
-4*h
-25]
-S/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/HttpFailureHelper.cs&	 &(	*
-4*ÿ
-4]
-S/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/HttpFailureHelper.cs&	 &(	"t
-]
-S/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/HttpFailureHelper.cs& &(	
-implicit return:/
-response#System.Net.Http.HttpResponseMessageB/"-
-+MiniTwitApi.Client.Models.HttpFailureHelper

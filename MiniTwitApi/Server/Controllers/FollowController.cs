@@ -33,15 +33,14 @@ namespace MiniTwitApi.Server.Controllers
                 return BadRequest("whomUserName and whoUserName must be valid Username's");
 
             var followRelation = await _followerRepository.ReadAsync(whoUserName, whomUserName);
-            var followerDto = new FollowerDTO()
-            {
-                WhoId = followRelation.WhoId,
-                WhomId = followRelation.WhomId
-            };
             if(latest > 0 && _configuration["ApiSafeList"].Contains(_accessor.ActionContext.HttpContext.Connection.RemoteIpAddress.ToString()))
                 Latest.GetInstance().Update(latest);
 
-            return Ok(followerDto);
+            return Ok(new FollowerDTO()
+            {
+                WhoId = followRelation.WhoId,
+                WhomId = followRelation.WhomId
+            });
         }
         
         [HttpGet("fllws/{username}")]

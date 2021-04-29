@@ -1,100 +1,0 @@
-
-cMiniTwitApi.Client.Models.MessageModel.PostMessage(MiniTwitApi.Shared.Models.CreateMessage, string)X
-N/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/MessageModel.cs  (+"0*˜
-0X
-N/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/MessageModel.cs! %(/²
-¯
-X
-N/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/MessageModel.cs! !(8
-%0string"bSystem.Text.Json.JsonSerializer.Serialize<TValue>(TValue, System.Text.Json.JsonSerializerOptions?)*#"!
-System.Text.Json.JsonSerializer*4
-2
-message'MiniTwitApi.Shared.Models.CreateMessage*
-""ƒ
-€
-X
-N/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/MessageModel.cs! !(8
-jsonstring"__id*
-
-%0string²
-¯
-X
-N/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/MessageModel.cs"/ "(<
-%1System.Text.Encoding"System.Text.Encoding.UTF8.get*"
-System.Text.Encoding¡ž
-X
-N/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/MessageModel.cs" "(Q#
-%2System.Net.Http.StringContent"System.Net.Http.StringContent«
-¨
-X
-N/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/MessageModel.cs" "((
-
-%3void"SSystem.Net.Http.StringContent.StringContent(string, System.Text.Encoding?, string?)*%
-#
-%2System.Net.Http.StringContent*
-
-jsonstring*
-
-%1System.Text.Encoding*
-application/json±
-®
-X
-N/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/MessageModel.cs" "(Q%
-dataSystem.Net.Http.StringContent"__id*%
-#
-%2System.Net.Http.StringContentß
-Ü
-X
-N/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/MessageModel.cs#! #(( 
-%4System.Net.Http.HttpClient"2MiniTwitApi.Client.Models.MessageModel._client.get**(
-&MiniTwitApi.Client.Models.MessageModel“
-
-X
-N/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/MessageModel.cs#3 #(F
-%5string"__concat*
-""*
-
-usernamestring²
-¯
-X
-N/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/MessageModel.cs#! #(M*
-%6$System.Threading.Tasks.Task<TResult>"JSystem.Net.Http.HttpClient.PostAsync(string?, System.Net.Http.HttpContent)*"
- 
-%4System.Net.Http.HttpClient*
-
-%5string*'
-%
-dataSystem.Net.Http.StringContentœ
-™
-X
-N/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/MessageModel.cs# #(M/
-response#System.Net.Http.HttpResponseMessage"__id*
-""°
-­
-X
-N/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/MessageModel.cs$ $(8
-
-%7void"aMiniTwitApi.Client.Models.HttpFailureHelper.HandleStatusCode(System.Net.Http.HttpResponseMessage)*/"-
-+MiniTwitApi.Client.Models.HttpFailureHelper*1
-/
-response#System.Net.Http.HttpResponseMessageÙ
-Ö
-X
-N/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/MessageModel.cs% %(/
-
-%8bool";System.Net.Http.HttpResponseMessage.IsSuccessStatusCode.get*1
-/
-response#System.Net.Http.HttpResponseMessage"h
-X
-N/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/MessageModel.cs% %(0
-
-
-%8bool*Î
-1X
-N/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/MessageModel.cs&	 &(	"o
-X
-N/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/Models/MessageModel.cs& &(	
-implicit return:2
-message'MiniTwitApi.Shared.Models.CreateMessage:
-usernamestringB*(
-&MiniTwitApi.Client.Models.MessageModel

@@ -65,16 +65,14 @@ namespace MiniTwitApi.Server.Repositories
 
         public async Task<int> CreateAsync(FollowerDTO follower) 
         {
-            var entity = new Follower
-            {
+            
+            await _context.Followers.AddAsync(new Follower{
                 WhoId = follower.WhoId,
                 WhomId = follower.WhomId
-            };
-            
-            await _context.Followers.AddAsync(entity);
+            });
             await _context.SaveChangesAsync();
 
-            return entity.WhoId;
+            return follower.WhoId;
         }
     
     }

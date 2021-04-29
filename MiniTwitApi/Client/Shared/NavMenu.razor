@@ -5,17 +5,25 @@
 @inject IJSRuntime JSRuntime
 @inject HttpClient Client
 
+<style>
+    .nav-link.active {
+    text-decoration: underline;
+}
+</style>
+
+
 <nav>
+
     <AuthorizeView>
         <Authorized>
-            <a href="timeline/my_timeline">My Timeline</a>
-            <a href="timeline/public">Public Timeline</a>
-            <a style="color: white;" @onclick="RedirectToIndex">Logout</a>
+            <NavLink class="nav-link" href="timeline/my_timeline" Match="NavLinkMatch.All">My Timeline</NavLink>
+            <NavLink class="nav-link" href="timeline/public" Match="NavLinkMatch.All">Public Timeline</NavLink>
+            <NavLink class="nav-link" @onclick="RedirectToIndex" Match="NavLinkMatch.All">Logout</NavLink>
         </Authorized>
         <NotAuthorized>
-            <a href="timeline/public">Public Timeline</a>
-            <a href="register">Sign Up</a>
-            <a href="login">Sign In</a>
+            <NavLink class="nav-link" href="timeline/public" Match="NavLinkMatch.All">Public Timeline</NavLink>
+            <NavLink class="nav-link" href="register" Match="NavLinkMatch.All">Sign Up</NavLink>
+            <NavLink class="nav-link" href="login" Match="NavLinkMatch.All">Sign In</NavLink>
         </NotAuthorized>
     </AuthorizeView>
 </nav>
@@ -28,3 +36,6 @@
         await JSRuntime.InvokeVoidAsync("redirect", "/");
     }
 }
+
+
+

@@ -1,17 +1,0 @@
-ù
-#MiniTwitApi.Server.Entities.Messageobject:
-	Message()-MiniTwitApi.Server.Entities.Message.Message()B
-MessageId.get1MiniTwitApi.Server.Entities.Message.MessageId.getB
-MessageId.set1MiniTwitApi.Server.Entities.Message.MessageId.set@
-AuthorId.get0MiniTwitApi.Server.Entities.Message.AuthorId.get@
-AuthorId.set0MiniTwitApi.Server.Entities.Message.AuthorId.set8
-User.get,MiniTwitApi.Server.Entities.Message.User.get8
-User.set,MiniTwitApi.Server.Entities.Message.User.setL
-AuthorUsername.get6MiniTwitApi.Server.Entities.Message.AuthorUsername.getL
-AuthorUsername.set6MiniTwitApi.Server.Entities.Message.AuthorUsername.set8
-Text.get,MiniTwitApi.Server.Entities.Message.Text.get8
-Text.set,MiniTwitApi.Server.Entities.Message.Text.set>
-PubDate.get/MiniTwitApi.Server.Entities.Message.PubDate.get>
-PubDate.set/MiniTwitApi.Server.Entities.Message.PubDate.set>
-Flagged.get/MiniTwitApi.Server.Entities.Message.Flagged.get>
-Flagged.set/MiniTwitApi.Server.Entities.Message.Flagged.set

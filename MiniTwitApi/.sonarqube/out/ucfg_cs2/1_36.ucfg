@@ -1,109 +1,0 @@
-
-8MiniTwitApi.Client.ViewModels.LoginViewModel.LoginUser()^
-T/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/LoginViewModel.cs (#"0*≥
-0^
-T/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/LoginViewModel.cs (3è
-å
-^
-T/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/LoginViewModel.cs ($3
-%0-MiniTwitApi.Client.Models.Abstract.IUserModel"__id*o*m.
-,MiniTwitApi.Client.ViewModels.LoginViewModel";
-
-_userModel-MiniTwitApi.Client.Models.Abstract.IUserModelÖ
-Ç
-^
-T/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/LoginViewModel.cs/ (37
-%11MiniTwitApi.Shared.Models.UserModels.LoginUserDTO"5MiniTwitApi.Client.ViewModels.LoginViewModel.User.get*0.
-,MiniTwitApi.Client.ViewModels.LoginViewModel´®
-^
-T/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/LoginViewModel.cs (4*
-%2$System.Threading.Tasks.Task<TResult>"jMiniTwitApi.Client.Models.Abstract.IUserModel.LoginUser(MiniTwitApi.Shared.Models.UserModels.LoginUserDTO)*5
-3
-%0-MiniTwitApi.Client.Models.Abstract.IUserModel*9
-7
-%11MiniTwitApi.Shared.Models.UserModels.LoginUserDTO2<LoginUser(MiniTwitApi.Shared.Models.UserModels.LoginUserDTO)*
-1
-2*•
-1^
-T/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/LoginViewModel.cs (*≈¬
-^
-T/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/LoginViewModel.cs#  (2
-%3,MiniTwitApi.Shared.Models.UserModels.UserDTO",MiniTwitApi.Shared.Models.UserModels.UserDTO›
-⁄
-^
-T/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/LoginViewModel.cs' (.
-
-%4void"6MiniTwitApi.Shared.Models.UserModels.UserDTO.UserDTO()*4
-2
-%3,MiniTwitApi.Shared.Models.UserModels.UserDTOÖ
-Ç
-^
-T/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/LoginViewModel.cs# ('7
-%51MiniTwitApi.Shared.Models.UserModels.LoginUserDTO"5MiniTwitApi.Client.ViewModels.LoginViewModel.User.get*0.
-,MiniTwitApi.Client.ViewModels.LoginViewModelÏ
-È
-^
-T/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/LoginViewModel.cs# (0
-%6string">MiniTwitApi.Shared.Models.UserModels.LoginUserDTO.Username.get*9
-7
-%51MiniTwitApi.Shared.Models.UserModels.LoginUserDTOÚ
-Ô
-^
-T/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/LoginViewModel.cs (0
-%7string"9MiniTwitApi.Shared.Models.UserModels.UserDTO.Username.set*4
-2
-%3,MiniTwitApi.Shared.Models.UserModels.UserDTO*
-
-%6stringÖ
-Ç
-^
-T/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/LoginViewModel.cs  ($7
-%81MiniTwitApi.Shared.Models.UserModels.LoginUserDTO"5MiniTwitApi.Client.ViewModels.LoginViewModel.User.get*0.
-,MiniTwitApi.Client.ViewModels.LoginViewModelÈ
-Ê
-^
-T/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/LoginViewModel.cs  (*
-%9string";MiniTwitApi.Shared.Models.UserModels.LoginUserDTO.Email.get*9
-7
-%81MiniTwitApi.Shared.Models.UserModels.LoginUserDTO
-Ì
-^
-T/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/LoginViewModel.cs (*
-%10string"6MiniTwitApi.Shared.Models.UserModels.UserDTO.Email.set*4
-2
-%3,MiniTwitApi.Shared.Models.UserModels.UserDTO*
-
-%9stringø
-º
-^
-T/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/LoginViewModel.cs  (3
-%11,MiniTwitApi.Shared.Models.UserModels.UserDTO"=MiniTwitApi.Client.ViewModels.LoginViewModel.LoggedInUser.set*0.
-,MiniTwitApi.Client.ViewModels.LoginViewModel*4
-2
-%3,MiniTwitApi.Shared.Models.UserModels.UserDTO*
-2*k
-2^
-T/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/LoginViewModel.cs&	 &(	*
-3
-4*ë
-3^
-T/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/LoginViewModel.cs$ $(!∂≥
-^
-T/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/LoginViewModel.cs$ $(!
-%12string"System.Exception.Message.get*
-
-eSystem.Exception2Message.getÌ
-Í
-^
-T/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/LoginViewModel.cs$ $(!
-%13string"6MiniTwitApi.Client.ViewModels.LoginViewModel.Error.set*0.
-,MiniTwitApi.Client.ViewModels.LoginViewModel*
-
-%12string*
-4*⁄
-4^
-T/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/LoginViewModel.cs&	 &(	"u
-^
-T/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/LoginViewModel.cs& &(	
-implicit returnB0.
-,MiniTwitApi.Client.ViewModels.LoginViewModel

@@ -1,134 +1,0 @@
-
-+MiniTwitApi.Shared.BCrypt.GenerateSalt(int)M
-A/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/BCrypt.csÀ À(%"0*Û
-0M
-A/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/BCrypt.csÕ ‘(e
-c
-M
-A/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/BCrypt.csÕ& Õ(5
-%0"__id*
-""ge
-M
-A/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/BCrypt.csÕ Õ(6
-%1byte[]"byte[]~
-|
-M
-A/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/BCrypt.csÕ Õ(6
-randomBytesbyte[]"__id*
-
-%1byte[]Å
-˛
-M
-A/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/BCrypt.csœ œ(&8
-%22System.Security.Cryptography.RandomNumberGenerator";System.Security.Cryptography.RandomNumberGenerator.Create()*6"4
-2System.Security.Cryptography.RandomNumberGenerator¯
-ı
-M
-A/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/BCrypt.csœ œ(<
-
-%3void"CSystem.Security.Cryptography.RandomNumberGenerator.GetBytes(byte[])*:
-8
-%22System.Security.Cryptography.RandomNumberGenerator*
-
-randomBytesbyte[]è
-å
-M
-A/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/BCrypt.cs—. —(@	
-%4int"System.Array.Length.get*
-
-randomBytesbyte[]éã
-M
-A/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/BCrypt.cs— —(J
-%5System.Text.StringBuilder"System.Text.StringBuilder∑
-¥
-M
-A/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/BCrypt.cs— —(,
-
-%6void",System.Text.StringBuilder.StringBuilder(int)*!
-
-%5System.Text.StringBuilder*
-""ú
-ô
-M
-A/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/BCrypt.cs— —(J
-rsSystem.Text.StringBuilder"__id*!
-
-%5System.Text.StringBuilderÀ
-»
-M
-A/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/BCrypt.cs” ”(
-%7System.Text.StringBuilder")System.Text.StringBuilder.Append(string?)*!
-
-rsSystem.Text.StringBuilder*
-$2a$*
-1
-2*ü
-1M
-A/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/BCrypt.cs’ ’(≈
-¬
-M
-A/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/BCrypt.cs’ ’(
-%8System.Text.StringBuilder"&System.Text.StringBuilder.Append(char)*!
-
-rsSystem.Text.StringBuilder*
-0*
-2*∫
-
-2M
-A/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/BCrypt.cs◊ €(≈
-¬
-M
-A/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/BCrypt.cs◊ ◊(
-%9System.Text.StringBuilder"%System.Text.StringBuilder.Append(int)*!
-
-rsSystem.Text.StringBuilder*
-""∆
-√
-M
-A/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/BCrypt.csÿ ÿ( 
-%10System.Text.StringBuilder"&System.Text.StringBuilder.Append(char)*!
-
-rsSystem.Text.StringBuilder*
-$ê
-ç
-M
-A/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/BCrypt.csŸ, Ÿ(>
-
-%11int"System.Array.Length.get*
-
-randomBytesbyte[]‹
-Ÿ
-M
-A/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/BCrypt.csŸ Ÿ(?
-%12string"3MiniTwitApi.Shared.BCrypt.EncodeBase64(byte[], int)*"
-MiniTwitApi.Shared.BCrypt*
-
-randomBytesbyte[]*
-
-
-%11int”
-–
-M
-A/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/BCrypt.csŸ Ÿ(@ 
-%13System.Text.StringBuilder")System.Text.StringBuilder.Append(string?)*!
-
-rsSystem.Text.StringBuilder*
-
-%12string™
-ß
-M
-A/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/BCrypt.cs€ €(
-%14string"$System.Text.StringBuilder.ToString()*!
-
-rsSystem.Text.StringBuilder"`
-M
-A/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/BCrypt.cs€ €(
-
-%14string*∏
-3M
-A/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/BCrypt.cs‹ ‹("d
-M
-A/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/BCrypt.cs‹ ‹(
-implicit return:
-	logRoundsintB"
-MiniTwitApi.Shared.BCrypt

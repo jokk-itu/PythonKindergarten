@@ -1,11 +1,0 @@
-¯
-,MiniTwitApi.Shared.Models.UserModels.UserDTOobjectC
-	UserDTO()6MiniTwitApi.Shared.Models.UserModels.UserDTO.UserDTO()=
-Id.get3MiniTwitApi.Shared.Models.UserModels.UserDTO.Id.get=
-Id.set3MiniTwitApi.Shared.Models.UserModels.UserDTO.Id.setI
-Username.get9MiniTwitApi.Shared.Models.UserModels.UserDTO.Username.getI
-Username.set9MiniTwitApi.Shared.Models.UserModels.UserDTO.Username.setC
-	Email.get6MiniTwitApi.Shared.Models.UserModels.UserDTO.Email.getC
-	Email.set6MiniTwitApi.Shared.Models.UserModels.UserDTO.Email.setI
-Password.get9MiniTwitApi.Shared.Models.UserModels.UserDTO.Password.getI
-Password.set9MiniTwitApi.Shared.Models.UserModels.UserDTO.Password.set

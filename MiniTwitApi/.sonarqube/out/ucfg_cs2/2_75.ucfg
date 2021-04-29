@@ -1,112 +1,0 @@
-
-=MiniTwitApi.Server.Repositories.UserRepository.ReadAsync(int)`
-V/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/UserRepository.cs-# -(,"0*”
-0`
-V/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/UserRepository.cs/ 1(Ç
-ˇ
-`
-V/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/UserRepository.cs/ /(%*
-%0$MiniTwitApi.Server.Entities.IContext";MiniTwitApi.Server.Repositories.UserRepository._context.get*20
-.MiniTwitApi.Server.Repositories.UserRepositoryÇˇ
-`
-V/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/UserRepository.cs/ /(+2
-%1,Microsoft.EntityFrameworkCore.DbSet<TEntity>".MiniTwitApi.Server.Entities.IContext.Users.get*,
-*
-%0$MiniTwitApi.Server.Entities.IContext2	Users.getπ∂
-`
-V/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/UserRepository.cs/ /(=/
-%2)System.Threading.Tasks.ValueTask<TResult>"GMicrosoft.EntityFrameworkCore.DbSet<TEntity>.FindAsync(params object[])*4
-2
-%1,Microsoft.EntityFrameworkCore.DbSet<TEntity>*
-""2FindAsync(params object[])ù
-ö
-`
-V/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/UserRepository.cs/ /(=(
-user MiniTwitApi.Server.Entities.User"__id*
-""*
-1
-2*—
-1`
-V/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/UserRepository.cs2 2("j
-`
-V/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/UserRepository.cs2 2(
-""*π
-2`
-V/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/UserRepository.cs4 9((«ƒ
-`
-V/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/UserRepository.cs4 :(2
-%3,MiniTwitApi.Shared.Models.UserModels.UserDTO",MiniTwitApi.Shared.Models.UserModels.UserDTOﬂ
-‹
-`
-V/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/UserRepository.cs4 4(
-
-%4void"6MiniTwitApi.Shared.Models.UserModels.UserDTO.UserDTO()*4
-2
-%3,MiniTwitApi.Shared.Models.UserModels.UserDTO…
-∆
-`
-V/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/UserRepository.cs6 6( 	
-%5int"+MiniTwitApi.Server.Entities.User.UserId.get**
-(
-user MiniTwitApi.Server.Entities.UserË
-Â
-`
-V/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/UserRepository.cs6 6( 	
-%6int"3MiniTwitApi.Shared.Models.UserModels.UserDTO.Id.set*4
-2
-%3,MiniTwitApi.Shared.Models.UserModels.UserDTO*
-	
-%5intÀ
-»
-`
-V/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/UserRepository.cs7 7("
-%7string"*MiniTwitApi.Server.Entities.User.Email.get**
-(
-user MiniTwitApi.Server.Entities.UserÒ
-Ó
-`
-V/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/UserRepository.cs7 7("
-%8string"6MiniTwitApi.Shared.Models.UserModels.UserDTO.Email.set*4
-2
-%3,MiniTwitApi.Shared.Models.UserModels.UserDTO*
-
-%7stringŒ
-À
-`
-V/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/UserRepository.cs8 8((
-%9string"-MiniTwitApi.Server.Entities.User.Password.get**
-(
-user MiniTwitApi.Server.Entities.Userı
-Ú
-`
-V/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/UserRepository.cs8 8((
-%10string"9MiniTwitApi.Shared.Models.UserModels.UserDTO.Password.set*4
-2
-%3,MiniTwitApi.Shared.Models.UserModels.UserDTO*
-
-%9stringœ
-Ã
-`
-V/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/UserRepository.cs9 9((
-%11string"-MiniTwitApi.Server.Entities.User.Username.get**
-(
-user MiniTwitApi.Server.Entities.Userˆ
-Û
-`
-V/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/UserRepository.cs9 9((
-%12string"9MiniTwitApi.Shared.Models.UserModels.UserDTO.Username.set*4
-2
-%3,MiniTwitApi.Shared.Models.UserModels.UserDTO*
-
-%11string"ò
-`
-V/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/UserRepository.cs4 :(4
-2
-%3,MiniTwitApi.Shared.Models.UserModels.UserDTO*ﬁ
-3`
-V/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/UserRepository.cs;	 ;(	"w
-`
-V/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Repositories/UserRepository.cs; ;(	
-implicit return:
-useridintB20
-.MiniTwitApi.Server.Repositories.UserRepository

@@ -1,8 +1,0 @@
-ý
-1MiniTwitApi.Server.Repositories.MessageRepositoryobject¤
-7MessageRepository(MiniTwitApi.Server.Entities.IContext)iMiniTwitApi.Server.Repositories.MessageRepository.MessageRepository(MiniTwitApi.Server.Entities.IContext)˜
-1CreateAsync(MiniTwitApi.Shared.Models.MessageDTO)cMiniTwitApi.Server.Repositories.MessageRepository.CreateAsync(MiniTwitApi.Shared.Models.MessageDTO)b
-ReadAllAsync(int, int)HMiniTwitApi.Server.Repositories.MessageRepository.ReadAllAsync(int, int)z
-"ReadAllUserAsync(string, int, int)TMiniTwitApi.Server.Repositories.MessageRepository.ReadAllUserAsync(string, int, int)N
-_context.get>MiniTwitApi.Server.Repositories.MessageRepository._context.getN
-_context.set>MiniTwitApi.Server.Repositories.MessageRepository._context.set

@@ -1,29 +1,0 @@
-
-rMiniTwitApi.Client.CustomAuthenticationStateProvider.CustomAuthenticationStateProvider(System.Net.Http.HttpClient)f
-\/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/CustomAuthenticationStateProvider.cs (0"1*º
-1f
-\/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/CustomAuthenticationStateProvider.cs	 (	Ç
-Ä
-
-%0void"gMicrosoft.AspNetCore.Components.Authorization.AuthenticationStateProvider.AuthenticationStateProvider()*MK
-IMicrosoft.AspNetCore.Components.Authorization.AuthenticationStateProvider*
-0*õ
-0f
-\/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/CustomAuthenticationStateProvider.cs ($‚
-ÿ
-f
-\/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/CustomAuthenticationStateProvider.cs ($c6
-4MiniTwitApi.Client.CustomAuthenticationStateProvider")
-_httpClientSystem.Net.Http.HttpClient"__id**
-(
-
-httpClientSystem.Net.Http.HttpClient*
-2*ê
-2f
-\/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/CustomAuthenticationStateProvider.cs	 (	"}
-f
-\/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/CustomAuthenticationStateProvider.cs (	
-implicit return:(
-
-httpClientSystem.Net.Http.HttpClientB86
-4MiniTwitApi.Client.CustomAuthenticationStateProvider

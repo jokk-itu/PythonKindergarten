@@ -1,10 +1,0 @@
-ã
-,MiniTwitApi.Client.ViewModels.LoginViewModelobject«
-=LoginViewModel(MiniTwitApi.Client.Models.Abstract.IUserModel)jMiniTwitApi.Client.ViewModels.LoginViewModel.LoginViewModel(MiniTwitApi.Client.Models.Abstract.IUserModel)G
-LoginUser()8MiniTwitApi.Client.ViewModels.LoginViewModel.LoginUser()A
-User.get5MiniTwitApi.Client.ViewModels.LoginViewModel.User.getA
-User.set5MiniTwitApi.Client.ViewModels.LoginViewModel.User.setQ
-LoggedInUser.get=MiniTwitApi.Client.ViewModels.LoginViewModel.LoggedInUser.getQ
-LoggedInUser.set=MiniTwitApi.Client.ViewModels.LoginViewModel.LoggedInUser.setC
-	Error.get6MiniTwitApi.Client.ViewModels.LoginViewModel.Error.getC
-	Error.set6MiniTwitApi.Client.ViewModels.LoginViewModel.Error.set

@@ -1,66 +1,0 @@
-
-?MiniTwitApi.Client.ViewModels.MyTimelineViewModel.PostMessage()c
-Y/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/MyTimelineViewModel.cs (%"0*„
-0c
-Y/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/MyTimelineViewModel.cs   (^¢
-ü
-c
-Y/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/MyTimelineViewModel.cs &  (36
-%00MiniTwitApi.Client.Models.Abstract.IMessageModel"__id*z*x3
-1MiniTwitApi.Client.ViewModels.MyTimelineViewModel"A
-_messageModel0MiniTwitApi.Client.Models.Abstract.IMessageModelç
-ä
-c
-Y/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/MyTimelineViewModel.cs @  (G-
-%1'MiniTwitApi.Shared.Models.CreateMessage"=MiniTwitApi.Client.ViewModels.MyTimelineViewModel.Message.get*53
-1MiniTwitApi.Client.ViewModels.MyTimelineViewModeló
-î
-c
-Y/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/MyTimelineViewModel.cs I  (U2
-%2,MiniTwitApi.Shared.Models.UserModels.UserDTO"BMiniTwitApi.Client.ViewModels.MyTimelineViewModel.LoggedInUser.get*53
-1MiniTwitApi.Client.ViewModels.MyTimelineViewModelÁ
-‰
-c
-Y/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/MyTimelineViewModel.cs I  (^
-%3string"9MiniTwitApi.Shared.Models.UserModels.UserDTO.Username.get*4
-2
-%2,MiniTwitApi.Shared.Models.UserModels.UserDTOºπ
-c
-Y/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/MyTimelineViewModel.cs &  (_*
-%4$System.Threading.Tasks.Task<TResult>"mMiniTwitApi.Client.Models.Abstract.IMessageModel.PostMessage(MiniTwitApi.Shared.Models.CreateMessage, string)*8
-6
-%00MiniTwitApi.Client.Models.Abstract.IMessageModel*/
--
-%1'MiniTwitApi.Shared.Models.CreateMessage*
-
-%3string2<PostMessage(MiniTwitApi.Shared.Models.CreateMessage, string)¯
-ı
-c
-Y/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/MyTimelineViewModel.cs   (_
-
-%5bool"CMiniTwitApi.Client.ViewModels.MyTimelineViewModel.IsMessageSent.set*53
-1MiniTwitApi.Client.ViewModels.MyTimelineViewModel*
-""*
-1
-2*ß
-1c
-Y/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/MyTimelineViewModel.cs$ $(!∫∑
-c
-Y/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/MyTimelineViewModel.cs$ $(!
-%6string"System.Exception.Message.get*
-
-eSystem.Exception2Message.get˙
-˜
-c
-Y/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/MyTimelineViewModel.cs$ $(!
-%7string";MiniTwitApi.Client.ViewModels.MyTimelineViewModel.Error.set*53
-1MiniTwitApi.Client.ViewModels.MyTimelineViewModel*
-
-%6string*
-2*‰
-2c
-Y/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/MyTimelineViewModel.cs&	 &(	"z
-c
-Y/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/MyTimelineViewModel.cs& &(	
-implicit returnB53
-1MiniTwitApi.Client.ViewModels.MyTimelineViewModel

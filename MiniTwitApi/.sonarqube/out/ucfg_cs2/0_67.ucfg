@@ -1,100 +1,0 @@
-
-<MiniTwitApi.Shared.Models.UserModels.UserDTO.MD5Hash(string)^
-T/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/Models/UserModels/UserDTO.cs% %($"0*º
-0^
-T/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/Models/UserModels/UserDTO.cs' *("Ü
-Ù
-^
-T/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/Models/UserModels/UserDTO.cs' '(&&
-%0 System.Security.Cryptography.MD5")System.Security.Cryptography.MD5.Create()*$""
- System.Security.Cryptography.MD5À
-½
-^
-T/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/Models/UserModels/UserDTO.cs' '(&+
-md5Hash System.Security.Cryptography.MD5"__id*(
-&
-%0 System.Security.Cryptography.MD5¸
-µ
-^
-T/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/Models/UserModels/UserDTO.cs(+ ((8
-%1System.Text.Encoding"System.Text.Encoding.UTF8.get*"
-System.Text.EncodingÛØ
-^
-T/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/Models/UserModels/UserDTO.cs(+ ((H
-%2byte[]"%System.Text.Encoding.GetBytes(string)*
-
-%1System.Text.Encoding*
-
-inputstring2GetBytes(string)ð
-í
-^
-T/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/Models/UserModels/UserDTO.cs( ((I
-%3byte[]">System.Security.Cryptography.HashAlgorithm.ComputeHash(byte[])*-
-+
-md5Hash System.Security.Cryptography.MD5*
-
-%2byte[]‰
-†
-^
-T/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/Models/UserModels/UserDTO.cs( ((I
-databyte[]"__id*
-
-%3byte[]Ÿœ
-^
-T/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/Models/UserModels/UserDTO.cs) )(.
-%4System.Text.StringBuilder"System.Text.StringBuilder½
-º
-^
-T/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/Models/UserModels/UserDTO.cs) )(,
-
-%5void")System.Text.StringBuilder.StringBuilder()*!
-
-%4System.Text.StringBuilder³
-°
-^
-T/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/Models/UserModels/UserDTO.cs) )(.%
-sBuilderSystem.Text.StringBuilder"__id*!
-
-%4System.Text.StringBuilder*
-1*k
-1^
-T/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/Models/UserModels/UserDTO.cs/	 /(	*
-2
-3*ô
-2^
-T/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/Models/UserModels/UserDTO.cs, ,(/ž
-›
-^
-T/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/Models/UserModels/UserDTO.cs,  ,(0
-%6string"byte.ToString(string?)*
-	
-tbyte*
-x2è
-å
-^
-T/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/Models/UserModels/UserDTO.cs, ,(1
-%7System.Text.StringBuilder")System.Text.StringBuilder.Append(string?)*'
-%
-sBuilderSystem.Text.StringBuilder*
-
-%6string*
-1*˜
-3^
-T/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/Models/UserModels/UserDTO.cs. .(&À
-½
-^
-T/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/Models/UserModels/UserDTO.cs. .(&
-%8string"$System.Text.StringBuilder.ToString()*'
-%
-sBuilderSystem.Text.StringBuilder"p
-^
-T/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/Models/UserModels/UserDTO.cs. .('
-
-%8string*Ú
-4^
-T/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/Models/UserModels/UserDTO.cs/	 /(	"u
-^
-T/home/joachim/git/PythonKindergarten/MiniTwitApi/Shared/Models/UserModels/UserDTO.cs/ /(	
-implicit return:
-inputstringB0".
-,MiniTwitApi.Shared.Models.UserModels.UserDTO

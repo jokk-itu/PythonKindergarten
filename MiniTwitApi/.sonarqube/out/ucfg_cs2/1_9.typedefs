@@ -1,11 +1,0 @@
-›
-!MiniTwitApi.Client.Shared.NavMenu-Microsoft.AspNetCore.Components.ComponentBaseobject¾
-LBuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)nMiniTwitApi.Client.Shared.NavMenu.BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)H
-RedirectToIndex()3MiniTwitApi.Client.Shared.NavMenu.RedirectToIndex()8
-	NavMenu()+MiniTwitApi.Client.Shared.NavMenu.NavMenu():
-
-Client.get,MiniTwitApi.Client.Shared.NavMenu.Client.get:
-
-Client.set,MiniTwitApi.Client.Shared.NavMenu.Client.set@
-JSRuntime.get/MiniTwitApi.Client.Shared.NavMenu.JSRuntime.get@
-JSRuntime.set/MiniTwitApi.Client.Shared.NavMenu.JSRuntime.set

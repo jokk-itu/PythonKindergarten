@@ -1,46 +1,0 @@
-
-¯MiniTwitApi.Server.Controllers.MiscController.MiscController(Microsoft.Extensions.Configuration.IConfiguration, Microsoft.AspNetCore.Mvc.Infrastructure.IActionContextAccessor)_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/MiscController.cs ("3*à
-1_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/MiscController.cs	 (	u
-s
-
-%0void"8Microsoft.AspNetCore.Mvc.ControllerBase.ControllerBase()*+)
-'Microsoft.AspNetCore.Mvc.ControllerBase*
-0*Ï
-0_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/MiscController.cs ( ¨
-¥
-_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/MiscController.cs (*v/
--MiniTwitApi.Server.Controllers.MiscController"C
-_configuration1Microsoft.Extensions.Configuration.IConfiguration"__id*D
-B
-configuration1Microsoft.Extensions.Configuration.IConfiguration¸
-µ
-_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/MiscController.cs ( ~/
--MiniTwitApi.Server.Controllers.MiscController"K
-	_accessor>Microsoft.AspNetCore.Mvc.Infrastructure.IActionContextAccessor"__id*L
-J
-accessor>Microsoft.AspNetCore.Mvc.Infrastructure.IActionContextAccessor*
-2*Ü
-2_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/MiscController.cs	 (	"v
-_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/MiscController.cs (	
-implicit return*ø
-3_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/MiscController.cs\ (\Œ
-‰
-_
-U/home/joachim/git/PythonKindergarten/MiniTwitApi/Server/Controllers/MiscController.cs (
-%1"__entrypoint*D
-B
-configuration1Microsoft.Extensions.Configuration.IConfiguration*L
-J
-accessor>Microsoft.AspNetCore.Mvc.Infrastructure.IActionContextAccessor*
-1:B
-configuration1Microsoft.Extensions.Configuration.IConfiguration:J
-accessor>Microsoft.AspNetCore.Mvc.Infrastructure.IActionContextAccessorB1/
--MiniTwitApi.Server.Controllers.MiscController

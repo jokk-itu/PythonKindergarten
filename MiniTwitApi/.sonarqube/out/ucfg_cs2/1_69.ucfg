@@ -1,33 +1,0 @@
-
-FMiniTwitApi.Client.ViewModels.MessageViewModel.RequestMessages(string)`
-V/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/MessageViewModel.cs2 (A"0*Ä
-0`
-V/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/MessageViewModel.cs (Bœ
-™
-`
-V/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/MessageViewModel.cs$ (16
-%00MiniTwitApi.Client.Models.Abstract.IMessageModel"__id*w*u0
-.MiniTwitApi.Client.ViewModels.MessageViewModel"A
-_messageModel0MiniTwitApi.Client.Models.Abstract.IMessageModel¸µ
-`
-V/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/MessageViewModel.cs$ (C*
-%1$System.Threading.Tasks.Task<TResult>"DMiniTwitApi.Client.Models.Abstract.IMessageModel.GetMessages(string)*8
-6
-%00MiniTwitApi.Client.Models.Abstract.IMessageModel*
-
-pathstring2GetMessages(string)*
-1*m
-1`
-V/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/MessageViewModel.cs	 (	*
-2
-3*j
-2`
-V/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/MessageViewModel.cs (*
-1*Þ
-3`
-V/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/MessageViewModel.cs	 (	"w
-`
-V/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/MessageViewModel.cs (	
-implicit return:
-pathstringB20
-.MiniTwitApi.Client.ViewModels.MessageViewModel

@@ -1,12 +1,0 @@
-Î
-#MiniTwitApi.Server.Entities.Context'Microsoft.EntityFrameworkCore.DbContextobject:
-	Context()-MiniTwitApi.Server.Entities.Context.Context()á
-\Context(Microsoft.EntityFrameworkCore.DbContextOptions<MiniTwitApi.Server.Entities.Context>)€MiniTwitApi.Server.Entities.Context.Context(Microsoft.EntityFrameworkCore.DbContextOptions<MiniTwitApi.Server.Entities.Context>)°
-DOnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)hMiniTwitApi.Server.Entities.Context.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)ž
-;OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)_MiniTwitApi.Server.Entities.Context.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder):
-	Users.get-MiniTwitApi.Server.Entities.Context.Users.get:
-	Users.set-MiniTwitApi.Server.Entities.Context.Users.setB
-Followers.get1MiniTwitApi.Server.Entities.Context.Followers.getB
-Followers.set1MiniTwitApi.Server.Entities.Context.Followers.set@
-Messages.get0MiniTwitApi.Server.Entities.Context.Messages.get@
-Messages.set0MiniTwitApi.Server.Entities.Context.Messages.set

@@ -1,91 +1,0 @@
-
-DMiniTwitApi.Client.ViewModels.UserTimelineViewModel.IsUserFollowed()e
-[/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/UserTimelineViewModel.cs (("0*Ë
-0e
-[/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/UserTimelineViewModel.cs$ '(+ù
-ö
-e
-[/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/UserTimelineViewModel.cs$! $(+3
-%0-MiniTwitApi.Client.Models.Abstract.IUserModel"__id*v*t5
-3MiniTwitApi.Client.ViewModels.UserTimelineViewModel";
-
-_userModel-MiniTwitApi.Client.Models.Abstract.IUserModel°û
-e
-[/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/UserTimelineViewModel.cs$! $(=*
-%1$System.Threading.Tasks.Task<TResult>"?MiniTwitApi.Client.Models.Abstract.IUserModel.GetLoggedInUser()*5
-3
-%0-MiniTwitApi.Client.Models.Abstract.IUserModel2GetLoggedInUser()Æ
-´
-e
-[/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/UserTimelineViewModel.cs$ $(=4
-user,MiniTwitApi.Shared.Models.UserModels.UserDTO"__id*
-""£
-†
-e
-[/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/UserTimelineViewModel.cs%) %(55
-%2/MiniTwitApi.Client.Models.Abstract.IFollowModel"__id*z*x5
-3MiniTwitApi.Client.ViewModels.UserTimelineViewModel"?
-_followModel/MiniTwitApi.Client.Models.Abstract.IFollowModelÎ
-Ë
-e
-[/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/UserTimelineViewModel.cs%A %(N
-%3string"9MiniTwitApi.Shared.Models.UserModels.UserDTO.Username.get*6
-4
-user,MiniTwitApi.Shared.Models.UserModels.UserDTOÛ
-
-e
-[/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/UserTimelineViewModel.cs%P %(X
-%4string"@MiniTwitApi.Client.ViewModels.UserTimelineViewModel.Username.get*75
-3MiniTwitApi.Client.ViewModels.UserTimelineViewModel◊‘
-e
-[/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/UserTimelineViewModel.cs%) %(Y*
-%5$System.Threading.Tasks.Task<TResult>"JMiniTwitApi.Client.Models.Abstract.IFollowModel.IsFollowed(string, string)*7
-5
-%2/MiniTwitApi.Client.Models.Abstract.IFollowModel*
-
-%3string*
-
-%4string2IsFollowed(string, string)ç
-ä
-e
-[/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/UserTimelineViewModel.cs% %(Y
-_isFollowedbool"__id*
-""ä
-á
-e
-[/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/UserTimelineViewModel.cs& &((
-
-%6bool"BMiniTwitApi.Client.ViewModels.UserTimelineViewModel.IsFollowed.set*75
-3MiniTwitApi.Client.ViewModels.UserTimelineViewModel*
-
-_isFollowedbool˝
-˙
-e
-[/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/UserTimelineViewModel.cs' '(+
-
-%7bool"DMiniTwitApi.Client.ViewModels.UserTimelineViewModel.IsUnfollowed.set*75
-3MiniTwitApi.Client.ViewModels.UserTimelineViewModel*
-""*
-1
-2*±
-1e
-[/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/UserTimelineViewModel.cs+ +(!ºπ
-e
-[/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/UserTimelineViewModel.cs+ +(!
-%8string"System.Exception.Message.get*
-
-eSystem.Exception2Message.getÄ
-˝
-e
-[/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/UserTimelineViewModel.cs+ +(!
-%9string"=MiniTwitApi.Client.ViewModels.UserTimelineViewModel.Error.set*75
-3MiniTwitApi.Client.ViewModels.UserTimelineViewModel*
-
-%8string*
-2*Ë
-2e
-[/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/UserTimelineViewModel.cs-	 -(	"|
-e
-[/home/joachim/git/PythonKindergarten/MiniTwitApi/Client/ViewModels/UserTimelineViewModel.cs- -(	
-implicit returnB75
-3MiniTwitApi.Client.ViewModels.UserTimelineViewModel

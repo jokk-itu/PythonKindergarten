@@ -62,7 +62,7 @@ namespace MiniTwitApi.Server
                         {
                             options.Listen(IPAddress.Any, 5001, listenOptions =>
                             {
-                                if(Environment.OSVersion.Platform == PlatformID.MacOSX)
+                                if(Environment.OSVersion.Platform != PlatformID.MacOSX)
                                 {
                                     var serverCertificate = LoadCertificate();
                                     listenOptions.UseHttps(serverCertificate); // <- Configures SSL

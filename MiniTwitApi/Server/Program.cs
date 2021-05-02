@@ -62,15 +62,21 @@ namespace MiniTwitApi.Server
                         {
                             options.Listen(IPAddress.Any, 5001, listenOptions =>
                             {
-                                if(Environment.OSVersion.Platform == PlatformID.MacOSX)
+
+                                if(args.Any() && args[0]=="mac")
+                                {
+                                    Console.WriteLine("Mac isn't running");
+                                }
+                                else
                                 {
                                     var serverCertificate = LoadCertificate();
                                     listenOptions.UseHttps(serverCertificate); // <- Configures SSL
                                 }
+                             
                             });
                         });
                 });
-
+                
         
         private static X509Certificate2 LoadCertificate()
         {

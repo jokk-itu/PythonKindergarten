@@ -51,7 +51,7 @@
 <ul>
     <li>SonarScanner</li>
     <li>SonarCloud</li>
-    <li>Infersharp</li>
+    <li>CodeQL</li>
 </ul>
 
 <h3>Code placement and version controlling</h3>

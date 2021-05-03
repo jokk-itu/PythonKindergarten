@@ -65,8 +65,10 @@ namespace MiniTwitApi.Server.Entities
                 if (fileInfo.Exists)
                 {
                     using var stream = fileInfo.CreateReadStream();
-                    using var streamReader = new StreamReader(stream);
-                    return streamReader.ReadToEnd();
+                    using (var streamReader = new StreamReader(stream))
+                    {
+                        return streamReader.ReadToEnd();
+                    }
                 }
             }
             return Configuration.GetValue<string>(key);

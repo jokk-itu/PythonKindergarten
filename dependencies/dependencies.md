@@ -94,3 +94,8 @@
     <li>Kibana</li>
     <li>ElasticSearch</li>
 </ul>
+
+<h3>Messaging</h3>
+<ul>
+    <li>RabbitMQ</li>
+</ul>

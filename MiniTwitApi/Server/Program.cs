@@ -68,7 +68,7 @@ namespace MiniTwitApi.Server
 
                                 if(args.Any() && args[0]=="mac")
                                 {
-                                    Console.WriteLine("Mac isn't running");
+                                    Console.WriteLine("Mac is running");
                                 }
                                 else
                                 {

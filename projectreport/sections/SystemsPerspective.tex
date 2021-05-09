@@ -3,7 +3,18 @@
 \begin{itemize}
   \item Design of your ITU-MiniTwit systems.
   \item Architecture of your ITU-MiniTwit systems.
-  \item All dependencies of your ITU-MiniTwit systems on all levels of abstraction and development stages. (That is, list and briefly describe all technologies and tools you applied and depend on.)
+    %All dependencies of your ITU-MiniTwit systems on all levels of abstraction and development stages. (That is, list and briefly describe all technologies and tools you applied and depend on.)
+  \item Below is a list of all the \textbf{dependencies} of the PythonKindergarten MiniTwit project and a brief description thereof:
+    \begin{itemize}
+      \item \textbf{Language, Runtimes, Templates and Dependency Manager:}
+      .Net 5.0, ASP.Net Runtine 5.0, Blazor WebAssembly, WASM, nuget
+      \item \textbf{Project Structure:} Server, Client, Shared, Tests
+      \item \textbf{Testing:} Xunit
+      \item \textbf{Containerization:} Docker, Docker-Compose, DockerHub
+      \item \textbf{Pipelines (CI/CO):} Github Actions (N.B. was initially Travis until migration to Github Actions)
+      \item \textbf{Monitoring Tools:} Prometheus, Grafana
+  
+    \end{itemize}
   \item Important interactions of subsystems.
   \item Describe the current state of your systems, for example using results of static analysis and quality assessment systems.
   \item Finally, describe briefly, if the license that you have chosen for your project is actually compatible with the licenses of all your direct dependencies.

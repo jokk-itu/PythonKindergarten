@@ -81,7 +81,7 @@
 <h3>Domain names and Domain service</h3>
 <ul>
     <li>Pythonkindergarten.tech</li>
-    <li>Service provider for the domain?</li>
+    <li>.Tech Domains</li>
 </ul>
 
 <h3>Setup tool for entire application</h3>
@@ -92,6 +92,7 @@
 <h3>Logging</h3>
 <ul>
     <li>Kibana</li>
+    <li>Serilog</li>
     <li>ElasticSearch</li>
 </ul>
 

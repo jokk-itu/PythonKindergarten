@@ -4,16 +4,25 @@
   \item Design of your ITU-MiniTwit systems.
   \item Architecture of your ITU-MiniTwit systems.
     %All dependencies of your ITU-MiniTwit systems on all levels of abstraction and development stages. (That is, list and briefly describe all technologies and tools you applied and depend on.)
-  \item Below is a list of all the \textbf{dependencies} of the PythonKindergarten MiniTwit project and a brief description thereof:
+  \item Below is a list of all the \textbf{dependencies} of the Pythonkindergarten MiniTwit project, classified by description:
     \begin{itemize}
       \item \textbf{Language, Runtimes, Templates and Dependency Manager:}
-      .Net 5.0, ASP.Net Runtine 5.0, Blazor WebAssembly, WASM, nuget
+      .Net 5.0, ASP.Net Runtime 5.0, Blazor WebAssembly, WASM, NuGet
       \item \textbf{Project Structure:} Server, Client, Shared, Tests
+      \item \textbf{Database:} Postgres, EntityFramework Core, EntityFramework NPSQL
       \item \textbf{Testing:} Xunit
+      \item \textbf{Repository and Distributed Version Control:} Github, Git
+      \item \textbf{Domain names and Domain service:} Pythonkindergarten.tech, .Tech Domains
+      \item \textbf{DataTransferring over HTTP} JSON, System.Text.Json
       \item \textbf{Containerization:} Docker, Docker-Compose, DockerHub
-      \item \textbf{Pipelines (CI/CO):} Github Actions (N.B. was initially Travis until migration to Github Actions)
+      \item \textbf{Pipelines (CI/CD):} Github Actions (N.B. was initially Travis until migration to Github Actions)
+      \item \textbf{Deployment Provider:} DigitalOcean
+      \item \textbf{Server Certificate for application:} ZeroSSL
       \item \textbf{Monitoring Tools:} Prometheus, Grafana
-  
+      \item \textbf{Virtualization:} Vagrant
+      \item \textbf{Logging:} Elasticsearch, Serilog, Kibana
+      \item \textbf{Static Codecheck Tools:} SonarScanner, SonarCloud, CodeQL
+      \item \textbf{Messaging:} RabbitMQ
     \end{itemize}
   \item Important interactions of subsystems.
   \item Describe the current state of your systems, for example using results of static analysis and quality assessment systems.

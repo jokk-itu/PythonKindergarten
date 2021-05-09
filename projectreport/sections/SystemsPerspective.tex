@@ -3,6 +3,31 @@
 \begin{itemize}
   \item Design of your ITU-MiniTwit systems.
   \item Architecture of your ITU-MiniTwit systems.
+  \subsection{System Architecture}
+  Our system as a whole consists of 3 servers and a load balancer, all of which are hosted as on digital ocean.
+  Each server is running an NGINX server, which has been configured to serve as a reverse proxy for routing of subdomain access, e.g. master.pythonkindergarten.tech, slave.pythonkindergarten.tech, monitor.pythonkindergarten.tech etc.
+  \newline
+  Below is an overview of the 3 servers, as well as their function and purpose within our system.\newline
+  
+  \begin{enumerate}
+    \item Master Server\newline
+    The Master server is the master node in our Docker swarm and is responsible for maintaining cluster state, as well as managing service updates within the swarm.
+    This server also hosts our Prometheus and Grafana containers, which were described in the monitoring section.
+    \item Worker Server\newline
+    The Worker server simply contributes to the pooled resources within our swarm. 
+    It is a Docker swarm worker node which runs multiple replicas of our service, hosting both API and frontend.
+
+    \item Database Server\newline
+    The Database server has multiple purposes, all of which relates to data persistence.
+    This server hosts our Postgres database, which is our primary means of persistence within the system. 
+    \newline
+    It also hosts our logging system, which consists of an ElasticSearch database (log persistance), as well as Kibana for visualization of the collected logs.
+    \newline
+    Lastly, it hosts our RabbitMQ broker, which is used for private chats.
+    \item Load Balancer\newline
+    The load balancer is hosted on Digital Ocean and allows us to balance incoming traffic on the pythonkindergarten.tech domain between each of our docker swarm servers.
+  \end{enumerate}
+
   \item All dependencies of your ITU-MiniTwit systems on all levels of abstraction and development stages. (That is, list and briefly describe all technologies and tools you applied and depend on.)
   \item Important interactions of subsystems.
   \item Describe the current state of your systems, for example using results of static analysis and quality assessment systems.

@@ -45,9 +45,12 @@
 
   \subsubsection{Load-Balancing}
   There might be situations where every known swarm node is down, in which case the system as a whole might be unreachable, even though there might still be running nodes in the swarm.
+  \newline
   To mitigate this, we use a Digital Ocean Load Balancer. This acts as a gateway (single entry-point) to our Docker swarm, balancing the load between each of our servers and executing health checks, which ensures that the client is always connected to a reachable swarm node.
+  \newline
   As an added bonus, the load balancer also masks the ips of our servers, making our system less prone to hackers.
 
+  \newline
   \newline
   \newline
   Using these strategies we are able to scale far beyond our current setup, simply by joining more servers to our swarm and configuring these in the DO load balancer.\newline

@@ -14,7 +14,24 @@
   \item How do you monitor your systems and what precisely do you monitor?
   \item What do you log in your systems and how do you aggregate logs?
   \item Brief results of the security assessment.
+        Is it our security assessment?
   \item Applied strategy for scaling and load balancing.
   \item In essence it has to be clear how code or other artifacts come from idea into the running system and everything that happens on the way.
+        Ideas starts of as issues or ideas at group meetings.
+        Then a developer is assigned and checks out from the development branch,
+        and thus creates a topic branch for the feature.
+        When the feature is finished being implemented, 
+        two other developers are assigned to look through
+        the code and when approved, it is merged into development.
+        When other features, which form a bigger feature, are all finished and merged into development.
+        Then the development branch is merged into the master branch.
+        Our CI and CD pipelines are then run, and will fail 
+        If the project cannot build nor the test suite being run.
+        It the pipelines succeed, the code will be pulled from 
+        the main server in our docker swarm.
+        Then the main server, will notify its' worker servers,
+        to update their containers of the running application,
+        with the new docker image. The docker image is pulled from dockerhub.
+        
   
 \end{itemize}

@@ -69,3 +69,12 @@ mono_crash.*.json
 .idea
 docker_token
 /[Mm]igrations
+
+# Projectreport
+*.fls
+*.fdb_latexmk
+*.log
+*.aux
+*.pdf
+*.synctex.gz
+*.toc

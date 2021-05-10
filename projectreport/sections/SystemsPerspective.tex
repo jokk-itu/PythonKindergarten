@@ -2,7 +2,34 @@
 
 \begin{itemize}
   \item Design of your ITU-MiniTwit systems.
-  \item Architecture of your ITU-MiniTwit systems.
+  \subsection{System Design}
+  The developed MiniTwit system is complex and consists of many subsystems, each of which required a significant amount of decisions to construct.
+  In this subsection we will describe the design of our system as a whole, including the rationale behind some of the decisions we have made during this project.
+  \newline
+  For the sake of clarity, we will dissect our system into different layers: frontend, API and data persistence.
+  \begin{enumerate}
+    \item Frontend\newline
+    The frontend of our system is what provides users access to our system through a web interface, which is developed using Blazor (wasm) and C#, as well as html and css.
+    With blazor we are able to have our C# code compiled to webassembly and executed natively in the client browser.
+    The frontend communicates with our api using HTTP requests, containing json payloads of serialized or deserialized data.
+    .........................
+
+    \item API\newline
+    The REST API is developed using ASP.NET and exposes endpoints for communicating with the MiniTwit service. 
+    This includes execution of actions like following and unfollowing, as well as data fetching like feeds or user profiles.
+    The API translates frontend HTTP calls into data manipulations using Entity Framework for ORM with a code-first approach.
+    This allows us to focus on code first and automatically construct relational database schemas based on the relations between objects in our C# code using database migrations.
+    .........................
+
+    \item 
+    \item Data Persistence\newline
+    For data persistence we use use multiple difference database management systems. 
+    MiniTwit data such as users, followers and messages are stored in a postgres relational database, which integrates well with Entity Framework.
+    Logging data are stored in an ElasticSearch database configured with lifetime policies to keep the size under control.
+    ..................
+
+  \end{enumerate}
+
   \subsection{System Architecture}
   Our system as a whole consists of 3 servers and a load balancer, all of which are hosted as on digital ocean.
   Each server is running an NGINX server, which has been configured to serve as a reverse proxy for routing of subdomain access, e.g. master.pythonkindergarten.tech, slave.pythonkindergarten.tech, monitor.pythonkindergarten.tech etc.
@@ -21,15 +48,19 @@
     The Database server has multiple purposes, all of which relates to data persistence.
     This server hosts our Postgres database, which is our primary means of persistence within the system. 
     \newline
-    It also hosts our logging system, which consists of an ElasticSearch database (log persistance), as well as Kibana for visualization of the collected logs.
+    It also hosts our logging system, which consists of an ElasticSearch database (for log persistence), as well as Kibana for visualization of the collected logs.
     \newline
-    Lastly, it hosts our RabbitMQ broker, which is used for private chats.
+    Lastly, it hosts our RabbitMQ broker.
     \item Load Balancer\newline
-    The load balancer is hosted on Digital Ocean and allows us to balance incoming traffic on the pythonkindergarten.tech domain between each of our docker swarm servers.
+    The load balancer is hosted on Digital Ocean and allows us to balance incoming traffic on pythonkindergarten.tech between each of our docker swarm servers.
   \end{enumerate}
 
   \item All dependencies of your ITU-MiniTwit systems on all levels of abstraction and development stages. (That is, list and briefly describe all technologies and tools you applied and depend on.)
-  \item Important interactions of subsystems.
+  \subsection{Subsystem interactions}
+  There are many important services (described in previous sections), collectively making the system work as a whole.
+  In this section we will describe the most important interactions between these services.\newline
+  .......................
+  
   \item Describe the current state of your systems, for example using results of static analysis and quality assessment systems.
   \item Finally, describe briefly, if the license that you have chosen for your project is actually compatible with the licenses of all your direct dependencies.
   

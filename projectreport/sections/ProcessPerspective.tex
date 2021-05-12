@@ -15,12 +15,12 @@
   \subsubsection{How are the system monitored (Change section title)}
   Monitoring of our system is done using Prometheus and Grafana, deployed using docker-compose. \newline
   Prometheus acts as a data collector, periodically scraping metrics from configured targets and storing the collected data in the built-in local time series database.\newline
-  Our system consists of two docker nodes, a master and a worker, which are both configured as targets in our Prometheus deployment and metric visualization can be isolated for either of these within our Grafana dashboards.\newline
+  Our system consists of two docker nodes, a master and a worker, which are both configured as targets in our Prometheus deployment.\newline
   By configuring our Prometheus server as a datasource within Grafana, the stored time series data can be visualized in Grafana dashboards. Our metrics are visualized in two separate dashboards, accessible through the Grafana web interface.
 
   \subsubsection{What are the monitored metrics (Change section title)}
   To expose metrics in our system we use a NuGet package called prometheus-net (https://github.com/prometheus-net/prometheus-net).
-  This package allows us to expose metrics on the /metrics endpoint, which can then be scraped and stored by our Prometheus server.
+  This package allows us to expose metrics on the /metrics endpoint, which can then be scraped and stored by Prometheus.
   \newline
   To extend the default metrics provided by prometheus-net, we use two additional packages: 
   prometheus-net.DotNetMetrics (https://github.com/djluck/prometheus-net.DotNetRuntime) and prometheus-net.AspNet (https://github.com/rocklan/prometheus-net.AspNet).
@@ -40,7 +40,7 @@
   \subsection{System Scaling and load-balancing}
   \subsubsection{Scaling}
   We have applied both scaling (using docker swarm) and load-balancing (using Digital Ocean Load Balancer) in our system. 
-  Our Docker swarm consists of two servers, a master (also a worker) and a dedicated worker, each running multiple service replicas. 
+  Our Docker swarm consists of two servers, a master node and a dedicated worker node, each running multiple service replicas. 
   These two server are internally load-balancing using the Docker mesh network and only one node has to be known, in order to communicate with the swarm.
 
   \subsubsection{Load-Balancing}
@@ -48,7 +48,7 @@
   \newline
   To mitigate this, we use a Digital Ocean Load Balancer. This acts as a gateway (single entry-point) to our Docker swarm, balancing the load between each of our servers and executing health checks, which ensures that the client is always connected to a reachable swarm node.
   \newline
-  As an added bonus, the load balancer also masks the ips of our servers, making our system less prone to hackers.
+  As an added bonus, the load balancer masks the ips of our servers from clients, making our system less prone to hackers.
 
   \newline
   \newline

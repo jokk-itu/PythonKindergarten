@@ -6,7 +6,6 @@ using System.Text.Json.Serialization;
 
 namespace MiniTwitApi.Shared.Models.UserModels
 {
-    // {'username': username, 'email': email, 'pwd': pwd}
     public class UserDTO
     {
         [JsonPropertyName("id")] 

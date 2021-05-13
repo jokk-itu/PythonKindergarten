@@ -93,6 +93,19 @@
   .......................
   
   \item Describe the current state of your systems, for example using results of static analysis and quality assessment systems.
+
+        We use two different code analysis tools. 
+        They are both run in our CI pipeline. 
+        The first one is SonarCloud. The C\# Webassembly project and the API project are both analysed. 
+        The current state is that our test coverage is ~50\%. Which is below both the groups expection and Sonar clouds default expectation. 
+        Which is 90\% and 80\% respectively. 
+        Other than that a lot of informational messages are present. 
+        This is due to a static code analysis tool called Roslynator, which we wanted to analyze and refactor code smells. 
+        Then there are a few informational security messages, which have been looked through however they do not need to be acted on. 
+        There are also reports on "bad" exception handling, for example throwing general exception objects.
+        The second tool we use, is called CodeQL. It is used to assess the security of our project.
+        For example hard coded credentials or other vulnerable data, which must not be open to the public.
+        It has not found anything of concern, only false positives, in our testing suite.
   \item Finally, describe briefly, if the license that you have chosen for your project is actually compatible with the licenses of all your direct dependencies.
   
 \end{itemize}

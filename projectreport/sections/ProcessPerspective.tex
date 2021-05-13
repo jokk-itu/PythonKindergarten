@@ -50,7 +50,6 @@ Snapshots of our two dashboards are publicly available on the following links:
 Dotnet metrics: https://tinyurl.com/pythonkindergarten-dotnet
 \newline
 ASP.NET (api-specific) metrics: https://tinyurl.com/pythonkindergarten-aspnet
-\item Brief results of the security assessment.
 
 \subsection{What do you log in your systems and how do you aggregate logs?}
 In our system we are logging all the dependencies that we are using, a few of these are Docker, Grafana and SonarCloud. 
@@ -80,8 +79,7 @@ To mitigate this, we use a Digital Ocean Load Balancer. This acts as a gateway (
 \newline
 As an added bonus, the load balancer masks the ips of our servers from clients, making our system less prone to hackers.
 
-\newline
-Using these strategies we are able to scale far beyond our current setup, simply by joining more servers to our swarm and configuring these in the DO load balancer.\newline
+Using these strategies we are able to scale far beyond our current setup, simply by joining more servers to our swarm and configuring these in the DO load balancer.
 The only caveat is that our database is currently running on a single server, but could be migrated to a database cluster on Digital Ocean, AWS, Google Cloud or similar cloud providers.
 
 \subsection{From idea to production}

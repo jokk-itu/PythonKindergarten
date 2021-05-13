@@ -34,11 +34,11 @@ Our system consists of two docker nodes, a master and a worker, which are both c
 By configuring our Prometheus server as a datasource within Grafana, the stored time series data can be visualized in preconfigured dashboards. Our metrics are visualized in two separate dashboards, accessible through the Grafana web interface.
 
 \subsubsection{What are the monitored metrics (Change section title)}
-To expose metrics in our system we use a NuGet package called prometheus-net \cite{prometheusnet}.
+To expose metrics in our system we use a NuGet package called prometheus-net !!!!CITE prometheusnet!!!!.
 This package allows us to expose metrics on the /metrics endpoint, which can then be scraped and stored by Prometheus.
 \newline
 To extend the default metrics provided by prometheus-net, we use two additional packages: 
-prometheus-net.DotNetMetrics \cite{prometheusdotnetmetrics} and prometheus-net.AspNet \cite{prometheusaspnet}.
+prometheus-net.DotNetMetrics !!!!CITE prometheusdotnetmetrics!!!! and prometheus-net.AspNet !!!CITE prometheusaspnet!!!!.
 \newline
 The DotNetMetrics package provides us with general dotnet metrics, such as GC, byte allocation, lock contention and exceptions.
 \newline

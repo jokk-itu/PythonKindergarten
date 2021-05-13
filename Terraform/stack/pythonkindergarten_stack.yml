@@ -1,0 +1,15 @@
+version: '3.3'
+
+networks:
+  main:
+
+services:
+
+  minitwitimage:
+    image: victornor/pythonkindergartenimage
+    container_name: pythonkindergarten
+    networks:
+      - main
+    ports:
+        - '80:5000'
+        - '443:5001'

@@ -12,3 +12,5 @@ jobs:
       with:
         root_file: main.tex
         working_directory: ./projectreport
+    - name: Ls
+      run: ls

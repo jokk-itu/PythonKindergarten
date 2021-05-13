@@ -13,3 +13,4 @@ jobs:
       with:
         root_file: main.tex
         working_directory: ./projectreport
+        args: "-lualatex -file-line-error -interaction=nonstopmode"

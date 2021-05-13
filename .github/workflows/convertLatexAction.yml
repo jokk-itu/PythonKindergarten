@@ -13,4 +13,5 @@ jobs:
       with:
         root_file: main.tex
         working_directory: ./projectreport
-        args: "-f"
+        compiler: lualatex
+        args: -interaction=nonstopmode -shell-escape

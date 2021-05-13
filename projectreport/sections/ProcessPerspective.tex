@@ -9,19 +9,18 @@
   
   \newline
   \textbf{A complete description of stages and tools included in the CI/CD chains.(That is, including deployment and release of your systems.)}\newline
-  The tools we used for CI/CD chains were Travis and GitHub Actions. At first we used Travis.. 
-  Afterwards we migrated to GitHub Actions, since this is and tool to use directly from GitHub. 
-  Our stages include build, deploy and test. In our Deploy stage, we check with CodeQL, Sonnarscanner, DockerBuild, then deploying and releasing it all.\newline
+  The tools we used for CI/CD chains were Travis and GitHub Actions. We started working with Travis, which worked very well for us, unfortunately we experienced some problems with expenses in Travis. We decided to migrate to Github Actions, due to this.
+  We migrated to GitHub Actions, and this workes just as well as Travis for us. GitHub Actions is an easy tool to use directly from GitHub. 
+  Our stages include build, deploy and test. When we deploy we have the following stages, \textit{building and testing}, \textit{CodeQL} that autobuild attempts to build any compiled languages, \textit{Sonnarscanner} that runs project analysis, \textit{DockerBuild} which build the project, then \textit{deploying} and finally \textit{releasing} it all.\newline
 
   \newline
-  \textbf{Organization of your repositor(ies).(That is, either the structure of of mono-repository or organization of artifacts across repositories. --> In essence, it has to be be clear what is stored where and why.)} \newline
+  \textbf{Organization of your repositor(ies).(That is, either the structure of of mono-repository or organization of artifacts across repositories. In essence, it has to be be clear what is stored where and why.)} \newline
   For our project we have chosen to use the structure of mono-repository. The reason for choosing this structure, was that during this project, we were only building one system. Therefor we thought it would be best to keep everything in the same repository, that goes by the name PythonKindergarten. \newline
   
   \newline
   \textbf{What do you log in your systems and how do you aggregate logs?}  \newline
   In our system we are logging all the dependencies that we are using, a few of these are Docker, Grafana and SonarCloud. 
   We are also logging our simulation errors, and have divided them into errors regarding, follow, tweet, unfollow, connectionError, readTimeout and Register.
-
   To aggregate these logs, we are using ElasticSearch and Kibana. We use ElasticSearch to store our logs in dedicated log indexes, and Kibana is used as a visualization tool for these logs in ElasticSearch. This makes it easy to keep track of our system in and quickly discover if there is anything wrong. (See apendix __) \newline
 
   

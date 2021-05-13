@@ -1,115 +1,97 @@
 \section{Process' perspective}
 
-\textbf{Interactions as developers}\newline
+\subsection{Interactions as developers}
   %How do you interact as developers?
   Due to the current Covid situation, the team has been forced to meet and work online. The team typically meets on Discord in the DevOps
   exercise sessions, during the week, and in the weekends. Often, collaboration is done through Visual Studio Code's Live Share (which enables group/pair programming) or working through the tasks/exercises individually, helping each other along the way. 
   \newline
  
 %\newline
-\textbf{Team organization}\newline
-
+\subsection{Team organization}
   %How is the team organized?
   The team strives to work in an agile manner, proceeding forward step by step, and adjusting work flows to meet ongoing challenges. Mainly, the group will work together as one big group. 
   However, occasionally, the group splits into two to increase effectiveness, whereby each group focuses on a selected topic. Both groups will then reconvene to demonstrate their findings. Remaining work is distributed to the individual group members, assisting each other in the process.
 
+\subsection{A complete description of stages and tools included in the CI/CD chains}
+The tools we used for CI/CD chains were Travis and GitHub Actions. We started working with Travis, which worked very well for us, unfortunately we experienced some problems with expenses in Travis. We decided to migrate to Github Actions, due to this.
+We migrated to GitHub Actions, and this works just as well as Travis for us. GitHub Actions is an easy tool to use directly from GitHub. 
+Our stages include build, deploy and test. When we deploy we have the following stages, \textit{building and testing}, \textit{CodeQL} that autobuild attempts to build any compiled languages, \textit{Sonnarscanner} that runs project analysis, \textit{DockerBuild} which build the project, then \textit{deploying} and finally \textit{releasing} it all.\newline
+ 
+\subsection{Organization of our repository}
+For our project we have chosen to use the structure of mono-repository. The reason for choosing this structure, was that during this project, we were only building one system. Therefor we thought it would be best to keep everything in the same repository. This repository goes by the name PythonKindergarten. \newline
+
+\subsection{Applied branching strategy}
+For development purposes, the team uses Git for Distributed Version Control and have adopted a long-running branches approach to branching. In this context, there are two main branches, master and develop (i.e. we have called it 'development' branch) as well as many short-lived topic branches, which are used for implementing features. This approach to branching works well in a centralized workflow such as ours, where the project is collaborated on in a shared repository (i.e. Github).
+
+\subsection{Applied development process and tools supporting it}
+The Projects Board on Github were used to categorize open tasks and organize our development work. Specifically, the team would create an issue with a description added to the comments section along with attached labels, such as 'need to have', 'group discussion', etc. These same issues were then assigned to different group members and became the tasks that needed attention on the Projects Board.
   
-  \begin{itemize}
-  \item A complete description of stages and tools included in the CI/CD chains.(That is, including deployment and release of your systems.)
-  \item Organization of your repositor(ies).(That is, either the structure of of mono-repository or organization of artifacts across repositories. --> In essence, it has to be be clear what is stored where and why.) 
-  %Applied branching strategy.
-  \item For development purposes, the team uses Git for Distributed Version Control and have adopted a long-running branches approach to branching. In this context, there are two main branches, master and develop 
-  (i.e. we have called it 'development' branch) as well as many short-lived topic branches, which are used for implementing features. This approach to branching works well in a centralized workflow such as ours, where the project is collaborated on in a shared
-  repository (i.e. Github).
-  %Applied development process and tools supporting it (For example, how did you use issues, Kanban boards, etc. to organize open tasks)
-  \item The Projects Board on Github were used to categorize open tasks and organize our development work. Specifically, the team would create an issue with a description added to the comments section along
-  with attached labels, such as 'need to have', 'group discussion', etc. These same issues were then assigned to different group members and became the tasks that needed attention on the Projects Board.
-  
-  \item How do you monitor your systems and what precisely do you monitor?
+\subsection{System monitoring}
+\subsubsection{How are the system monitored (Change section title)}
+Monitoring of our system is done using Prometheus and Grafana, deployed using docker-compose. \newline
+Prometheus acts as a data collector, periodically scraping metrics from configured targets and storing the collected data in the built-in local time series database.\newline
+Our system consists of two docker nodes, a master and a worker, which are both configured as targets in our Prometheus deployment.\newline
+By configuring our Prometheus server as a datasource within Grafana, the stored time series data can be visualized in preconfigured dashboards. Our metrics are visualized in two separate dashboards, accessible through the Grafana web interface.
 
-  How is the team organized?\newline
-  
-  \newline
-  \textbf{A complete description of stages and tools included in the CI/CD chains.(That is, including deployment and release of your systems.)}\newline
-  The tools we used for CI/CD chains were Travis and GitHub Actions. We started working with Travis, which worked very well for us, unfortunately we experienced some problems with expenses in Travis. We decided to migrate to Github Actions, due to this.
-  We migrated to GitHub Actions, and this workes just as well as Travis for us. GitHub Actions is an easy tool to use directly from GitHub. 
-  Our stages include build, deploy and test. When we deploy we have the following stages, \textit{building and testing}, \textit{CodeQL} that autobuild attempts to build any compiled languages, \textit{Sonnarscanner} that runs project analysis, \textit{DockerBuild} which build the project, then \textit{deploying} and finally \textit{releasing} it all.\newline
+\subsubsection{What are the monitored metrics (Change section title)}
+To expose metrics in our system we use a NuGet package called prometheus-net \cite{prometheusnet}.
+This package allows us to expose metrics on the /metrics endpoint, which can then be scraped and stored by Prometheus.
+\newline
+To extend the default metrics provided by prometheus-net, we use two additional packages: 
+prometheus-net.DotNetMetrics \cite{prometheusdotnetmetrics} and prometheus-net.AspNet \cite{prometheusaspnet}.
+\newline
+The DotNetMetrics package provides us with general dotnet metrics, such as GC, byte allocation, lock contention and exceptions.
+\newline
+The AspNet package provides us with ASP.NET specific metrics, such as requests/sec, request duration and error rates.
+\newline
+\newline
+Snapshots of our two dashboards are publicly available on the following links:
+\newline
+Dotnet metrics: https://tinyurl.com/pythonkindergarten-dotnet
+\newline
+ASP.NET (api-specific) metrics: https://tinyurl.com/pythonkindergarten-aspnet
+\item Brief results of the security assessment.
 
-  \newline
-  \textbf{Organization of your repositor(ies).(That is, either the structure of of mono-repository or organization of artifacts across repositories. In essence, it has to be be clear what is stored where and why.)} \newline
-  For our project we have chosen to use the structure of mono-repository. The reason for choosing this structure, was that during this project, we were only building one system. Therefor we thought it would be best to keep everything in the same repository, that goes by the name PythonKindergarten. \newline
-  
-  \newline
-  \textbf{What do you log in your systems and how do you aggregate logs?}  \newline
-  In our system we are logging all the dependencies that we are using, a few of these are Docker, Grafana and SonarCloud. 
-  We are also logging our simulation errors, and have divided them into errors regarding, follow, tweet, unfollow, connectionError, readTimeout and Register.
-  To aggregate these logs, we are using ElasticSearch and Kibana. We use ElasticSearch to store our logs in dedicated log indexes, and Kibana is used as a visualization tool for these logs in ElasticSearch. This makes it easy to keep track of our system in and quickly discover if there is anything wrong. (See apendix __) \newline
+\subsection{What do you log in your systems and how do you aggregate logs?}
+In our system we are logging all the dependencies that we are using, a few of these are Docker, Grafana and SonarCloud. 
 
-  
-  \begin{itemize}
+We are also logging our simulation errors, and have divided them into errors regarding, follow, tweet, unfollow, connectionError, readTimeout and Register.
 
-  \item Applied branching strategy.
-  \item Applied development process and tools supporting it (For example, how did you use issues, Kanban boards, etc. to organize open tasks)
-  \subsection{System monitoring}
-  \subsubsection{How are the system monitored (Change section title)}
-  Monitoring of our system is done using Prometheus and Grafana, deployed using docker-compose. \newline
-  Prometheus acts as a data collector, periodically scraping metrics from configured targets and storing the collected data in the built-in local time series database.\newline
-  Our system consists of two docker nodes, a master and a worker, which are both configured as targets in our Prometheus deployment.\newline
-  By configuring our Prometheus server as a datasource within Grafana, the stored time series data can be visualized in Grafana dashboards. Our metrics are visualized in two separate dashboards, accessible through the Grafana web interface.
+To aggregate these logs, we are using ElasticSearch and Kibana. We use ElasticSearch to store our logs in dedicated log indexes, and Kibana is used as a visualization tool for these logs in ElasticSearch. This makes it easy to keep track of our system in and quickly discover if there is anything wrong. (See apendix __) \newline
 
-  \subsubsection{What are the monitored metrics (Change section title)}
-  To expose metrics in our system we use a NuGet package called prometheus-net (https://github.com/prometheus-net/prometheus-net).
-  This package allows us to expose metrics on the /metrics endpoint, which can then be scraped and stored by Prometheus.
-  \newline
-  To extend the default metrics provided by prometheus-net, we use two additional packages: 
-  prometheus-net.DotNetMetrics (https://github.com/djluck/prometheus-net.DotNetRuntime) and prometheus-net.AspNet (https://github.com/rocklan/prometheus-net.AspNet).
-  \newline
-  The DotNetMetrics package provides us with general dotnet metrics, such as GC, byte allocation, lock contention and exceptions.
-  \newline
-  The AspNet package provides us with ASP.NET specific metrics, such as requests/sec, request duration and error rates.
-  \newline
-  \newline
-  Snapshots of our two dashboards are publicly available on the following links:
-  \newline
-  Dotnet metrics: https://tinyurl.com/pythonkindergarten-dotnet
-  \newline
-  ASP.NET (api-specific) metrics: https://tinyurl.com/pythonkindergarten-aspnet
-  \item What do you log in your systems and how do you aggregate logs?
-  \item Brief results of the security assessment.
-  \subsection{System Scaling and load-balancing}
-  \subsubsection{Scaling}
-  We have applied both scaling (using docker swarm) and load-balancing (using Digital Ocean Load Balancer) in our system. 
-  Our Docker swarm consists of two servers, a master node and a dedicated worker node, each running multiple service replicas. 
-  These two server are internally load-balancing using the Docker mesh network and only one node has to be known, in order to communicate with the swarm.
+\subsection{Brief results of the security assessment}
+The identified sources are our web services, for logging, monitoring and our MiniTwit application.
+The servers we use to host are also listed, as well as Docker and Nginx.
+The threat sources are XCSS, our firewall (UFW), Docker ignoring UFW and a DDoS attack.
+The risk analysis consists of an exposed database connection string, which have been fixed, by storing the connection string as a Docker secret. Our private keys are stored locally on developer machines, but could by mistake be uploaded to GitHub and that would have a catastrophic impact. Because one would gain Admin rights to our servers.
+Dependency vulnerabilities are also possible, since we don't check versions of our dependencies. Where checking versions in eg. our pipeline, would make it easier to maintain dependencies.
+In regards to malicious users gaining access to user data. The impact would be minimized if we kept updates of our database. However we never got to do that.
 
-  \subsubsection{Load-Balancing}
-  There might be situations where every known swarm node is down, in which case the system as a whole might be unreachable, even though there might still be running nodes in the swarm.
-  \newline
-  To mitigate this, we use a Digital Ocean Load Balancer. This acts as a gateway (single entry-point) to our Docker swarm, balancing the load between each of our servers and executing health checks, which ensures that the client is always connected to a reachable swarm node.
-  \newline
-  As an added bonus, the load balancer masks the ips of our servers from clients, making our system less prone to hackers.
+\subsection{System Scaling and load-balancing}
+\subsubsection{Scaling}
+We have applied both scaling (using docker swarm) and load-balancing (using Digital Ocean's Load Balancer) in our system. 
+Our Docker swarm consists of two servers, a master node and a dedicated worker node, each running multiple service replicas. 
+These two server are internally load-balancing using the Docker mesh network and only one node has to be known, in order to communicate with the swarm.
 
-  \newline
-  \newline
-  \newline
-  Using these strategies we are able to scale far beyond our current setup, simply by joining more servers to our swarm and configuring these in the DO load balancer.\newline
-  The only caveat is that our database is currently running on a single server, but could be migrated to a database cluster on Digital Ocean, AWS, Google Cloud or similar cloud providers.
-  \item In essence it has to be clear how code or other artifacts come from idea into the running system and everything that happens on the way.
-        Ideas starts of as issues or ideas at group meetings.
-        Then a developer is assigned and checks out from the development branch,
-        and thus creates a topic branch for the feature.
-        When the feature is finished being implemented, 
-        two other developers are assigned to look through
-        the code and when approved, it is merged into development.
-        When other features, which form a bigger feature, are all finished and merged into development.
-        Then the development branch is merged into the master branch.
-        Our CI and CD pipelines are then run, and will fail 
-        If the project cannot build nor the test suite being run.
-        It the pipelines succeed, the code will be pulled from 
-        the main server in our docker swarm.
-        Then the main server, will notify its' worker servers,
-        to update their containers of the running application,
-        with the new docker image. The docker image is pulled from dockerhub.
-        
-  
-\end{itemize}
+\subsubsection{Load-Balancing}
+There might be situations where every known swarm node is down, in which case the system as a whole might be unreachable, even though there might still be running nodes in the swarm.
+\newline
+To mitigate this, we use a Digital Ocean Load Balancer. This acts as a gateway (single entry-point) to our Docker swarm, balancing the load between each of our servers and executing health checks, which ensures that the client is always connected to a reachable swarm node.
+\newline
+As an added bonus, the load balancer masks the ips of our servers from clients, making our system less prone to hackers.
+
+\newline
+Using these strategies we are able to scale far beyond our current setup, simply by joining more servers to our swarm and configuring these in the DO load balancer.\newline
+The only caveat is that our database is currently running on a single server, but could be migrated to a database cluster on Digital Ocean, AWS, Google Cloud or similar cloud providers.
+
+\subsection{From idea to production}
+
+Ideas starts of as issues or ideas at group meetings.
+Then a developer is assigned and checks out from the development branch,and thus creates a topic branch for the feature.
+When the feature is finished being implemented, two other developers are assigned to look through the code and when approved, it is merged into development.
+When other features, which form a bigger feature, are all finished and merged into development.
+Then the development branch is merged into the master branch.
+Our CI and CD pipelines are then run, and will fail 
+If the project cannot build nor the test suite being run.
+It the pipelines succeed, the code will be pulled from the main server in our docker swarm.
+Then the main server, will notify its' worker servers, to update their containers of the running application, with the new docker image. The docker image is pulled from dockerhub.

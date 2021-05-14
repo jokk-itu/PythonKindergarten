@@ -15,3 +15,5 @@ jobs:
         root_file: main.tex
         working_directory: ./projectreport
         args: "-lualatex -file-line-error -interaction=nonstopmode"
+        latexmk_use_lualatex: true
+        latexmk_shell_escape: true

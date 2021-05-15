@@ -33,7 +33,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        upload_url: https://github.com/jokk-itu/PythonKindergarten/releases/${{ steps.release.outputs.version }}
+        upload_url: https://github.com/jokk-itu/PythonKindergarten/releases/v${{ steps.release.outputs.version }}
         asset_path: ./projectreport/main.pdf
         asset_name: main.pdf
         asset_content_type: pdf

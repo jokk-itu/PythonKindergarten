@@ -19,6 +19,10 @@ jobs:
         args: "-lualatex -file-line-error -interaction=nonstopmode"
         latexmk_use_lualatex: true
         latexmk_shell_escape: true
+    - uses: papeloto/action-zip@v1
+      with:
+        files: ./projectreport
+        dest: report.zip
     - id: release
       uses: rymndhng/release-on-push-action@v0.18.0
       with:
@@ -29,6 +33,6 @@ jobs:
         echo "Got release version ${{ steps.release.outputs.version }}"
     - uses: AButler/upload-release-assets@v2.0
       with:
-        files: './projectreport/main.pdf'
+        files: './projectreport/main.pdf; report.zip'
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         release-tag: ${{ steps.release.outputs.tag_name }}

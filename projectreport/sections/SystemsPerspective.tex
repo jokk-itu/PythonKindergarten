@@ -3,25 +3,25 @@
   The developed MiniTwit system is complex and consists of many subsystems, each of which required a significant amount of decisions to construct.
   In this subsection we will describe the design of our system as a whole, including the rationale behind some of the decisions we have made during this project.
   \newline
-  For the sake of clarity, we will dissect our system into different layers: frontend, API and data persistence.
+  For the sake of clarity, we will dissect our system into three different layers: frontend, API and data persistence.
   \begin{enumerate}
     \item Frontend\newline
     The frontend of our system is what provides users access to our system through a web interface, which is developed using Blazor (wasm) and C\#, as well as html and css.
-    With blazor we are able to have our C\# code compiled to webassembly and executed natively in the client browser.
+    With blazor we are able to have our C\# code compiled to webassembly and executed with near-native performance within the client browser.
     The frontend communicates with our api using HTTP requests, containing json payloads of serialized or deserialized data.
-    .........................
+    
     \item API\newline
     The REST API is developed using ASP.NET and exposes endpoints for communicating with the MiniTwit service. 
     This includes execution of actions like following and unfollowing, as well as data fetching like feeds or user profiles.
     The API translates frontend HTTP calls into data manipulations using Entity Framework for ORM with a code-first approach.
     This allows us to focus on code first and automatically construct relational database schemas based on the relations between objects in our C\# code, managed by database migrations.
-    .........................
+    
     \item Data Persistence\newline
-    For data persistence we use use multiple difference database management systems. 
+    For data persistence we use multiple different database management systems. 
     MiniTwit data such as users, followers and messages are stored in a postgres relational database, which integrates well with Entity Framework.
     Logging data are stored in an ElasticSearch database configured with lifetime policies to keep the size under control.
     Lastly we use RabbitMQ for temporarily storing user private messages in message queues, interfaced by MQTT over WS, to allow direct communication from our blazor frontend.
-    ..................
+    
 
   \end{enumerate}
 
@@ -50,11 +50,9 @@
     The load balancer is hosted on Digital Ocean and allows us to balance incoming traffic on pythonkindergarten.tech between each of our docker swarm servers.
   \end{enumerate}
   \subsubsection{System Deployment}
-  Deploment of our system as a whole has been partially automated using 'Insert Technology', such that a simple shell script will deploy most of our system architecture.
+  Deployment of our system as a whole has been partially automated using 'Insert Technology', such that a simple shell script will deploy most of our system architecture.
   The only parts not included in this automated system deployment are: something, something, something and something, due to the high setup/configuration complexity.
 
-  All dependencies of your ITU-MiniTwit systems on all levels of abstraction and development stages. (That is, list and briefly describe all technologies and tools you applied and depend on.)
-  
   \subsection{Subsystem interactions}
   There are many important subsystems (described in previous sections), collectively making the system work as a whole.
   In this section we will illustrate the most important interactions between these services, as seen in the diagram below.\newline

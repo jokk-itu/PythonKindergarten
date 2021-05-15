@@ -8,13 +8,16 @@
     \item Frontend\newline
     The frontend of our system is what provides users access to our system through a web interface, which is developed using Blazor (wasm) and C\#, as well as html and css.
     With blazor we are able to have our C\# code compiled to webassembly and executed with near-native performance within the client browser.
-    The frontend communicates with our api using HTTP requests, containing json payloads of serialized or deserialized data.
+    The frontend communicates with our API using HTTP requests, containing json payloads of serialized or deserialized data.
+    Apart from communicating with the REST API, the frontend also communicates directly with the RabbitMQ broker to send and receive private messages.
+    This communication takes place over WSS using the MQTT protocol. MQTT communication is then bound to a message queue on the broker.
     
     \item API\newline
     The REST API is developed using ASP.NET and exposes endpoints for communicating with the MiniTwit service. 
     This includes execution of actions like following and unfollowing, as well as data fetching like feeds or user profiles.
     The API translates frontend HTTP calls into data manipulations using Entity Framework for ORM with a code-first approach.
     This allows us to focus on code first and automatically construct relational database schemas based on the relations between objects in our C\# code, managed by database migrations.
+    Various metrics are also exposes on the API, allowing us to monitor the system externally.
     
     \item Data Persistence\newline
     For data persistence we use multiple different database management systems. 
@@ -83,7 +86,7 @@ Below is a list of all the \textbf{dependencies} of the Pythonkindergarten MiniT
 
 
 
-\subsection{Describe the current state of your systems, for example using results of static analysis and quality assessment systems}
+\subsection{The current state of your system}
 We use two different code analysis tools. 
 They are both run in our CI pipeline. 
 The first one is SonarCloud. The C\# Webassembly project and the API project are both analysed. 

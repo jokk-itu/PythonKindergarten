@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.5.3)  15 MAY 2021 02:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.5.3)  15 MAY 2021 14:53
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/home/nor/PythonKindergarten/projectreport/main.tex
-(/home/nor/PythonKindergarten/projectreport/main.tex
+**/home/nor/School/PythonKindergarten/projectreport/main.tex
+(/home/nor/School/PythonKindergarten/projectreport/main.tex
 LaTeX2e <2020-02-02> patch level 2
 L3 programming layer <2020-02-14> (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
@@ -91,7 +91,7 @@ Package geometry Warning: Over-specification in `v'-direction.
 File: l3backend-pdfmode.def 2020-02-03 L3 backend support: PDF mode
 \l__kernel_color_stack_int=\count178
 \l__pdf_internal_box=\box45
-) (/home/nor/PythonKindergarten/projectreport/main.aux)
+) (/home/nor/School/PythonKindergarten/projectreport/main.aux)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 27.
@@ -169,127 +169,96 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 29.
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-No file main.toc.
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (/home/nor/School/PythonKindergarten/projectreport/main.toc
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 3.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 3.
+)
 \tf@toc=\write3
 \openout3 = `main.toc'.
 
-[2] (/home/nor/PythonKindergarten/projectreport/sections/introduction.tex) [3] (/home/nor/PythonKindergarten/projectreport/sections/LessonsLearnedPerspective.tex
-<images/downperiodes.png, id=16, 371.88937pt x 261.22594pt>
+ [2] (/home/nor/School/PythonKindergarten/projectreport/sections/introduction.tex)
+Overfull \hbox (22.9874pt too wide) in paragraph at lines 7--38
+[]\OT1/cmr/m/n/10 Thereafter, var-i-ous De-vOps tools, such as vir-tu-al-iza-tion, au-to-mated de-ploy-ment, log-ging/monitoring,
+ []
+
+[3] (/home/nor/School/PythonKindergarten/projectreport/sections/LessonsLearnedPerspective.tex
+<images/downperiodes.png, id=17, 371.88937pt x 261.22594pt>
 File: images/downperiodes.png Graphic file (type png)
 <use images/downperiodes.png>
-Package pdftex.def Info: images/downperiodes.png  used on input line 14.
+Package pdftex.def Info: images/downperiodes.png  used on input line 25.
 (pdftex.def)             Requested size: 260.32079pt x 182.85689pt.
-) [4 </home/nor/PythonKindergarten/projectreport/images/downperiodes.png>] [5] (/home/nor/PythonKindergarten/projectreport/sections/ProcessPerspective.tex
-Underfull \hbox (badness 10000) in paragraph at lines 5--8
+) [4 </home/nor/School/PythonKindergarten/projectreport/images/downperiodes.png>] [5] (/home/nor/School/PythonKindergarten/projectreport/sections/ProcessPerspective.tex
+Underfull \hbox (badness 10000) in paragraph at lines 5--10
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 16--19
+Underfull \hbox (badness 10000) in paragraph at lines 20--30
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 21--22
+Underfull \hbox (badness 10000) in paragraph at lines 33--34
 
  []
 
 [6]
-Overfull \hbox (10.30539pt too wide) in paragraph at lines 37--53
-\OT1/cmr/m/n/10 To ex-pose met-rics in our sys-tem we use a NuGet pack-age called prometheus-net CITE prometheusnet!.
+Overfull \hbox (25.30539pt too wide) in paragraph at lines 55--71
+[]\OT1/cmr/m/n/10 To ex-pose met-rics in our sys-tem we use a NuGet pack-age called prometheus-net CITE prometheusnet!.
  []
 
 
-Overfull \hbox (18.8205pt too wide) in paragraph at lines 37--53
+Overfull \hbox (18.8205pt too wide) in paragraph at lines 55--71
 \OT1/cmr/m/n/10 To ex-tend the de-fault met-rics pro-vided by prometheus-net, we use two ad-di-tional pack-ages: prometheus-
  []
 
 
-Overfull \hbox (49.05916pt too wide) in paragraph at lines 37--53
+Overfull \hbox (49.05916pt too wide) in paragraph at lines 55--71
 \OT1/cmr/m/n/10 net.DotNetMetrics !!!!CITE prometheus-dot-net-met-rics!!!! and prometheus-net.AspNet !!!CITE prometheusasp-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 37--53
+Underfull \hbox (badness 10000) in paragraph at lines 55--71
 
  []
 
-/home/nor/PythonKindergarten/projectreport/sections/ProcessPerspective.tex:59: Missing $ inserted.
-<inserted text> 
-                $
-l.59 ...if there is anything wrong. (See apendix _
-                                                  _) \newline
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
 
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 59.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 59.
-/home/nor/PythonKindergarten/projectreport/sections/ProcessPerspective.tex:59: Missing { inserted.
-<to be read again> 
-                   _
-l.59 ...f there is anything wrong. (See apendix __
-                                                  ) \newline
-A left brace was mandatory here, so I've put one in.
-You might want to delete and/or insert some corrections
-so that I will find a matching right brace soon.
-(If you're confused by all this, try typing `I}' now.)
+Underfull \hbox (badness 10000) in paragraph at lines 73--76
 
-/home/nor/PythonKindergarten/projectreport/sections/ProcessPerspective.tex:60: Missing $ inserted.
-<inserted text> 
-                $
-l.60 
-     
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
+ []
 
-/home/nor/PythonKindergarten/projectreport/sections/ProcessPerspective.tex:60: Missing } inserted.
-<inserted text> 
-                }
-l.60 
-     
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-[7]) [8] (/home/nor/PythonKindergarten/projectreport/sections/SystemsPerspective.tex
-Overfull \hbox (36.28372pt too wide) in paragraph at lines 29--33
+[7]) [8] (/home/nor/School/PythonKindergarten/projectreport/sections/SystemsPerspective.tex
+Overfull \hbox (36.28372pt too wide) in paragraph at lines 32--36
 \OT1/cmr/m/n/10 proxy for rout-ing of sub-do-main ac-cess, e.g. mas-ter.pythonkindergarten.tech, slave.pythonkindergarten.tech,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 29--33
+Underfull \hbox (badness 10000) in paragraph at lines 32--36
 
  []
 
 [9]
-<images/InteractionDiagram.png, id=41, 406.51875pt x 397.485pt>
+<images/InteractionDiagram.png, id=40, 406.51875pt x 397.485pt>
 File: images/InteractionDiagram.png Graphic file (type png)
 <use images/InteractionDiagram.png>
-Package pdftex.def Info: images/InteractionDiagram.png  used on input line 61.
+Package pdftex.def Info: images/InteractionDiagram.png  used on input line 62.
 (pdftex.def)             Requested size: 406.51775pt x 397.48402pt.
- [10 </home/nor/PythonKindergarten/projectreport/images/InteractionDiagram.png>]) [11] (/home/nor/PythonKindergarten/projectreport/sections/Refrences.tex) [12] (/home/nor/PythonKindergarten/projectreport/main.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
+ [10 </home/nor/School/PythonKindergarten/projectreport/images/InteractionDiagram.png>]) [11] (/home/nor/School/PythonKindergarten/projectreport/sections/Refrences.tex) [12] (/home/nor/School/PythonKindergarten/projectreport/main.aux) ) 
 Here is how much of TeX's memory you used:
- 1923 strings out of 483183
- 28965 string characters out of 5966293
- 266739 words of memory out of 5000000
+ 1925 strings out of 483183
+ 29221 string characters out of 5966293
+ 267751 words of memory out of 5000000
  16927 multiletter control sequences out of 15000+600000
  537274 words of font info for 40 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 30i,10n,45p,1139b,311s stack positions out of 5000i,500n,10000p,200000b,80000s
- </home/nor/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on /home/nor/PythonKindergarten/projectreport/main.pdf (12 pages, 217802 bytes).
+ 30i,10n,45p,714b,312s stack positions out of 5000i,500n,10000p,200000b,80000s
+ </home/nor/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on /home/nor/School/PythonKindergarten/projectreport/main.pdf (12 pages, 212646 bytes).
 PDF statistics:
- 80 PDF objects out of 1000 (max. 8388607)
- 54 compressed objects within 1 object stream
+ 76 PDF objects out of 1000 (max. 8388607)
+ 51 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

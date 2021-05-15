@@ -1,59 +1,57 @@
 \section{System's Perspective}
   \subsection{System Design}
   The developed MiniTwit system is complex and consists of many subsystems, each of which required a significant amount of decisions to construct.
-  In this subsection we will describe the design of our system as a whole, including the rationale behind some of the decisions we have made during this project.
+  In this subsection, we will describe the design of our system as a whole, including the rationale behind some of the decisions we have made during this project.
   \newline
   For the sake of clarity, we will dissect our system into three different layers: frontend, API and data persistence.
   \begin{enumerate}
-    \item Frontend\newline
+    \item \textbf{Frontend}\newline
     The frontend of our system is what provides users access to our system through a web interface, which is developed using Blazor (wasm) and C\#, as well as html and css.
-    With blazor we are able to have our C\# code compiled to webassembly and executed with near-native performance within the client browser.
+    With blazor we were able to have our C\# code compiled to webassembly and executed with near-native performance within the client browser.
     The frontend communicates with our API using HTTP requests, containing json payloads of serialized or deserialized data.
-    Apart from communicating with the REST API, the frontend also communicates directly with the RabbitMQ broker to send and receive private messages.
-    This communication takes place over WSS using the MQTT protocol. MQTT communication is then bound to a message queue on the broker.
+    Apart from communicating with the REST API, the frontend also communicated directly with the RabbitMQ broker to send and receive private messages.
+    This communication took place over WSS using the MQTT protocol. MQTT communication was then bound to a message queue on the broker.
     
-    \item API\newline
-    The REST API is developed using ASP.NET and exposes endpoints for communicating with the MiniTwit service. 
+    \item \textbf{API}\newline
+    The REST API was developed using ASP.NET and exposes endpoints for communicating with the MiniTwit service. 
     This includes execution of actions like following and unfollowing, as well as data fetching like feeds or user profiles.
     The API translates frontend HTTP calls into data manipulations using Entity Framework for ORM with a code-first approach.
-    This allows us to focus on code first and automatically construct relational database schemas based on the relations between objects in our C\# code, managed by database migrations.
-    Various metrics are also exposes on the API, allowing us to monitor the system externally.
+    This allowed us to focus on code first and automatically construct relational database schemas based on the relations between objects in our C\# code, managed by database migrations.
+    Various metrics were also exposed on the API, allowing us to monitor the system externally.
     
-    \item Data Persistence\newline
-    For data persistence we use multiple different database management systems. 
-    MiniTwit data such as users, followers and messages are stored in a postgres relational database, which integrates well with Entity Framework.
+    \item \textbf{Data Persistence}\newline
+    For data persistence we used multiple different database management systems. 
+    MiniTwit data such as users, followers and messages were stored in a Postgres relational database, which integrates well with Entity Framework.
     Logging data are stored in an ElasticSearch database configured with lifetime policies to keep the size under control.
-    Lastly we use RabbitMQ for temporarily storing user private messages in message queues, interfaced by MQTT over WS, to allow direct communication from our blazor frontend.
-    
-
+    Lastly we used RabbitMQ for temporarily storing user private messages in message queues, interfaced by MQTT over WS, to allow direct communication from our blazor frontend.
   \end{enumerate}
 
   \subsection{System Architecture}
-  Our system as a whole consists of 3 servers and a load balancer, all of which are hosted on digital ocean.
+  Our system as a whole consisted of 3 servers and a load balancer, all of which were hosted on DigitalOcean.
   Each server is running an NGINX server, which has been configured to serve as a reverse proxy for routing of subdomain access, e.g. master.pythonkindergarten.tech, slave.pythonkindergarten.tech, monitor.pythonkindergarten.tech etc.
   \newline
   Below is an overview of the 3 servers, as well as their function and purpose within our system.\newline
   
   \begin{enumerate}
-    \item Master Server\newline
-    The Master server is the master node in our Docker swarm and is responsible for maintaining cluster state, as well as managing service updates within the swarm.
-    This server also hosts our Prometheus and Grafana containers, which were described in the monitoring section.
-    \item Worker Server\newline
-    The Worker server simply contributes to the pooled resources within our swarm. 
-    It is a Docker swarm worker node, which runs multiple replicas of our service, hosting both API and frontend.
+    \item \textbf{Master Server}\newline
+    The Master server was the master node in our Docker swarm and was responsible for maintaining cluster state, as well as managing service updates within the swarm.
+    This server also hosted our Prometheus and Grafana containers, which were described in the monitoring section.
+    \item \textbf{Worker Server}\newline
+    The Worker server simply contributed to the pooled resources within our swarm. 
+    It is a Docker swarm worker node, which ran multiple replicas of our service, hosting both API and frontend.
 
-    \item Database Server\newline
-    The Database server has multiple purposes, all of which relates to data persistence.
-    This server hosts our Postgres database, which is our primary means of persistence within the system. 
+    \item \textbf{Database Server}\newline
+    The Database server had multiple purposes, all of which related to data persistence.
+    This server hosted our Postgres database, which was our primary means of persistence within the system. 
     \newline
-    It also hosts our logging system, which consists of an ElasticSearch database (for log persistence), as well as Kibana for visualization of the collected logs.
+    It also hosted our logging system, which consisted of an ElasticSearch database (for log persistence), as well as Kibana for visualization of the collected logs.
     \newline
-    Lastly, it hosts our RabbitMQ broker.
-    \item Load Balancer\newline
-    The load balancer is hosted on Digital Ocean and allows us to balance incoming traffic on pythonkindergarten.tech between each of our docker swarm servers.
+    Lastly, it hosted our RabbitMQ broker.
+    \item \textbf{Load Balancer}\newline
+    The load balancer was hosted on Digital Ocean and allowed us to balance incoming traffic on pythonkindergarten.tech between each of our docker swarm servers.
   \end{enumerate}
   \subsubsection{System Deployment}
-  Deployment of our system as a whole has been partially automated using 'Insert Technology', such that a simple shell script will deploy most of our system architecture.
+  Deployment of our system as a whole was partially automated using 'Insert Technology', such that a simple shell script will deploy most of our system architecture.
   The only parts not included in this automated system deployment are: something, something, something and something, due to the high setup/configuration complexity.
 
   \subsection{Subsystem interactions}
@@ -84,16 +82,21 @@ Below is a list of all the \textbf{dependencies} of the Pythonkindergarten MiniT
 \end{itemize}
 
 
-
-
 \subsection{The current state of your system}
-We use two different code analysis tools. 
-They are both run in our CI pipeline. 
+We used two different code analysis tools, which are both run in our CI pipeline. 
 The first one is SonarCloud. The C\# Webassembly project and the API project are both analysed. 
-The current state is that our test coverage is ~50\%. Which is below both the groups expection and Sonar clouds default expectation. 
-Which is 90\% and 80\% respectively. 
+The current state is that our test coverage is ~50\%, which is below both the group's expection and SonarCloud's default expectation of 90\% and 80\%, respectively. 
 Other than that a lot of informational messages are present. 
 
-This is due to a static code analysis tool called Roslynator, which we wanted to analyze and refactor code smells.Then there are a few informational security messages, which have been looked through however they do not need to be acted on. There are also reports on "bad" exception handling, for example throwing general exception objects.The second tool we use, is called CodeQL. It is used to assess the security of our project. For example hard coded credentials or other vulnerable data, which must not be open to the public. It has not found anything of concern, only false positives, in our testing suite.
+!!Add link to SonarCloud/CodeQl
+
+This is due to a static code analysis tool called SonarCloud, which we wanted to use to analyze and refactor code smells.
+It was also used to generate informational security messages, which have been looked through. Fortunately, they did not need to be acted on. 
+There were also reports on "bad" exception handling, for example throwing general exception objects. 
+If we had further time, we could have acted upon those, or even better had a tool in our pipeline that resolved these automatically.
+
+The second tool we use, is called CodeQL. 
+It is used to assess the security of our project. For example hard coded credentials or other vulnerable data, which must not be open to the public. 
+It has not found anything of concern, only false positives, in our testing suite.
 
 \subsection{Finally, describe briefly, if the license that you have chosen for your project is actually compatible with the licenses of all your direct dependencies.}

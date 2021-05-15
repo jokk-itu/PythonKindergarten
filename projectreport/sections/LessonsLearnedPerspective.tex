@@ -9,11 +9,7 @@ To challenge us as a DevOps team, we decided to also evolve the old software fur
 
 Regarding maintenance and operation, one of the largest issues was that we often had some periods with long downtime. For the sake of simplicity, we have narrowed it down to four different major down periods in this report. These are marked with blue (from now on referred to as first), dark blue (from now on referred to as second), yellow (from now on referred to as third), and green (from now on referred to as the last) in figure 1. 
 
-\begin{figure}[h!]
-    \centering
-    \includegraphics[scale=0.7]{images/downperiodes.png}
-    \caption{The graph showing "latest", an integer which is updated for each completed job sent from the simulator }
-\end{figure}
+
  
 All these different down periods had different solutions, and we have decided to discuss the two down periods we learned the most from, the first down period and the second one. The first down period was due to a crash with our database software (PostgreSQL), and in the second down period, it was due to a crash simulator-side. Although logging helped us out in the last down period, we realized too late that the system was down, resulting in a longer down period. The major lesson learned from the two down periods was that we should have implemented some sort of alerting that would sent to all the team members in case of a failure. This was something we started to implement in Kibana, however, due to lack of time in the end of the simulation, we did not have time to implement it.
 

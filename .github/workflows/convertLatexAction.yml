@@ -25,5 +25,6 @@ jobs:
         files: main.pdf
         prerelease: true
         name: "Report-release"
+        tag_name: "report"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

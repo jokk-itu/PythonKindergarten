@@ -26,7 +26,10 @@ jobs:
         ls
     - name: Get current date
       id: date
-      run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+      run: | 
+        echo "::set-output name=date::$(date +'%Y%m%d')"
+    - name: Write current date
+      run: echo ${{ steps.date.outputs.date }}
     - name: Release
       uses: softprops/action-gh-release@v1
       with:

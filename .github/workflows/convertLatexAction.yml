@@ -24,12 +24,15 @@ jobs:
         ls
         cd projectreport
         ls
+    - name: Get current date
+      id: date
+      run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
     - name: Release
       uses: softprops/action-gh-release@v1
       with:
         files: ./projectreport/main.pdf
         prerelease: true
         name: "Report-release"
-        tag_name: "report"
+        tag_name: "report ${{ steps.date.outputs.date }}"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

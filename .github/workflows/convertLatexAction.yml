@@ -30,12 +30,11 @@ jobs:
         echo "::set-output name=date::$(date +'%Y%m%d')"
     - name: Write current date
       run: echo ${{ steps.date.outputs.date }}
-    - name: Release
-      uses: softprops/action-gh-release@v1
+    - uses: rymndhng/release-on-push-action@v0.18.0
       with:
+        bump_version_scheme: minor
+    - name: Update release
+      uses: johnwbyrd/update-release@v1
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
         files: ./projectreport/main.pdf
-        prerelease: true
-        name: "Report-release"
-        tag_name: "report ${{ steps.date.outputs.date }}"
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

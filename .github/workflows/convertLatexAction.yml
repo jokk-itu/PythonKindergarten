@@ -19,6 +19,8 @@ jobs:
         args: "-lualatex -file-line-error -interaction=nonstopmode"
         latexmk_use_lualatex: true
         latexmk_shell_escape: true
+    - name: Ls
+      run: ls
     - name: Release
       uses: softprops/action-gh-release@v1
       with:

@@ -22,6 +22,12 @@ We started working with Travis, which worked very well for us.
 Regretably, we experienced some problems with expenses in Travis.
 We therefore decided to migrate to GitHub Action which has proven to be just as easy a tool to use as Travis.
 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.7]{images/CIpipelinediagram.png}
+    \caption{An illustration providing an overview of the different steps in our main CI pipeline, used on the masterbranch. }
+\end{figure}
+
 Since we are using GitHub anyway to store our repository, GitHub Actions is a good choice since it is easy to 
 integrate, easy to duplicate workflow, and has a better ecosystem of actions in Github Marketplace, as well as a centralised app/action store. 
 It also provides an accessible way of observing the status of the pipelines, since it is all on GitHub, whereas we had to go to another webpage for Travis.  

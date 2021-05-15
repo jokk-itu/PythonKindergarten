@@ -6,6 +6,8 @@ on: workflow_dispatch
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
     - name: Set up Git repository
       uses: actions/checkout@v2
@@ -17,3 +19,11 @@ jobs:
         args: "-lualatex -file-line-error -interaction=nonstopmode"
         latexmk_use_lualatex: true
         latexmk_shell_escape: true
+    - name: Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: main.pdf
+        prerelease: true
+        name: "Report-release"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

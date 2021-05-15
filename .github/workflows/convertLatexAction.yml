@@ -31,9 +31,13 @@ jobs:
       run: |
         echo "Got tag name ${{ steps.release.outputs.tag_name }}"
         echo "Got release version ${{ steps.release.outputs.version }}"
+    - name: Rename report
+      run: |
+        cd projectreport
+        mv main.pdf report.pdf
     - uses: AButler/upload-release-assets@v2.0
       with:
-        files: './projectreport/main.pdf'
+        files: './projectreport/report.pdf'
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         release-tag: ${{ steps.release.outputs.tag_name }}
     - uses: AButler/upload-release-assets@v2.0

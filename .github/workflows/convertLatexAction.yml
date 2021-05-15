@@ -19,22 +19,11 @@ jobs:
         args: "-lualatex -file-line-error -interaction=nonstopmode"
         latexmk_use_lualatex: true
         latexmk_shell_escape: true
-    - name: Ls
-      run: | 
-        ls
-        cd projectreport
-        ls
-    - name: Get current date
-      id: date
-      run: | 
-        echo "::set-output name=date::$(date +'%Y%m%d')"
-    - name: Write current date
-      run: echo ${{ steps.date.outputs.date }}
     - uses: rymndhng/release-on-push-action@v0.18.0
       with:
         bump_version_scheme: minor
-    - name: Update release
-      uses: johnwbyrd/update-release@v1
+    - uses: AButler/upload-release-assets@v2.0
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        files: ./projectreport/main.pdf
+        files: './projectreport/main.pdf'
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        release-tag: ${{ steps.release.outputs.tag_name }}

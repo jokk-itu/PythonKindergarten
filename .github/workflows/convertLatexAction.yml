@@ -27,13 +27,8 @@ jobs:
       run: |
         echo "Got tag name ${{ steps.release.outputs.tag_name }}"
         echo "Got release version ${{ steps.release.outputs.version }}"
-    - name: Upload Release Asset
-      id: upload-release-asset 
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - uses: AButler/upload-release-assets@v2.0
       with:
-        upload_url: https://github.com/jokk-itu/PythonKindergarten/releases/v${{ steps.release.outputs.version }}
-        asset_path: ./projectreport/main.pdf
-        asset_name: main.pdf
-        asset_content_type: pdf
+        files: './projectreport/main.pdf'
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        release-tag: v${{ steps.release.outputs.tag_name }}

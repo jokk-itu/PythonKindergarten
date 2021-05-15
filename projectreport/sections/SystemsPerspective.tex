@@ -10,7 +10,7 @@
     With blazor we were able to have our C\# code compiled to webassembly and executed with near-native performance within the client browser.
     The frontend communicates with our API using HTTP requests, containing json payloads of serialized or deserialized data.
     Apart from communicating with the REST API, the frontend also communicated directly with the RabbitMQ broker to send and receive private messages.
-    This communication took place over WSS using the MQTT protocol. MQTT communication was then bound to a message queue on the broker.
+    This communication took place over WSS using the MQTT protocol. MQTT communication was then bound to a message queue on the broker. 
     
     \item \textbf{API}\newline
     The REST API was developed using ASP.NET and exposes endpoints for communicating with the MiniTwit service. 
@@ -57,7 +57,13 @@
   \subsection{Subsystem interactions}
   There are many important subsystems (described in previous sections), collectively making the system work as a whole.
   In this section we will illustrate the most important interactions between these services, as seen in the diagram below.\newline
-  \includegraphics{images/InteractionDiagram.png}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.7]{images/InteractionDiagram.png}
+    \caption{ TODO: ADD CAPTION TO THIS IMAGE}
+\end{figure}  
+
 \subsection{Dependencies}
 Below is a list of all the \textbf{dependencies} of the Pythonkindergarten MiniTwit project, classified by description:
 \begin{itemize}

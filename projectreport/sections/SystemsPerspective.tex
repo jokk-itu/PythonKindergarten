@@ -10,14 +10,12 @@
     With blazor we are able to have our C\# code compiled to webassembly and executed natively in the client browser.
     The frontend communicates with our api using HTTP requests, containing json payloads of serialized or deserialized data.
     .........................
-
     \item API\newline
     The REST API is developed using ASP.NET and exposes endpoints for communicating with the MiniTwit service. 
     This includes execution of actions like following and unfollowing, as well as data fetching like feeds or user profiles.
     The API translates frontend HTTP calls into data manipulations using Entity Framework for ORM with a code-first approach.
     This allows us to focus on code first and automatically construct relational database schemas based on the relations between objects in our C\# code, managed by database migrations.
     .........................
-
     \item Data Persistence\newline
     For data persistence we use use multiple difference database management systems. 
     MiniTwit data such as users, followers and messages are stored in a postgres relational database, which integrates well with Entity Framework.
@@ -71,7 +69,7 @@ Below is a list of all the \textbf{dependencies} of the Pythonkindergarten MiniT
     \item \textbf{Testing:} Xunit
     \item \textbf{Repository and Distributed Version Control:} Github, Git
     \item \textbf{Domain names and Domain service:} Pythonkindergarten.tech, .Tech Domains
-    \item \textbf{DataTransferring over HTTP} JSON, System.Text.Json
+    \item \textbf{DataTransferring over HTTP:} JSON, System.Text.Json
     \item \textbf{Containerization:} Docker, Docker-Compose, DockerHub
     \item \textbf{Pipelines (CI/CD):} Github Actions (N.B. was initially Travis until migration to Github Actions)
     \item \textbf{Deployment Provider:} DigitalOcean
@@ -81,6 +79,7 @@ Below is a list of all the \textbf{dependencies} of the Pythonkindergarten MiniT
     \item \textbf{Logging:} Elasticsearch, Serilog, Kibana
     \item \textbf{Static Codecheck Tools:} SonarScanner, SonarCloud, CodeQL
     \item \textbf{Messaging:} RabbitMQ
+    \item \textbf{Infrastructure:} Terraform
 \end{itemize}
 
 

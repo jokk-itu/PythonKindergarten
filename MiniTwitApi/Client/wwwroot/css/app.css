@@ -240,8 +240,7 @@ h3{
  }
  
  /* Chat area */
- .chatInfo{
-    border: 2px red solid;
+ .chatInfo {
     margin-top: -30px;
     background-color: #7693B9;
     border: 2px solid #7693B9;

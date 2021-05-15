@@ -27,7 +27,7 @@ jobs:
     - name: Release
       uses: softprops/action-gh-release@v1
       with:
-        files: main.pdf
+        files: ./projectreport/main.pdf
         prerelease: true
         name: "Report-release"
         tag_name: "report"

@@ -78,7 +78,7 @@ There might be situations where every known swarm node is down, in which case th
 To mitigate this, we use a Digital Ocean Load Balancer. This acts as a gateway (single entry-point) to our Docker swarm, balancing the load between each of our servers and executing health checks, which ensures that the client is always connected to a reachable swarm node.
 \newline
 We later learned, that we could have gained the same availability benefits, by using heartbeat to coordinate routing of a shared floating ip.
-This way we could ensure, that a shared floating ip would always point to an available node in our swarm, while leaving load balancing task to the Docker routing mesh, reducing costs and avoiding redundancy.
+This way we could ensure, that a shared floating ip would always point to an available node in our swarm, while leaving load balancing to the Docker routing mesh, reducing costs and avoiding redundancy.
 \newline
 As an added bonus, the load balancer masks the ips of our servers from clients, making our system less prone to hackers.
 

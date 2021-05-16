@@ -1,0 +1,53 @@
+version: '3.3'
+
+networks:
+  main:
+
+services:
+
+  visualizer:
+    image: dockersamples/visualizer:stable
+    ports:
+      - "8888:8080"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+
+  loadbalancer:
+    image: nginx
+    ports:
+      - '80:80'
+    volumes:
+      - /loadbalancer:/etc/nginx/conf.d
+    deploy:
+      replicas: 2
+
+  minitwitimage:
+    image: victornor/pythonkindergartenimage
+    container_name: pythonkindergarten
+    networks:
+      - main
+    ports:
+        - '80:5000'
+        - '443:5001'
+    deploy:
+      replicas: 10    
+    	
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+    networks:
+      - main
+
+  grafana:
+    image: grafana/grafana:4.5.2
+    ports:
+      - "3000:3000"  
+    networks:
+      - main  	

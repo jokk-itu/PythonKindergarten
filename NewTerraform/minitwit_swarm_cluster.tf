@@ -1,3 +1,4 @@
+
 #  _                _
 # | | ___  __ _  __| | ___ _ __
 # | |/ _ \/ _` |/ _` |/ _ \ '__|
@@ -5,13 +6,13 @@
 # |_|\___|\__,_|\__,_|\___|_|
 
 # create cloud vm
-resource "digitalocean_droplet" "pythonkindergarten-swarm-leader" {
+resource "digitalocean_droplet" "minitwit-swarm-leader" {
   image = "docker-18-04"
-  name = "pythonkindergarten-swarm-leader"
+  name = "minitwit-swarm-leader"
   region = var.region
   size = "s-1vcpu-1gb"
   # add public ssh key so we can access the machine
-  ssh_keys = [digitalocean_ssh_key.pythonkindergarten.fingerprint]
+  ssh_keys = [digitalocean_ssh_key.minitwit.fingerprint]
 
   # specify a ssh connection
   connection {
@@ -62,19 +63,19 @@ resource "digitalocean_droplet" "pythonkindergarten-swarm-leader" {
 #                              |___/
 
 # create cloud vm
-resource "digitalocean_droplet" "pythonkindergarten-swarm-manager" {
+resource "digitalocean_droplet" "minitwit-swarm-manager" {
   # create managers after the leader
-  depends_on = [digitalocean_droplet.pythonkindergarten-swarm-leader]
+  depends_on = [digitalocean_droplet.minitwit-swarm-leader]
 
   # number of vms to create
   count = 2
 
   image = "docker-18-04"
-  name = "pythonkindergarten-swarm-manager-${count.index}"
+  name = "minitwit-swarm-manager-${count.index}"
   region = var.region
   size = "s-1vcpu-1gb"
   # add public ssh key so we can access the machine
-  ssh_keys = [digitalocean_ssh_key.pythonkindergarten.fingerprint]
+  ssh_keys = [digitalocean_ssh_key.minitwit.fingerprint]
 
   # specify a ssh connection
   connection {
@@ -102,7 +103,7 @@ resource "digitalocean_droplet" "pythonkindergarten-swarm-manager" {
       "ufw allow 8888",
 
       # join swarm cluster as managers
-      "docker swarm join --token $(cat manager_token) ${digitalocean_droplet.pythonkindergarten-swarm-leader.ipv4_address}"
+      "docker swarm join --token $(cat manager_token) ${digitalocean_droplet.minitwit-swarm-leader.ipv4_address}"
     ]
   }
 }
@@ -115,19 +116,19 @@ resource "digitalocean_droplet" "pythonkindergarten-swarm-manager" {
 #   \_/\_/ \___/|_|  |_|\_\___|_|
 #
 # create cloud vm
-resource "digitalocean_droplet" "pythonkindergarten-swarm-worker" {
+resource "digitalocean_droplet" "minitwit-swarm-worker" {
   # create workers after the leader
-  depends_on = [digitalocean_droplet.pythonkindergarten-swarm-leader]
+  depends_on = [digitalocean_droplet.minitwit-swarm-leader]
 
   # number of vms to create
   count = 3
 
   image = "docker-18-04"
-  name = "pythonkindergarten-swarm-worker-${count.index}"
+  name = "minitwit-swarm-worker-${count.index}"
   region = var.region
   size = "s-1vcpu-1gb"
   # add public ssh key so we can access the machine
-  ssh_keys = [digitalocean_ssh_key.pythonkindergarten.fingerprint]
+  ssh_keys = [digitalocean_ssh_key.minitwit.fingerprint]
 
   # specify a ssh connection
   connection {
@@ -155,19 +156,19 @@ resource "digitalocean_droplet" "pythonkindergarten-swarm-worker" {
       "ufw allow 8888",
 
       # join swarm cluster as workers
-      "docker swarm join --token $(cat worker_token) ${digitalocean_droplet.pythonkindergarten-swarm-leader.ipv4_address}"
+      "docker swarm join --token $(cat worker_token) ${digitalocean_droplet.minitwit-swarm-leader.ipv4_address}"
     ]
   }
 }
 
-output "pythonkindergarten-swarm-leader-ip-address" {
-  value = digitalocean_droplet.pythonkindergarten-swarm-leader.ipv4_address
+output "minitwit-swarm-leader-ip-address" {
+  value = digitalocean_droplet.minitwit-swarm-leader.ipv4_address
 }
 
-output "pythonkindergarten-swarm-manager-ip-address" {
-  value = digitalocean_droplet.pythonkindergarten-swarm-manager.*.ipv4_address
+output "minitwit-swarm-manager-ip-address" {
+  value = digitalocean_droplet.minitwit-swarm-manager.*.ipv4_address
 }
 
-output "pythonkindergarten-swarm-worker-ip-address" {
-  value = digitalocean_droplet.pythonkindergarten-swarm-worker.*.ipv4_address
+output "minitwit-swarm-worker-ip-address" {
+  value = digitalocean_droplet.minitwit-swarm-worker.*.ipv4_address
 }

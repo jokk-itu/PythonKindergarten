@@ -29,11 +29,13 @@ terraform validate
 echo -e "\n--> Creating Infrastructure\n"
 terraform apply -auto-approve
 
-##DELETE IN THE FUTURE##
 # generate loadbalancer configuration
-echo -e "\n--> Generating loadbalancer in 10 seconds\n"
-sleep 10
-bash scripts/do_load_balancer.sh
+echo -e "\n--> Generating loadbalancer configuration\n"
+bash scripts/gen_load_balancer_config.sh
+
+# scp loadbalancer config to all nodes
+echo -e "\n--> Copying loadbalancer configuration to nodes\n"
+bash scripts/scp_load_balancer_config.sh
 
 # deploy the stack to the cluster
 echo -e "\n--> Deploying the Minitwit stack to the cluster\n"
@@ -42,15 +44,7 @@ ssh \
     root@$(terraform output -raw minitwit-swarm-leader-ip-address) \
     -i ssh_key/terraform \
     'docker stack deploy minitwit -c minitwit_stack.yml'
-    
-# deploy kibana and elastic search to database server
-echo -e '\n--> Deploying Kibana and ElasticSearch to DB server'
-ssh \
-    -o 'StrictHostKeyChecking no' \
-    root@$(terraform output -raw minitwit-database-ip-address) \
-    -i ssh_key/terraform \
-    'docker compose -d database_compose.yml'
-    
+
 echo -e "\n--> Done bootstrapping Minitwit"
 echo -e "--> The dbs will need a moment to initialize, this can take up to a couple of minutes..."
 echo -e "--> Site will be avilable @ http://$(terraform output -raw public_ip)"

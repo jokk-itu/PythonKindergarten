@@ -1,4 +1,4 @@
-name: Deploy
+name: main_workflow
 
 # Controls when the action will run. 
 on:
@@ -178,7 +178,7 @@ jobs:
     - id: release
       uses: rymndhng/release-on-push-action@v0.18.0
       with:
-        bump_version_scheme: minor
+        bump_version_scheme: major
     - name: Check Output Parameters
       run: |
         echo "Got tag name ${{ steps.release.outputs.tag_name }}"

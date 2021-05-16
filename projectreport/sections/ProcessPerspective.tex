@@ -49,7 +49,10 @@ Therefore we thought it would be best to keep everything in the same repository,
 \subsection{Applied branching strategy}
 For development purposes, the team uses Git for Distributed Version Control and have adopted a 'long-running branches'-approach to branching. \cite{lecture02}
 In this context, there are two main branches, master and develop (i.e. which we have called the 'development' branch) as well as many short-lived topic branches, 
-which are used for implementing features. Essentially, the master branch acts as the stable branch and is used for production code and releases whereas the other branches act as the stage for code development. Upon the completion of new features developed on the topic branches, these branches are merged into development and development is later merged into master. This approach to branching works well in a centralized workflow such as ours, where the project is collaborated on in a shared repository (i.e. Github).
+which are used for implementing features. 
+Essentially, the master branch acts as the stable branch, that is used for production code as well as releases, whereas the other branches act as the stage for code development. 
+Upon the completion of new features developed on the topic branches, these branches were merged into development and development was later merged into master. 
+This approach to branching works well in a centralized workflow such as ours, where the project is collaborated on in a shared repository (i.e. Github).
 
 The actual process of working with long-running branches in a collaborative setting can present some challenges, especially with regards to eventual merge conflicts whenever branches are merged. 
 This can cleary be seen in the instance where, for example, two or more developers have been working on the same code segment(s) on separate branches and alterations have been made. 
@@ -93,15 +96,18 @@ We also logged our simulation errors, which we divided into errors regarding fol
 In order to aggregate these logs, we used ElasticSearch and Kibana. Additionally, we used ElasticSearch to store our logs in dedicated log indexes, while Kibana was used as a visualization tool for these same logs in ElasticSearch. This made it easy to keep track of our system and we quickly discovered if there was anything wrong. \newline
 
 \subsection{Security assessment}
-The identified sources are our web services, for logging, monitoring and our MiniTwit application.
-The servers we use to host are also listed, as well as Docker and Nginx.
-The threat sources are XCSS, our firewall (UFW), Docker ignoring UFW and a DDoS attack.
-The risk analysis consists of an exposed database connection string, which was clear text in our code.
-Our private keys are stored locally on developer machines, but could by mistake be uploaded to GitHub and that would have a catastrophic impact. Because one would gain Admin rights to our servers.
-Dependency vulnerabilities are also possible, since we don't check versions of our dependencies. Where checking versions in eg. our pipeline, would make it easier to maintain dependencies.
+The identified sources are our web services, for logging and monitoring, and our MiniTwit application.
+The servers we used to host our service are also listed, as well as Docker and Nginx.
+The threat sources are XCSS, our firewall (UFW), Docker ignoring UFW, and a DDoS attack.
+The risk analysis consisted of an exposed database connection string, which was clear text in our code.
+Our private keys were stored locally on developer machines. 
+This could have catastrophic consequences if someone, by mistake, were to upload these keys to GitHub. Thereby, gaining admin rights to our servers.
+Dependency vulnerabilities were also a possibility, since we did not check versions of our dependencies. 
+Had we been able to check versions in eg. our pipeline, it would have been easier to maintain our dependencies.
 In regards to malicious users gaining access to user data. The impact would be minimized if we kept backups of our database. However we never got to do that.
-After the security report was finalized, we started fixing some of our problems. The biggest one was the exposed database connection string. We fixed that issue, by storing the connection string as a Docker secret.
-The UFW being ignored by Docker, was fixed by using the following command on the servers: 
+After the security report was finalized, we started fixing some of our problems. 
+The biggest issue was an exposed database connection string. We fixed this issue, by storing the connection string as a Docker secret.
+Another problem was the UFW firewall policies being ignored by Docker, which was solved by using the following command on the servers: 
 \begin{lstlisting}
 DOCKER\_OPTS="--iptables=false
 \end{lstlisting}
@@ -127,5 +133,15 @@ The only caveat was that our database is currently running on a single server, b
 
 \subsection{From idea to production}
 
-Ideas are formed during group meetings or when we are faced with issues, an a solution is required.
-Whenever an idea is accepted by the team, development to make the idea a reality begins. A developer or a team of developers is assigned to develop a feature for the idea. Work starts off by creating a topic branch, which is checked out from the development branch. This ensures all new features are present in the new feature branch. When the developer is finished implementing the feature, two developers are assigned to review the code. When the feature has been accepted by the two developers, it is merged into the development branch. Then the new feature is tested with other new features, to make sure everything is working as it is supposed to, since new features could have been merged into development. After the manual testing is finished, the development branch is merged into the master branch. Now the CI pipeline is running and a script to update the docker containers on our servers is run. This script will pull a new image from Docker Hub and update its' own docker containers. Simultaneously it will also notify other servers, in the docker swarm, to pull the new image and update their containers. When all servers are finished, the new features will be present in the production environment.
+Ideas were formed during group meetings or when we were faced with issues, where a solution was required.
+Whenever an idea was accepted by the team, the process to make the idea a reality began. 
+A developer or a team of developers was assigned to develop a feature for the idea. 
+Work started off by creating a topic branch, which was checked out from the development branch. 
+This ensured that all new features were present in the new feature branch. 
+When the feature was finished, the feature branch was merged into the development branch.
+Then the new feature was tested with other new features, to ensure that everything was working as expected, as new features could have been merged into development in the meantime. 
+After the manual testing was finished, the development branch was merged into the master branch. 
+At this point, the CI pipeline began to run and a script to update the docker containers on our master server was executed. 
+This script would pull a new image from Docker Hub and update its own docker containers. 
+Simultaneously, the master server would notify other servers in the docker swarm, to pull the new image and update their containers. 
+When all the servers were finished updating, the new features would be present in the production environment.

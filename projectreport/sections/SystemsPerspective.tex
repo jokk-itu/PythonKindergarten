@@ -74,37 +74,48 @@ Below is a list of all the \textbf{dependencies} of the Pythonkindergarten MiniT
     \item \textbf{Testing:} Xunit
     \item \textbf{Repository and Distributed Version Control:} Github, Git
     \item \textbf{Domain names and Domain service:} Pythonkindergarten.tech, .Tech Domains
-    \item \textbf{DataTransferring over HTTP:} JSON, System.Text.Json
-    \item \textbf{Containerization:} Docker, Docker-Compose, DockerHub
+    \item \textbf{Data Transferring over HTTP:} JSON, System.Text.Json
+    \item \textbf{Containerization:} Docker, Docker-Compose, DockerHub, Docker Swarm
     \item \textbf{Pipelines (CI/CD):} Github Actions (N.B. was initially Travis until migration to Github Actions)
     \item \textbf{Deployment Provider:} DigitalOcean
-    \item \textbf{Server Certificate for application:} ZeroSSL
+    \item \textbf{SSL Certificate for application:} ZeroSSL
     \item \textbf{Monitoring Tools:} Prometheus, Grafana
     \item \textbf{Virtualization:} Vagrant
     \item \textbf{Logging:} Elasticsearch, Serilog, Kibana
     \item \textbf{Static Codecheck Tools:} SonarScanner, SonarCloud, CodeQL
     \item \textbf{Messaging:} RabbitMQ
-    \item \textbf{Infrastructure:} Terraform
+    \item \textbf{Infrastructure Deployment:} Terraform
 \end{itemize}
 
 
 \subsection{The current state of your system}
-We use two different code analysis tools and they are both run in our CI pipeline. The first one is SonarCloud, where it analyses the API and WebAssembly projects for security issues, possible bugs and general code smells.
+We used two different code analysis tools and they were both executed within our CI pipeline. 
+The first one was SonarCloud, which analysed the API and WebAssembly projects for security issues, possible bugs and general code smells.
 
 \begin{figure}[h!]
     \centering
     \includegraphics[scale=0.5]{images/sonar_latest_report.PNG}
-    \caption{The latest report on static code analysis from Sonar Cloud }
+    \caption{The latest report on static code analysis from Sonar Cloud}
 \end{figure}
 
-Our test coverage is ~50\%, which is below both the groups expectation and Sonar Cloud's default expectation of 80% and 90%.
+This tool showed that our test coverage was ~50\%, which was below SonarCloud's default expectation of 80\% and 90\%.
 
-Other than that a lot of informational messages are present under the category "Code Smells". 
-This is due to a static code analysis tool called Roslynator, which we wanted to analyze and refactor code smells. However we never got around to implement Roslynator, because of a bug in the tool.
+Other than that a lot of informational messages were present under the category "Code Smells". %CHECK UNTIL NEXT SCAN%
 
-Then there are a few informational security messages, which have been looked through however they do not need to be acted on. There are also reports on "bad" exception handling, for example throwing top level exceptions eg. Exception. 
+Additionally, there were a few informational security messages, which we looked through. 
+However, they did not need to be acted on, because they were all false positives. 
+Reports on "bad" exception handling also appeared, for example, by throwing top level exceptions eg. Exception. 
 
-The second tool we use, is called CodeQL. It is used to assess the security of our project. For example hard coded credentials or other vulnerable data, which must not be open to the public. It has not found anything of concern, only false positives in our testing suite.
+The second tool we used was called CodeQL, which was used to assess the security of our project. 
+For example, hard coded credentials or other vulnerable data, which definitely shouldn't be visible to the public. 
+Nothing of concern was found here, just false positives in our testing suite.
 
+\newpage
 
-\subsection{Finally, describe briefly, if the license that you have chosen for your project is actually compatible with the licenses of all your direct dependencies.}
+\subsection{Licensing}
+% Finally, describe briefly, if the license that you have chosen for your project is actually compatible with the licenses of all your direct dependencies. %
+
+We have agreed to use the Apache 2.0 License for our application in order to have the highest degree of compatibility with our direct dependencies. 
+To ensure that we have not violated any patents on our dependencies, we chose the most permissive of licenses. 
+
+This license allows anyone to modify our software and to redistribute it, without any obligations to pay royalties.

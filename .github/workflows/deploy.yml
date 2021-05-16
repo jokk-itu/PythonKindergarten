@@ -155,13 +155,42 @@ jobs:
           
           ssh -o "StrictHostKeyChecking no" $MT_USER@$MT_SERVER "docker pull $DOCKER_USERNAME/pythonkindergartenimage:latest && docker service update --image $DOCKER_USERNAME/pythonkindergartenimage:latest pythonservice_minitwitimage"
   #----------------------------RELEASE------------------------------------
-  release-on-push:
+  build_latex_and_release:
     needs: [build_and_test, CodeQL, sonarscanner_code_check, docker_build, deploy]
     runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - uses: rymndhng/release-on-push-action@v0.18.0
-        with:
-          bump_version_scheme: major
-      
+    - name: Set up Git repository
+      uses: actions/checkout@v2
+    - name: Compile LaTeX document
+      uses: xu-cheng/latex-action@v2
+      with:
+        root_file: main.tex
+        working_directory: ./projectreport
+        args: "-lualatex -file-line-error -interaction=nonstopmode"
+        latexmk_use_lualatex: true
+        latexmk_shell_escape: true
+    - uses: papeloto/action-zip@v1
+      with:
+        files: ./projectreport
+        dest: report.zip
+    - id: release
+      uses: rymndhng/release-on-push-action@v0.18.0
+      with:
+        bump_version_scheme: minor
+    - name: Check Output Parameters
+      run: |
+        echo "Got tag name ${{ steps.release.outputs.tag_name }}"
+        echo "Got release version ${{ steps.release.outputs.version }}"
+    - uses: AButler/upload-release-assets@v2.0
+      with:
+        files: './projectreport/main.pdf'
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        release-tag: ${{ steps.release.outputs.tag_name }}
+    - uses: AButler/upload-release-assets@v2.0
+      with:
+        files: 'report.zip'
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        release-tag: ${{ steps.release.outputs.tag_name }}
+  

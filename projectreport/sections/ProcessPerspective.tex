@@ -20,7 +20,13 @@ Remaining work was distributed to the individual group members, assisting each o
 The tools we used for CI/CD chains were Travis and GitHub Actions. 
 We started working with Travis, which worked very well for us. 
 Regretably, we experienced some problems with expenses in Travis.
-We therefore decided to migrate to GitHub Action which has proven to be just as easy a tool to use as Travis.
+We therefore decided to migrate to GitHub Actions.
+This works just as well as Travis for us. 
+GitHub Actions is just an easy tool to use directly from GitHub, . 
+Since we are using GitHub to store our repository, GitHub Actions is a good choice since, it is easy to 
+integrate, easy to duplicate workflow, works faster, and has a better ecosystem of actions in a centralised app/action store. 
+It has also made it easy for observing the status of the pipelines, since it is all on GitHub. 
+Our stages include build, deploy and test. When we deploy we have the following stages, \textit{building and testing}, \textit{CodeQL} that autobuild attempts to build any compiled languages, \textit{Sonnarscanner} that runs project analysis, \textit{DockerBuild} which build the project, then \textit{deploying} and finally \textit{releasing} it all.\newline
 
 \begin{figure}[h!]
     \centering
@@ -43,7 +49,7 @@ Therefore we thought it would be best to keep everything in the same repository,
 \subsection{Applied branching strategy}
 For development purposes, the team uses Git for Distributed Version Control and have adopted a 'long-running branches'-approach to branching. \cite{lecture02}
 In this context, there are two main branches, master and develop (i.e. which we have called the 'development' branch) as well as many short-lived topic branches, 
-which are used for implementing features. This approach to branching works well in a centralized workflow such as ours, where the project is collaborated on in a shared repository (i.e. Github).
+which are used for implementing features. Essentially, the master branch acts as the stable branch and is used for production code and releases whereas the other branches act as the stage for code development. Upon the completion of new features developed on the topic branches, these branches are merged into development and development is later merged into master. This approach to branching works well in a centralized workflow such as ours, where the project is collaborated on in a shared repository (i.e. Github).
 
 The actual process of working with long-running branches in a collaborative setting can present some challenges, especially with regards to eventual merge conflicts whenever branches are merged. 
 This can cleary be seen in the instance where, for example, two or more developers have been working on the same code segment(s) on separate branches and alterations have been made. 
@@ -54,7 +60,7 @@ The Projects Board on Github was used to categorize open tasks and organize our 
 
 One of the main advantages in working agile is the concept of dividing tasks into sprints. 
 Technically, in this project, every week has acted as a mini-sprint as the timespan between each lecture and the assignments that came with it stretched over a week. 
-The flexibility of being able to shape and adjust our work flows over such short timespans in order to meet unforeseen contingencies has proved to be quite essential in fulfilling the DevOps 'three ways' of working (as discussed in section 2.1.3 above).  
+The flexibility of being able to shape and adjust our work flows over such short timespans in order to meet unforeseen contingencies has proven to be quite essential in fulfilling the DevOps 'three ways' of working (as discussed in section 2.1.3 above).  
 %\newline
 
   

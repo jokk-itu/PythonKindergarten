@@ -20,7 +20,13 @@ Remaining work was distributed to the individual group members, assisting each o
 The tools we used for CI/CD chains were Travis and GitHub Actions. 
 We started working with Travis, which worked very well for us. 
 Regretably, we experienced some problems with expenses in Travis.
-We therefore decided to migrate to GitHub Action which has proven to be just as easy a tool to use as Travis.
+We therefore decided to migrate to GitHub Actions.
+This works just as well as Travis for us. 
+GitHub Actions is just an easy tool to use directly from GitHub, . 
+Since we are using GitHub to store our repository, GitHub Actions is a good choice since, it is easy to 
+integrate, easy to duplicate workflow, works faster, and has a better ecosystem of actions in a centralised app/action store. 
+It has also made it easy for observing the status of the pipelines, since it is all on GitHub. 
+Our stages include build, deploy and test. When we deploy we have the following stages, \textit{building and testing}, \textit{CodeQL} that autobuild attempts to build any compiled languages, \textit{Sonnarscanner} that runs project analysis, \textit{DockerBuild} which build the project, then \textit{deploying} and finally \textit{releasing} it all.\newline
 
 \begin{figure}[h!]
     \centering

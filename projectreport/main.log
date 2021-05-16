@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.5.3)  15 MAY 2021 14:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.5.3)  16 MAY 2021 10:18
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/home/nor/School/PythonKindergarten/projectreport/main.tex
-(/home/nor/School/PythonKindergarten/projectreport/main.tex
+**/home/joachim/git/PythonKindergarten/projectreport/main.tex
+(/home/joachim/git/PythonKindergarten/projectreport/main.tex
 LaTeX2e <2020-02-02> patch level 2
 L3 programming layer <2020-02-14> (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
@@ -91,7 +91,7 @@ Package geometry Warning: Over-specification in `v'-direction.
 File: l3backend-pdfmode.def 2020-02-03 L3 backend support: PDF mode
 \l__kernel_color_stack_int=\count178
 \l__pdf_internal_box=\box45
-) (/home/nor/School/PythonKindergarten/projectreport/main.aux)
+) (/home/joachim/git/PythonKindergarten/projectreport/main.aux)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 27.
@@ -169,96 +169,157 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 29.
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (/home/nor/School/PythonKindergarten/projectreport/main.toc
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 3.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 3.
-)
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+No file main.toc.
 \tf@toc=\write3
 \openout3 = `main.toc'.
 
- [2] (/home/nor/School/PythonKindergarten/projectreport/sections/introduction.tex)
+[2] (/home/joachim/git/PythonKindergarten/projectreport/sections/introduction.tex)
 Overfull \hbox (22.9874pt too wide) in paragraph at lines 7--38
 []\OT1/cmr/m/n/10 Thereafter, var-i-ous De-vOps tools, such as vir-tu-al-iza-tion, au-to-mated de-ploy-ment, log-ging/monitoring,
  []
 
-[3] (/home/nor/School/PythonKindergarten/projectreport/sections/LessonsLearnedPerspective.tex
-<images/downperiodes.png, id=17, 371.88937pt x 261.22594pt>
+[3] (/home/joachim/git/PythonKindergarten/projectreport/sections/LessonsLearnedPerspective.tex
+<images/downperiodes.png, id=16, 371.88937pt x 261.22594pt>
 File: images/downperiodes.png Graphic file (type png)
 <use images/downperiodes.png>
 Package pdftex.def Info: images/downperiodes.png  used on input line 25.
 (pdftex.def)             Requested size: 260.32079pt x 182.85689pt.
-) [4 </home/nor/School/PythonKindergarten/projectreport/images/downperiodes.png>] [5] (/home/nor/School/PythonKindergarten/projectreport/sections/ProcessPerspective.tex
+
+
+LaTeX Warning: Citation `devopshandbook' on page 4 undefined on input line 41.
+
+[4 </home/joachim/git/PythonKindergarten/projectreport/images/downperiodes.png>]) [5] (/home/joachim/git/PythonKindergarten/projectreport/sections/ProcessPerspective.tex
 Underfull \hbox (badness 10000) in paragraph at lines 5--10
 
  []
 
+<images/CIpipelinediagram.png, id=26, 632.3625pt x 280.04625pt>
+File: images/CIpipelinediagram.png Graphic file (type png)
+<use images/CIpipelinediagram.png>
+Package pdftex.def Info: images/CIpipelinediagram.png  used on input line 27.
+(pdftex.def)             Requested size: 442.65074pt x 196.03102pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 20--30
+Overfull \hbox (15.85939pt too wide) in paragraph at lines 27--28
+ [][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--36
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 33--34
+Underfull \hbox (badness 10000) in paragraph at lines 38--41
 
  []
 
-[6]
-Overfull \hbox (25.30539pt too wide) in paragraph at lines 55--71
-[]\OT1/cmr/m/n/10 To ex-pose met-rics in our sys-tem we use a NuGet pack-age called prometheus-net CITE prometheusnet!.
- []
+[6 </home/joachim/git/PythonKindergarten/projectreport/images/CIpipelinediagram.png>]
+
+LaTeX Warning: Citation `lecture02' on page 7 undefined on input line 44.
 
 
-Overfull \hbox (18.8205pt too wide) in paragraph at lines 55--71
+LaTeX Warning: Citation `prometheusnet' on page 7 undefined on input line 67.
+
+
+LaTeX Warning: Citation `prometheusdotnetmetrics' on page 7 undefined on input line 71.
+
+
+LaTeX Warning: Citation `prometheusaspnet' on page 7 undefined on input line 71.
+
+
+Overfull \hbox (18.8205pt too wide) in paragraph at lines 67--83
 \OT1/cmr/m/n/10 To ex-tend the de-fault met-rics pro-vided by prometheus-net, we use two ad-di-tional pack-ages: prometheus-
  []
 
 
-Overfull \hbox (49.05916pt too wide) in paragraph at lines 55--71
-\OT1/cmr/m/n/10 net.DotNetMetrics !!!!CITE prometheus-dot-net-met-rics!!!! and prometheus-net.AspNet !!!CITE prometheusasp-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 55--71
+Underfull \hbox (badness 10000) in paragraph at lines 67--83
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 73--76
+Underfull \hbox (badness 10000) in paragraph at lines 85--88
 
  []
 
-[7]) [8] (/home/nor/School/PythonKindergarten/projectreport/sections/SystemsPerspective.tex
-Overfull \hbox (36.28372pt too wide) in paragraph at lines 32--36
+[7]
+
+/home/joachim/git/PythonKindergarten/projectreport/sections/ProcessPerspective.tex:99: LaTeX Error: Environment lstlisting undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.99 \begin{lstlisting}
+                       
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+/home/joachim/git/PythonKindergarten/projectreport/sections/ProcessPerspective.tex:101: LaTeX Error: \begin{document} ended by \end{lstlisting}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.101 \end{lstlisting}
+                      
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+) [8] [9] (/home/joachim/git/PythonKindergarten/projectreport/sections/SystemsPerspective.tex
+Overfull \hbox (36.28372pt too wide) in paragraph at lines 30--34
 \OT1/cmr/m/n/10 proxy for rout-ing of sub-do-main ac-cess, e.g. mas-ter.pythonkindergarten.tech, slave.pythonkindergarten.tech,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 32--36
+Underfull \hbox (badness 10000) in paragraph at lines 30--34
 
  []
 
-[9]
-<images/InteractionDiagram.png, id=40, 406.51875pt x 397.485pt>
+[10]
+Underfull \hbox (badness 10000) in paragraph at lines 58--60
+
+ []
+
+<images/InteractionDiagram.png, id=44, 406.51875pt x 397.485pt>
 File: images/InteractionDiagram.png Graphic file (type png)
 <use images/InteractionDiagram.png>
-Package pdftex.def Info: images/InteractionDiagram.png  used on input line 62.
-(pdftex.def)             Requested size: 406.51775pt x 397.48402pt.
- [10 </home/nor/School/PythonKindergarten/projectreport/images/InteractionDiagram.png>]) [11] (/home/nor/School/PythonKindergarten/projectreport/sections/Refrences.tex) [12] (/home/nor/School/PythonKindergarten/projectreport/main.aux) ) 
+Package pdftex.def Info: images/InteractionDiagram.png  used on input line 63.
+(pdftex.def)             Requested size: 284.56117pt x 278.2376pt.
+[11 </home/joachim/git/PythonKindergarten/projectreport/images/InteractionDiagram.png>]
+<images/sonar_latest_report.PNG, id=49, 740.7675pt x 663.98062pt>
+File: images/sonar_latest_report.PNG Graphic file (type png)
+<use images/sonar_latest_report.PNG>
+Package pdftex.def Info: images/sonar_latest_report.PNG  used on input line 96.
+(pdftex.def)             Requested size: 370.38284pt x 331.98949pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+) [12] [13 </home/joachim/git/PythonKindergarten/projectreport/images/sonar_latest_report.PNG>] (/home/joachim/git/PythonKindergarten/projectreport/main.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
- 1925 strings out of 483183
- 29221 string characters out of 5966293
- 267751 words of memory out of 5000000
- 16927 multiletter control sequences out of 15000+600000
+ 1933 strings out of 483183
+ 29347 string characters out of 5966293
+ 267739 words of memory out of 5000000
+ 16937 multiletter control sequences out of 15000+600000
  537274 words of font info for 40 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 30i,10n,45p,714b,312s stack positions out of 5000i,500n,10000p,200000b,80000s
- </home/nor/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on /home/nor/School/PythonKindergarten/projectreport/main.pdf (12 pages, 212646 bytes).
+ 30i,10n,45p,1316b,316s stack positions out of 5000i,500n,10000p,200000b,80000s
+ </home/joachim/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on /home/joachim/git/PythonKindergarten/projectreport/main.pdf (13 pages, 280012 bytes).
 PDF statistics:
- 76 PDF objects out of 1000 (max. 8388607)
- 51 compressed objects within 1 object stream
+ 83 PDF objects out of 1000 (max. 8388607)
+ 54 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

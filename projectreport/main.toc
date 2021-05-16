@@ -9,21 +9,21 @@
 \contentsline {subsection}{\numberline {3.2}Team organization}{6}%
 \contentsline {subsection}{\numberline {3.3}A description of stages and tools included in the CI/CD chains.}{6}%
 \contentsline {subsection}{\numberline {3.4}Organization of repository}{6}%
-\contentsline {subsection}{\numberline {3.5}Applied branching strategy}{6}%
-\contentsline {subsection}{\numberline {3.6}Applied development process and tools supporting it}{6}%
+\contentsline {subsection}{\numberline {3.5}Applied branching strategy}{7}%
+\contentsline {subsection}{\numberline {3.6}Applied development process and tools supporting it}{7}%
 \contentsline {subsection}{\numberline {3.7}System monitoring}{7}%
-\contentsline {subsection}{\numberline {3.8}Logging}{7}%
-\contentsline {subsection}{\numberline {3.9}Security assessment}{7}%
+\contentsline {subsection}{\numberline {3.8}Logging}{8}%
+\contentsline {subsection}{\numberline {3.9}Security assessment}{8}%
 \contentsline {subsection}{\numberline {3.10}System Scaling and load-balancing}{8}%
 \contentsline {subsubsection}{\numberline {3.10.1}Scaling}{8}%
 \contentsline {subsubsection}{\numberline {3.10.2}Load-Balancing}{8}%
 \contentsline {subsection}{\numberline {3.11}From idea to production}{8}%
-\contentsline {section}{\numberline {4}System's Perspective}{9}%
-\contentsline {subsection}{\numberline {4.1}System Design}{9}%
-\contentsline {subsection}{\numberline {4.2}System Architecture}{9}%
-\contentsline {subsubsection}{\numberline {4.2.1}System Deployment}{10}%
-\contentsline {subsection}{\numberline {4.3}Subsystem interactions}{10}%
-\contentsline {subsection}{\numberline {4.4}Dependencies}{10}%
-\contentsline {subsection}{\numberline {4.5}The current state of your system}{11}%
-\contentsline {subsection}{\numberline {4.6}Finally, describe briefly, if the license that you have chosen for your project is actually compatible with the licenses of all your direct dependencies.}{11}%
-\contentsline {section}{\numberline {5}References}{12}%
+\contentsline {section}{\numberline {4}System's Perspective}{10}%
+\contentsline {subsection}{\numberline {4.1}System Design}{10}%
+\contentsline {subsection}{\numberline {4.2}System Architecture}{10}%
+\contentsline {subsubsection}{\numberline {4.2.1}System Deployment}{11}%
+\contentsline {subsection}{\numberline {4.3}Subsystem interactions}{11}%
+\contentsline {subsection}{\numberline {4.4}Dependencies}{11}%
+\contentsline {subsection}{\numberline {4.5}The current state of your system}{12}%
+\contentsline {subsection}{\numberline {4.6}Finally, describe briefly, if the license that you have chosen for your project is actually compatible with the licenses of all your direct dependencies.}{12}%
+\contentsline {section}{\numberline {5}References}{13}%

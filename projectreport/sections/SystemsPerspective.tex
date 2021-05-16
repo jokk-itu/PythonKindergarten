@@ -89,20 +89,22 @@ Below is a list of all the \textbf{dependencies} of the Pythonkindergarten MiniT
 
 
 \subsection{The current state of your system}
-We used two different code analysis tools, which are both run in our CI pipeline. 
-The first one is SonarCloud. The C\# Webassembly project and the API project are both analysed. 
-The current state is that our test coverage is ~50\%, which is below both the group's expection and SonarCloud's default expectation of 90\% and 80\%, respectively. 
-Other than that a lot of informational messages are present. 
+We use two different code analysis tools and they are both run in our CI pipeline. The first one is SonarCloud, where it analyses the API and WebAssembly projects for security issues, possible bugs and general code smells.
 
-!!Add link to SonarCloud/CodeQl
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.5]{images/sonar_latest_report.PNG}
+    \caption{The latest report on static code analysis from Sonar Cloud }
+\end{figure}
 
-This is due to a static code analysis tool called SonarCloud, which we wanted to use to analyze and refactor code smells.
-It was also used to generate informational security messages, which have been looked through. Fortunately, they did not need to be acted on. 
-There were also reports on "bad" exception handling, for example throwing general exception objects. 
-If we had further time, we could have acted upon those, or even better had a tool in our pipeline that resolved these automatically.
+Our test coverage is ~50\%, which is below both the groups expectation and Sonar Cloud's default expectation of 80% and 90%.
 
-The second tool we use, is called CodeQL. 
-It is used to assess the security of our project. For example hard coded credentials or other vulnerable data, which must not be open to the public. 
-It has not found anything of concern, only false positives, in our testing suite.
+Other than that a lot of informational messages are present under the category "Code Smells". 
+This is due to a static code analysis tool called Roslynator, which we wanted to analyze and refactor code smells. However we never got around to implement Roslynator, because of a bug in the tool.
+
+Then there are a few informational security messages, which have been looked through however they do not need to be acted on. There are also reports on "bad" exception handling, for example throwing top level exceptions eg. Exception. 
+
+The second tool we use, is called CodeQL. It is used to assess the security of our project. For example hard coded credentials or other vulnerable data, which must not be open to the public. It has not found anything of concern, only false positives in our testing suite.
+
 
 \subsection{Finally, describe briefly, if the license that you have chosen for your project is actually compatible with the licenses of all your direct dependencies.}

@@ -2,7 +2,9 @@
 
 echo -e "\n--> Bootstrapping Minitwit\n"
 
-echo -e "\n--> Loading environment variables from secrets file\n"
+echo -e "\n--> Loading environment variables from secrets fi
+  ip_address = digitalocean_floating_ip.public-ip.ip_address
+  droplet_id = digitalocean_droplet.minitwit-swarm-leader.idle\n"
 source secrets
 
 echo -e "\n--> Checking that environment variables are set\n"
@@ -12,6 +14,9 @@ echo -e "\n--> Checking that environment variables are set\n"
 [ -z "$STATE_FILE" ] && echo "STATE_FILE is not set" && exit
 [ -z "$AWS_ACCESS_KEY_ID" ] && echo "AWS_ACCESS_KEY_ID is not set" && exit
 [ -z "$AWS_SECRET_ACCESS_KEY" ] && echo "AWS_SECRET_ACCESS_KEY is not set" && exit
+
+echo -e "\n--> Destroying environment\n"
+bash scripts/do_destroy.sh
 
 echo -e "\n--> Initializing terraform\n"
 # initialize terraform

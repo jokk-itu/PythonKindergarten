@@ -15,15 +15,6 @@ services:
       placement:
         constraints: [node.role == manager]
 
-  loadbalancer:
-    image: nginx
-    ports:
-      - '80:80'
-    volumes:
-      - /loadbalancer:/etc/nginx/conf.d
-    deploy:
-      replicas: 2
-
   minitwitimage:
     image: victornor/pythonkindergartenimage
     container_name: pythonkindergarten
@@ -33,21 +24,4 @@ services:
         - '80:5000'
         - '443:5001'
     deploy:
-      replicas: 10    
-    	
-  prometheus:
-    image: prom/prometheus
-    container_name: prometheus
-    volumes:
-      - ./prometheus.yml:/etc/prometheus/prometheus.yml
-    ports:
-      - "9090:9090"
-    networks:
-      - main
-
-  grafana:
-    image: grafana/grafana:4.5.2
-    ports:
-      - "3000:3000"  
-    networks:
-      - main  	
+      replicas: 10

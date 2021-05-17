@@ -109,7 +109,7 @@ After the security report was finalized, we started fixing some of our problems.
 The biggest issue was an exposed database connection string. We fixed this issue, by storing the connection string as a Docker secret.
 Another problem was the UFW firewall policies being ignored by Docker, which was solved by using the following command on the servers: 
 \begin{verbatim}
-DOCKER\_OPTS="--iptables=false
+DOCKER_OPTS="--iptables=false
 \end{verbatim}
 
 \subsection{System Scaling and load-balancing}

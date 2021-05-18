@@ -53,18 +53,24 @@ resource "digitalocean_droplet" "minitwit-swarm-leader" {
 
   # save the worker join token
   provisioner "local-exec" {
-    command = "sleep 15 && ssh -o 'StrictHostKeyChecking no' root@${self.ipv4_address} -i ssh_key/terraform 'docker swarm join-token worker -q' > temp/worker_token"
+    command = "sleep 30 && ssh -o 'StrictHostKeyChecking no' root@${self.ipv4_address} -i ssh_key/terraform 'docker swarm join-token worker -q' > temp/worker_token"
   }
 
   # save the manager join token
   provisioner "local-exec" {
-    command = "sleep 15 && ssh -o 'StrictHostKeyChecking no' root@${self.ipv4_address} -i ssh_key/terraform 'docker swarm join-token manager -q' > temp/manager_token"
+    command = "ssh -o 'StrictHostKeyChecking no' root@${self.ipv4_address} -i ssh_key/terraform 'docker swarm join-token manager -q' > temp/manager_token"
   }
 
   # save the world
   provisioner "local-exec" {
-    command = "sleep 5 && ssh -o 'StrictHostKeyChecking no' root@${self.ipv4_address} -i ssh_key/terraform 'docker secret create databaseip ${digitalocean_droplet.minitwit-swarm-database.ipv4_address}'"
+    command = "sleep 5 && ssh -o 'StrictHostKeyChecking no' root@${self.ipv4_address} -i ssh_key/terraform \"printf ${digitalocean_droplet.minitwit-database.ipv4_address} | docker secret create databaseip -\""
   }
+
+  # save the world again
+  provisioner "local-exec" { 
+    command = "sleep 5 && ssh -o 'StrictHostKeyChecking no' root@${self.ipv4_address} -i ssh_key/terraform 'printf \"Server=${digitalocean_droplet.minitwit-database.ipv4_address};Database=pythonkindergarten;User Id=postgres;Password=postgres;Port=5432\" | docker secret create db -'"
+  }
+
 }
 
 
@@ -135,8 +141,15 @@ resource "digitalocean_droplet" "minitwit-swarm-worker" {
   # number of vms to create
   count = 3
 
-  image = "docker-18-04"  }
+  image = "docker-18-04"
+  name = "minitwit-swarm-worker-${count.index}"
+  region = var.region
+  size = "s-1vcpu-1gb"
+  # add public ssh key so we can access the machine
+  ssh_keys = [digitalocean_ssh_key.minitwit.fingerprint]
 
+  # specify a ssh connection
+  connection {
     user = "root"
     host = self.ipv4_address
     type = "ssh"
@@ -214,6 +227,9 @@ resource "digitalocean_droplet" "minitwit-database" {
       "wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -",
       "apt-get update",
       "apt-get -y install postgresql",
+      "sudo -u postgres psql -U postgres -d postgres -c \"alter user postgres with password 'postgres';\"",
+      "sudo su - postgres",
+      "psql -c \"create database pythonkindergarten\"",
       "ufw allow 5432"
     ]
   }
@@ -244,10 +260,10 @@ output "minitwit-swarm-worker-id" {
   value = digitalocean_droplet.minitwit-swarm-worker.*.id
 }
 
-output "minitwit-swarm-database-ip-address" {
-  value = digitalocean_droplet.minitwit-swarm-database.ipv4_address
+output "minitwit-database-ip-address" {
+  value = digitalocean_droplet.minitwit-database.ipv4_address
 }
 
-output "minitwit-swarm-database-id" {
-  value = digitalocean_droplet.minitwit-swarm-database.id
+output "minitwit-database-id" {
+  value = digitalocean_droplet.minitwit-database.id
 }

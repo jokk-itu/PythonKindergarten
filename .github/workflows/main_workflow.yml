@@ -147,14 +147,6 @@ jobs:
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
         run: |
           echo "Not in use at the moment, as we are in the setup of Terraform"
-          # mkdir -p /home/runner/.ssh
-          # ssh-keyscan $MT_SERVER >> /home/runner/.ssh/known_hosts
-          # echo "${{ secrets.SSH_PRIVATE }}" > /home/runner/.ssh/github_actions
-          # chmod 600 /home/runner/.ssh/github_actions
-          # ssh-agent -a $SSH_AUTH_SOCK > /dev/null   
-          # ssh-add /home/runner/.ssh/github_actions
-          
-          # ssh -o "StrictHostKeyChecking no" $MT_USER@$MT_SERVER "docker pull $DOCKER_USERNAME/pythonkindergartenimage:latest && docker service update --image $DOCKER_USERNAME/pythonkindergartenimage:latest pythonservice_minitwitimage"
   #----------------------------RELEASE------------------------------------
   build_latex_and_release:
     needs: [build_and_test, CodeQL, sonarscanner_code_check, docker_build, deploy]

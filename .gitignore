@@ -75,6 +75,5 @@ docker_token
 *.fdb_latexmk
 *.log
 *.aux
-*.pdf
 *.synctex.gz
 *.toc

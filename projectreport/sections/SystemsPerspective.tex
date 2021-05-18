@@ -51,12 +51,37 @@
     The load balancer was hosted on Digital Ocean and allowed us to balance incoming traffic on pythonkindergarten.tech between each of our docker swarm servers.
   \end{enumerate}
   \subsubsection{System Deployment}
-  Deployment of our system as a whole was partially automated using 'Insert Technology', such that a simple shell script will deploy most of our system architecture.
-  The only parts not included in this automated system deployment are: something, something, something and something, due to the high setup/configuration complexity.
+  We have automated deployment of our MiniTwit system using Terraform and bash scripts.
+  Terraform enabled us to automate the following parts of our deployment:\newline
+
+  \textbf{Startup and configuration of:}
+  \begin{itemize}
+    \item Master nodes
+    \item A leader node
+    \item A DigitalOcean load balancer
+    \item The creation of a floating ip
+    \item Adding domain with DNS records pointing to our floating ip
+    \item A database droplet running a Postgres database, an ELK stack (without the L but replaced by Serilog), Prometheus and Kibana
+  \end{itemize}
+  
+  Due to the high setup/configuration complexity, some parts of the system were left unconfigured after the automated deployment.
+  This included the following parts of our system:\newline
+  
+  \textbf{The configuration of:}
+  \begin{itemize}
+    \item Prometheus (scrape targets)
+    \item Grafana (dashboards, data sources and administration login)
+    \item Kibana (dashboards, index creation, Index Lifecycle Management)
+    \item Nginx (reverse proxy)
+  \end{itemize}
+  
+  
 
   \subsection{Subsystem interactions}
   There are many important subsystems (described in previous sections), collectively making the system work as a whole.
   In this section we will illustrate the most important interactions between these services, as seen in the diagram below.\newline
+
+\newpage
 
 \begin{figure}[h!]
     \centering

@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -57,21 +58,16 @@ namespace MiniTwitApi.Server.Entities
 
         private string GetSecretOrEnvVar(string key)
         {
-            const string DOCKER_SECRET_PATH = "/run/secrets/";
-            if (Directory.Exists(DOCKER_SECRET_PATH))
-            {
-                IFileProvider provider = new PhysicalFileProvider(DOCKER_SECRET_PATH);
-                var fileInfo = provider.GetFileInfo(key);
-                if (fileInfo.Exists)
-                {
-                    using var stream = fileInfo.CreateReadStream();
-                    using (var streamReader = new StreamReader(stream))
-                    {
-                        return streamReader.ReadToEnd();
-                    }
-                }
+            var secretPath = $"/run/secrets/{key}";
+
+            if(File.Exists(secretPath)){
+                var secret = File.ReadAllText(secretPath);
+                Console.WriteLine($"Found secret({key}): {secret}");
+                return secret;
             }
-            return Configuration.GetValue<string>(key);
+            
+            Console.WriteLine($"Failed to find secret with key: {key}");
+            return null;
         }
     }
 }

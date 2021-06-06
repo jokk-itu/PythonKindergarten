@@ -16,6 +16,7 @@ using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using MiniTwitApi.Shared;
+using Prometheus.DotNetRuntime;
 using Serilog;
 using Serilog.Events;
 
@@ -25,6 +26,8 @@ namespace MiniTwitApi.Server
     {
         public static void Main(string[] args)
         {
+            IDisposable collector = DotNetRuntimeStatsBuilder.Default().StartCollecting();
+                
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
                 .Enrich.FromLogContext()
@@ -65,7 +68,7 @@ namespace MiniTwitApi.Server
 
                                 if(args.Any() && args[0]=="mac")
                                 {
-                                    Console.WriteLine("Mac isn't running");
+                                    Console.WriteLine("Mac is running");
                                 }
                                 else
                                 {

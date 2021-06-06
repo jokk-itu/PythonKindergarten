@@ -51,7 +51,7 @@
 <ul>
     <li>SonarScanner</li>
     <li>SonarCloud</li>
-    <li>Infersharp</li>
+    <li>CodeQL</li>
 </ul>
 
 <h3>Code placement and version controlling</h3>
@@ -81,7 +81,7 @@
 <h3>Domain names and Domain service</h3>
 <ul>
     <li>Pythonkindergarten.tech</li>
-    <li>Service provider for the domain?</li>
+    <li>.Tech Domains</li>
 </ul>
 
 <h3>Setup tool for entire application</h3>
@@ -92,5 +92,16 @@
 <h3>Logging</h3>
 <ul>
     <li>Kibana</li>
+    <li>Serilog</li>
     <li>ElasticSearch</li>
+</ul>
+
+<h3>Messaging</h3>
+<ul>
+    <li>RabbitMQ</li>
+</ul>
+
+<h3>Infrastructure</h3>
+<ul>
+    <li>Terraform</li>
 </ul>

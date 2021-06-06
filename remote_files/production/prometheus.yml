@@ -25,6 +25,8 @@ scrape_configs:
     scrape_interval: 5s
 
     static_configs:
-      - targets: ['pythonkindergarten.tech']
+      - targets: ['master.pythonkindergarten.tech:443', 'slave.pythonkindergarten.tech:443']
         labels:
           group: 'production'
+    tls_config:
+      insecure_skip_verify: true

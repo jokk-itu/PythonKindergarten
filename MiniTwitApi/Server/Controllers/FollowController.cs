@@ -29,7 +29,7 @@ namespace MiniTwitApi.Server.Controllers
         [HttpGet("fllws")]
         public async Task<ActionResult<FollowerDTO>> GetFollowRelationByWhoAndWhom([FromQuery] string whoUserName, [FromQuery] string whomUserName, [FromQuery] long latest)
         {
-            if (string.IsNullOrEmpty(whomUserName) || string.IsNullOrEmpty(whomUserName))
+            if (string.IsNullOrEmpty(whomUserName) || string.IsNullOrEmpty(whoUserName))
                 return BadRequest("whomUserName and whoUserName must be valid Username's");
 
             var followRelation = await _followerRepository.ReadAsync(whoUserName, whomUserName);

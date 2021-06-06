@@ -17,6 +17,7 @@ using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Prometheus;
 using Prometheus.SystemMetrics;
 using Serilog;
+using Microsoft.EntityFrameworkCore;
 
 namespace MiniTwitApi.Server
 {
@@ -48,6 +49,9 @@ namespace MiniTwitApi.Server
             //Authentication and Authorization using Cookies
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
             services.AddAuthorizationCore();
+
+            // Do database migration
+            ((DbContext)services.BuildServiceProvider().CreateScope().ServiceProvider.GetRequiredService<IContext>()).Database.Migrate();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

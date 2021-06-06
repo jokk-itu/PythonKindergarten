@@ -28,8 +28,8 @@ namespace MiniTwitApi.Server.Entities
             if (!optionsBuilder.IsConfigured)
             {
                 //Add connection string to DB
-                //optionsBuilder.UseNpgsql("Server=161.35.215.154;Database=pythonkindergarten;User Id=postgres;Password=postgres;Port=5432");
-                optionsBuilder.UseNpgsql(GetSecretOrEnvVar("db"));
+                optionsBuilder.UseNpgsql("Server=159.65.115.116;Database=pythonkindergarten;User Id=postgres;Password=postgres;Port=5432");
+                //optionsBuilder.UseNpgsql(GetSecretOrEnvVar("db"));
             }
         }
 

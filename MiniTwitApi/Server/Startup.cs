@@ -49,14 +49,14 @@ namespace MiniTwitApi.Server
             //Authentication and Authorization using Cookies
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
             services.AddAuthorizationCore();
-
-            // Do database migration
-            ((DbContext)services.BuildServiceProvider().CreateScope().ServiceProvider.GetRequiredService<IContext>()).Database.Migrate();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IContext dbContext)
         {
+            // Do database migration
+            ((DbContext)dbContext).Database.Migrate();
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

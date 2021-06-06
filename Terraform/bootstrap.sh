@@ -1,6 +1,8 @@
-#!/bin/bash
+    #!/bin/bash
 
 echo -e "\n--> Bootstrapping Minitwit\n"
+chmod 600 ssh_key/terraform
+chmod 600 ssh_key/terraform.pub
 
 echo -e "\n--> Loading environment variables from secrets fi
   ip_address = digitalocean_floating_ip.public-ip.ip_address
@@ -40,14 +42,6 @@ echo -e "\n--> Generating loadbalancer in 10 seconds\n"
 sleep 10
 bash scripts/do_load_balancer.sh
 
-# deploy the stack to the cluster
-echo -e "\n--> Deploying the Minitwit stack to the cluster\n"
-ssh \
-    -o 'StrictHostKeyChecking no' \
-    root@$(terraform output -raw minitwit-swarm-leader-ip-address) \
-    -i ssh_key/terraform \
-    'docker stack deploy minitwit -c minitwit_stack.yml'
-    
 # deploy kibana and elastic search to database server
 echo -e '\n--> Deploying Kibana and ElasticSearch to DB server'
 ssh \
@@ -55,6 +49,14 @@ ssh \
     root@$(terraform output -raw minitwit-database-ip-address) \
     -i ssh_key/terraform \
     'docker-compose -f database_compose.yml up -d'
+
+# deploy the stack to the cluster
+echo -e "\n--> Deploying the Minitwit stack to the cluster\n"
+ssh \
+    -o 'StrictHostKeyChecking no' \
+    root@$(terraform output -raw minitwit-swarm-leader-ip-address) \
+    -i ssh_key/terraform \
+    'docker stack deploy minitwit -c minitwit_stack.yml'
     
 echo -e "\n--> Done bootstrapping Minitwit"
 echo -e "--> The dbs will need a moment to initialize, this can take up to a couple of minutes..."

@@ -220,23 +220,30 @@ resource "digitalocean_droplet" "minitwit-database" {
     destination = "/root/prometheus.yml"
   }
 
+  provisioner "file" {
+    source = "stack/Dockerfile_db"
+    destination = "/root/Dockerfile_db"
+  }
+
+  provisioner "file" {
+    source = "stack/start.sql"
+    destination = "/root/start.sql"
+  }
+
   #TODO ALLOW DATABASE PORTS
   provisioner "remote-exec" {
     inline = [
       # ports for apps
       "ufw allow 80",
       "ufw allow 8080",
-      "ufw allow 8888",      
+      "ufw allow 8888",
+      "ufw allow 5432"     
       # install postgres db
-      "sh -c \"echo \"deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main\" > /etc/apt/sources.list.d pgdg.list\"",
-      "wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -",
-      "apt-get update",
-      "sleep 5",
-      "apt-get -y install postgresql",
-      "sudo -u postgres psql -U postgres -d postgres -c \"alter user postgres with password 'postgres';\"",
-      "sudo su - postgres",
-      "psql -c \"create database pythonkindergarten\"",
-      "ufw allow 5432"
+      #"apt-get update",
+      #"apt-get -y install postgresql",
+      #"sudo -u postgres psql -U postgres -d postgres -c \"alter user postgres with password 'postgres';\"",
+      #"sudo su - postgres",
+      #"psql -c \"create database pythonkindergarten\""
     ]
   }
 }

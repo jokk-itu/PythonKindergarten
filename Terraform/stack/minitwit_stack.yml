@@ -18,6 +18,9 @@ services:
   minitwitimage:
     image: victornor/pythonkindergartenimage
     container_name: pythonkindergarten
+    secrets:
+      - db
+      - databaseip
     networks:
       - main
     ports:
@@ -25,3 +28,9 @@ services:
         - '443:5001'
     deploy:
       replicas: 10
+
+secrets:
+  db:
+    external: true
+  databaseip:
+    external: true

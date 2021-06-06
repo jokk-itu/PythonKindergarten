@@ -215,6 +215,11 @@ resource "digitalocean_droplet" "minitwit-database" {
     destination = "/root/kibana.yml"
   }
 
+  provisioner "file" {
+    source = "stack/prometheus.yml"
+    destination = "/root/prometheus.yml"
+  }
+
   #TODO ALLOW DATABASE PORTS
   provisioner "remote-exec" {
     inline = [
@@ -226,6 +231,7 @@ resource "digitalocean_droplet" "minitwit-database" {
       "sh -c \"echo \"deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main\" > /etc/apt/sources.list.d pgdg.list\"",
       "wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -",
       "apt-get update",
+      "sleep 5",
       "apt-get -y install postgresql",
       "sudo -u postgres psql -U postgres -d postgres -c \"alter user postgres with password 'postgres';\"",
       "sudo su - postgres",

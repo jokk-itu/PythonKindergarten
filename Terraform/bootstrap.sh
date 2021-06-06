@@ -54,11 +54,11 @@ ssh \
     -o 'StrictHostKeyChecking no' \
     root@$(terraform output -raw minitwit-database-ip-address) \
     -i ssh_key/terraform \
-    'docker compose -d database_compose.yml'
+    'docker-compose -f database_compose.yml up -d'
     
 echo -e "\n--> Done bootstrapping Minitwit"
 echo -e "--> The dbs will need a moment to initialize, this can take up to a couple of minutes..."
-echo -e "--> Site will be avilable @ http://$(terraform output -raw public_ip)"
+echo -e "--> Site will be avilable @ http://pythonkindergarten.tech"
 echo -e "--> You can check the status of swarm cluster @ http://$(terraform output -raw minitwit-swarm-leader-ip-address):8888"
 echo -e "--> ssh to swarm leader with 'ssh root@\$(terraform output -raw minitwit-swarm-leader-ip-address) -i ssh_key/terraform'"
 echo -e "--> To remove the infrastructure run: terraform destroy -auto-approve"

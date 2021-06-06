@@ -2,6 +2,7 @@ version: '3.5'
 
 networks:
   elk:
+  main:
 
 volumes:
   elk_elasticsearch_data:
@@ -44,4 +45,4 @@ services:
     ports:
       - "3000:3000"  
     networks:
-      - main  	
+      - main

@@ -25,4 +25,4 @@ echo "Adding domain with A record to $floating_ip"
 sleep 5
 
 # Add pythonkindergarten.tech domain
-curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $TF_VAR_do_token" -d '{"name":"pythonkindergarten.tech","ip_address":"'"$floating_ip"'"}' "https://api.digitalocean.com/v2/domains"
+curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $TF_VAR_do_token" -d '{"name":"pythonkindergarten.tech","ip_address":'"$floating_ip"'}' "https://api.digitalocean.com/v2/domains"

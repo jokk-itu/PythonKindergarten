@@ -17,6 +17,7 @@ using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Prometheus;
 using Prometheus.SystemMetrics;
 using Serilog;
+using Microsoft.EntityFrameworkCore;
 
 namespace MiniTwitApi.Server
 {
@@ -51,8 +52,11 @@ namespace MiniTwitApi.Server
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IContext dbContext)
         {
+            // Do database migration
+            ((DbContext)dbContext).Database.Migrate();
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

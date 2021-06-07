@@ -1,8 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace MiniTwitApi.Server.Migrations
 {
-    public partial class intitial : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -10,11 +11,11 @@ namespace MiniTwitApi.Server.Migrations
                 name: "Users",
                 columns: table => new
                 {
-                    UserId = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Username = table.Column<string>(type: "TEXT", nullable: false),
-                    Email = table.Column<string>(type: "TEXT", nullable: false),
-                    Password = table.Column<string>(type: "TEXT", nullable: false)
+                    UserId = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Username = table.Column<string>(type: "text", nullable: false),
+                    Email = table.Column<string>(type: "text", nullable: false),
+                    Password = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -25,8 +26,8 @@ namespace MiniTwitApi.Server.Migrations
                 name: "Followers",
                 columns: table => new
                 {
-                    WhoId = table.Column<int>(type: "INTEGER", nullable: false),
-                    WhomId = table.Column<int>(type: "INTEGER", nullable: false)
+                    WhoId = table.Column<int>(type: "integer", nullable: false),
+                    WhomId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -49,14 +50,14 @@ namespace MiniTwitApi.Server.Migrations
                 name: "Messages",
                 columns: table => new
                 {
-                    MessageId = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    AuthorId = table.Column<int>(type: "INTEGER", nullable: false),
-                    AuthorUsername = table.Column<string>(type: "TEXT", nullable: true),
-                    Text = table.Column<string>(type: "TEXT", nullable: false),
-                    PubDate = table.Column<int>(type: "INTEGER", nullable: false),
-                    Flagged = table.Column<int>(type: "INTEGER", nullable: false),
-                    UserId1 = table.Column<int>(type: "INTEGER", nullable: true)
+                    MessageId = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    AuthorId = table.Column<int>(type: "integer", nullable: false),
+                    AuthorUsername = table.Column<string>(type: "text", nullable: true),
+                    Text = table.Column<string>(type: "text", nullable: false),
+                    PubDate = table.Column<int>(type: "integer", nullable: false),
+                    Flagged = table.Column<int>(type: "integer", nullable: false),
+                    UserId1 = table.Column<int>(type: "integer", nullable: true)
                 },
                 constraints: table =>
                 {

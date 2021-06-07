@@ -24,7 +24,6 @@ namespace MiniTwitApi.Server
 {
     public class Program
     {
-        //http://161.35.215.154:9200
         public static void Main(string[] args)
         {
             IDisposable collector = DotNetRuntimeStatsBuilder.Default().StartCollecting();
@@ -33,7 +32,7 @@ namespace MiniTwitApi.Server
                 .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
                 .Enrich.FromLogContext()
                 .WriteTo.Async(c => c.Console())
-                .WriteTo.Async(c => c.Elasticsearch(new Serilog.Sinks.Elasticsearch.ElasticsearchSinkOptions(new Uri($"http://{GetSecret("databaseip")}:9200")){
+                .WriteTo.Async(c => c.Elasticsearch(new Serilog.Sinks.Elasticsearch.ElasticsearchSinkOptions(new Uri($"http://{DockerSecretHelper.GetSecretOrEnvVar("databaseip")}:9200")){
                     AutoRegisterTemplate = true,
                     AutoRegisterTemplateVersion = Serilog.Sinks.Elasticsearch.AutoRegisterTemplateVersion.ESv6,
                     IndexFormat = $"{Assembly.GetExecutingAssembly().GetName().Name.ToLower()}-{DateTime.UtcNow:yyyy-MM}"
@@ -52,7 +51,8 @@ namespace MiniTwitApi.Server
             finally
             {
                 Log.CloseAndFlush();
-            }        
+            }
+        
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -68,7 +68,7 @@ namespace MiniTwitApi.Server
 
                                 if(args.Any() && args[0]=="mac")
                                 {
-                                    Console.WriteLine("Mac isn't running");
+                                    Console.WriteLine("Mac is running");
                                 }
                                 else
                                 {
@@ -98,25 +98,5 @@ namespace MiniTwitApi.Server
                 return new X509Certificate2(certificatePayload, "");
             }
         }
-
-        private static string GetSecret(string key)
-        {
-            const string DOCKER_SECRET_PATH = "/run/secrets/";
-            if (Directory.Exists(DOCKER_SECRET_PATH))
-            {
-                IFileProvider provider = new PhysicalFileProvider(DOCKER_SECRET_PATH);
-                var fileInfo = provider.GetFileInfo(key);
-                if (fileInfo.Exists)
-                {
-                    using var stream = fileInfo.CreateReadStream();
-                    using (var streamReader = new StreamReader(stream))
-                    {
-                        return streamReader.ReadToEnd();
-                    }
-                }
-            }
-            throw new Exception("Database IP is not available as a Docker secret");
-        }
-        
     }
 }

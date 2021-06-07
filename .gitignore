@@ -68,12 +68,12 @@ ssh_keys/do_ssh_key
 mono_crash.*.json
 .idea
 docker_token
+/[Mm]igrations
 
 # Projectreport
 *.fls
 *.fdb_latexmk
 *.log
 *.aux
-*.pdf
 *.synctex.gz
 *.toc

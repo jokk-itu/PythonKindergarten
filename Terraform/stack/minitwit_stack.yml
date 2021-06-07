@@ -1,0 +1,36 @@
+version: '3.3'
+
+networks:
+  main:
+
+services:
+
+  visualizer:
+    image: dockersamples/visualizer:stable
+    ports:
+      - "8888:8080"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+
+  minitwitimage:
+    image: victornor/pythonkindergartenimage
+    container_name: pythonkindergarten
+    secrets:
+      - db
+      - databaseip
+    networks:
+      - main
+    ports:
+        - '80:5000'
+        - '443:5001'
+    deploy:
+      replicas: 10
+
+secrets:
+  db:
+    external: true
+  databaseip:
+    external: true

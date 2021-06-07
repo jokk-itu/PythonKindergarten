@@ -51,7 +51,8 @@ namespace MiniTwitApi.Server
             finally
             {
                 Log.CloseAndFlush();
-            }        
+            }
+        
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -96,6 +97,6 @@ namespace MiniTwitApi.Server
 
                 return new X509Certificate2(certificatePayload, "");
             }
-        }        
+        }
     }
 }

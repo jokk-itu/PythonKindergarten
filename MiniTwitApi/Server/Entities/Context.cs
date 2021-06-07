@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Logging;
 using Serilog;
+using MiniTwitApi.Shared;
 
 namespace MiniTwitApi.Server.Entities
 {
@@ -28,8 +29,7 @@ namespace MiniTwitApi.Server.Entities
             if (!optionsBuilder.IsConfigured)
             {
                 //Add connection string to DB
-                //optionsBuilder.UseNpgsql("Server=159.65.115.116;Database=pythonkindergarten;User Id=postgres;Password=postgres;Port=5432");
-                optionsBuilder.UseNpgsql(GetSecretOrEnvVar("db"));
+                optionsBuilder.UseNpgsql(DockerSecretHelper.GetSecretOrEnvVar("db"));
             }
         }
 
@@ -54,20 +54,6 @@ namespace MiniTwitApi.Server.Entities
                 .HasOne<User>(u => u.Who)
                 .WithMany(u => u.Followers)
                 .OnDelete(DeleteBehavior.ClientCascade);
-        }
-
-        private string GetSecretOrEnvVar(string key)
-        {
-            var secretPath = $"/run/secrets/{key}";
-
-            if(File.Exists(secretPath)){
-                var secret = File.ReadAllText(secretPath);
-                Console.WriteLine($"Found secret({key}): {secret}");
-                return secret;
-            }
-            
-            Console.WriteLine($"Failed to find secret with key: {key}");
-            return null;
         }
     }
 }

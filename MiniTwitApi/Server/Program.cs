@@ -32,7 +32,7 @@ namespace MiniTwitApi.Server
                 .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
                 .Enrich.FromLogContext()
                 .WriteTo.Async(c => c.Console())
-                .WriteTo.Async(c => c.Elasticsearch(new Serilog.Sinks.Elasticsearch.ElasticsearchSinkOptions(new Uri("http://161.35.215.154:9200")){
+                .WriteTo.Async(c => c.Elasticsearch(new Serilog.Sinks.Elasticsearch.ElasticsearchSinkOptions(new Uri($"http://{DockerSecretHelper.GetSecretOrEnvVar("databaseip")}:9200")){
                     AutoRegisterTemplate = true,
                     AutoRegisterTemplateVersion = Serilog.Sinks.Elasticsearch.AutoRegisterTemplateVersion.ESv6,
                     IndexFormat = $"{Assembly.GetExecutingAssembly().GetName().Name.ToLower()}-{DateTime.UtcNow:yyyy-MM}"
@@ -51,8 +51,7 @@ namespace MiniTwitApi.Server
             finally
             {
                 Log.CloseAndFlush();
-            }
-        
+            }        
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -97,6 +96,6 @@ namespace MiniTwitApi.Server
 
                 return new X509Certificate2(certificatePayload, "");
             }
-        }
+        }        
     }
 }

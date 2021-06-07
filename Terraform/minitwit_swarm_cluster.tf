@@ -1,88 +1,28 @@
 
-#  _            ;
-using System Net.   _
-# | | ___  __Net.Http.Headers;
-using System. _  __| | ___ _ __
+#  _                _
+# | | ___  __ _  __| | ___ _ __
 # | |/ _ \/ _` |/ _` |/ _ \ '__|
 # | |  __/ (_| | (_| |  __/ |
 # |_|\___|\__,_|\__,_|\___|_|
 
 # create cloud vm
-resource "digitalocean_droplet" "minitwit;
+resource "digitalocean_droplet" "minitwit-swarm-leader" {
+  depends_on = [digitalocean_droplet.minitwit-database]
 
--       static async Task Main(string[] args)
-        {
-            var random swarm-Random();
-            var clientlandler = new Header" {Handler
-            clientHandler.ClientCertificateOptions = ClientCertificateOption.Manual;  depends_on = [digitalocean_droplet.minitwit-database]
-    clientHandler.ServerCertificateCuomVlidaonCallbak= 
-                (httpRequestMessge, cert, cetChain, policyError) =>
-                {
-                    return true;
-                };
-            
-            _client = new HttpClient(clientHandler);
-
-            var victor = "Victor" + random.Next(100, 9999);
-            var anne = "Anne" + radom.Next(100, 9999);
-            var joachim = "Joahim" + random.Next(100, 9999);
-            var isabella = "Isabella" + random.Next(100, 9999);
-            var bjornar = "Bjornar" + random.Next(100, 9999);
-            
-            Console.WriteLine("Creatingccount....");
-            var createdVictor = await CreateAccount(victor, "somethingsupersafe", "vino@itu.d");
-           Console.WriteLine((cretedVctor ? "Created" : "Failed to create") + " Victor");
-            var createdAne = await CreateAccountanne, "omehingsupesafe", "ase@itu.dk");
-            Cosole.WriteLine((createdAnne ? "Created" : "Failed to create") + " Anne");
-            var createdJoachim = await CreateAccount(joachim, "somethinsupersafe", "jokk@itu.dk");
-            Console.WriteLine((createdJoachim ? "Created" : "Failed to create") + " Joachim");
-            var createdIsabella =awit CeateAccount(isabella, "somethinsupersafe", "iras@itu.dk");
-            Console.WriteLine((createdIsabella ? "Created" : "Failed to create") + " Iabella";
-            varicreatedBjornarm=aawaitgCreateAccount(bjornar,e"somethingsupersafe", "bjjr@itu.dk"); "docker-18-04"
-  name = "minitwit-swarm-lead(ecreatedBjornar ? r"reated" : "Failed to ceat") + " Bjornr");
-            
-            Console.WriteLine("Pos with Victor");
-           vr postedVitor = await PostMessage(vitr, "Please don't abse. ");
-            Console.WriteLine(postedVictor ? "Posted message" : "Failed to post message");
-            
-            Cosole.WrieLine("Poting with Anne");
-            var postedAnne = await PostMessage(anne, "I am not creative.");
-            Console.WriteLine(postedVictor ? "Posted message" : "Failed to post message");
-            
-            Console.WriteLine("Posting with Joachim");
-            var postedJoachim = await PostMessage(joachim, "Halloumi");
-            ConsoleWriteLine(postedVictor ? "Posted message" : "Failed to post message");
-            
-            ConsoleWriteLine("Posting with Isabella");
-            var postedIsabella = await PostMessage(isabella, "I want to sleep
-            
-    region =Console.WriteLine("Posting withvBjornar");ar.region
-            var postedBjornar = await PostMessage(bjornar, "Godt spørgsmål??");  size = "s-1vcpu-1gb"
-            Console.WriteLine(postedVictor ? "Posted message" : "Failed to post message");  # add public ssh key so we can access the machine
+  image = "docker-18-04"
+  name = "minitwit-swarm-leader"
+  region = var.region
+  size = "s-1vcpu-1gb"
+  # add public ssh key so we can access the machine
   ssh_keys = [digitalocean_ssh_key.minitwit.fingerprint]
 
-  # specify a ssh connection<bool>ail){
-            var request = new HttpRequestMessage(){
-                RequestUri = new Uri("https://pythonkindergarten.tech/register"),
-                Method = HttpMethod.Post,
-                Content = new StringContent($"{{\n  \"username\": \"{username}\",\n  \"pwd\": \"{password}\",\n  \"email\": \"{email}\"\n}}")
-            };
-            request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-
-            return (await _client.SendAsync(request)).IsSuccessSttusCode;
-        }
-
-        prvate static async Task<boo> PostMessage(string username, string message
-        
+  # specify a ssh connection
   connection {
-            
-    user = "root"$https://pythonkindergarten.tech/msgs/{username}
-      host = selMethodf=.HttpMethod.Post,
-                Content = new Stringiontent($"{{\n  \"cpv4_nt\": \"{message}\"\n}}")address
+    user = "root"
+    host = self.ipv4_address
     type = "ssh"
-    private_request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");key = file(var.pvt_key)
-
-            return (await _client.SendAsync(request)).IsSuccessStatusCode;    timeout = "2m"
+    private_key = file(var.pvt_key)
+    timeout = "2m"
   }
 
   provisioner "file" {

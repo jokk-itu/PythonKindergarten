@@ -47,18 +47,19 @@ namespace MiniTwitApi.Tester
             
             Console.WriteLine("Posting with Anne");
             var postedAnne = await PostMessage(anne, "I am not creative.");
-            Console.WriteLine(postedVictor ? "Posted message" : "Failed to post message");
+            Console.WriteLine(postedAnne ? "Posted message" : "Failed to post message");
             
             Console.WriteLine("Posting with Joachim");
             var postedJoachim = await PostMessage(joachim, "Halloumi.");
-            Console.WriteLine(postedVictor ? "Posted message" : "Failed to post message");
+            Console.WriteLine(postedJoachim ? "Posted message" : "Failed to post message");
             
             Console.WriteLine("Posting with Isabella");
             var postedIsabella = await PostMessage(isabella, "I want to sleep.");
+            Console.WriteLine(postedIsabella ? "Posted message" : "Failed to post message");
             
             Console.WriteLine("Posting with Bjornar");
             var postedBjornar = await PostMessage(bjornar, "Godt spørgsmål??");
-            Console.WriteLine(postedVictor ? "Posted message" : "Failed to post message");
+            Console.WriteLine(postedBjornar ? "Posted message" : "Failed to post message");
         }
 
         private static async Task<bool> CreateAccount(string username, string password, string email){
